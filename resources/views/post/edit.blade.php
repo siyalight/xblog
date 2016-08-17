@@ -6,10 +6,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="widget widget-default">
-                <form role="form" class="form-horizontal" action="{{ route('post.store') }}" method="post">
+                <form role="form" class="form-horizontal" action="{{ route('post.update',$post->id) }}" method="post">
 
                     @include('post.form-content')
-
+                    <input type="hidden" name="_method" value="put">
                     <div class="form-group">
                         <div class="col-md-8 col-md-offset-4">
                             <button type="submit" class="btn btn-primary">

@@ -53,7 +53,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
@@ -61,11 +60,21 @@ class PostController extends Controller
             'content' => 'required',
         ]);
         $ids = [];
-        foreach ($request['tags'] as $tagName) {
-            $tag = Tag::firstOrCreate(['name' => $tagName]);
-            array_push($ids, $tag->id);
+        $tags = $request['tags'];
+        if (!empty($tags)) {
+            foreach ($tags as $tagName) {
+                $tag = Tag::firstOrCreate(['name' => $tagName]);
+                array_push($ids, $tag->id);
 
+            }
         }
+
+        if ($request['published'] == 'on') {
+            $request['published'] = true;
+        } else {
+            $request['published'] = false;
+        }
+
         $post = Post::create(
             array_merge(
                 $request->all(),
@@ -90,11 +99,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post.show', [
-            'post' => $post,
-            'categories' => Category::all(),
-            'tags' => Tag::all(),
-        ]);
+        return view('post.show', ['post' => $post]);
     }
 
     /**
@@ -109,7 +114,11 @@ class PostController extends Controller
         if (Gate::denies('update', $post)) {
             abort(403);
         }
-        return view('post.edit', ['post' => $post]);
+        return view('post.edit', [
+            'post' => $post,
+            'categories' => Category::all(),
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**
@@ -125,6 +134,32 @@ class PostController extends Controller
         if (Gate::denies('update', $post)) {
             abort(403);
         }
+
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'content' => 'required',
+        ]);
+        $ids = [];
+        $tags = $request['tags'];
+        if (!empty($tags)) {
+            foreach ($tags as $tagName) {
+                $tag = Tag::firstOrCreate(['name' => $tagName]);
+                array_push($ids, $tag->id);
+            }
+        }
+
+        $post->tags()->sync($ids);
+        if ($request['published'] == 'on') {
+            $request['published'] = true;
+        } else {
+            $request['published'] = false;
+        }
+        if ($post->update($request->all()))
+            return redirect('/')->with('success', '文章' . $request['name'] . '修改成功');
+        else
+            return redirect('/')->with('error', '文章' . $request['name'] . '修改失败');
     }
 
     /**

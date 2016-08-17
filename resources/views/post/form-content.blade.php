@@ -42,21 +42,14 @@
     @endif
 </div>
 <div class="form-group{{ $errors->has('tags[]') ? ' has-error' : '' }}">
-    <label for="tags[]" class="control-label">文章标签*</label>
+    <label for="tags[]" class="control-label">文章标签</label>
     <select id="post-tags" name="tags[]" class="form-control" multiple>
         @foreach($tags as $tag)
-            @if(isset($post))
-                @foreach($post->tags as $pt)
-                    @if($pt->id == $tag->id)
-                        <option value="{{ $tag->name }}" selected>{{ $tag->name }}</option>
-                    @else
-                        <option value="{{ $tag->name }}">{{ $tag->name }}</option>
-                    @endif
-                @endforeach
+            @if(isset($post) && $post->tags->contains($tag))
+                <option value="{{ $tag->name }}" selected>{{ $tag->name }}</option>
             @else
                 <option value="{{ $tag->name }}">{{ $tag->name }}</option>
             @endif
-
         @endforeach
     </select>
 
@@ -80,7 +73,7 @@
 <div class="form-group">
     <div class="checkbox">
         <label>
-            <input value="false" type="checkbox" name="published">发布?
+            <input type="checkbox" name="published"><span>发布?</span>
         </label>
     </div>
 </div>
