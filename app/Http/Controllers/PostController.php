@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
 use App\Category;
 use App\Post;
 use App\Tag;
@@ -16,7 +17,7 @@ class PostController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except'=>'show']);
+        $this->middleware('auth', ['except' => 'show']);
     }
 
     /**
@@ -60,10 +61,9 @@ class PostController extends Controller
             'content' => 'required',
         ]);
         $ids = [];
-        foreach ($request['tags'] as $tagName)
-        {
+        foreach ($request['tags'] as $tagName) {
             $tag = Tag::firstOrCreate(['name' => $tagName]);
-            array_push($ids,$tag->id);
+            array_push($ids, $tag->id);
 
         }
         $post = Post::create(
@@ -90,30 +90,36 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post.show',['post'=>$post]);
+        return view('post.show', ['post' => $post]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param Post $post
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        if (Gate::denies('update', $post)) {
+            abort(403);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param Post $post
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        if (Gate::denies('update', $post)) {
+            abort(403);
+        }
     }
 
     /**

@@ -43,7 +43,7 @@
     </div>
     <!-- read more -->
     <div class="post-permalink">
-        <a href="#" class="btn btn-default">阅读全文</a>
+        <a href="{{ route('post.show',$post->id) }}" class="btn btn-default">阅读全文</a>
     </div>
     <!-- post footer -->
     <div class="post-footer clearfix">

@@ -2,6 +2,9 @@
 @section('content')
     <div class="row">
         <main class="col-md-12 post-detail">
+            @can('update',$post)
+                <a href="{{ route('post.edit',$post->id) }}">编辑</a>
+            @endcan
             <div class="center-block">
                 <h1>{{ $post->title }}</h1>
                 <div class="post-meta">
@@ -36,7 +39,7 @@
                 </div>
             </div>
             <br>
-            <div id="field" data-content="{{ $post->content }}" ></div>
+            <div id="field" data-content="{{ $post->content }}"></div>
             <div id="content">
 
             </div>

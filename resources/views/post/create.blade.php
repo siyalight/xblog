@@ -10,7 +10,7 @@
                     <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                         <label for="title" class="control-label">文章标题*</label>
 
-                        <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}"
+                        <input id="title" type="text" class="form-control" name="title" value="{{ $post->title or old('title') }}"
                                autofocus>
 
                         @if ($errors->has('title'))
@@ -23,7 +23,7 @@
                         <label for="description" class="control-label">文章描述*</label>
 
                         <input id="description" type="text" class="form-control" name="description"
-                               value="{{ old('description') }}">
+                               value="{{ $post->description or old('description') }}">
 
                         @if ($errors->has('description'))
                             <span class="help-block">
@@ -67,7 +67,7 @@
                         <label for="content" class="control-label">文章内容*</label>
 
                         <textarea id="content" type="text" class="form-control" name="content"
-                                  rows="26">{{ old('content') }}</textarea>
+                                  rows="26">{{ $post->content or old('content') }}</textarea>
                         @if ($errors->has('content'))
                             <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>
