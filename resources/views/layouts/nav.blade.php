@@ -14,9 +14,11 @@
                <li class="nav-current" role="presentation">
                   <a href="http://blog.lufficc.com/">我的博客</a>
                </li>
+               @if(Auth::check())
                <li role="presentation">
-                  <a href="http://blog.lufficc.com/">我的博客</a>
+                  <a href="{{ route('post.create') }}">发表文章</a>
                </li>
+               @endif
                <li role="presentation">
                   <a href="http://blog.lufficc.com/">我的博客</a>
                </li>
