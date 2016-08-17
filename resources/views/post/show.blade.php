@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('title',$post->title)
-
+@section('css')
+    <link href="//cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
+@endsection
 @section('content')
     <div class="row">
         <main class="col-md-12 post-detail">
@@ -54,7 +56,9 @@
 
 @section('script')
     <script src="http://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
+    <script src="http://cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
     <script>
+
         document.getElementById('content').innerHTML =
                 marked($('#field').data("content"), {
                     renderer: new marked.Renderer(),
@@ -63,7 +67,10 @@
                     breaks: false,
                     pedantic: false,
                     smartLists: true,
-                    smartypants: false
+                    smartypants: false,
+                    highlight: function (code) {
+                        return hljs.highlightAuto(code).value;
+                    }
                 });
     </script>
 
