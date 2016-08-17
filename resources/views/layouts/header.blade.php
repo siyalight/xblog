@@ -2,6 +2,7 @@
     <ul class="menu pull-right">
         <li><a href="{{ url('/') }}">文章</a></li>
         @if(Auth::check())
+            <li><a href="{{ route('post.create') }}">寫作</a></li>
             <li>
                 <a href="{{ url('/logout') }}" style="color: white;"
                    onclick="event.preventDefault();

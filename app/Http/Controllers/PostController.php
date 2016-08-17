@@ -90,7 +90,11 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post.show', ['post' => $post]);
+        return view('post.show', [
+            'post' => $post,
+            'categories' => Category::all(),
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**
@@ -105,6 +109,7 @@ class PostController extends Controller
         if (Gate::denies('update', $post)) {
             abort(403);
         }
+        return view('post.edit', ['post' => $post]);
     }
 
     /**
