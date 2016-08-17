@@ -79,7 +79,7 @@ class PostController extends Controller
                 ['user_id' => auth()->user()->id]
             )
         );
-
+        cache()->flush();
         $post->tags()->sync($ids);
         if ($post)
             return redirect('/')->with('success', '文章' . $request['name'] . '创建成功');
@@ -95,8 +95,14 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      * @internal param int $id
      */
-    public function show(Post $post)
+    public function show($id)
     {
+        $key = 'post.one.' . $id;
+        $post = cache($key);
+        if (!$post) {
+            $post = Post::findOrFail($id);
+            cache([$key => $post], 6000);
+        }
         return view('post.show', ['post' => $post]);
     }
 
@@ -152,6 +158,8 @@ class PostController extends Controller
 
         $published = $request->has('published');
         $request['published'] = $published;
+
+        cache()->flush();
 
         if ($post->update($request->all()))
             return redirect('/')->with('success', '文章' . $request['name'] . '修改成功');

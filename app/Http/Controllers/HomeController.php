@@ -25,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index', ['posts' => Post::published()->orderBy('created_at', 'desc')->paginate(7)]);
+        $key = 'post.page.' . request()->get('page', "1");
+        $posts = cache($key);
+        if (!$posts) {
+            $posts = Post::published()->orderBy('created_at', 'desc')->paginate(7);
+            cache([$key => $posts], 6000);
+        }
+        return view('index', ['posts' => $posts]);
     }
 }
