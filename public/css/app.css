@@ -155,6 +155,10 @@ a:active,a:focus,a img{
 	color: #959595;
 }
 
+.post .post-footer .tag-list a{
+	padding: 0 3px;
+}
+
 .post-detail img{
 	box-sizing: border-box;
 	margin: auto;

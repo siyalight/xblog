@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','文章')
 @section('content')
     <div class="row">
         <div class="col-md-8">

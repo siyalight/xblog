@@ -16,6 +16,6 @@ Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
 
 Auth::routes();
 
-Route::resource('post','PostController');
+Route::resource('post', 'PostController');
 
-Route::resource('category','CategoryController');
+Route::resource('category', 'CategoryController', ['only' => ['create', 'store']]);

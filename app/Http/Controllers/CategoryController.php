@@ -10,6 +10,15 @@ use App\Http\Requests;
 class CategoryController extends Controller
 {
     /**
+     * CategoryController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

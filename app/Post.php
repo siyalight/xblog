@@ -22,4 +22,9 @@ class Post extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
+    }
 }
