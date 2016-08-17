@@ -2,7 +2,7 @@
     <!-- post header -->
     <div class="post-header">
         <h1 class="post-title">
-            <a href="#">{{ $post->title }}</a>
+            <a href="{{ route('post.show',$post->id) }}">{{ $post->title }}</a>
         </h1>
         <div class="post-meta">
                            <span class="post-time">

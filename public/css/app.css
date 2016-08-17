@@ -99,7 +99,7 @@ a:active,a:focus,a img{
 
 .post .post-header .post-title{
 	margin: 0;
-	font-size: 2.5em;
+	font-size: 2.1em;
 	line-height: 1em;
 }
 
@@ -107,7 +107,7 @@ a:active,a:focus,a img{
 	color: #303030;
 }
 
-.post .post-header .post-meta{
+.post-meta{
 	color: #959595;
 	font-size: 12px;
 	margin: 14px 0 5px;
@@ -143,6 +143,16 @@ a:active,a:focus,a img{
 
 .post .post-footer .tag-list{
 	color: #959595;
+}
+
+.post-detail img{
+	box-sizing: border-box;
+	margin: auto;
+	border: 1px solid #ddd;
+	display: block;
+	padding: 20px;
+	max-width: 100%;
+	height: auto;
 }
 
 

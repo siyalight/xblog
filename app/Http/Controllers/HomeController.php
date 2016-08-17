@@ -24,6 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index',['posts'=>Post::paginate(7)]);
+        return view('index',['posts'=>Post::orderBy('created_at', 'desc')->paginate(7)]);
     }
 }
