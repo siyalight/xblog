@@ -56,8 +56,8 @@
 @endsection
 
 @section('script')
-    <script src="http://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
-    <script src="http://cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+    <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
+    <script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
     <script>
 
         document.getElementById('content').innerHTML =

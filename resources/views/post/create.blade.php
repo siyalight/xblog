@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('css')
-    <link href="http://cdn.bootcss.com/select2/4.0.3/css/select2.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/select2/4.0.3/css/select2.min.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="row">
@@ -25,7 +25,7 @@
 @endsection
 
 @section('script')
-    <script src="http://cdn.bootcss.com/select2/4.0.3/js/select2.min.js"></script>
+    <script src="//cdn.bootcss.com/select2/4.0.3/js/select2.min.js"></script>
     <script>
         $("#post-tags").select2({
             tags: true
