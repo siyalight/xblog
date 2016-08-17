@@ -62,8 +62,8 @@
 <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
     <label for="content" class="control-label">文章内容*</label>
 
-    <textarea id="content" type="text" class="form-control" name="content"
-              rows="26">{{ isset($post) ? $post->content : old('content') }}</textarea>
+    <textarea spellcheck="false" id="content" type="text" class="form-control" name="content"
+              rows="35"style="line-height: 1.85em; resize: vertical">{{ isset($post) ? $post->content : old('content') }}</textarea>
     @if ($errors->has('content'))
         <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>
