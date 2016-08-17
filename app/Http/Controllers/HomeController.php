@@ -28,7 +28,7 @@ class HomeController extends Controller
         $key = 'post.page.' . request()->get('page', "1");
         $posts = cache($key);
         if (!$posts) {
-            $posts = Post::published()->orderBy('created_at', 'desc')->paginate(7);
+            $posts = Post::with('tags')->published()->orderBy('created_at', 'desc')->paginate(7);
             cache([$key => $posts], 6000);
         }
         return view('index', ['posts' => $posts]);
