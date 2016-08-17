@@ -45,7 +45,7 @@ class CategoryController extends Controller
         if ($category)
             return redirect('/')->with('success', '分类' . $request['name'] . '创建成功');
         else
-            return redirect('/')->with('error', '分类' . $request['name'] . '创建失敗');
+            return redirect('/')->with('error', '分类' . $request['name'] . '创建失败');
     }
 
     /**
