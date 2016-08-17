@@ -68,12 +68,13 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param Post $post
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return view('post.show',['post'=>$post]);
     }
 
     /**

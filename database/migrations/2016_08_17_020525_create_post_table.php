@@ -21,7 +21,7 @@ class CreatePostTable extends Migration
             $table->string('title')->nullable(false);
             $table->string('description')->nullable(false);
             $table->longText('content')->nullable(false);
-            $table->boolean('published');
+            $table->boolean('published')->default(false);
         });
     }
 

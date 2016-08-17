@@ -31,7 +31,7 @@
                     <div class="form-group{{ $errors->has('$category_id') ? ' has-error' : '' }}">
                         <label for="categories" class="control-label">文章分类*</label>
 
-                        <select name="$category_id" class="form-control">
+                        <select name="category_id" class="form-control">
                             @foreach($categories as $category)
                                 @if(old('$category_id',-1) == $category->id)
                                     <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
@@ -50,9 +50,7 @@
                     <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                         <label for="content" class="control-label">文章内容*</label>
 
-                        <textarea id="content" type="text" class="form-control" name="content" rows="26">
-                                {{ old('content') }}
-                            </textarea>
+                        <textarea id="content" type="text" class="form-control" name="content" rows="26">{{ old('content') }}</textarea>
                         @if ($errors->has('content'))
                             <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>
@@ -62,7 +60,7 @@
                     <div class="form-group">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="published">发布?
+                                <input value="false" type="checkbox" name="published">发布?
                             </label>
                         </div>
                     </div>

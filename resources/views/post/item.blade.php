@@ -2,13 +2,13 @@
     <!-- post header -->
     <div class="post-header">
         <h1 class="post-title">
-            <a href="#">123</a>
+            <a href="#">{{ $post->title }}</a>
         </h1>
         <div class="post-meta">
                            <span class="post-time">
                            <i class="fa fa-calendar-o"></i>
                            <time datetime="2016-08-05T00:10:14+08:00" content="2016-08-05">
-                           2016-08-05
+                           {{ $post->created_at }}
                            </time>
                            </span>
             <span class="post-category">
@@ -16,7 +16,7 @@
                            <i class="fa fa-folder-o"></i>
                            <span>
                            <a href="#">
-                           <span>Android</span>
+                           <span>{{ $post->category->name }}</span>
                            </a>
                            </span>
                            </span>
@@ -37,8 +37,8 @@
     </div>
     <!-- post content -->
     <div class="post-content">
-        <p>从这周起，我们将 Ghost 推荐 Node.js 版本升级为 Node.js v4 LTS。 我们这样做其实已经落后于计划了。然而，经过大量测试之后，我们确信 Ghost 可以在 Node.js v4
-            平台上流畅的运行并且内存消耗比原来也减少了。目前，Ghost(Pro) 上托
+        <p>
+            {{ $post->description }}
         </p>
     </div>
     <!-- read more -->
@@ -49,10 +49,9 @@
     <div class="post-footer clearfix">
         <div class="pull-left tag-list">
             <i class="fa fa-tags"></i>
-            <a href="#">tag1</a>
-            <a href="#">tag1</a>
-            <a href="#">tag1</a>
-            <a href="#">tag1</a>
+            @foreach($post->tags as $tag)
+                <a href="#">{{ $tag->name }}</a>
+            @endforeach
         </div>
     </div>
 </article>
