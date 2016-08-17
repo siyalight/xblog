@@ -14,9 +14,9 @@
                 margin: 0;
                 padding: 0;
                 width: 100%;
-                color: #B0BEC5;
+                color: #607D8B;
                 display: table;
-                font-weight: 100;
+                font-weight: 300;
                 font-family: 'Lato', sans-serif;
             }
 
