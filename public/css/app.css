@@ -5,6 +5,10 @@ html,body{
 	font-family: "Helvetica Neue", "Helvetica", "Lucida Grande", "Arial", "Hiragino Sans GB", "Microsoft Yahei", "WenQuanYi Micro Hei", "sans-serif"
 }
 
+.center-block{
+	text-align: center;
+}
+
 .main-header{
 	position: relative;
 	text-align: center;
@@ -156,7 +160,7 @@ a:active,a:focus,a img{
 }
 
 .widget-default{
-	padding: 20px 25px;
+	padding: 30px 35px 30px 35px;
 }
 
 .description-block {

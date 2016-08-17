@@ -1,27 +1,32 @@
 @extends('layouts.app')
 @section('content')
-    <div class="widget widget-default">
-        <div class="container">
-            <div class="box box-primary box-solid">
-                <div class="box-header">创建一个新的分类</div>
-                <div class="box-body">
-                    <form class="form-vertical" action="{{ route('category.store') }}" method="post">
-                        <div class="input-group">
-                            <span class="input-group-addon">名字*</span>
-                            <input type="text" name="name" class="form-control" id="name">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="widget widget-default">
+                <form role="form" class="form-horizontal" action="{{ route('category.store') }}" method="post">
+                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <label for="name" class="col-md-4 control-label">分类名称</label>
+
+                        <div class="col-md-6">
+                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
+                                   autofocus>
+
+                            @if ($errors->has('name'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                            @endif
                         </div>
-                        <br>
-                        <div class="input-group">
-                            <span class="input-group-addon">描述*</span>
-                            <input type="text" name="description" class="form-control" id="description"/>
+                    </div>
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <div class="col-md-8 col-md-offset-4">
+                            <button type="submit" class="btn btn-primary">
+                                创建
+                            </button>
                         </div>
-                        <br>
-                        {{ csrf_field() }}
-                        <div class="input-group">
-                            <button type="submit" class="btn btn-success">创建</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

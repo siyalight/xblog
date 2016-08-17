@@ -28,6 +28,8 @@
     @include('layouts.nav')
     <section class="content-wrap">
         <div class="container">
+            @include('partials.errors')
+            @include('partials.success')
             @yield('content')
         </div>
     </section>
