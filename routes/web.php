@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('/home', function () {
+    return redirect('/');
+});
 
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
 
@@ -19,3 +22,7 @@ Auth::routes();
 Route::resource('post', 'PostController');
 
 Route::resource('category', 'CategoryController', ['only' => ['create', 'store']]);
+
+Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
+    Route::get('index', 'AdminController@index');
+});

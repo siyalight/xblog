@@ -17,6 +17,6 @@ class AdminMiddleware
     {
         if (auth()->check() && auth()->user()->id == 1)
             return $next($request);
-        abort(404);
+        abort(403);
     }
 }
