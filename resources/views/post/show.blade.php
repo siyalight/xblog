@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title',$post->title)
 @section('css')
-    <link href="//cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="row">
@@ -56,8 +56,8 @@
 @endsection
 
 @section('script')
-    <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
-    <script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+    <script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
     <script>
 
         document.getElementById('content').innerHTML =
