@@ -43,7 +43,10 @@
             <br>
             <div id="field" data-content="{{ $post->content }}"></div>
             <div id="content">
-
+            </div>
+            <div style="margin-top: 35px" class="ds-thread"
+                 data-thread-key="{{ $post->created_at.$post->title.$post->id }}"
+                 data-title="{{ $post->title }}" data-url="{{ request()->url() }}">
             </div>
         </main>
     </div>
@@ -62,5 +65,18 @@
                     smartLists: true,
                     smartypants: false
                 });
+    </script>
+
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name: "lcc-luffy-blog"};
+        (function () {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
     </script>
 @endsection
