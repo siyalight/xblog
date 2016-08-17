@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('css')
+    <link href="http://cdn.bootcss.com/select2/4.0.3/css/select2.min.css" rel="stylesheet">
+@endsection
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -28,12 +31,11 @@
                                     </span>
                         @endif
                     </div>
-                    <div class="form-group{{ $errors->has('$category_id') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                         <label for="categories" class="control-label">文章分类*</label>
-
                         <select name="category_id" class="form-control">
                             @foreach($categories as $category)
-                                @if(old('$category_id',-1) == $category->id)
+                                @if(old('category_id',-1) == $category->id)
                                     <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                                 @else
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -47,10 +49,25 @@
                                     </span>
                         @endif
                     </div>
+                    <div class="form-group{{ $errors->has('tags[]') ? ' has-error' : '' }}">
+                        <label for="tags[]" class="control-label">文章标签*</label>
+                        <select id="post-tags" name="tags[]" class="form-control" multiple>
+                            @foreach($tags as $tag)
+                                <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+                            @endforeach
+                        </select>
+
+                        @if ($errors->has('tags[]'))
+                            <span class="help-block">
+                                        <strong>{{ $errors->first('tags[]') }}</strong>
+                                    </span>
+                        @endif
+                    </div>
                     <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                         <label for="content" class="control-label">文章内容*</label>
 
-                        <textarea id="content" type="text" class="form-control" name="content" rows="26">{{ old('content') }}</textarea>
+                        <textarea id="content" type="text" class="form-control" name="content"
+                                  rows="26">{{ old('content') }}</textarea>
                         @if ($errors->has('content'))
                             <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>
@@ -77,5 +94,13 @@
             </div>
         </div>
     </div>
+@endsection
 
+@section('script')
+    <script src="http://cdn.bootcss.com/select2/4.0.3/js/select2.min.js"></script>
+    <script>
+        $("#post-tags").select2({
+            tags: true
+        })
+    </script>
 @endsection
