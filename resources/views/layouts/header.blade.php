@@ -1,4 +1,10 @@
 <header class="main-header jumbotron">
+    <ul class="menu pull-right">
+        <li><a href="{{ url('register') }}">文章1</a></li>
+        <li><a href="{{ url('register') }}">文章2</a></li>
+        <li><a href="{{ url('register') }}">文章3</a></li>
+        <li><a href="{{ url('register') }}">文章4</a></li>
+    </ul>
     <div class="container">
         <div class="row">
             <div class="col-md-12">

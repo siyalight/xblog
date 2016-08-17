@@ -14,7 +14,7 @@ html,body{
 	text-align: center;
 	background-color: #607D8B;
 	color: #fff;
-	margin-bottom: 0
+	margin-bottom: 0;
 }
 
 .main-header h2{
@@ -46,14 +46,14 @@ a:active,a:focus,a img{
 	border-top: 1px solid #ebebeb;
 	/*border-bottom: 2px solid #e1e1e1;*/
 	margin-bottom: 35px;
-	box-shadow: 0px 2px 2px #888888;
+	box-shadow: 0 1px 2px #888888;
 }
-.main-navigation .menu{
-	padding: 0;
-	margin: 0;
+.menu{
+	padding:0 20px;
+	margin-top: -10px;
 }
 
-.main-navigation .menu li{
+.menu li{
 	list-style: none;
 	display: inline-block;
 	position: relative;
@@ -84,17 +84,14 @@ a:active,a:focus,a img{
 	margin-bottom: 35px;
 	position: relative;
 	overflow: hidden;
-	box-shadow: 1.5px 1.5px 2px #888888;
+	box-shadow: 1px 1px 2px #888888;
 }
 
 
 .post-detail{
-	padding-left: 35px;
-	padding-right: 35px;
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding: 50px 35px;
 	background: white;
-	box-shadow: 1.5px 1.5px 2px #888888;
+	box-shadow: 1px 1px 2px #888888;
 }
 
 .post .post-header .post-title{
@@ -160,7 +157,7 @@ a:active,a:focus,a img{
 
 .widget{
 	background: white;
-	box-shadow: 1.5px 1.5px 2px #888888;
+	box-shadow: 1px 1px 2px #888888;
 	overflow: hidden;
 	margin-bottom: 35px;
 }

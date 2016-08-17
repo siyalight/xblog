@@ -25,8 +25,8 @@
 <body>
 
     @include('layouts.header')
-    @include('layouts.nav')
-    <section class="content-wrap">
+    {{--@include('layouts.nav')--}}
+    <section class="content-wrap" style="margin-top: 35px">
         <div class="container">
             @include('partials.errors')
             @include('partials.success')
