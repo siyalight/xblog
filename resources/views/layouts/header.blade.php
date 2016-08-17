@@ -2,19 +2,19 @@
     <ul class="menu pull-right">
         <li><a href="{{ url('/') }}">文章</a></li>
         @if(Auth::check())
-            <li><a href="{{ route('post.create') }}">寫作</a></li>
+            <li><a href="{{ route('post.create') }}">写作</a></li>
             <li>
                 <a href="{{ url('/logout') }}" style="color: white;"
                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                    退出登錄
+                    退出登录
                 </a>
                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
             </li>
         @else
-            <li><a href="{{ url('login') }}">登陸</a></li>
+            <li><a href="{{ url('login') }}">登录</a></li>
         @endif
     </ul>
     <div class="container">

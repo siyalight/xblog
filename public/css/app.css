@@ -87,7 +87,7 @@ a:active,a:focus,a img{
 /*post*/
 
 .post{
-	padding: 35px;
+	padding: 35px 35px 20px 35px;
 	background: white;
 	margin-bottom: 35px;
 	position: relative;
@@ -110,6 +110,11 @@ a:active,a:focus,a img{
 
 .post .post-header .post-title a{
 	color: #303030;
+	text-decoration: none;
+}
+
+.post .post-header .post-title a:hover{
+	color: #607D8B;
 }
 
 .post-meta{

@@ -69,11 +69,9 @@ class PostController extends Controller
             }
         }
 
-        if ($request['published'] == 'on') {
-            $request['published'] = true;
-        } else {
-            $request['published'] = false;
-        }
+        $published = $request->has('published');
+        $request['published'] = $published;
+
 
         $post = Post::create(
             array_merge(
@@ -151,11 +149,10 @@ class PostController extends Controller
         }
 
         $post->tags()->sync($ids);
-        if ($request['published'] == 'on') {
-            $request['published'] = true;
-        } else {
-            $request['published'] = false;
-        }
+
+        $published = $request->has('published');
+        $request['published'] = $published;
+
         if ($post->update($request->all()))
             return redirect('/')->with('success', '文章' . $request['name'] . '修改成功');
         else
