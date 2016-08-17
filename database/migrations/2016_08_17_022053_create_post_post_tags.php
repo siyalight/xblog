@@ -13,7 +13,7 @@ class CreatePostPostTags extends Migration
      */
     public function up()
     {
-        Schema::create('post_tags', function (Blueprint $table) {
+        Schema::create('posts_tags', function (Blueprint $table) {
             $table->bigInteger('post_id')->unsigned();
             $table->bigInteger('tag_id')->unsigned();
             $table->primary(['post_id','tag_id']);
@@ -27,6 +27,6 @@ class CreatePostPostTags extends Migration
      */
     public function down()
     {
-        Schema::drop('post_tags');
+        Schema::drop('posts_tags');
     }
 }

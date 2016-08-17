@@ -13,7 +13,7 @@ class CreatePostTag extends Migration
      */
     public function up()
     {
-        Schema::create('tag', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('name')->unique();
@@ -27,6 +27,6 @@ class CreatePostTag extends Migration
      */
     public function down()
     {
-        Schema::drop('tag');
+        Schema::drop('tags');
     }
 }

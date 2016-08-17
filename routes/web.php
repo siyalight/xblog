@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+
+Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
+
+Auth::routes();
+
