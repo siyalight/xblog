@@ -19,10 +19,12 @@ Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
 
 Auth::routes();
 
-Route::resource('post', 'PostController');
+/*Route::get('post/{slug}', 'PostController@slug');*/
+
+Route::resource('post', 'PostController'/*, ['except' => 'index']*/);
 
 Route::resource('category', 'CategoryController', ['only' => ['create', 'store']]);
 
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
-    Route::get('index', 'AdminController@index');
+    Route::get('/', 'AdminController@index');
 });

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Post;
+use App\Tag;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -14,10 +18,16 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth','admin'], ['except' => 'show']);
+        $this->middleware(['auth','admin']);
     }
     public function index()
     {
-        return view('admin.index');
+        $info=[];
+        $info['post_count'] = Post::count();
+        $info['user_count'] = User::count();
+        $info['category_count'] = Category::count();
+        $info['tag_count'] = Tag::count();
+
+        return view('admin.index',compact('info'));
     }
 }

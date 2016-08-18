@@ -3,10 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'description', 'category_id', 'user_id', 'content', 'published'];
+    use SoftDeletes;
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at','published_at'];
+
+
+    protected $fillable = ['title', 'description', 'slug','category_id', 'user_id', 'content', 'published_at'];
 
     public function category()
     {
@@ -25,6 +37,6 @@ class Post extends Model
 
     public function scopePublished($query)
     {
-        return $query->where('published', true);
+        return $query->where('published_at', '<=', Carbon::now());
     }
 }

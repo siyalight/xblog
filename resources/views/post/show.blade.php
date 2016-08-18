@@ -8,7 +8,10 @@
         <main class="col-md-12 post-detail">
             @can('update',$post)
                 <a href="{{ route('post.edit',$post->id) }}">编辑</a>
-                <a href="{{ route('post.destroy',$post->id) }}" style="color: red">删除</a>
+                <a style="color: red" role="button" data-toggle="modal" data-target="#delete-post-modal">
+                    删除
+                </a>
+                @include('post.delete-modal',$post)
             @endcan
             <div class="center-block">
                 <h1>{{ $post->title }}</h1>

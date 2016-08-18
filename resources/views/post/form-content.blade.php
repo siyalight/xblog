@@ -23,6 +23,20 @@
                                     </span>
     @endif
 </div>
+
+<div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
+    <label for="slug" class="control-label">文章slug*</label>
+
+    <input id="slug" type="text" class="form-control" name="slug"
+           value="{{ isset($post) ? $post->slug : old('slug') }}">
+
+    @if ($errors->has('slug'))
+        <span class="help-block">
+                                        <strong>{{ $errors->first('slug') }}</strong>
+                                    </span>
+    @endif
+</div>
+
 <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
     <label for="categories" class="control-label">文章分类*</label>
     <select name="category_id" class="form-control">
@@ -63,7 +77,7 @@
     <label for="content" class="control-label">文章内容*</label>
 
     <textarea spellcheck="false" id="content" type="text" class="form-control" name="content"
-              rows="35"style="line-height: 1.85em; resize: vertical">{{ isset($post) ? $post->content : old('content') }}</textarea>
+              rows="25"style="line-height: 1.85em; resize: vertical">{{ isset($post) ? $post->content : old('content') }}</textarea>
     @if ($errors->has('content'))
         <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>
