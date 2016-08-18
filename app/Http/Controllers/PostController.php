@@ -91,6 +91,8 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->first();
+        if (!$post)
+            abort(404);
         return view('post.show', compact('post'));
     }
 
@@ -159,10 +161,21 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        if (Post::destroy($id))
-            return redirect('/')->with('success', '删除成功');
+        $post = Post::withTrashed()->findOrFail($id);
+        $redirect = '/';
+        if (request()->has('redirect'))
+            $redirect = request()->input('redirect');
+
+        if($post->trashed()) {
+            $result = $post->forceDelete();
+        }
+        else{
+            $result = $post->delete();
+        }
+        if ($result)
+            return redirect($redirect)->with('success', '删除成功');
         else
-            return redirect('/')->with('error', '删除失败');
+            return redirect($redirect)->with('error', '删除失败');
     }
 
     private function validatePostForm(Request $request, $update = false)

@@ -8,6 +8,7 @@ use App\Post;
 use App\Tag;
 use App\User;
 use DB;
+
 class AdminController extends Controller
 {
     //
@@ -16,22 +17,23 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth','admin']);
+        $this->middleware(['auth', 'admin']);
     }
+
     public function index()
     {
-        $info=[];
-        $info['post_count'] = Post::count();
+        $info = [];
+        $info['post_count'] = Post::withTrashed()->count();
         $info['user_count'] = User::count();
         $info['category_count'] = Category::count();
         $info['tag_count'] = Tag::count();
 
-        return view('admin.index',compact('info'));
+        return view('admin.index', compact('info'));
     }
 
     public function posts()
     {
-        $posts = Post::all(['title','created_at','slug']);
-        return view('admin.posts',compact('posts'));
+        $posts = Post::withTrashed()->orderBy('created_at','desc')->get(['id', 'title', 'created_at', 'slug', 'deleted_at', 'published_at']);
+        return view('admin.posts', compact('posts'));
     }
 }

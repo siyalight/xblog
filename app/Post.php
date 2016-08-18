@@ -15,10 +15,10 @@ class Post extends Model
      *
      * @var array
      */
-    protected $dates = ['deleted_at','published_at'];
+    protected $dates = ['deleted_at', 'published_at'];
 
 
-    protected $fillable = ['title', 'description', 'slug','category_id', 'user_id', 'content', 'published_at'];
+    protected $fillable = ['title', 'description', 'slug', 'category_id', 'user_id', 'content', 'published_at'];
 
     public function category()
     {
@@ -33,6 +33,11 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function isPublished()
+    {
+        return $this->published_at && $this->published_at <= Carbon::now();
     }
 
     public function scopePublished($query)
