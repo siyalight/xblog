@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
         \App\Category::truncate();
         \App\Tag::truncate();
         Model::unguard();
-        // $this->call(UsersTableSeeder::class);
         factory(App\Category::class)->create(['name' => 'Android']);
         factory(App\Category::class)->create(['name' => 'Java']);
         factory(App\Category::class)->create(['name' => 'Php']);
@@ -28,12 +27,10 @@ class DatabaseSeeder extends Seeder
         factory(App\Tag::class, 35)->create();
         $tag_ids = \App\Tag::all();
         factory(App\User::class, 20)->create()->each(function ($u) use ($tag_ids) {
-
             factory(App\Post::class, mt_rand(0, 20))->make(
                 ['category_id' => mt_rand(1, 7)]
             )->each(function ($post) use ($u, $tag_ids) {
                 $p = $u->posts()->save($post);
-
                 $count = mt_rand(0, 4);
                 $ids = [];
                 for ($i = 0; $i < $count; $i++) {
