@@ -46,12 +46,15 @@
                                         编辑
                                     </a>
                                     @if($post->trashed())
-                                        <a {{ $post->trashed()?'disabled':'' }} href="{{ $post->trashed()?'#':route('post.show',$post->slug) }}"
+                                        <a href="{{ route('post.restore',$post->id) }}"
+                                           class="btn btn-default">
+                                            恢复
+                                        </a>
+                                    @else
+                                        <a href="{{ route('post.show',$post->slug) }}"
                                            class="btn btn-default">
                                             查看
                                         </a>
-                                    @else
-
 
                                     @endif
                                 </div>

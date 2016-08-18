@@ -153,6 +153,16 @@ class PostController extends Controller
             return redirect('/')->with('error', '文章' . $request['name'] . '修改失败');
     }
 
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->findOrFail($id);
+        if($post->trashed()) {
+            $post->restore();
+            return redirect()->route('admin.posts')->with('success', '恢复成功');
+        }
+        return redirect()->route('admin.posts')->with('error', '恢复失败');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

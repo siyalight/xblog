@@ -20,6 +20,7 @@ Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
 Auth::routes();
 
 Route::get('article/{slug}/', ['uses' => 'PostController@show', 'as' => 'post.show']);
+Route::get('post/{post}/restore', ['uses' => 'PostController@restore', 'as' => 'post.restore']);
 
 Route::resource('post', 'PostController', ['except' => 'show']);
 
