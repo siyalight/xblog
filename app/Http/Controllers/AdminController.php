@@ -36,4 +36,16 @@ class AdminController extends Controller
         $posts = Post::withTrashed()->orderBy('created_at','desc')->get(['id', 'title', 'created_at', 'slug', 'deleted_at', 'published_at']);
         return view('admin.posts', compact('posts'));
     }
+
+    public function tags()
+    {
+        $tags = Tag::all();
+        return view('admin.tags', compact('tags'));
+    }
+
+    public function categories()
+    {
+        $categories = Category::all();
+        return view('admin.categories', compact('categories'));
+    }
 }

@@ -19,14 +19,14 @@
         <div class="col-lg-4 col-md-6">
             <div class="widget widget-default center-block">
                 <h1>Tag</h1>
-                <h3>{{ $info['tag_count'] }}</h3>
+                <h3><a href="{{route('admin.tags')}}">{{ $info['tag_count'] }}</a></h3>
             </div>
         </div>
 
         <div class="col-lg-4 col-md-6">
             <div class="widget widget-default center-block">
                 <h1>Category</h1>
-                <h3>{{ $info['category_count'] }}</h3>
+                <h3><a href="{{ route('admin.categories') }}">{{ $info['category_count'] }}</a></h3>
             </div>
         </div>
 

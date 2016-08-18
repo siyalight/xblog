@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/home', function () {
-    return redirect('/');
-});
 
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
 
@@ -29,4 +26,6 @@ Route::resource('category', 'CategoryController', ['only' => ['create', 'store']
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
     Route::get('/', ['uses'=>'AdminController@index','as'=>'admin.index']);
     Route::get('/posts', ['uses'=>'AdminController@posts','as'=>'admin.posts']);
+    Route::get('/tags', ['uses'=>'AdminController@tags','as'=>'admin.tags']);
+    Route::get('/categories', ['uses'=>'AdminController@categories','as'=>'admin.categories']);
 });
