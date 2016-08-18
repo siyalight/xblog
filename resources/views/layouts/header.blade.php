@@ -44,7 +44,7 @@
                             <a class="branding" href="/" title="title">
                                 <img class="img-circle" src="https://avatars1.githubusercontent.com/u/20706332">
                             </a>
-                            <h2>lufficc</h2>
+                            <h2>{{ Auth::check() ? Auth::user()->name : 'lufficc' }}</h2>
                             <p>Stay hungry.Stay Foolish.</p>
                         </div>
                     </div>

@@ -27,5 +27,6 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
     Route::get('/', ['uses'=>'AdminController@index','as'=>'admin.index']);
     Route::get('/posts', ['uses'=>'AdminController@posts','as'=>'admin.posts']);
     Route::get('/tags', ['uses'=>'AdminController@tags','as'=>'admin.tags']);
+    Route::get('/users', ['uses'=>'AdminController@users','as'=>'admin.users']);
     Route::get('/categories', ['uses'=>'AdminController@categories','as'=>'admin.categories']);
 });

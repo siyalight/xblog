@@ -5,7 +5,7 @@
         <div class="col-lg-4 col-md-6">
             <div class="widget widget-default center-block">
                 <h1>User</h1>
-                <h3>{{ $info['user_count'] }}</h3>
+                <h3><a href="{{ route('admin.users') }}">{{ $info['user_count'] }}</a></h3>
             </div>
         </div>
 

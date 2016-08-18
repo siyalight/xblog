@@ -48,4 +48,10 @@ class AdminController extends Controller
         $categories = Category::all();
         return view('admin.categories', compact('categories'));
     }
+
+    public function users()
+    {
+        $users = User::all();
+        return view('admin.users', compact('users'));
+    }
 }
