@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -17,22 +18,30 @@ class DatabaseSeeder extends Seeder
         \App\Tag::truncate();
         Model::unguard();
         // $this->call(UsersTableSeeder::class);
-        factory(App\User::class, 50)->create();
+        factory(App\Category::class)->create(['name' => 'Android']);
+        factory(App\Category::class)->create(['name' => 'Java']);
+        factory(App\Category::class)->create(['name' => 'Php']);
+        factory(App\Category::class)->create(['name' => 'Spring']);
+        factory(App\Category::class)->create(['name' => 'Laravel']);
+        factory(App\Category::class)->create(['name' => 'Vue']);
+        factory(App\Category::class)->create(['name' => 'Js']);
+        factory(App\Tag::class, 35)->create();
         $tag_ids = \App\Tag::all();
-        dd(count($tag_ids));
-        factory(App\User::class, 50)->create()->each(function($u) use($tag_ids) {
-            $posts = factory(App\Post::class,mt_rand(0,20))->make();
-            foreach ($posts as $post)
-            {
-                $count = mt_rand(0,4);
-                $ids=[];
-                for ($i = 0;$i<$count;$i++)
-                {
-                    array_push($ids,$tag_ids[mt_rand(1,50)]);
+        factory(App\User::class, 20)->create()->each(function ($u) use ($tag_ids) {
+
+            factory(App\Post::class, mt_rand(0, 20))->make(
+                ['category_id' => mt_rand(1, 7)]
+            )->each(function ($post) use ($u, $tag_ids) {
+                $p = $u->posts()->save($post);
+
+                $count = mt_rand(0, 4);
+                $ids = [];
+                for ($i = 0; $i < $count; $i++) {
+                    array_push($ids, $tag_ids[mt_rand(1, 34)]->id);
                 }
-                $post->tags()->sync($ids);
-                $u->posts()->save($post);
-            }
+                $p->tags()->sync($ids);
+            });
+
         });
     }
 }
