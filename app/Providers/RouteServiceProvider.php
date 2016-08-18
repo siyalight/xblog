@@ -55,6 +55,7 @@ class RouteServiceProvider extends ServiceProvider
             'middleware' => 'web',
             'namespace' => $this->namespace,
         ], function ($router) {
+            $router->pattern('post', '[0-9]+');
             require base_path('routes/web.php');
         });
     }

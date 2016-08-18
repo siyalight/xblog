@@ -1,5 +1,5 @@
 <header class="main-header jumbotron">
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: -15px">
         <nav class = "navbar">
             <div class = "navbar-header">
                 <button type = "button" class = "navbar-toggle"
@@ -41,7 +41,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <a class="branding" href="/admin" title="title">
+                            <a class="branding" href="{{ route('admin.index') }}" title="title">
                                 <img class="img-circle" src="https://avatars1.githubusercontent.com/u/20706332">
                             </a>
                             <h2>Admin</h2>

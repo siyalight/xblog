@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests;
 use App\Post;
 use App\Tag;
 use App\User;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-
+use DB;
 class AdminController extends Controller
 {
     //
@@ -29,5 +27,11 @@ class AdminController extends Controller
         $info['tag_count'] = Tag::count();
 
         return view('admin.index',compact('info'));
+    }
+
+    public function posts()
+    {
+        $posts = Post::all(['title','created_at','slug']);
+        return view('admin.posts',compact('posts'));
     }
 }

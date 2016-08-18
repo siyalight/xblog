@@ -1,5 +1,5 @@
 <header class="main-header jumbotron">
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: -15px">
         <nav class = "navbar">
             <div class = "navbar-header">
                 <button type = "button" class = "navbar-toggle"

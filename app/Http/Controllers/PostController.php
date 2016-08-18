@@ -66,7 +66,7 @@ class PostController extends Controller
         }
 
         $published = $request->has('published');
-        if($published)
+        if ($published)
             $request['published_at'] = Carbon::now();
         $post = auth()->user()->posts()->create(
             $request->all()
@@ -80,18 +80,6 @@ class PostController extends Controller
 
     }
 
-    public function slug($slug)
-    {
-        $id = 1;
-        $key = 'post.one.' . $id;
-        $post = cache($key);
-        if (!$post) {
-            $post = Post::findOrFail($id);
-            cache([$key => $post], 6000);
-        }
-        return view('post.show', ['post' => $post]);
-    }
-
     /**
      * Display the specified resource.
      *
@@ -100,15 +88,10 @@ class PostController extends Controller
      * @internal param Post $post
      * @internal param int $id
      */
-    public function show($id)
+    public function show($slug)
     {
-        $key = 'post.one.' . $id;
-        $post = cache($key);
-        if (!$post) {
-            $post = Post::findOrFail($id);
-            cache([$key => $post], 6000);
-        }
-        return view('post.show', ['post' => $post]);
+        $post = Post::where('slug', $slug)->first();
+        return view('post.show', compact('post'));
     }
 
     /**
@@ -144,7 +127,7 @@ class PostController extends Controller
             abort(403);
         }
 
-        $this->validatePostForm($request,true);
+        $this->validatePostForm($request, true);
 
         $ids = [];
         $tags = $request['tags'];
@@ -158,7 +141,7 @@ class PostController extends Controller
         $post->tags()->sync($ids);
 
         $published = $request->has('published');
-        if($published)
+        if ($published)
             $request['published_at'] = Carbon::now();
 
 
@@ -182,7 +165,7 @@ class PostController extends Controller
             return redirect('/')->with('error', '删除失败');
     }
 
-    private function validatePostForm(Request $request,$update = false)
+    private function validatePostForm(Request $request, $update = false)
     {
         $v = [
             'title' => 'required',
@@ -190,8 +173,8 @@ class PostController extends Controller
             'category_id' => 'required',
             'content' => 'required',
         ];
-        if(!$update)
-            $v = array_merge($v,['slug' => 'required|unique:posts']);
+        if (!$update)
+            $v = array_merge($v, ['slug' => 'required|unique:posts']);
         $this->validate($request, $v);
     }
 }

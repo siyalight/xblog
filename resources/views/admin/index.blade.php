@@ -12,7 +12,7 @@
         <div class="col-lg-4 col-md-6">
             <div class="widget widget-default center-block">
                 <h1>Post</h1>
-                <h3>{{ $info['post_count'] }}</h3>
+                <h3><a href="{{ route('admin.posts') }}">{{ $info['post_count'] }}</a></h3>
             </div>
         </div>
 
