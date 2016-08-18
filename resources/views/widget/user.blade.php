@@ -1,5 +1,5 @@
 <div class="widget widget-user">
-    <div class="widget-user-header" style="background: url('http://p1.pstatp.com/large/5d90006cbf044e7a58f') center center;">
+    <div class="widget-user-header" style="background: url('/img/luffy.jpg') center center;">
         <h3 class="widget-user-username">lufficc</h3>
         <h5 class="widget-user-desc">Android Developer</h5>
     </div>
