@@ -116,6 +116,7 @@ a:active, a:focus, a img {
 
 .post-detail {
   padding: 50px 35px;
+  margin-bottom: 20px;
   background: white;
   box-shadow: 1px 1px 2px #888888; }
 

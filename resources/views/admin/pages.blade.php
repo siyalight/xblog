@@ -24,7 +24,10 @@
                                        class="btn btn-default">
                                         编辑
                                     </a>
-
+                                    <a href="{{ route('page.show',$page->name) }}"
+                                       class="btn btn-default">
+                                        查看
+                                    </a>
                                 </div>
                             </td>
                         </tr>

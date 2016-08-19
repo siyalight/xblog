@@ -12,11 +12,11 @@
         <div id="field" data-content="{{ $page->content }}"></div>
         <div id="content">
         </div>
-        <div style="margin-top: 35px" class="ds-thread"
-             data-thread-key="{{ $page->created_at.$page->title.$page->id }}"
-             data-title="{{ $page->title }}" data-url="{{ request()->url() }}">
-        </div>
     </main>
+    <div style="margin-top: 35px" class="ds-thread widget widget-default"
+         data-thread-key="{{ $page->created_at.$page->title.$page->id }}"
+         data-title="{{ $page->title }}" data-url="{{ request()->url() }}">
+    </div>
 @endsection
 
 @section('script')

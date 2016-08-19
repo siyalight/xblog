@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('css')
     <link rel="stylesheet" href="//cdn.jsdelivr.net/editor/0.1.0/editor.css">
 @endsection

@@ -49,11 +49,11 @@
         <div id="field" data-content="{{ $post->content }}"></div>
         <div id="content">
         </div>
-        <div style="margin-top: 35px" class="ds-thread"
-             data-thread-key="{{ $post->created_at.$post->title.$post->id }}"
-             data-title="{{ $post->title }}" data-url="{{ request()->url() }}">
-        </div>
     </main>
+    <div style="margin-top: 35px" class="ds-thread widget widget-default"
+         data-thread-key="{{ $post->created_at.$post->title.$post->id }}"
+         data-title="{{ $post->title }}" data-url="{{ request()->url() }}">
+    </div>
 @endsection
 
 @section('script')
