@@ -35,31 +35,31 @@ class AdminController extends Controller
 
     public function posts()
     {
-        $posts = Post::withTrashed()->orderBy('created_at','desc')->get(['id', 'title', 'slug', 'deleted_at', 'published_at']);
+        $posts = Post::withTrashed()->orderBy('created_at','desc')->select(['id', 'title', 'slug', 'deleted_at', 'published_at'])->paginate(20);
         return view('admin.posts', compact('posts'));
     }
 
     public function tags()
     {
-        $tags = Tag::all();
+        $tags = Tag::paginate(20);
         return view('admin.tags', compact('tags'));
     }
 
     public function categories()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(20);
         return view('admin.categories', compact('categories'));
     }
 
     public function users()
     {
-        $users = User::all();
+        $users = User::paginate(20);
         return view('admin.users', compact('users'));
     }
 
     public function pages()
     {
-        $pages = Page::all();
+        $pages = Page::paginate(20);
         return view('admin.pages', compact('pages'));
     }
 

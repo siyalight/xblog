@@ -7,7 +7,7 @@
     <div class="row" style="background-color: inherit">
         @can('update',$post)
             <div class="btn-group pull-right">
-                <a  class="btn"  href="{{ route('post.edit',$post->id) }}"><i class="fa fa-edit"></i></a>
+                <a class="btn" href="{{ route('post.edit',$post->id) }}"><i class="fa fa-edit"></i></a>
                 <a class="btn" role="button" data-toggle="modal" data-target="#delete-post-modal">
                     <i class="fa fa-trash-o"></i>
                 </a>
@@ -51,6 +51,12 @@
             <br>
             <div id="field" data-content="{{ $post->content }}"></div>
             <div id="content">
+            </div>
+            <div class="pull-left tag-list post-footer">
+                <i class="fa fa-tags"></i>
+                @foreach($post->tags as $tag)
+                    <a href="#">{{ $tag->name }}</a>
+                @endforeach
             </div>
         </div>
 

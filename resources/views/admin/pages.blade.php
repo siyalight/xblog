@@ -35,6 +35,7 @@
                     </tbody>
                 </table>
             </div>
+            {{ $pages->links() }}
         </div>
     </div>
 @endsection

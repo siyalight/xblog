@@ -260,11 +260,17 @@ pre, .highlight {
   padding: 15px;
   font-size: 13px;
   color: #ccc;
-  border-radius: 0;
+  border: none;
+  word-wrap: normal;
   background: #2d2d2d;
   line-height: 1.6;
 }
 
-pre, code {
-  font-family: 'Consolas', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
+pre code{
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
 }
+
+/* table */
+

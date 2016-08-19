@@ -35,14 +35,6 @@ a {
 a:active, a:focus, a img {
   outline: none; }
 
-/*.main-navigation {
-  text-align: center;
-  background: white;
-  border-top: 1px solid #ebebeb;
-  !*border-bottom: 2px solid #e1e1e1;*!
-  margin-bottom: 35px;
-  box-shadow: 0 1px 2px #888888;
-}*/
 .navbar-toggle .icon-bar {
   display: block;
   width: 22px;
@@ -217,11 +209,16 @@ pre, .highlight {
   padding: 15px;
   font-size: 13px;
   color: #ccc;
-  border-radius: 0;
+  border: none;
+  word-wrap: normal;
   background: #2d2d2d;
   line-height: 1.6; }
 
-pre, code {
-  font-family: 'Consolas', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace; }
+pre code {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre; }
+
+/* table */
 
 /*# sourceMappingURL=app.css.map */

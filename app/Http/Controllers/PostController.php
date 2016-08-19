@@ -91,7 +91,7 @@ class PostController extends Controller
      */
     public function show($slug)
     {
-        $post = Post::where('slug', $slug)->first();
+        $post = Post::where('slug', $slug)->with('tags')->first();
         if (!$post)
             abort(404);
         return view('post.show', compact('post'));
