@@ -15,6 +15,7 @@
         </div>
         <div class="col-md-4">
             @include('widget.user')
+            @include('widget.categories')
         </div>
     </div>
 @endsection

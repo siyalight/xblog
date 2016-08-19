@@ -143,6 +143,10 @@ a:active, a:focus, a img {
 .widget .widget-footer {
   padding-top: 30px; }
 
+.widget .widget-header {
+  font-size: 2em;
+  padding-bottom: 20px; }
+
 .widget-default {
   padding: 30px 35px 30px 35px; }
 

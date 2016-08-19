@@ -13,6 +13,7 @@
             <div class = "collapse navbar-collapse" id = "example-navbar-collapse">
                 <ul class = "nav navbar-nav navbar-right">
                     @if(Auth::check())
+                        <li><a href="{{ url('/') }}">回到站点</a></li>
                         <li><a href="{{ route('post.create') }}">写作</a></li>
                         <li><a href="{{ route('page.create') }}">新页面</a></li>
                         <li><a href="{{ route('category.create') }}">新分类</a></li>
