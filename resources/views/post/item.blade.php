@@ -7,8 +7,8 @@
         <div class="post-meta">
                            <span class="post-time">
                            <i class="fa fa-calendar-o"></i>
-                           <time datetime="2016-08-05T00:10:14+08:00" content="2016-08-05">
-                           {{ $post->created_at->format('Y-m-d') }}
+                           <time datetime="2016-08-05T00:10:14+08:00">
+                           {{ $post->published_at->format('Y-m-d') }}
                            </time>
                            </span>
             <span class="post-category">

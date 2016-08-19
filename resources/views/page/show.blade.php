@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title',$page->title)
+@section('title',$page->display_name)
 @section('css')
     <link href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
 @endsection
