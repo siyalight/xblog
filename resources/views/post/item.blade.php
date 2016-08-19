@@ -15,7 +15,7 @@
                            &nbsp;|&nbsp;
                            <i class="fa fa-folder-o"></i>
                            <span>
-                           <a href="#">
+                           <a href="{{ route('category.show',$post->category->name) }}">
                            <span>{{ $post->category->name }}</span>
                            </a>
                            </span>
