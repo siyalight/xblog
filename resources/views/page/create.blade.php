@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 @section('css')
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/editor/0.1.0/editor.css">
+    <link href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/simplemde/1.11.2/simplemde.min.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="row">
@@ -25,10 +26,21 @@
 @endsection
 
 @section('script')
-    <script src="//cdn.jsdelivr.net/editor/0.1.0/editor.js"></script>
-    <script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+    <script src="//cdn.bootcss.com/simplemde/1.11.2/simplemde.min.js"></script>
     <script>
-        var editor = new Editor();
-        editor.render();
+        new SimpleMDE({
+            autoDownloadFontAwesome:true,
+            autosave: {
+                enabled: true,
+                uniqueId: "post.create",
+                delay: 1000,
+            },
+            renderingConfig:{
+                codeSyntaxHighlighting:true,
+            },
+            spellChecker:false,
+            toolbar: ["bold", "italic", "heading", "|", "quote",'code','ordered-list','unordered-list','link','image','table','|','preview','side-by-side','fullscreen'],
+        });
     </script>
 @endsection
