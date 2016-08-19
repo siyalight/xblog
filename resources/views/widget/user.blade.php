@@ -8,22 +8,26 @@
     </div>
     <div class="widget-footer">
         <div class="row">
-            <div class="col-sm-4 border-right">
+            <div class="col-sm-3 border-right">
                 <div class="description-block">
-                    <h5 class="description-header">Weibo</h5>
-                    <span>12</span>
+                    <a href="http://weibo.com/u/2363498941" class="description-header"><i class="fa fa-weibo fa-lg" aria-hidden="true"></i></a>
                 </div>
             </div>
-            <div class="col-sm-4 border-right">
+            <div class="col-sm-3 border-right">
                 <div class="description-block">
-                    <h5 class="description-header">Weibo</h5>
-                    <span>12</span>
+                    <a href="https://github.com/lufficc" class="description-header fa-lg"><i class="fa fa-github fa-lg"
+                                                                                       aria-hidden="true"></i></a>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3 border-right">
                 <div class="description-block">
-                    <h5 class="description-header">Weibo</h5>
-                    <span>12</span>
+                    <a href="https://www.facebook.com/profile.php?id=100011357444248" class="description-header"><i class="fa fa-facebook-official fa-lg"
+                                                              aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="description-block">
+                    <a href="https://twitter.com/lufficc" class="description-header"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>

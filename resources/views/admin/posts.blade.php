@@ -8,7 +8,6 @@
                     <thead>
                     <tr>
                         <th>标题</th>
-                        <th>Slug</th>
                         <th>日期</th>
                         <th>状态</th>
                         <th>action</th>
@@ -31,7 +30,6 @@
 
                         <tr class="{{ $class }}">
                             <td>{{ $post->title }}</td>
-                            <td>{{ $post->slug }}</td>
                             <td>{{ $post->created_at }}</td>
                             <td>{{ $status }}</td>
                             <td>
