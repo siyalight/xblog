@@ -59,6 +59,7 @@ class PageController extends Controller
      */
     public function show($name)
     {
+
         $page  = Page::where('name',$name)->first();
         if(!$page)
             abort(404);

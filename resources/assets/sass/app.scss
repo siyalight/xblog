@@ -84,11 +84,7 @@ a:active, a:focus, a img {
   box-shadow: 1px 1px 2px #888888;
 }
 
-.post-detail {
-  padding: 50px 35px;
-  background: white;
-  box-shadow: 1px 1px 2px #888888;
-}
+
 
 .post .post-header .post-title {
   margin: 0;
@@ -146,6 +142,12 @@ a:active, a:focus, a img {
 
 .post .post-footer .tag-list a {
   padding: 0 3px;
+}
+
+.post-detail {
+  padding: 50px 35px;
+  background: white;
+  box-shadow: 1px 1px 2px #888888;
 }
 
 .post-detail {

@@ -4,25 +4,24 @@
     <link href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
 @endsection
 @section('content')
-    <div class="row">
-        <main class="col-md-12 post-detail">
-            @can('update',$post)
-                <a href="{{ route('post.edit',$post->id) }}">编辑</a>
-                <a style="color: red" role="button" data-toggle="modal" data-target="#delete-post-modal">
-                    删除
-                </a>
-                @include('post.delete-modal',$post)
-            @endcan
-            <div class="center-block">
-                <h1>{{ $post->title }}</h1>
-                <div class="post-meta">
+    <main class="col-md-12 post-detail">
+        @can('update',$post)
+            <a href="{{ route('post.edit',$post->id) }}">编辑</a>
+            <a style="color: red" role="button" data-toggle="modal" data-target="#delete-post-modal">
+                删除
+            </a>
+            @include('post.delete-modal',$post)
+        @endcan
+        <div class="center-block">
+            <h1>{{ $post->title }}</h1>
+            <div class="post-meta">
                            <span class="post-time">
                            <i class="fa fa-calendar-o"></i>
                            <time datetime="2016-08-05T00:10:14+08:00" content="2016-08-05">
                            {{ $post->published_at }}
                            </time>
                            </span>
-                    <span class="post-category">
+                <span class="post-category">
                            &nbsp;|&nbsp;
                            <i class="fa fa-folder-o"></i>
                            <span>
@@ -31,31 +30,30 @@
                            </a>
                            </span>
                            </span>
-                    {{--<span class="post-comments-count">
-                           &nbsp;|&nbsp;
-                           <i class="fa fa-comment-o" aria-hidden="true"></i>
-                           <span>7条评论</span>
-                           </span>
-                    <span>
-                           &nbsp;|&nbsp;
-                           <span class="post-meta-item-icon">
-                           <i class="fa fa-eye"></i>
-                           </span>
-                           <span class="post-meta-item-text">热度</span>
-                           <span class="leancloud-visitors-count">872</span>
-                           </span>--}}
-                </div>
+                {{--<span class="post-comments-count">
+                       &nbsp;|&nbsp;
+                       <i class="fa fa-comment-o" aria-hidden="true"></i>
+                       <span>7条评论</span>
+                       </span>
+                <span>
+                       &nbsp;|&nbsp;
+                       <span class="post-meta-item-icon">
+                       <i class="fa fa-eye"></i>
+                       </span>
+                       <span class="post-meta-item-text">热度</span>
+                       <span class="leancloud-visitors-count">872</span>
+                       </span>--}}
             </div>
-            <br>
-            <div id="field" data-content="{{ $post->content }}"></div>
-            <div id="content">
-            </div>
-            <div style="margin-top: 35px" class="ds-thread"
-                 data-thread-key="{{ $post->created_at.$post->title.$post->id }}"
-                 data-title="{{ $post->title }}" data-url="{{ request()->url() }}">
-            </div>
-        </main>
-    </div>
+        </div>
+        <br>
+        <div id="field" data-content="{{ $post->content }}"></div>
+        <div id="content">
+        </div>
+        <div style="margin-top: 35px" class="ds-thread"
+             data-thread-key="{{ $post->created_at.$post->title.$post->id }}"
+             data-title="{{ $post->title }}" data-url="{{ request()->url() }}">
+        </div>
+    </main>
 @endsection
 
 @section('script')

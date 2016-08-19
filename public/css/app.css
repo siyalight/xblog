@@ -67,11 +67,6 @@ a:active, a:focus, a img {
   overflow: hidden;
   box-shadow: 1px 1px 2px #888888; }
 
-.post-detail {
-  padding: 50px 35px;
-  background: white;
-  box-shadow: 1px 1px 2px #888888; }
-
 .post .post-header .post-title {
   margin: 0;
   font-size: 2.1em;
@@ -118,6 +113,11 @@ a:active, a:focus, a img {
 
 .post .post-footer .tag-list a {
   padding: 0 3px; }
+
+.post-detail {
+  padding: 50px 35px;
+  background: white;
+  box-shadow: 1px 1px 2px #888888; }
 
 .post-detail {
   font-size: 110%;
