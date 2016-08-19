@@ -2,11 +2,20 @@
     <div class="widget-header">分类</div>
     <ul class="list-group">
         @foreach($categories as $category)
-            <a href="{{ route('category.show',$category->name) }}"
-               class="list-group-item{{ str_contains(request()->getPathInfo(),'category/'.$category->name) ?' active':'' }}">
-                {{ $category->name }}
-                <span class="badge">{{ $category->posts()->count() }}</span>
-            </a>
+            @if(str_contains(request()->getPathInfo(),'category/'.$category->name))
+                <li href="{{ route('category.show',$category->name) }}"
+                   class="list-group-item active">
+                    {{ $category->name }}
+                    <span class="badge">{{ $category->posts()->count() }}</span>
+                </li>
+            @else
+                <a href="{{ route('category.show',$category->name) }}"
+                   class="list-group-item">
+                    {{ $category->name }}
+                    <span class="badge">{{ $category->posts()->count() }}</span>
+                </a>
+            @endif
+
         @endforeach
     </ul>
 </div>
