@@ -66,7 +66,7 @@ class CategoryController extends Controller
         if (!$category)
             abort(404);
 
-        $posts = $this->categoryRepository->postsByCategory($category);
+        $posts = $this->categoryRepository->pagedPostsByCategory($category);
         return view('category.show', compact('posts', 'name'));
     }
 
