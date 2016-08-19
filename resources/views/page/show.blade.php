@@ -4,7 +4,7 @@
     <link href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
 @endsection
 @section('content')
-    <div class="row">
+    <div class="row" style="background-color: inherit">
         <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
             <li class="active">{{ $page->name }}</li>
