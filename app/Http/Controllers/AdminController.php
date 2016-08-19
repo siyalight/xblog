@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Repository\CategoryRepository;
+use App\Http\Repository\PostRepository;
+use App\Http\Repository\TagRepository;
 use App\Http\Requests;
 use App\Page;
 use App\Post;
@@ -12,12 +15,21 @@ use DB;
 
 class AdminController extends Controller
 {
-    //
+    protected $postRepository;
+    protected $tagRepository;
+    protected $categoryRepository;
+
     /**
      * AdminController constructor.
+     * @param PostRepository $postRepository
+     * @param CategoryRepository $categoryRepository
+     * @param TagRepository $tagRepository
      */
-    public function __construct()
+    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, TagRepository $tagRepository)
     {
+        $this->postRepository = $postRepository;
+        $this->categoryRepository = $categoryRepository;
+        $this->tagRepository = $tagRepository;
         $this->middleware(['auth', 'admin']);
     }
 
@@ -35,19 +47,19 @@ class AdminController extends Controller
 
     public function posts()
     {
-        $posts = Post::withTrashed()->orderBy('created_at','desc')->select(['id', 'title', 'slug', 'deleted_at', 'published_at'])->paginate(20);
+        $posts = $this->postRepository->pagedPostsWithOutContentWithTrashed();
         return view('admin.posts', compact('posts'));
     }
 
     public function tags()
     {
-        $tags = Tag::paginate(20);
+        $tags = $this->tagRepository->getAll();
         return view('admin.tags', compact('tags'));
     }
 
     public function categories()
     {
-        $categories = Category::paginate(20);
+        $categories = $this->categoryRepository->getAll();
         return view('admin.categories', compact('categories'));
     }
 

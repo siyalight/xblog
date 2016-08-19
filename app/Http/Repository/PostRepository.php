@@ -21,6 +21,15 @@ class PostRepository
      * @param int $page
      * @return mixed
      */
+    public function pagedPostsWithOutContentWithTrashed($page = 20)
+    {
+        return Post::withTrashed()->orderBy('created_at', 'desc')->select(['id', 'title', 'slug', 'deleted_at', 'published_at'])->paginate($page);
+    }
+
+    /**
+     * @param int $page
+     * @return mixed
+     */
     public function pagedPosts($page = 7)
     {
         return Post::with(['tags', 'category'])->published()->orderBy('created_at', 'desc')->paginate($page);

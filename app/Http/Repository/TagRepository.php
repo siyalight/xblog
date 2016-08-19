@@ -10,7 +10,7 @@ namespace App\Http\Repository;
 use App\Tag;
 
 /**
- * Class PostRepository
+ * Class TagRepository
  * @package App\Http\Repository
  */
 class TagRepository

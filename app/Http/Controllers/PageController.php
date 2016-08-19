@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Repository\PageRepository;
 use App\Page;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,18 @@ use App\Http\Requests;
 
 class PageController extends Controller
 {
+
+    protected $pageRepository;
+
+    /**
+     * PageController constructor.
+     * @param $pageRepository
+     */
+    public function __construct(PageRepository $pageRepository)
+    {
+        $this->pageRepository = $pageRepository;
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -28,14 +41,13 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name'=>'required|unique:pages',
-            'display_name'=>'required',
-            'content'=>'required',
+        $this->validate($request, [
+            'name' => 'required|unique:pages',
+            'display_name' => 'required',
+            'content' => 'required',
         ]);
 
-        $page = Page::create($request->all());
-        if($page) {
+        if ($this->pageRepository->create($request)) {
             return redirect()->route('admin.index')->with('success', '页面' . $request['name'] . '创建成功');
         }
         return redirect()->back()->withInput()->with('error', '页面' . $request['name'] . '创建失败');
@@ -50,13 +62,10 @@ class PageController extends Controller
      */
     public function show($name)
     {
-        if($name == 'admin')
+        if ($name == 'admin')
             return redirect()->route('admin.index');
-
-        $page  = Page::where('name',$name)->first();
-        if(!$page)
-            abort(404);
-        return view('page.show',compact('page'));
+        $page = $this->pageRepository->get($name);
+        return view('page.show', compact('page'));
     }
 
     /**
@@ -68,25 +77,26 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        return view('page.edit',compact('page'));
+        return view('page.edit', compact('page'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param Page $page
+     * @param $name
      * @return \Illuminate\Http\Response
+     * @internal param string $page
      * @internal param int $id
      */
-    public function update(Request $request, Page $page)
+    public function update(Request $request, $name)
     {
-        $this->validate($request,[
-            'name'=>'required',
-            'display_name'=>'required',
-            'content'=>'required',
+        $this->validate($request, [
+            'name' => 'required',
+            'display_name' => 'required',
+            'content' => 'required',
         ]);
-        if($page->update($request->all())) {
+        if ($this->pageRepository->update($request, $name)) {
             return redirect()->route('admin.index')->with('success', '页面' . $request['name'] . '修改成功');
         }
         return redirect()->back()->withInput()->withErrors('页面' . $request['name'] . '修改失败');

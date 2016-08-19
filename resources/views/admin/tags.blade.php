@@ -21,7 +21,6 @@
                     </tbody>
                 </table>
             </div>
-            {{ $tags->links() }}
         </div>
     </div>
 @endsection

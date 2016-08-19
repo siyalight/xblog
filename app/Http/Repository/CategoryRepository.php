@@ -10,7 +10,7 @@ namespace App\Http\Repository;
 use App\Category;
 
 /**
- * Class PostRepository
+ * Class CategoryRepository
  * @package App\Http\Repository
  */
 class CategoryRepository
