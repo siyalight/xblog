@@ -17,6 +17,7 @@ html, body {
   background-color: $mainColor;
   color: #fff;
   box-shadow: 0 1px 2px #888888;
+  margin-bottom: 20px;
 }
 
 .main-header h2 {
@@ -44,14 +45,6 @@ a:active, a:focus, a img {
   outline: none;
 }
 
-.main-navigation {
-  text-align: center;
-  background: white;
-  border-top: 1px solid #ebebeb;
-  /*border-bottom: 2px solid #e1e1e1;*/
-  margin-bottom: 35px;
-  box-shadow: 0 1px 2px #888888;
-}
 
 .navbar-toggle .icon-bar {
   display: block;

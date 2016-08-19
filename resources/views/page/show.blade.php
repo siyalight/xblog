@@ -4,6 +4,10 @@
     <link href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
 @endsection
 @section('content')
+    <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li class="active">{{ $page->name }}</li>
+    </ol>
     <main class="col-md-12 post-detail">
         <div class="center-block">
             <h1>{{ $page->display_name }}</h1>

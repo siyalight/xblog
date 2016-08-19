@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Post;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -50,12 +51,19 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param $name
      * @return \Illuminate\Http\Response
+     * @internal param Category $category
+     * @internal param int $id
      */
-    public function show($id)
+    public function show($name)
     {
-        //
+        $category = Category::where('name',$name)->first();
+        if(!$category)
+            abort(404);
+
+        $posts = $category->posts()->paginate(7);
+        return view('category.show',compact('posts','name'));
     }
 
     /**
