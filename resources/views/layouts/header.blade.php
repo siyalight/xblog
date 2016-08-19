@@ -14,7 +14,6 @@
                 <ul class = "nav navbar-nav navbar-right">
                     <li><a href="{{ url('/') }}">文章</a></li>
                     @if(Auth::check())
-                        <li><a href="{{ route('post.create') }}">写作</a></li>
                         <li>
                             <a href="{{ url('/logout') }}" style="color: white;"
                                onclick="event.preventDefault();

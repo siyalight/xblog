@@ -16,7 +16,7 @@ Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
 
 Auth::routes();
 
-Route::get('article/{slug}/', ['uses' => 'PostController@show', 'as' => 'post.show']);
+Route::get('post/{slug}/', ['uses' => 'PostController@show', 'as' => 'post.show']);
 Route::get('post/{post}/restore', ['uses' => 'PostController@restore', 'as' => 'post.restore']);
 
 Route::resource('post', 'PostController', ['except' => 'show']);
@@ -24,9 +24,11 @@ Route::resource('post', 'PostController', ['except' => 'show']);
 Route::resource('category', 'CategoryController', ['only' => ['create', 'store']]);
 
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
-    Route::get('/', ['uses'=>'AdminController@index','as'=>'admin.index']);
-    Route::get('/posts', ['uses'=>'AdminController@posts','as'=>'admin.posts']);
-    Route::get('/tags', ['uses'=>'AdminController@tags','as'=>'admin.tags']);
-    Route::get('/users', ['uses'=>'AdminController@users','as'=>'admin.users']);
-    Route::get('/categories', ['uses'=>'AdminController@categories','as'=>'admin.categories']);
+    Route::resource('post', 'PostController', ['except' => ['show', 'index']]);
+
+    Route::get('/', ['uses' => 'AdminController@index', 'as' => 'admin.index']);
+    Route::get('/posts', ['uses' => 'AdminController@posts', 'as' => 'admin.posts']);
+    Route::get('/tags', ['uses' => 'AdminController@tags', 'as' => 'admin.tags']);
+    Route::get('/users', ['uses' => 'AdminController@users', 'as' => 'admin.users']);
+    Route::get('/categories', ['uses' => 'AdminController@categories', 'as' => 'admin.categories']);
 });

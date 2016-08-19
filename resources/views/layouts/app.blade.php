@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>lufficc | @yield('title')</title>
+    <title>lufficc   @yield('title')</title>
 
     <!-- Styles -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -25,11 +25,15 @@
 <body>
 
     @include('layouts.header')
-    {{--@include('layouts.nav')--}}
     <section class="content-wrap" style="margin-top: 35px">
         <div class="container">
             @include('partials.errors')
             @include('partials.success')
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Library</a></li>
+                <li class="active">Data</li>
+            </ol>
             @yield('content')
         </div>
     </section>

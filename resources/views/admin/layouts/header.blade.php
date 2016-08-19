@@ -12,7 +12,6 @@
             </div>
             <div class = "collapse navbar-collapse" id = "example-navbar-collapse">
                 <ul class = "nav navbar-nav navbar-right">
-                    <li><a href="{{ url('/') }}">文章</a></li>
                     @if(Auth::check())
                         <li><a href="{{ route('post.create') }}">写作</a></li>
                         <li>
@@ -44,7 +43,7 @@
                             <a class="branding" href="{{ route('admin.index') }}" title="title">
                                 <img class="img-circle" src="https://avatars1.githubusercontent.com/u/20706332">
                             </a>
-                            <h2>Admin</h2>
+                            <h2>Admin - {{ Auth::user()->name }}</h2>
                             <p>Stay hungry.Stay Foolish.</p>
                         </div>
                     </div>

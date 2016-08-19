@@ -19,7 +19,7 @@
                            <span class="post-time">
                            <i class="fa fa-calendar-o"></i>
                            <time datetime="2016-08-05T00:10:14+08:00" content="2016-08-05">
-                           {{ $post->created_at }}
+                           {{ $post->published_at }}
                            </time>
                            </span>
                     <span class="post-category">
@@ -31,7 +31,7 @@
                            </a>
                            </span>
                            </span>
-                    <span class="post-comments-count">
+                    {{--<span class="post-comments-count">
                            &nbsp;|&nbsp;
                            <i class="fa fa-comment-o" aria-hidden="true"></i>
                            <span>7条评论</span>
@@ -43,7 +43,7 @@
                            </span>
                            <span class="post-meta-item-text">热度</span>
                            <span class="leancloud-visitors-count">872</span>
-                           </span>
+                           </span>--}}
                 </div>
             </div>
             <br>
