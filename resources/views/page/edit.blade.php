@@ -6,7 +6,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="widget widget-default">
+            <div id="data" class="widget widget-default" data-id="{{ $page->id }}">
                 <form role="form" class="form-horizontal" action="{{ route('page.update',$page->id) }}" method="post">
 
                     @include('page.form-content')
@@ -31,11 +31,6 @@
     <script>
         new SimpleMDE({
             autoDownloadFontAwesome:true,
-            autosave: {
-                enabled: true,
-                uniqueId: "post.create",
-                delay: 1000,
-            },
             renderingConfig:{
                 codeSyntaxHighlighting:true,
             },

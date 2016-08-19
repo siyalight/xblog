@@ -33,7 +33,7 @@
             autoDownloadFontAwesome:true,
             autosave: {
                 enabled: true,
-                uniqueId: "post.create",
+                uniqueId: "page.create",
                 delay: 1000,
             },
             renderingConfig:{
