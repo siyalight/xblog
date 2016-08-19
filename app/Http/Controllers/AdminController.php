@@ -57,4 +57,10 @@ class AdminController extends Controller
         return view('admin.users', compact('users'));
     }
 
+    public function pages()
+    {
+        $pages = Page::all();
+        return view('admin.pages', compact('pages'));
+    }
+
 }

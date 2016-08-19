@@ -43,11 +43,11 @@ class PageController extends Controller
             'content'=>'required',
         ]);
 
-        $page = Page::create(request()->all());
+        $page = Page::create($request->all());
         if($page) {
-            return redirect('/admin')->with('success', '页面' . $request['name'] . '创建成功');
+            return redirect()->route('admin.index')->with('success', '页面' . $request['name'] . '创建成功');
         }
-        return redirect()->back()->withInput()->with('success', '页面' . $request['name'] . '创建失败');
+        return redirect()->back()->withInput()->with('error', '页面' . $request['name'] . '创建失败');
     }
 
     /**
@@ -69,24 +69,34 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param Page $page
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function edit($id)
+    public function edit(Page $page)
     {
-        //
+        return view('page.edit',compact('page'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param Page $page
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Page $page)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required',
+            'display_name'=>'required',
+            'content'=>'required',
+        ]);
+        if($page->update($request->all())) {
+            return redirect()->route('admin.index')->with('success', '页面' . $request['name'] . '修改成功');
+        }
+        return redirect()->back()->withInput()->with('error', '页面' . $request['name'] . '修改失败');
     }
 
     /**

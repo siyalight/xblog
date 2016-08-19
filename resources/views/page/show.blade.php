@@ -6,7 +6,7 @@
 @section('content')
     <main class="col-md-12 post-detail">
         <div class="center-block">
-            <h1>{{ $page->title }}</h1>
+            <h1>{{ $page->display_name }}</h1>
         </div>
         <br>
         <div id="field" data-content="{{ $page->content }}"></div>

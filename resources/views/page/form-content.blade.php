@@ -2,7 +2,7 @@
     <label for="name" class="control-label">页面uri*</label>
 
     <input id="name" type="text" class="form-control" name="name"
-           value="{{ isset($page) ? $page->title : old('name') }}"
+           value="{{ isset($page) ? $page->name : old('name') }}"
            autofocus>
 
     @if ($errors->has('name'))
@@ -17,7 +17,7 @@
     <label for="display_name" class="control-label">页面名称*</label>
 
     <input id="display_name" type="text" class="form-control" name="display_name"
-           value="{{ isset($page) ? $name->description : old('display_name') }}">
+           value="{{ isset($page) ? $page->display_name : old('display_name') }}">
 
     @if ($errors->has('display_name'))
         <span class="help-block">
@@ -31,7 +31,7 @@
     <label for="content" class="control-label">页面内容*</label>
 
     <textarea spellcheck="false" id="content" type="text" class="form-control" name="content"
-              rows="25"style="line-height: 1.85em; resize: vertical">{{ isset($post) ? $post->content : old('content') }}</textarea>
+              rows="25"style="line-height: 1.85em; resize: vertical">{{ isset($page) ? $page->content : old('content') }}</textarea>
     @if ($errors->has('content'))
         <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>
