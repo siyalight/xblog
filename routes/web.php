@@ -24,7 +24,7 @@ Route::get('/{name}/', ['uses' => 'PageController@show', 'as' => 'page.show']);
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
 
     Route::resource('post', 'PostController', ['except' => ['show', 'index']]);
-    Route::resource('category', 'CategoryController', ['only' => ['create', 'store']]);
+    Route::resource('category', 'CategoryController');
     Route::resource('page', 'PageController', ['except' => ['show', 'index']]);
 
 

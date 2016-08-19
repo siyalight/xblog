@@ -97,7 +97,6 @@
         $('#delete-post-modal').on('show.bs.modal', function (e) {
             var url = $(e.relatedTarget).data('url');
             var title = $(e.relatedTarget).data('title');
-            var force = $(e.relatedTarget).data('force');
             $('#span-title').text(title);
             $('#delete-form').attr('action', url);
         });

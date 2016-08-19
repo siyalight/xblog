@@ -83,8 +83,9 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param $id
+     * @param $slug
      * @return \Illuminate\Http\Response
+     * @internal param $id
      * @internal param Post $post
      * @internal param int $id
      */
