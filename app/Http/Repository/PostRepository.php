@@ -56,7 +56,7 @@ class PostRepository
      */
     public function get($slug)
     {
-        $post = cache()->tags(PostRepository::$tag)->remember('post.one.' . $slug . '' . request('page'), $this->time, function () use ($slug) {
+        $post = cache()->tags(PostRepository::$tag)->remember('post.one.' . $slug , $this->time, function () use ($slug) {
             return Post::where('slug', $slug)->with('tags')->first();
         });
 
