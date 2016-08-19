@@ -35,6 +35,10 @@ class PageRepository
         return $page;
     }
 
+    /**
+     * @param Request $request
+     * @return Page
+     */
     public function create(Request $request)
     {
         $this->clearCache();
