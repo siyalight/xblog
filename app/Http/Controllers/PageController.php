@@ -9,15 +9,6 @@ use App\Http\Requests;
 
 class PageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -59,6 +50,8 @@ class PageController extends Controller
      */
     public function show($name)
     {
+        if($name == 'admin')
+            return redirect()->route('admin.index');
 
         $page  = Page::where('name',$name)->first();
         if(!$page)

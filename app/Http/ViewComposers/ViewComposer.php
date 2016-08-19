@@ -8,18 +8,23 @@
 namespace App\Http\ViewComposers;
 
 use App\Category;
+use App\Http\Repository\CategoryRepository;
 use Illuminate\View\View;
 
 class ViewComposer
 {
 
+    protected $categoryRepository;
+
     /**
      * Create a new profile composer.
      *
      * @internal param UserRepository $users
+     * @param CategoryRepository $categoryRepository
      */
-    public function __construct()
+    public function __construct(CategoryRepository $categoryRepository)
     {
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -30,6 +35,6 @@ class ViewComposer
      */
     public function compose(View $view)
     {
-        $view->with('categories', Category::all());
+        $view->with('categories', $this->categoryRepository->getAll());
     }
 }

@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Post;
-use App\Tag;
+use App\Http\Repository\PostRepository;
+
 
 class HomeController extends Controller
 {
+    protected $postRepository;
+
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param PostRepository $postRepository
      */
-    public function __construct()
+    public function __construct(PostRepository $postRepository)
     {
-        /*$this->middleware('auth');*/
+        $this->postRepository = $postRepository;
     }
 
     /**
@@ -25,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::with(['tags','category'])->published()->orderBy('created_at', 'desc')->paginate(7);
+        $posts = $this->postRepository->pagedPosts();
         return view('index', ['posts' => $posts]);
     }
 }
