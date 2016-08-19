@@ -53,8 +53,8 @@
                 </div>
                 <div class="modal-footer">
                     <form id="delete-form" method="post">
-                        {{ csrf_field() }}
                         <input type="hidden" name="_method" value="DELETE">
+                        {{ csrf_field() }}
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                         <button type="submit" class="btn btn-primary">确定</button>
                     </form>

@@ -96,7 +96,7 @@ class PageController extends Controller
         if($page->update($request->all())) {
             return redirect()->route('admin.index')->with('success', '页面' . $request['name'] . '修改成功');
         }
-        return redirect()->back()->withInput()->with('error', '页面' . $request['name'] . '修改失败');
+        return redirect()->back()->withInput()->withErrors('页面' . $request['name'] . '修改失败');
     }
 
     /**

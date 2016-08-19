@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth','admin']);
+        $this->middleware(['auth', 'admin']);
     }
 
 
@@ -67,7 +67,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('category.edit',compact('category'));
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -83,10 +83,10 @@ class CategoryController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:categories',
         ]);
-        if($category->update($request->all())) {
+        if ($category->update($request->all())) {
             return redirect()->route('admin.index')->with('success', '分类' . $request['name'] . '修改成功');
         }
-        return redirect()->back()->withInput()->with('error', '分类' . $request['name'] . '修改失败');
+        return redirect()->back()->withInput()->withErrors('分类' . $request['name'] . '修改失败');
     }
 
     /**
@@ -98,10 +98,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if ($category->posts()->count() > 0)
-            return redirect()->route('admin.categories')->with('error',$category->name.'下面有文章，不能刪除');
+        if ($category->posts()->count() > 0) {
+            return redirect()->route('admin.categories')->withErrors($category->name . '下面有文章，不能刪除');
+        }
         if ($category->delete())
-            return redirect()->route('admin.categories')->with('error',$category->name.'刪除成功');
-        return redirect()->route('admin.categories')->with('error',$category->name.'刪除失败');
+            return redirect()->route('admin.categories')->with('success', $category->name . '刪除成功');
+        return redirect()->route('admin.categories')->withErrors($category->name . '刪除失败');
     }
 }

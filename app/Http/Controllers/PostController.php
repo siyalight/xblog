@@ -76,7 +76,7 @@ class PostController extends Controller
         if ($post)
             return redirect('/')->with('success', '文章' . $request['name'] . '创建成功');
         else
-            return redirect('/')->with('error', '文章' . $request['name'] . '创建失败');
+            return redirect('/')->withErrors('文章' . $request['name'] . '创建失败');
 
     }
 
@@ -151,7 +151,7 @@ class PostController extends Controller
         if ($post->update($request->all()))
             return redirect('/')->with('success', '文章' . $request['name'] . '修改成功');
         else
-            return redirect('/')->with('error', '文章' . $request['name'] . '修改失败');
+            return redirect('/')->withErrors('文章' . $request['name'] . '修改失败');
     }
 
     public function restore($id)
@@ -161,7 +161,7 @@ class PostController extends Controller
             $post->restore();
             return redirect()->route('admin.posts')->with('success', '恢复成功');
         }
-        return redirect()->route('admin.posts')->with('error', '恢复失败');
+        return redirect()->route('admin.posts')->withErrors('恢复失败');
     }
 
     /**
@@ -186,7 +186,7 @@ class PostController extends Controller
         if ($result)
             return redirect($redirect)->with('success', '删除成功');
         else
-            return redirect($redirect)->with('error', '删除失败');
+            return redirect($redirect)->withErrors('删除失败');
     }
 
     private function validatePostForm(Request $request, $update = false)
