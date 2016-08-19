@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Requests;
+use App\Page;
 use App\Post;
 use App\Tag;
 use App\User;
@@ -27,6 +28,7 @@ class AdminController extends Controller
         $info['user_count'] = User::count();
         $info['category_count'] = Category::count();
         $info['tag_count'] = Tag::count();
+        $info['page_count'] = Page::count();
 
         return view('admin.index', compact('info'));
     }
@@ -54,4 +56,5 @@ class AdminController extends Controller
         $users = User::all();
         return view('admin.users', compact('users'));
     }
+
 }

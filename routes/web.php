@@ -18,13 +18,15 @@ Auth::routes();
 
 Route::get('post/{slug}/', ['uses' => 'PostController@show', 'as' => 'post.show']);
 Route::get('post/{post}/restore', ['uses' => 'PostController@restore', 'as' => 'post.restore']);
+Route::get('/{name}', ['uses' => 'PageController@show', 'as' => 'page.show']);
 
-Route::resource('post', 'PostController', ['except' => 'show']);
-
-Route::resource('category', 'CategoryController', ['only' => ['create', 'store']]);
 
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
+
     Route::resource('post', 'PostController', ['except' => ['show', 'index']]);
+    Route::resource('category', 'CategoryController', ['only' => ['create', 'store']]);
+    Route::resource('page', 'PageController', ['except' => ['show', 'index']]);
+
 
     Route::get('/', ['uses' => 'AdminController@index', 'as' => 'admin.index']);
     Route::get('/posts', ['uses' => 'AdminController@posts', 'as' => 'admin.posts']);
