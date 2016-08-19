@@ -30,7 +30,7 @@ class PostRepository
      */
     public function pagedPostsWithOutContentWithTrashed($page = 20)
     {
-        $posts = cache()->tags(PostRepository::$tag)->remember('post.WithOutContent.' . $page . '' . request('page'), $this->time, function () use ($page) {
+        $posts = cache()->tags(PostRepository::$tag)->remember('post.WithOutContent.' . $page . '' . request()->get('page', 1), $this->time, function () use ($page) {
             return Post::withTrashed()->orderBy('created_at', 'desc')->select(['id', 'title', 'slug', 'deleted_at', 'published_at'])->paginate($page);
         });
         return $posts;
@@ -43,7 +43,7 @@ class PostRepository
     public function pagedPosts($page = 7)
     {
         /*DB::connection()->enableQueryLog();*/
-        $posts = cache()->tags(PostRepository::$tag)->remember('post.page.' . $page . '' . request('page'), $this->time, function () use ($page) {
+        $posts = cache()->tags(PostRepository::$tag)->remember('post.page.' . $page . '' . request()->get('page', 1), $this->time, function () use ($page) {
             return Post::with(['tags', 'category'])->published()->orderBy('created_at', 'desc')->paginate($page);
         });
         /*var_dump(DB::getQueryLog());*/
@@ -56,7 +56,7 @@ class PostRepository
      */
     public function get($slug)
     {
-        $post = cache()->tags(PostRepository::$tag)->remember('post.one.' . $slug , $this->time, function () use ($slug) {
+        $post = cache()->tags(PostRepository::$tag)->remember('post.one.' . $slug, $this->time, function () use ($slug) {
             return Post::where('slug', $slug)->with('tags')->first();
         });
 

@@ -41,7 +41,7 @@ class CategoryRepository
 
     public function pagedPostsByCategory(Category $category, $page = 7)
     {
-        $posts = cache()->tags(CategoryRepository::$tag)->remember('category.posts.' . $category->name . $page . request('page'), $this->time, function () use ($category, $page) {
+        $posts = cache()->tags(CategoryRepository::$tag)->remember('category.posts.' . $category->name . $page . request()->get('page', 1), $this->time, function () use ($category, $page) {
             return $category->posts()->paginate($page);
         });
         return $posts;
