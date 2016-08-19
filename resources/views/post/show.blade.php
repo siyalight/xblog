@@ -5,16 +5,16 @@
 @endsection
 @section('content')
     <div class="row" style="background-color: inherit">
+        @can('update',$post)
+            <div class="btn-group pull-right">
+                <a  class="btn"  href="{{ route('post.edit',$post->id) }}"><i class="fa fa-edit"></i></a>
+                <a class="btn" role="button" data-toggle="modal" data-target="#delete-post-modal">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </div>
+            @include('post.delete-modal',$post)
+        @endcan
         <div class="post-detail">
-            @can('update',$post)
-                <div class="btn-group pull-right">
-                    <a  class="btn"  href="{{ route('post.edit',$post->id) }}"><i class="fa fa-edit fa-lg"></i></a>
-                    <a class="btn" role="button" data-toggle="modal" data-target="#delete-post-modal">
-                        <i class="fa fa-trash-o fa-lg"></i>
-                    </a>
-                </div>
-                @include('post.delete-modal',$post)
-            @endcan
             <div class="center-block">
                 <h1>{{ $post->title }}</h1>
                 <div class="post-meta">
