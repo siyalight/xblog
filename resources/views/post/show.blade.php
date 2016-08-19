@@ -4,7 +4,7 @@
     <link href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
 @endsection
 @section('content')
-    <main class="col-md-12 post-detail">
+    <div class="row post-detail">
         @can('update',$post)
             <a href="{{ route('post.edit',$post->id) }}">编辑</a>
             <a style="color: red" role="button" data-toggle="modal" data-target="#delete-post-modal">
@@ -49,11 +49,12 @@
         <div id="field" data-content="{{ $post->content }}"></div>
         <div id="content">
         </div>
-    </main>
-    <div style="margin-top: 20px" class="ds-thread widget widget-default"
-         data-thread-key="{{ $post->created_at.$post->title.$post->id }}"
-         data-title="{{ $post->title }}" data-url="{{ request()->url() }}">
+        <div style="margin-top: 20px" class="ds-thread widget widget-default"
+             data-thread-key="{{ $post->created_at.$post->title.$post->id }}"
+             data-title="{{ $post->title }}" data-url="{{ request()->url() }}">
+        </div>
     </div>
+
 @endsection
 
 @section('script')

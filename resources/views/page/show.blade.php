@@ -4,22 +4,24 @@
     <link href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
 @endsection
 @section('content')
-    <ol class="breadcrumb">
-        <li><a href="/">Home</a></li>
-        <li class="active">{{ $page->name }}</li>
-    </ol>
-    <main class="col-md-12 post-detail">
-        <div class="center-block">
-            <h1>{{ $page->display_name }}</h1>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">{{ $page->name }}</li>
+        </ol>
+        <main class="col-md-12 post-detail">
+            <div class="center-block">
+                <h1>{{ $page->display_name }}</h1>
+            </div>
+            <br>
+            <div id="field" data-content="{{ $page->content }}"></div>
+            <div id="content">
+            </div>
+        </main>
+        <div style="margin-top: 20px" class="ds-thread widget widget-default"
+             data-thread-key="{{ $page->created_at.$page->title.$page->id }}"
+             data-title="{{ $page->title }}" data-url="{{ request()->url() }}">
         </div>
-        <br>
-        <div id="field" data-content="{{ $page->content }}"></div>
-        <div id="content">
-        </div>
-    </main>
-    <div style="margin-top: 20px" class="ds-thread widget widget-default"
-         data-thread-key="{{ $page->created_at.$page->title.$page->id }}"
-         data-title="{{ $page->title }}" data-url="{{ request()->url() }}">
     </div>
 @endsection
 
