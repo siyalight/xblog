@@ -35,7 +35,7 @@ class AdminController extends Controller
 
     public function posts()
     {
-        $posts = Post::withTrashed()->orderBy('created_at','desc')->get(['id', 'title', 'created_at', 'slug', 'deleted_at', 'published_at']);
+        $posts = Post::withTrashed()->orderBy('created_at','desc')->get(['id', 'title', 'slug', 'deleted_at', 'published_at']);
         return view('admin.posts', compact('posts'));
     }
 

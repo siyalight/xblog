@@ -50,7 +50,7 @@
         <div id="content">
         </div>
     </main>
-    <div style="margin-top: 35px" class="ds-thread widget widget-default"
+    <div style="margin-top: 20px" class="ds-thread widget widget-default"
          data-thread-key="{{ $post->created_at.$post->title.$post->id }}"
          data-title="{{ $post->title }}" data-url="{{ request()->url() }}">
     </div>

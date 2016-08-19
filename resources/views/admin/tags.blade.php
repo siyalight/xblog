@@ -8,7 +8,6 @@
                     <thead>
                     <tr>
                         <th>名称</th>
-                        <th>日期</th>
                         <th>文章</th>
                     </tr>
                     </thead>
@@ -16,7 +15,6 @@
                     @foreach($tags as $tag)
                         <tr>
                             <td>{{ $tag->name }}</td>
-                            <td>{{ $tag->created_at }}</td>
                             <td>{{ $tag->posts()->count() }}</td>
                         </tr>
                     @endforeach

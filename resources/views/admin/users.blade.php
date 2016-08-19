@@ -17,7 +17,7 @@
                     @foreach($users as $user)
                         <tr>
                             <td>{{ $user->name }}</td>
-                            <td>{{ $user->created_at }}</td>
+                            <td>{{ $user->created_at->format('Y-m-d') }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->posts()->count() }}</td>
                         </tr>

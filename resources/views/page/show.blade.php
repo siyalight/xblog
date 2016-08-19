@@ -13,7 +13,7 @@
         <div id="content">
         </div>
     </main>
-    <div style="margin-top: 35px" class="ds-thread widget widget-default"
+    <div style="margin-top: 20px" class="ds-thread widget widget-default"
          data-thread-key="{{ $page->created_at.$page->title.$page->id }}"
          data-title="{{ $page->title }}" data-url="{{ request()->url() }}">
     </div>

@@ -8,7 +8,6 @@
                     <thead>
                     <tr>
                         <th>标题</th>
-                        <th>日期</th>
                         <th>状态</th>
                         <th>action</th>
                     </tr>
@@ -30,7 +29,6 @@
 
                         <tr class="{{ $class }}">
                             <td>{{ $post->title }}</td>
-                            <td>{{ $post->created_at }}</td>
                             <td>{{ $status }}</td>
                             <td>
                                 <div class="btn-group">
