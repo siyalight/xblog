@@ -16,13 +16,20 @@ use Illuminate\Http\Request;
  */
 class PageRepository
 {
+    public $tag = 'page';
+
+    public $time = 1440;
+
     /**
      * @param $name string
      * @return mixed
      */
     public function get($name)
     {
-        $page = Page::where('name', $name)->first();
+        $page = cache()->tags($this->tag)->remember('page.one.' . $name, $this->time, function () use ($name) {
+            return Page::where('name', $name)->first();
+        });
+
         if (!$page)
             abort(404);
         return $page;
@@ -30,11 +37,18 @@ class PageRepository
 
     public function create(Request $request)
     {
+        $this->clearCache();
         return Page::create($request->all());
     }
 
-    public function update(Request $request, $name)
+    public function update(Request $request, Page $page)
     {
-        return $this->get($name)->update($request->all());
+        $this->clearCache();
+        return $page->update($request->all());
+    }
+
+    public function clearCache()
+    {
+        cache()->tags($this->tag)->flush();
     }
 }

@@ -15,8 +15,21 @@ use App\Tag;
  */
 class TagRepository
 {
+    static $tag = 'tag';
+
+    public $time = 1440;
+
     public function getAll()
     {
-        return Tag::all();
+        $tags = cache()->tags(TagRepository::$tag)->remember('tag.all', $this->time, function () {
+            return Tag::all();
+        });
+
+        return $tags;
+    }
+
+    public function clearCache()
+    {
+        cache()->tags(TagRepository::$tag)->flush();
     }
 }

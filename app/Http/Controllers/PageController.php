@@ -84,19 +84,20 @@ class PageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param $name
+     * @param Page $page
      * @return \Illuminate\Http\Response
+     * @internal param $name
      * @internal param string $page
      * @internal param int $id
      */
-    public function update(Request $request, $name)
+    public function update(Request $request, Page $page)
     {
         $this->validate($request, [
             'name' => 'required',
             'display_name' => 'required',
             'content' => 'required',
         ]);
-        if ($this->pageRepository->update($request, $name)) {
+        if ($this->pageRepository->update($request, $page)) {
             return redirect()->route('admin.index')->with('success', '页面' . $request['name'] . '修改成功');
         }
         return redirect()->back()->withInput()->withErrors('页面' . $request['name'] . '修改失败');
@@ -110,6 +111,6 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->pageRepository->clearCache();
     }
 }

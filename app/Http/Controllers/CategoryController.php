@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Repository\CategoryRepository;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -10,11 +11,15 @@ use App\Http\Requests;
 
 class CategoryController extends Controller
 {
+    protected $categoryRepository;
+
     /**
      * CategoryController constructor.
+     * @param CategoryRepository $categoryRepository
      */
-    public function __construct()
+    public function __construct(CategoryRepository $categoryRepository)
     {
+        $this->categoryRepository = $categoryRepository;
         $this->middleware(['auth', 'admin']);
     }
 
@@ -41,8 +46,7 @@ class CategoryController extends Controller
             'name' => 'required|unique:categories',
         ]);
 
-        $category = Category::create(['name' => $request['name']]);
-        if ($category)
+        if ($this->categoryRepository->create($request))
             return redirect('/')->with('success', '分类' . $request['name'] . '创建成功');
         else
             return redirect('/')->with('error', '分类' . $request['name'] . '创建失败');
@@ -58,12 +62,12 @@ class CategoryController extends Controller
      */
     public function show($name)
     {
-        $category = Category::where('name',$name)->first();
-        if(!$category)
+        $category = $this->categoryRepository->get($name);
+        if (!$category)
             abort(404);
 
-        $posts = $category->posts()->paginate(7);
-        return view('category.show',compact('posts','name'));
+        $posts = $this->categoryRepository->postsByCategory($category);
+        return view('category.show', compact('posts', 'name'));
     }
 
     /**
@@ -91,9 +95,11 @@ class CategoryController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:categories',
         ]);
-        if ($category->update($request->all())) {
+
+        if ($this->categoryRepository->update($request, $category)) {
             return redirect()->route('admin.index')->with('success', '分类' . $request['name'] . '修改成功');
         }
+
         return redirect()->back()->withInput()->withErrors('分类' . $request['name'] . '修改失败');
     }
 
@@ -106,6 +112,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $this->categoryRepository->clearCache();
+
+
         if ($category->posts()->count() > 0) {
             return redirect()->route('admin.categories')->withErrors($category->name . '下面有文章，不能刪除');
         }

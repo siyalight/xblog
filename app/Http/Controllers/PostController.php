@@ -9,7 +9,6 @@ use App\Http\Repository\TagRepository;
 use App\Http\Requests;
 use App\Post;
 use App\Tag;
-use Carbon\Carbon;
 use Gate;
 use Illuminate\Http\Request;
 
@@ -26,7 +25,7 @@ class PostController extends Controller
      * @param CategoryRepository $categoryRepository
      * @param TagRepository $tagRepository
      */
-    public function __construct(PostRepository $postRepository,CategoryRepository $categoryRepository,TagRepository $tagRepository)
+    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, TagRepository $tagRepository)
     {
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
@@ -106,8 +105,8 @@ class PostController extends Controller
         }
         return view('post.edit', [
             'post' => $post,
-            'categories' => Category::all(),
-            'tags' => Tag::all(),
+            'categories' => $this->categoryRepository->getAll(),
+            'tags' => $this->tagRepository->getAll(),
         ]);
     }
 
@@ -127,7 +126,7 @@ class PostController extends Controller
 
         $this->validatePostForm($request, true);
 
-        if ($this->postRepository->update($request,$post))
+        if ($this->postRepository->update($request, $post))
             return redirect('/')->with('success', '文章' . $request['name'] . '修改成功');
         else
             return redirect('/')->withErrors('文章' . $request['name'] . '修改失败');
@@ -135,6 +134,9 @@ class PostController extends Controller
 
     public function restore($id)
     {
+        $this->postRepository->clearCache();
+        $this->tagRepository->clearCache();
+
         $post = Post::withTrashed()->findOrFail($id);
         if ($post->trashed()) {
             $post->restore();
@@ -151,6 +153,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+        $this->postRepository->clearCache();
+
+
         $post = Post::withTrashed()->findOrFail($id);
         $redirect = '/';
         if (request()->has('redirect'))
