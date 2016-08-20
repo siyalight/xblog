@@ -18,10 +18,9 @@
             <div class="center-block">
                 <h1>{{ $page->display_name }}</h1>
             </div>
-            <br>
-            <div id="field" data-content="{{ $page->content }}"></div>
             <div id="content">
             </div>
+            <div id="field" data-content="{{ $page->content }}"></div>
         </div>
         <div style="margin-top: 20px" class="ds-thread widget widget-default"
              data-thread-key="{{ $page->created_at.$page->name.$page->id }}"
