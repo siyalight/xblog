@@ -47,11 +47,18 @@
                                             恢复
                                         </a>
                                     @else
-                                        <a href="{{ route('post.show',$post->slug) }}"
-                                           class="btn btn-default">
-                                            查看
-                                        </a>
 
+                                        @if($post->isPublished())
+                                            <a href="{{ route('post.show',$post->slug) }}"
+                                               class="btn btn-default">
+                                                查看
+                                            </a>
+                                        @else
+                                            <a href="{{ route('post.preview',$post->slug) }}"
+                                               class="btn btn-default">
+                                                预览
+                                            </a>
+                                        @endif
                                     @endif
                                 </div>
                             </td>

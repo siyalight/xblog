@@ -70,9 +70,9 @@ class PostController extends Controller
         $this->validatePostForm($request);
 
         if ($this->postRepository->create($request))
-            return redirect('/')->with('success', '文章' . $request['name'] . '创建成功');
+            return redirect()->route('admin.posts')->with('success', '文章' . $request['name'] . '创建成功');
         else
-            return redirect('/')->withErrors('文章' . $request['name'] . '创建失败');
+            return redirect()->route('admin.posts')->withErrors('文章' . $request['name'] . '创建失败');
 
     }
 
@@ -88,6 +88,14 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = $this->postRepository->get($slug);
+        return view('post.show', compact('post'));
+    }
+
+    public function preview($slug)
+    {
+        $post = Post::where('slug', $slug)->with('tags')->first();
+        if (!$post)
+            abort(404);
         return view('post.show', compact('post'));
     }
 
@@ -127,9 +135,9 @@ class PostController extends Controller
         $this->validatePostForm($request, true);
 
         if ($this->postRepository->update($request, $post))
-            return redirect('/')->with('success', '文章' . $request['name'] . '修改成功');
+            return redirect()->route('admin.posts')->with('success', '文章' . $request['name'] . '修改成功');
         else
-            return redirect('/')->withErrors('文章' . $request['name'] . '修改失败');
+            return redirect()->route('admin.posts')->withErrors('文章' . $request['name'] . '修改失败');
     }
 
     public function restore($id)
@@ -157,7 +165,7 @@ class PostController extends Controller
 
 
         $post = Post::withTrashed()->findOrFail($id);
-        $redirect = '/';
+        $redirect = '/admin/posts';
         if (request()->has('redirect'))
             $redirect = request()->input('redirect');
 
