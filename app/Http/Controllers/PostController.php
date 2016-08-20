@@ -11,7 +11,7 @@ use App\Post;
 use App\Tag;
 use Gate;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class PostController extends Controller
 {
     protected $postRepository;
@@ -103,14 +103,23 @@ class PostController extends Controller
         $this->clearAllCache();
         $post = Post::withoutGlobalScopes()->find($id);
         if ($post->trashed()) {
-            return redirect()->back()->withErrors( '发布失败，请先恢复删除');
+            return redirect()->back()->withErrors( $post->title.'发布失败，请先恢复删除');
         }
-        $post->status = 1;
-        if($post->save())
-            return redirect()->back()->with('success', '发布成功');
-        else{
-            return redirect()->back()->withErrors( '发布失败');
+        if($post->status == 0)
+        {
+            $post->status = 1;
+            $post->published_at = Carbon::now();
+            if($post->save())
+                return redirect()->back()->with('success', $post->title.'发布成功');
         }
+
+        else if($post->status == 1)
+        {
+            $post->status = 0;
+            if($post->save())
+                return redirect()->back()->with('success', $post->title.'撤销发布成功');
+        }
+        return redirect()->back()->withErrors( $post->title.'操作失败');
     }
 
     /**

@@ -32,6 +32,7 @@
                                 <div class="btn-group">
                                     <button class="btn btn-default" data-toggle="modal" data-title="{{ $post->title }}"
                                             data-url="{{ route('post.destroy',$post->id) }}"
+                                            data-force="{{ $post->trashed() }}"
                                             data-target="#delete-post-modal">
                                         删除
                                     </button>
@@ -40,7 +41,7 @@
                                         编辑
                                     </a>
                                     @if($post->trashed())
-                                        <form action="{{ route('post.restore',$post->id) }}">
+                                        <form style="display: inline" method="post" action="{{ route('post.restore',$post->id) }}">
                                             {{ csrf_field() }}
                                             <button type="submit" class="btn btn-default">
                                             恢复
@@ -52,17 +53,23 @@
                                            class="btn btn-default">
                                             查看
                                         </a>
+                                        <form style="display: inline" method="post" action="{{ route('post.publish',$post->id) }}">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-default">
+                                                撤销
+                                            </button>
+                                        </form>
                                     @else
                                         <a href="{{ route('post.preview',$post->slug) }}"
                                            class="btn btn-default">
                                             预览
                                         </a>
-                                    <form action="{{ route('post.publish',$post->id) }}">
+                                    <form style="display: inline" method="post" action="{{ route('post.publish',$post->id) }}">
+                                        {{ csrf_field() }}
                                         <button type="submit" class="btn btn-default">
                                             发布
                                         </button>
                                     </form>
-
                                     @endif
                                 </div>
                             </td>
@@ -94,7 +101,7 @@
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="redirect" value="/admin/posts">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="submit" class="btn btn-primary">确定</button>
+                        <button id="confirm-btn" type="submit" class="btn btn-primary">确定</button>
                     </form>
                 </div>
             </div><!-- /.modal-content -->
@@ -107,6 +114,12 @@
         $('#delete-post-modal').on('show.bs.modal', function (e) {
             var url = $(e.relatedTarget).data('url');
             var title = $(e.relatedTarget).data('title');
+            var force = $(e.relatedTarget).data('force');
+            if (force == '1')
+            {
+                $('#confirm-btn').text('确定(這將永久刪除)');
+                $('#confirm-btn').attr('class','btn btn-danger');
+            }
             $('#span-title').text(title);
             $('#delete-form').attr('action', url);
         });

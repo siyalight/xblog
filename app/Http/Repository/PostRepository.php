@@ -118,7 +118,7 @@ class PostRepository
         $post->tags()->sync($ids);
 
         $status = $request->get('status', 0);
-        if (is_null($post->published_at) && $status == 1) {
+        if ($status == 1) {
             $request['published_at'] = Carbon::now();
         }
 
