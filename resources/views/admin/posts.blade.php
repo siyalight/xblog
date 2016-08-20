@@ -13,7 +13,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($posts as $post)
+                    {{--@foreach($posts as $post)
                         <?php
                         $class = '';
                         $status = 'Un published';
@@ -63,7 +63,7 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                    @endforeach--}}
                     </tbody>
                 </table>
                 {{ $posts->links() }}
