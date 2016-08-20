@@ -48,7 +48,6 @@ class AdminController extends Controller
     public function posts()
     {
         $posts = $this->postRepository->pagedPostsWithOutContentWithTrashed();
-        dd($posts);
         return view('admin.posts', compact('posts'));
     }
 
