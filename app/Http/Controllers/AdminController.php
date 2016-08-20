@@ -36,7 +36,7 @@ class AdminController extends Controller
     public function index()
     {
         $info = [];
-        $info['post_count'] = Post::withTrashed()->count();
+        $info['post_count'] = Post::withoutGlobalScopes()->count();
         $info['user_count'] = User::count();
         $info['category_count'] = Category::count();
         $info['tag_count'] = Tag::count();
@@ -47,7 +47,7 @@ class AdminController extends Controller
 
     public function posts()
     {
-        $posts = $this->postRepository->pagedPostsWithOutContentWithTrashed();
+        $posts = $this->postRepository->pagedPostsWithoutGlobalScopes();
         return view('admin.posts', compact('posts'));
     }
 

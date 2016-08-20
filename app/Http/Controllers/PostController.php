@@ -73,7 +73,6 @@ class PostController extends Controller
             return redirect('admin/posts')->with('success', '文章' . $request['name'] . '创建成功');
         else
             return redirect('admin/posts')->withErrors('文章' . $request['name'] . '创建失败');
-
     }
 
     /**
@@ -93,21 +92,39 @@ class PostController extends Controller
 
     public function preview($slug)
     {
-        $post = Post::where('slug', $slug)->with('tags')->first();
+        $post = Post::withoutGlobalScopes()->where('slug', $slug)->with('tags')->first();
         if (!$post)
             abort(404);
         return view('post.show', compact('post'));
     }
 
+    public function publish($id)
+    {
+        $this->clearAllCache();
+        $post = Post::withoutGlobalScopes()->find($id);
+        if ($post->trashed()) {
+            return redirect()->back()->withErrors( '发布失败，请先恢复删除');
+        }
+        $post->status = 1;
+        if($post->save())
+            return redirect()->back()->with('success', '发布成功');
+        else{
+            return redirect()->back()->withErrors( '发布失败');
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Post $post
+     * @param $id
      * @return \Illuminate\Http\Response
+     * @internal param Post $post
      * @internal param int $id
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
+        $post = Post::withoutGlobalScopes()->find($id);
+
         if (Gate::denies('update', $post)) {
             abort(403);
         }
@@ -122,12 +139,14 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param Post $post
+     * @param $id
      * @return \Illuminate\Http\Response
+     * @internal param Post $post
      * @internal param int $id
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
+        $post = Post::withoutGlobalScopes()->find($id);
         if (Gate::denies('update', $post)) {
             abort(403);
         }
@@ -142,10 +161,9 @@ class PostController extends Controller
 
     public function restore($id)
     {
-        $this->postRepository->clearCache();
-        $this->tagRepository->clearCache();
+        $this->clearAllCache();
 
-        $post = Post::withTrashed()->findOrFail($id);
+        $post = Post::withoutGlobalScopes()->findOrFail($id);
         if ($post->trashed()) {
             $post->restore();
             return redirect()->route('admin.posts')->with('success', '恢复成功');
@@ -161,10 +179,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $this->postRepository->clearCache();
+        $this->clearAllCache();
 
-
-        $post = Post::withTrashed()->findOrFail($id);
+        $post = Post::withoutGlobalScopes()->findOrFail($id);
         $redirect = '/admin/posts';
         if (request()->has('redirect'))
             $redirect = request()->input('redirect');
@@ -191,5 +208,10 @@ class PostController extends Controller
         if (!$update)
             $v = array_merge($v, ['slug' => 'required|unique:posts']);
         $this->validate($request, $v);
+    }
+
+    public function clearAllCache()
+    {
+        cache()->flush();
     }
 }

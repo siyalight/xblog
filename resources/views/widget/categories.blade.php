@@ -4,7 +4,7 @@
         @foreach($categories as $category)
             @if(str_contains(request()->getPathInfo(),'category/'.$category->name))
                 <li href="{{ route('category.show',$category->name) }}"
-                   class="list-group-item active">
+                    class="list-group-item active">
                     {{ $category->name }}
                     <span class="badge">{{ $category->posts()->count() }}</span>
                 </li>

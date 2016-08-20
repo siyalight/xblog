@@ -40,10 +40,13 @@
                                         编辑
                                     </a>
                                     @if($post->trashed())
-                                        <a href="{{ route('post.restore',$post->id) }}"
-                                           class="btn btn-default">
+                                        <form action="{{ route('post.restore',$post->id) }}">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-default">
                                             恢复
-                                        </a>
+                                            </button>
+                                        </form>
+
                                     @elseif($post->isPublished())
                                         <a href="{{ route('post.show',$post->slug) }}"
                                            class="btn btn-default">
@@ -54,6 +57,12 @@
                                            class="btn btn-default">
                                             预览
                                         </a>
+                                    <form action="{{ route('post.publish',$post->id) }}">
+                                        <button type="submit" class="btn btn-default">
+                                            发布
+                                        </button>
+                                    </form>
+
                                     @endif
                                 </div>
                             </td>

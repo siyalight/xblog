@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Scopes\PublishedScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
@@ -9,7 +10,17 @@ use Carbon\Carbon;
 class Post extends Model
 {
     use SoftDeletes;
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::addGlobalScope(new PublishedScope());
+    }
     /**
      * The attributes that should be mutated to dates.
      *
@@ -38,10 +49,5 @@ class Post extends Model
     public function isPublished()
     {
         return $this->status == 1;
-    }
-
-    public function scopePublished($query)
-    {
-        return $query->where('status',1);
     }
 }

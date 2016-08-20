@@ -7,6 +7,7 @@
  */
 namespace App\Http\Repository;
 
+use App\Http\Controllers\CategoryController;
 use App\Post;
 use App\Tag;
 use Carbon\Carbon;
@@ -31,10 +32,10 @@ class PostRepository
      * @param int $page
      * @return mixed
      */
-    public function pagedPostsWithOutContentWithTrashed($page = 20)
+    public function pagedPostsWithoutGlobalScopes($page = 20)
     {
         $posts = cache()->tags(PostRepository::$tag)->remember('post.WithOutContent.' . $page . '' . request()->get('page', 1), $this->time, function () use ($page) {
-            return Post::withTrashed()->orderBy('published_at', 'desc')->select(['id', 'title', 'slug', 'deleted_at', 'published_at','status'])->paginate($page);
+            return Post::withoutGlobalScopes()->orderBy('published_at', 'desc')->select(['id', 'title', 'slug', 'deleted_at', 'published_at', 'status'])->paginate($page);
         });
         return $posts;
     }
@@ -45,11 +46,9 @@ class PostRepository
      */
     public function pagedPosts($page = 7)
     {
-        /*DB::connection()->enableQueryLog();*/
         $posts = cache()->tags(PostRepository::$tag)->remember('post.page.' . $page . '' . request()->get('page', 1), $this->time, function () use ($page) {
-            return Post::with(['tags', 'category'])->published()->orderBy('created_at', 'desc')->paginate($page);
+            return Post::with(['tags', 'category'])->orderBy('created_at', 'desc')->paginate($page);
         });
-        /*var_dump(DB::getQueryLog());*/
         return $posts;
     }
 
@@ -75,8 +74,7 @@ class PostRepository
 
     public function create(Request $request)
     {
-        $this->clearCache();
-        cache()->tags(TagRepository::$tag)->flush();
+        cache()->flush();
 
         $ids = [];
         $tags = $request['tags'];
@@ -86,9 +84,8 @@ class PostRepository
                 array_push($ids, $tag->id);
             }
         }
-        $status = $request->get('status',0);
-        if($status == 1)
-        {
+        $status = $request->get('status', 0);
+        if ($status == 1) {
             $request['published_at'] = Carbon::now();
         }
 
@@ -108,9 +105,7 @@ class PostRepository
 
     public function update(Request $request, Post $post)
     {
-        $this->clearCache();
-        cache()->tags(TagRepository::$tag)->flush();
-
+        cache()->flush();
 
         $ids = [];
         $tags = $request['tags'];
@@ -122,9 +117,8 @@ class PostRepository
         }
         $post->tags()->sync($ids);
 
-        $status = $request->get('status',0);
-        if(is_null($post->published_at) && $status == 1)
-        {
+        $status = $request->get('status', 0);
+        if (is_null($post->published_at) && $status == 1) {
             $request['published_at'] = Carbon::now();
         }
 
