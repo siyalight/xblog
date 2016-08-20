@@ -3,6 +3,9 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
+            <btn class="btn" role="button" data-toggle="modal" data-target="#delete-post-modal">
+                <i class="fa fa-trash-o"></i>
+            </btn>
             <div class="widget widget-default">
                 <table class="table table-hover table-bordered table-responsive" style="overflow: auto">
                     <thead>

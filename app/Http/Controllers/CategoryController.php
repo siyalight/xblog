@@ -47,9 +47,9 @@ class CategoryController extends Controller
         ]);
 
         if ($this->categoryRepository->create($request))
-            return redirect('/')->with('success', '分类' . $request['name'] . '创建成功');
+            return redirect()->back()->with('success', '分类' . $request['name'] . '创建成功');
         else
-            return redirect('/')->with('error', '分类' . $request['name'] . '创建失败');
+            return redirect()->back()->with('error', '分类' . $request['name'] . '创建失败');
     }
 
     /**
@@ -112,14 +112,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $this->categoryRepository->clearCache();
-
-
-        if ($category->posts()->withTrashed()->count() > 0) {
+        if ($category->posts()->withoutGlobalScopes()->count() > 0) {
             return redirect()->route('admin.categories')->withErrors($category->name . '下面有文章，不能刪除');
         }
+        $this->categoryRepository->clearCache();
         if ($category->delete())
-            return redirect()->route('admin.categories')->with('success', $category->name . '刪除成功');
-        return redirect()->route('admin.categories')->withErrors($category->name . '刪除失败');
+            return redirect()->back()->with('success', $category->name . '刪除成功');
+        return redirect()->back()->withErrors($category->name . '刪除失败');
     }
 }

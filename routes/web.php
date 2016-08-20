@@ -25,6 +25,10 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
     Route::get('post/{slug}/preview', ['uses' => 'PostController@preview', 'as' => 'post.preview']);
     Route::post('post/{post}/publish', ['uses' => 'PostController@publish', 'as' => 'post.publish']);
 
+    Route::delete('tag/{tag}', ['uses' => 'TagController@destroy', 'as' => 'tag.destroy']);
+    Route::post('tag', ['uses' => 'TagController@store', 'as' => 'tag.store']);
+
+
     Route::resource('post', 'PostController', ['except' => ['show', 'index']]);
     Route::resource('category', 'CategoryController', ['except' => ['index', 'show']]);
     Route::resource('page', 'PageController', ['except' => ['show', 'index']]);

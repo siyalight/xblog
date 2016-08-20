@@ -8,6 +8,7 @@
 namespace App\Http\Repository;
 
 use App\Tag;
+use Illuminate\Http\Request;
 
 /**
  * Class TagRepository
@@ -27,7 +28,12 @@ class TagRepository
 
         return $tags;
     }
-
+    public function create(Request $request)
+    {
+        $this->clearCache();
+        $tag = Tag::create(['name' => $request['name']]);
+        return $tag;
+    }
     public function clearCache()
     {
         cache()->tags(TagRepository::$tag)->flush();
