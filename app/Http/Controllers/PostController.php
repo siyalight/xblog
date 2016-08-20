@@ -70,9 +70,9 @@ class PostController extends Controller
         $this->validatePostForm($request);
 
         if ($this->postRepository->create($request))
-            return redirect()->route('admin.posts')->with('success', '文章' . $request['name'] . '创建成功');
+            return redirect('admin/posts')->with('success', '文章' . $request['name'] . '创建成功');
         else
-            return redirect()->route('admin.posts')->withErrors('文章' . $request['name'] . '创建失败');
+            return redirect('admin/posts')->withErrors('文章' . $request['name'] . '创建失败');
 
     }
 
@@ -135,9 +135,9 @@ class PostController extends Controller
         $this->validatePostForm($request, true);
 
         if ($this->postRepository->update($request, $post))
-            return redirect()->route('admin.posts')->with('success', '文章' . $request['name'] . '修改成功');
+            return redirect('admin/posts')->with('success', '文章' . $request['name'] . '修改成功');
         else
-            return redirect()->route('admin.posts')->withErrors('文章' . $request['name'] . '修改失败');
+            return redirect('admin/posts')->withErrors('文章' . $request['name'] . '修改失败');
     }
 
     public function restore($id)
