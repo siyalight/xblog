@@ -13,7 +13,54 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($posts as $post)
+                        <?php
+                        $class = '';
+                        $status = 'Un published';
+                        if ($post->trashed()) {
+                            $class = 'danger';
+                            $status = 'deleted';
+                        } else if ($post->isPublished()) {
+                            $class = 'success';
+                            $status = 'published';
+                        }
+                        ?>
 
+
+                        <tr class="{{ $class }}">
+                            <td>{{ $post->title }}</td>
+                            <td>{{ $status }}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button class="btn btn-default" data-toggle="modal" data-title="{{ $post->title }}"
+                                            data-url="{{ route('post.destroy',$post->id) }}"
+                                            data-target="#delete-post-modal">
+                                        删除
+                                    </button>
+                                    <a {{ $post->trashed()?'disabled':'' }} href="{{ $post->trashed()?'#':route('post.edit',$post->id) }}"
+                                       class="btn btn-default">
+                                        编辑
+                                    </a>
+                                    @if($post->trashed())
+                                        <a href="{{ route('post.restore',$post->id) }}"
+                                           class="btn btn-default">
+                                            恢复
+                                        </a>
+                                    @elseif($post->isPublished())
+                                        <a href="{{ route('post.show',$post->slug) }}"
+                                           class="btn btn-default">
+                                            查看
+                                        </a>
+                                    @else
+                                        <a href="{{ route('post.preview',$post->slug) }}"
+                                           class="btn btn-default">
+                                            预览
+                                        </a>
+                                    @endif
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
                 {{ $posts->links() }}
