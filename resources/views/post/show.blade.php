@@ -21,7 +21,7 @@
                            <span class="post-time">
                            <i class="fa fa-calendar-o"></i>
                            <time datetime="2016-08-05T00:10:14+08:00" content="2016-08-05">
-                           {{ $post->published_at->format('Y-m-d H:i') }}
+                           {{ $post->published_at==null?'Un Published':$post->published_at->format('Y-m-d H:i') }}
                            </time>
                            </span>
                     <span class="post-category">
