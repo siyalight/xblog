@@ -31,6 +31,10 @@ class CategoryRepository
         return $categories;
     }
 
+    /**
+     * @param $name
+     * @return mixed
+     */
     public function get($name)
     {
         $category = cache()->tags(CategoryRepository::$tag)->remember('category.one.' . $name, $this->time, function () use ($name) {
