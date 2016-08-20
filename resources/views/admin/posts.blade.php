@@ -25,8 +25,6 @@
                             $status = 'published';
                         }
                         ?>
-
-
                         <tr class="{{ $class }}">
                             <td>{{ $post->title }}</td>
                             <td>{{ $status }}</td>
