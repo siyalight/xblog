@@ -115,7 +115,7 @@ class CategoryController extends Controller
         $this->categoryRepository->clearCache();
 
 
-        if ($category->posts()->count() > 0) {
+        if ($category->posts()->withTrashed()->count() > 0) {
             return redirect()->route('admin.categories')->withErrors($category->name . '下面有文章，不能刪除');
         }
         if ($category->delete())
