@@ -20,7 +20,7 @@ class CategoryController extends Controller
     public function __construct(CategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
-        $this->middleware(['auth', 'admin']);
+        $this->middleware(['auth', 'admin'], ['except' => 'show']);
     }
 
 

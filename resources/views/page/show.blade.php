@@ -9,7 +9,12 @@
             <li><a href="/">Home</a></li>
             <li class="active">{{ $page->name }}</li>
         </ol>
-        <main class="col-md-12 post-detail">
+        @can('update',$page)
+            <div class="btn-group pull-right">
+                <a class="btn" href="{{ route('page.edit',$page->id) }}"><i class="fa fa-edit"></i></a>
+            </div>
+        @endcan
+        <div class="post-detail">
             <div class="center-block">
                 <h1>{{ $page->display_name }}</h1>
             </div>
@@ -17,9 +22,9 @@
             <div id="field" data-content="{{ $page->content }}"></div>
             <div id="content">
             </div>
-        </main>
+        </div>
         <div style="margin-top: 20px" class="ds-thread widget widget-default"
-             data-thread-key="{{ $page->created_at.$page->title.$page->id }}"
+             data-thread-key="{{ $page->created_at.$page->name.$page->id }}"
              data-title="{{ $page->title }}" data-url="{{ request()->url() }}">
         </div>
     </div>

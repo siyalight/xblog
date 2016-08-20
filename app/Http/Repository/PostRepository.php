@@ -14,6 +14,9 @@ use Illuminate\Http\Request;
 use DB;
 
 /**
+ * design for cache
+ *
+ *
  * Class PostRepository
  * @package App\Http\Repository
  */
@@ -31,7 +34,7 @@ class PostRepository
     public function pagedPostsWithOutContentWithTrashed($page = 20)
     {
         $posts = cache()->tags(PostRepository::$tag)->remember('post.WithOutContent.' . $page . '' . request()->get('page', 1), $this->time, function () use ($page) {
-            return Post::withTrashed()->orderBy('created_at', 'desc')->select(['id', 'title', 'slug', 'deleted_at', 'published_at'])->paginate($page);
+            return Post::withTrashed()->orderBy('published_at', 'desc')->select(['id', 'title', 'slug', 'deleted_at', 'published_at','status'])->paginate($page);
         });
         return $posts;
     }
@@ -83,10 +86,11 @@ class PostRepository
                 array_push($ids, $tag->id);
             }
         }
-
-        $published = $request->has('published');
-        if ($published)
+        $status = $request->get('status',0);
+        if($status == 1)
+        {
             $request['published_at'] = Carbon::now();
+        }
 
         $post = auth()->user()->posts()->create(
             $request->all()
@@ -116,16 +120,21 @@ class PostRepository
                 array_push($ids, $tag->id);
             }
         }
-
         $post->tags()->sync($ids);
 
-        $published = $request->has('published');
-        if ($published)
+        $status = $request->get('status',0);
+        if(is_null($post->published_at) && $status == 1)
+        {
             $request['published_at'] = Carbon::now();
+        }
 
         return $post->update($request->all());
     }
 
+    /**
+     * clear all cache whit tag post
+     *
+     */
     public function clearCache()
     {
         cache()->tags(PostRepository::$tag)->flush();

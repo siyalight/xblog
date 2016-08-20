@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Repository\PostRepository;
 use DB;
-
 class HomeController extends Controller
 {
     protected $postRepository;

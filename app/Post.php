@@ -18,7 +18,7 @@ class Post extends Model
     protected $dates = ['deleted_at', 'published_at'];
 
 
-    protected $fillable = ['title', 'description', 'slug', 'category_id', 'user_id', 'content', 'published_at'];
+    protected $fillable = ['title', 'description', 'slug', 'category_id', 'user_id', 'content', 'published_at', 'status'];
 
     public function category()
     {
@@ -37,11 +37,11 @@ class Post extends Model
 
     public function isPublished()
     {
-        return $this->published_at && $this->published_at <= Carbon::now();
+        return $this->status == 1;
     }
 
     public function scopePublished($query)
     {
-        return $query->where('published_at', '<=', Carbon::now());
+        return $query->where('status',1);
     }
 }

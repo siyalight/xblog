@@ -52,7 +52,7 @@
             <div id="field" data-content="{{ $post->content }}"></div>
             <div id="content">
             </div>
-            <div class="pull-left tag-list post-footer">
+            <div class="pull-left tag-list post-footer" style="font-size: 80%">
                 <i class="fa fa-tags"></i>
                 @foreach($post->tags as $tag)
                     <a href="#">{{ $tag->name }}</a>

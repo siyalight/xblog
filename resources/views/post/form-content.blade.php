@@ -77,7 +77,8 @@
     <label for="content" class="control-label">文章内容*</label>
 
     <textarea spellcheck="false" id="content" type="text" class="form-control" name="content"
-              rows="25"style="line-height: 1.85em; resize: vertical">{{ isset($post) ? $post->content : old('content') }}</textarea>
+              rows="25"
+              style="line-height: 1.85em; resize: vertical">{{ isset($post) ? $post->content : old('content') }}</textarea>
     @if ($errors->has('content'))
         <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>
@@ -86,11 +87,10 @@
 </div>
 
 <div class="form-group">
-    <div class="checkbox">
-        <label>
-            <input type="checkbox" name="published"><span>发布?</span>
-        </label>
-    </div>
+    <label for="status" class="control-label">文章狀態</label>
+    <select id="status" name="status" class="form-control">
+        <option value="0">草稿</option>
+        <option value="1">发布</option>
+    </select>
 </div>
-
 {{ csrf_field() }}
