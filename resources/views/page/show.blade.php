@@ -23,7 +23,7 @@
             <div id="field" data-content="{{ $page->content }}"></div>
         </div>
         <div style="margin-top: 20px" class="ds-thread widget widget-default"
-             data-thread-key="{{ $page->created_at.$page->name.$page->id }}"
+             data-thread-key="{{$page->name.$page->display_name }}"
              data-title="{{ $page->title }}" data-url="{{ request()->url() }}">
         </div>
     </div>

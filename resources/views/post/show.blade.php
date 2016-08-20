@@ -61,7 +61,7 @@
         </div>
 
         <div style="margin-top: 20px" class="ds-thread widget widget-default"
-             data-thread-key="{{ $post->created_at.$post->title.$post->id }}"
+             data-thread-key="{{ $post->slug }}"
              data-title="{{ $post->title }}" data-url="{{ request()->url() }}">
         </div>
     </div>
