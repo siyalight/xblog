@@ -40,3 +40,9 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
     Route::get('/pages', ['uses' => 'AdminController@pages', 'as' => 'admin.pages']);
     Route::get('/categories', ['uses' => 'AdminController@categories', 'as' => 'admin.categories']);
 });
+
+
+
+Route::group(['domain' => '{account}.lufficc.com'], function ($account) {
+    return $account;
+});
