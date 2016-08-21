@@ -30,7 +30,7 @@ class AdminController extends Controller
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
-        $this->middleware('role:admin');
+        $this->middleware(['auth', 'admin']);
     }
 
     public function index()
