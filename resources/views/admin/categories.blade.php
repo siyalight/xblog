@@ -24,7 +24,8 @@
                                     <a href="{{ route('category.edit',$category->id) }}" class="btn btn-default">
                                         编辑
                                     </a>
-                                    <button class="btn btn-default" data-toggle="modal" data-title="{{ $category->name }}"
+                                    <button class="btn btn-default" data-toggle="modal"
+                                            data-title="{{ $category->name }}"
                                             data-url="{{ route('category.destroy',$category->id) }}"
                                             data-target="#delete-category-modal">
                                         删除

@@ -53,9 +53,6 @@
     <div class="container">
         @include('partials.errors')
         @include('partials.success')
-        <div id="app">
-
-        </div>
         @yield('content')
     </div>
 </section>
@@ -63,7 +60,7 @@
 @include('layouts.footer')
 <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="js/app.js"></script>
+{{--<script src="//cdn.bootcss.com/vue/2.0.0-rc.1/vue.min.js"></script>--}}
 @yield('script')
 </body>
 </html>

@@ -87,5 +87,5 @@ return [
     */
 
     'prefix' => 'laravel',
-
+    'ttl' => 60,
 ];

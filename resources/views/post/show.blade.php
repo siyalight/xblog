@@ -5,15 +5,20 @@
 @endsection
 @section('content')
     <div class="row" style="background-color: inherit">
-        @can('update',$post)
+        @if(Auth::check())
             <div class="btn-group pull-right">
-                <a class="btn" href="{{ route('post.edit',$post->id) }}"><i class="fa fa-edit"></i></a>
-                <a class="btn" role="button" data-toggle="modal" data-target="#delete-post-modal">
-                    <i class="fa fa-trash-o"></i>
-                </a>
+                @if(Auth::user()->can('edit-post'))
+                    <a class="btn" href="{{ route('post.edit',$post->id) }}"><i class="fa fa-edit"></i></a>
+                @endif
+
+                @if(Auth::user()->can('delete-post'))
+                    <a class="btn" role="button" data-toggle="modal" data-target="#delete-post-modal">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                @endif
             </div>
             @include('post.delete-modal',$post)
-        @endcan
+        @endif
         <div class="post-detail">
             <div class="center-block">
                 <h1>{{ $post->title }}</h1>

@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\User::truncate();
+        /*\App\User::truncate();*/
         \App\Post::truncate();
         \App\Category::truncate();
         \App\Tag::truncate();

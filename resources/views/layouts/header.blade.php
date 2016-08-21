@@ -1,20 +1,23 @@
 <header class="main-header jumbotron">
     <div class="container-fluid" style="margin-top: -15px">
-        <nav class = "navbar">
-            <div class = "navbar-header">
-                <button type = "button" class = "navbar-toggle"
-                        data-toggle = "collapse" data-target = "#example-navbar-collapse">
-                    <span class = "sr-only">Toggle navigation</span>
-                    <span class = "icon-bar"></span>
-                    <span class = "icon-bar"></span>
-                    <span class = "icon-bar"></span>
+        <nav class="navbar">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle"
+                        data-toggle="collapse" data-target="#example-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
             </div>
-            <div class = "collapse navbar-collapse" id = "example-navbar-collapse">
-                <ul class = "nav navbar-nav navbar-right">
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ url('/') }}">文章</a></li>
                     <li><a href="{{ route('page.show','about') }}">关于</a></li>
                     @if(Auth::check())
+                        @if(Auth::user()->hasRole('admin'))
+                            <li><a href="{{ route('admin.index') }}">后台</a></li>
+                        @endif
                         <li>
                             <a href="{{ url('/logout') }}" style="color: white;"
                                onclick="event.preventDefault();
