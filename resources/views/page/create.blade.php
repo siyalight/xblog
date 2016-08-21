@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('css')
-    <link href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/simplemde/1.11.2/simplemde.min.css" rel="stylesheet">
 @endsection
 @section('content')
@@ -26,7 +26,7 @@
 @endsection
 
 @section('script')
-    <script src="https://cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+    <script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
     <script src="//cdn.bootcss.com/simplemde/1.11.2/simplemde.min.js"></script>
     <script>
         new SimpleMDE({

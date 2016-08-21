@@ -11,7 +11,6 @@ html, body {
   text-align: center;
 }
 
-
 .main-header {
   position: relative;
   text-align: center;
@@ -46,7 +45,6 @@ a:active, a:focus, a img {
   outline: none;
 }
 
-
 .navbar-toggle .icon-bar {
   display: block;
   width: 22px;
@@ -77,8 +75,6 @@ a:active, a:focus, a img {
   overflow: hidden;
   box-shadow: 1px 1px 2px #888888;
 }
-
-
 
 .post .post-header .post-title {
   margin: 0;
@@ -172,6 +168,7 @@ a:active, a:focus, a img {
 .widget .widget-footer {
   padding-top: 30px;
 }
+
 .widget .widget-header {
   font-size: 2em;
   padding-bottom: 20px;
@@ -267,11 +264,12 @@ pre, .highlight {
   line-height: 1.6;
 }
 
-pre code{
+pre code {
   overflow: auto;
   word-wrap: normal;
   white-space: pre;
 }
 
 /* table */
+
 

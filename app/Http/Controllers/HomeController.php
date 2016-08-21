@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Repository\PostRepository;
+use App\Post;
 use DB;
 class HomeController extends Controller
 {

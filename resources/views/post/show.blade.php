@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title',$post->title)
 @section('css')
-    <link href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="row" style="background-color: inherit">
@@ -69,8 +69,8 @@
 @endsection
 
 @section('script')
-    <script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
-    <script src="https://cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+    <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
+    <script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
     <script>
 
         document.getElementById('content').innerHTML =
@@ -86,6 +86,8 @@
                         return hljs.highlightAuto(code).value;
                     }
                 });
+
+        $('table').addClass('table table-bordered table-striped table-responsive')
     </script>
 
     <script type="text/javascript">
