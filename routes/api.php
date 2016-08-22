@@ -13,6 +13,3 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function (Request $request) {
-    return 21212121;
-});
