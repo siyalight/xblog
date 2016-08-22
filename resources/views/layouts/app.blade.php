@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,20 +47,25 @@
 
 </head>
 <body>
-
 @include('layouts.header')
-<section class="content-wrap" style="margin-top: 35px">
+<section  id="app" class="content-wrap" style="margin-top: 35px">
     <div class="container">
         @include('partials.errors')
         @include('partials.success')
         @yield('content')
+        <category :categories='categories'>
+
+        </category>
     </div>
 </section>
 
 @include('layouts.footer')
 <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-{{--<script src="//cdn.bootcss.com/vue/2.0.0-rc.1/vue.min.js"></script>--}}
+<script src="//cdn.bootcss.com/vue/2.0.0-rc.1/vue.min.js"></script>
+<script src="js/app.js"></script>
+
+
 @yield('script')
 </body>
 </html>

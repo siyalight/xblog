@@ -15,9 +15,6 @@
                     <li><a href="{{ url('/') }}">文章</a></li>
                     <li><a href="{{ route('page.show','about') }}">关于</a></li>
                     @if(Auth::check())
-                        @if(Auth::user()->hasRole('admin'))
-                            <li><a href="{{ route('admin.index') }}">后台</a></li>
-                        @endif
                         <li>
                             <a href="{{ url('/logout') }}" style="color: white;"
                                onclick="event.preventDefault();

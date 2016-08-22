@@ -15,9 +15,9 @@
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
 
 Auth::routes();
-Route::get('post/{slug}/', ['uses' => 'PostController@show', 'as' => 'post.show']);
+Route::get('post/{slug}', ['uses' => 'PostController@show', 'as' => 'post.show']);
 Route::get('/{name}/', ['uses' => 'PageController@show', 'as' => 'page.show']);
-Route::get('category/{name}/', ['uses' => 'CategoryController@show', 'as' => 'category.show']);
+Route::get('category/{name}', ['uses' => 'CategoryController@show', 'as' => 'category.show']);
 
 Route::group(['prefix' => 'admin', ['middleware' => ['auth','admin']]], function () {
 
