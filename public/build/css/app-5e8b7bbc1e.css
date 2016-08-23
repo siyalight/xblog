@@ -130,7 +130,7 @@ a:active, a:focus, a img {
 .widget {
   background: white;
   box-shadow: 1px 1px 2px #888888;
-  overflow: hidden;
+  overflow: auto;
   margin-bottom: 35px; }
 
 .widget .widget-footer {
@@ -221,10 +221,5 @@ pre code {
   white-space: pre; }
 
 /* table */
-table {
-  overflow: scroll; }
-
-.table {
-  overflow: auto; }
 
 /*# sourceMappingURL=app.css.map */

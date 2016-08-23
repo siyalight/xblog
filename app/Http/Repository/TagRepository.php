@@ -23,7 +23,7 @@ class TagRepository
     public function getAll()
     {
         $tags = cache()->tags(TagRepository::$tag)->remember('tag.all', $this->time, function () {
-            return Tag::all();
+            return Tag::withCount('posts')->get();
         });
 
         return $tags;

@@ -6,13 +6,13 @@
                 <li href="{{ route('category.show',$category->name) }}"
                     class="list-group-item active">
                     {{ $category->name }}
-                    <span class="badge">{{ $category->posts()->count() }}</span>
+                    <span class="badge">{{ $category->posts_count }}</span>
                 </li>
             @else
                 <a href="{{ route('category.show',$category->name) }}"
                    class="list-group-item">
                     {{ $category->name }}
-                    <span class="badge">{{ $category->posts()->count() }}</span>
+                    <span class="badge">{{ $category->posts_count }}</span>
                 </a>
             @endif
 

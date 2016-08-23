@@ -1,4 +1,4 @@
-<div class="widget widget-user">
+<div class="widget widget-user" style="overflow: hidden">
     <div class="widget-user-header" style="background: url('/img/luffy.jpg') center center;">
         <h3 class="widget-user-username">lufficc</h3>
         <h5 class="widget-user-desc">One piece</h5>

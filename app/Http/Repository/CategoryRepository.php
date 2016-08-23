@@ -26,7 +26,7 @@ class CategoryRepository
     public function getAll()
     {
         $categories = cache()->tags(CategoryRepository::$tag)->remember('category.all', $this->time, function () {
-            return Category::all();
+            return Category::withCount('posts')->get();
         });
         return $categories;
     }

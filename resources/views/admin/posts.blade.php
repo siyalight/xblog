@@ -9,6 +9,7 @@
                     <tr>
                         <th>标题</th>
                         <th>状态</th>
+                        <th>slug</th>
                         <th>action</th>
                     </tr>
                     </thead>
@@ -28,6 +29,7 @@
                         <tr class="{{ $class }}">
                             <td>{{ $post->title }}</td>
                             <td>{{ $status }}</td>
+                            <td>{{ $post->slug }}</td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-default" data-toggle="modal" data-title="{{ $post->title }}"

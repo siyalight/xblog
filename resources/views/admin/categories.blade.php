@@ -18,7 +18,7 @@
                         <tr>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->created_at->format('Y-m-d') }}</td>
-                            <td>{{ $category->posts()->count() }}</td>
+                            <td>{{ $category->posts_count }}</td>
                             <td>
                                 <div class="btn-group">
                                     <a href="{{ route('category.edit',$category->id) }}" class="btn btn-default">
