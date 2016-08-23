@@ -210,8 +210,9 @@ pre, .highlight {
   font-size: 1em;
   color: #ccc;
   border: none;
+  border-radius: 0;
   word-wrap: normal;
-  background: #2d2d2d;
+  background: #323232;
   line-height: 1.6; }
 
 pre code {
@@ -220,5 +221,10 @@ pre code {
   white-space: pre; }
 
 /* table */
+table {
+  overflow: scroll; }
+
+.table {
+  overflow: auto; }
 
 /*# sourceMappingURL=app.css.map */

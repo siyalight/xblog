@@ -50,7 +50,7 @@
                 </div>
                 <br>
                 <div id="field" data-content="{{ $post->content }}"></div>
-                <div id="content">
+                <div id="content" style="overflow-x: auto">
                 </div>
                 <div class="pull-left tag-list post-footer" style="font-size: 80%">
                     <i class="fa fa-tags"></i>
