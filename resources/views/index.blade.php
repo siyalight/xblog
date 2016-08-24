@@ -5,6 +5,9 @@
         <div class="col-md-4">
             @include('widget.user')
             @include('widget.categories')
+            <category>
+
+            </category>
         </div>
         <div class="col-md-8">
             @if($posts->isEmpty())
@@ -17,4 +20,7 @@
             @endif
         </div>
     </div>
+@endsection
+@section('script')
+    <script src="js/app.js"></script>
 @endsection

@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for
@@ -13,11 +12,11 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-/*Vue.component('example', require('components/Example.vue'));*/
-import Vue from 'vue';
-
-
-Vue.config.debug = true
+Vue.component('example', require('./components/Example.vue'));
+Vue.component('category', require('./components/Category.vue'));
+Vue.component('passport-clients', require('./components/passport/Clients.vue'));
+Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue'));
+Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue'));
 
 const app = new Vue({
     el: 'body'

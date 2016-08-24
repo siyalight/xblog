@@ -29,7 +29,7 @@
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-    <script>
+    {{--<script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function () {
@@ -43,19 +43,16 @@
         })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-81713716-2', 'auto');
         ga('send', 'pageview');
-    </script>
+    </script>--}}
 
 </head>
 <body>
 @include('layouts.header')
-<section  id="app" class="content-wrap" style="margin-top: 35px">
+<section id="app" class="content-wrap" style="margin-top: 35px">
     <div class="container">
         @include('partials.errors')
         @include('partials.success')
         @yield('content')
-        <category :categories='categories'>
-
-        </category>
     </div>
 </section>
 
@@ -63,9 +60,6 @@
 <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="//cdn.bootcss.com/vue/2.0.0-rc.1/vue.min.js"></script>
-<script src="js/app.js"></script>
-
-
 @yield('script')
 </body>
 </html>
