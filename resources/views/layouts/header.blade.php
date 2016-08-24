@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="example-navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ url('/') }}">文章</a></li>
-                    <li><a href="{{ route('page.show','about') }}">关于</a></li>
+                    <li><a href="{{ route('page.about') }}">关于</a></li>
                     @if(Auth::check())
                         <li>
                             <a href="{{ url('/logout') }}" style="color: white;"

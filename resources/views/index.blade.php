@@ -4,20 +4,13 @@
     <div class="row">
         <div class="col-md-4">
             @include('widget.user')
-            @include('widget.categories')
-            <category>
-
-            </category>
+            {{--@include('widget.categories')--}}
+            <categories>
+            </categories>
         </div>
         <div class="col-md-8">
-            @if($posts->isEmpty())
-                <div class="widget widget-default">
-                    <h1>Sorry...Nothing here</h1>
-                </div>
-            @else
-                @each('post.item',$posts,'post')
-                {{ $posts->links() }}
-            @endif
+            <posts :category="post_list" :page="page">
+            </posts>
         </div>
     </div>
 @endsection

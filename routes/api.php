@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,3 +11,5 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/categories', 'CategoryApiController@index');
+Route::get('/posts', 'PostApiController@index');

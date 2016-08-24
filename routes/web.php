@@ -16,10 +16,10 @@ Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
 
 Auth::routes();
 Route::get('post/{slug}', ['uses' => 'PostController@show', 'as' => 'post.show']);
-Route::get('/{name}/', ['uses' => 'PageController@show', 'as' => 'page.show']);
+Route::get('/about', ['uses' => 'PageController@about', 'as' => 'page.about']);
 Route::get('category/{name}', ['uses' => 'CategoryController@show', 'as' => 'category.show']);
 
-Route::group(['prefix' => 'admin', ['middleware' => ['auth','admin']]], function () {
+Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
 
     Route::get('/index', ['uses' => 'AdminController@index', 'as' => 'admin.index']);
     Route::get('/posts', ['uses' => 'AdminController@posts', 'as' => 'admin.posts']);

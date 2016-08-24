@@ -60,11 +60,9 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      * @internal param int $id
      */
-    public function show($name)
+    public function about()
     {
-        if ($name == 'admin')
-            return redirect()->route('admin.index');
-        $page = $this->pageRepository->get($name);
+        $page = $this->pageRepository->get('about');
         return view('page.show', compact('page'));
     }
 
