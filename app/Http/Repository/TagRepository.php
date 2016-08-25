@@ -14,28 +14,28 @@ use Illuminate\Http\Request;
  * Class TagRepository
  * @package App\Http\Repository
  */
-class TagRepository
+class TagRepository extends Repository
 {
     static $tag = 'tag';
 
-    public $time = 1440;
-
     public function getAll()
     {
-        $tags = cache()->tags(TagRepository::$tag)->remember('tag.all', $this->time, function () {
+        $tags = $this->remember('tag.all', function () {
             return Tag::withCount('posts')->get();
         });
 
         return $tags;
     }
+
     public function create(Request $request)
     {
         $this->clearCache();
+
         $tag = Tag::create(['name' => $request['name']]);
         return $tag;
     }
-    public function clearCache()
+    public function tag()
     {
-        cache()->tags(TagRepository::$tag)->flush();
+        return TagRepository::$tag;
     }
 }

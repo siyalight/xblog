@@ -11,5 +11,5 @@
 |
 */
 
-Route::get('/categories', 'CategoryApiController@index');
-Route::get('/posts', 'PostApiController@index');
+/*Route::get('/categories', 'CategoryApiController@index');
+Route::get('/posts', 'PostApiController@index');*/

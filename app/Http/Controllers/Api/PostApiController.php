@@ -36,7 +36,15 @@ class PostApiController extends Controller
 
     public function index()
     {
-        $posts = $this->postRepository->pagedPosts();
+        $categoryName = request()->get('category', null);
+        if (!empty($categoryName)) {
+            $category = $this->categoryRepository->get($categoryName);
+            if (!$category)
+                abort(404);
+            $posts = $this->categoryRepository->pagedPostsByCategory($category);
+        } else {
+            $posts = $this->postRepository->pagedPosts();
+        }
         return $posts;
     }
 }

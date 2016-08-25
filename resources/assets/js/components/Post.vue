@@ -1,5 +1,5 @@
 <template>
-    <article class="post" v-for="post in post_list">
+    <article class="post" v-for="post in posts.data">
         <!-- post header -->
         <div class="post-header">
             <h1 class="post-title">
@@ -43,24 +43,54 @@
             </div>
         </div>
     </article>
+    <pagination :current_page="1" :total="posts.last_page">
+
+    </pagination>
 </template>
 
 <script>
-    /*import HeaderComponent from './components/header.vue'
-     import OtherComponent from './components/other.vue'*/
+    import Pagination from './Pagination.vue'
     export default{
-        props: ['category', 'page'],
         data() {
             return {
                 currentCategory: '',
-                post_list: [],
+                currentPage: 1,
+                posts: [],
             }
         },
+
         ready(){
-            this.$http.get('/api/posts')
-                    .then(response => {
-                        this.post_list = response.data.data;
-                    });
+            this.loadPosts('', 1);
         },
+        events: {
+            'onCategoryChange': function (category) {
+                this.currentCategory = category;
+                this.currentPage = 1;
+                this.loadPosts(category.name, 1);
+            },
+            'onPageChange': function (page) {
+                this.currentPage = page;
+                console.log('currentPage' + page);
+                if (this.currentCategory) {
+                    this.loadPosts(this.currentCategory.name, page);
+                }
+                else {
+                    this.loadPosts('', page);
+                }
+            }
+        },
+        methods: {
+            loadPosts(categoryName, currentPage)
+            {
+                this.$http.get('/api/posts?category=' + categoryName + '&page=' + currentPage)
+                        .then(response => {
+                            this.posts = response.data;
+                            console.log(response.data)
+                        });
+            }
+        },
+        components: {
+            'pagination': Pagination,
+        }
     }
 </script>

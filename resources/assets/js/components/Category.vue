@@ -2,7 +2,7 @@
     <div class="widget widget-default">
         <div class="widget-header">分类</div>
         <ul class="list-group">
-            <a @click="click(category)" class="list-group-item"
+            <a @click.stop.prevent="categoryChange(category)" class="list-group-item" href="/categoty/{{ category.name }}"
                v-for="category in categories">
                 {{ category.name }}
                 <span class='badge'>
@@ -35,14 +35,12 @@
             },
         },
         methods: {
-            click(category){
-                this.currentCategory = category.name;
-                console.log(category.name)
+            categoryChange(category){
+                if (this.currentCategory != category.name) {
+                    this.$parent.$broadcast('onCategoryChange', category)
+                    this.currentCategory = category.name;
+                }
             },
-            currentClass(category) {
-                return category.name == this.currentCategory ? 'list-group-item active' : 'list-group-item';
-            },
-
         }
 
     }

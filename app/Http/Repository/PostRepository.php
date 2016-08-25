@@ -21,12 +21,10 @@ use DB;
  * Class PostRepository
  * @package App\Http\Repository
  */
-class PostRepository
+class PostRepository extends Repository
 {
 
     static $tag = 'post';
-
-    public $time = 1440;
 
     /**
      * @param int $page
@@ -34,7 +32,7 @@ class PostRepository
      */
     public function pagedPostsWithoutGlobalScopes($page = 20)
     {
-        $posts = cache()->tags(PostRepository::$tag)->remember('post.WithOutContent.' . $page . '' . request()->get('page', 1), $this->time, function () use ($page) {
+        $posts = $this->remember('post.WithOutContent.' . $page . '' . request()->get('page', 1), function () use ($page) {
             return Post::withoutGlobalScopes()->orderBy('published_at', 'desc')->select(['id', 'title', 'slug', 'deleted_at', 'published_at', 'status'])->paginate($page);
         });
         return $posts;
@@ -46,8 +44,8 @@ class PostRepository
      */
     public function pagedPosts($page = 7)
     {
-        $posts = cache()->tags(PostRepository::$tag)->remember('post.page.' . $page . '' . request()->get('page', 1), $this->time, function () use ($page) {
-            return Post::with(['tags', 'category'])->orderBy('created_at', 'desc')->paginate($page);
+        $posts = $this->remember('post.page.' . $page . '' . request()->get('page', 1), function () use ($page) {
+            return Post::select(['id', 'user_id', 'title', 'slug', 'description', 'deleted_at', 'category_id', 'published_at', 'status'])->with(['tags', 'category'])->orderBy('created_at', 'desc')->paginate($page);
         });
         return $posts;
     }
@@ -58,8 +56,8 @@ class PostRepository
      */
     public function get($slug)
     {
-        $post = cache()->tags(PostRepository::$tag)->remember('post.one.' . $slug, $this->time, function () use ($slug) {
-            return Post::where('slug', $slug)->with(['tags','category'])->first();
+        $post = $this->remember('post.one.' . $slug, function () use ($slug) {
+            return Post::where('slug', $slug)->with(['tags', 'category'])->first();
         });
 
         if (!$post)
@@ -74,7 +72,7 @@ class PostRepository
 
     public function create(Request $request)
     {
-        cache()->flush();
+        $this->clearAllCache();
 
         $ids = [];
         $tags = $request['tags'];
@@ -105,7 +103,7 @@ class PostRepository
 
     public function update(Request $request, Post $post)
     {
-        cache()->flush();
+        $this->clearAllCache();
 
         $ids = [];
         $tags = $request['tags'];
@@ -125,12 +123,9 @@ class PostRepository
         return $post->update($request->all());
     }
 
-    /**
-     * clear all cache whit tag post
-     *
-     */
-    public function clearCache()
+
+    public function tag()
     {
-        cache()->tags(PostRepository::$tag)->flush();
+        return PostRepository::$tag;
     }
 }

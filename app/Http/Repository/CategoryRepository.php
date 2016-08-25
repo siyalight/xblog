@@ -14,18 +14,16 @@ use Illuminate\Http\Request;
  * Class CategoryRepository
  * @package App\Http\Repository
  */
-class CategoryRepository
+class CategoryRepository extends Repository
 {
     static $tag = 'category';
-
-    public $time = 1440;
 
     /**
      * @return mixed
      */
     public function getAll()
     {
-        $categories = cache()->tags(CategoryRepository::$tag)->remember('category.all', $this->time, function () {
+        $categories = $this->remember('category.all', function () {
             return Category::withCount('posts')->get();
         });
         return $categories;
@@ -37,7 +35,7 @@ class CategoryRepository
      */
     public function get($name)
     {
-        $category = cache()->tags(CategoryRepository::$tag)->remember('category.one.' . $name, $this->time, function () use ($name) {
+        $category = $this->remember('category.one.' . $name, function () use ($name) {
             return Category::where('name', $name)->first();
         });
         return $category;
@@ -45,7 +43,7 @@ class CategoryRepository
 
     public function pagedPostsByCategory(Category $category, $page = 7)
     {
-        $posts = cache()->tags(CategoryRepository::$tag)->remember('category.posts.' . $category->name . $page . request()->get('page', 1), $this->time, function () use ($category, $page) {
+        $posts = $this->remember('category.posts.' . $category->name . $page . request()->get('page', 1), function () use ($category, $page) {
             return $category->posts()->with(['tags', 'category'])->orderBy('published_at', 'desc')->paginate($page);
         });
         return $posts;
@@ -53,11 +51,12 @@ class CategoryRepository
 
     /**
      * @param Request $request
-     * @return static
+     * @return Category
      */
     public function create(Request $request)
     {
         $this->clearCache();
+
         $category = Category::create(['name' => $request['name']]);
         return $category;
     }
@@ -73,8 +72,8 @@ class CategoryRepository
         return $category->update($request->all());
     }
 
-    public function clearCache()
+    public function tag()
     {
-        cache()->tags(CategoryRepository::$tag)->flush();
+        return CategoryRepository::$tag;
     }
 }

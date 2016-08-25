@@ -21,9 +21,4 @@ Vue.component('passport-personal-access-tokens', require('./components/passport/
 
 const app = new Vue({
     el: 'body',
-    data: {
-    currentCategory:'',
-        post_list: []
-    },
-
 });

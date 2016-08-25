@@ -14,11 +14,9 @@ use Illuminate\Http\Request;
  * Class PageRepository
  * @package App\Http\Repository
  */
-class PageRepository
+class PageRepository extends Repository
 {
-    public $tag = 'page';
-
-    public $time = 1440;
+    static $tag = 'page';
 
     /**
      * @param $name string
@@ -26,7 +24,7 @@ class PageRepository
      */
     public function get($name)
     {
-        $page = cache()->tags($this->tag)->remember('page.one.' . $name, $this->time, function () use ($name) {
+        $page = $this->remember('page.one.' . $name, function () use ($name) {
             return Page::where('name', $name)->first();
         });
 
@@ -51,8 +49,8 @@ class PageRepository
         return $page->update($request->all());
     }
 
-    public function clearCache()
+    public function tag()
     {
-        cache()->tags($this->tag)->flush();
+        return PageRepository::$tag;
     }
 }
