@@ -6,7 +6,7 @@
  * Time: 11:56
  */
 
-namespace app\Http\Controllers\Api;
+namespace App\Http\Controllers\Api;
 
 
 use App\Http\Controllers\Controller;
@@ -32,6 +32,7 @@ class PostApiController extends Controller
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
+        /*$this->middleware('auth:api');*/
     }
 
     public function index()
@@ -46,5 +47,12 @@ class PostApiController extends Controller
             $posts = $this->postRepository->pagedPosts();
         }
         return $posts;
+    }
+
+    public function show($slug)
+    {
+        return request()->user();
+        $post = $this->postRepository->get($slug);
+        return $post;
     }
 }

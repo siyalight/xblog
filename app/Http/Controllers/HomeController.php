@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Repository\PostRepository;
 use App\Post;
 use DB;
+
 class HomeController extends Controller
 {
     protected $postRepository;
@@ -28,6 +29,11 @@ class HomeController extends Controller
     {
         $posts = $this->postRepository->pagedPosts();
         return view('index', ['posts' => $posts]);
+    }
+
+    public function home()
+    {
+        return redirect('/');
     }
 
     public function passport()

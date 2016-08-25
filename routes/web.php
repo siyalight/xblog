@@ -13,6 +13,8 @@
 
 
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
+Route::get('/home', ['uses' => 'HomeController@home']);
+
 Route::get('/passport', ['uses' => 'HomeController@passport', 'as' => 'passport']);
 
 Auth::routes();
