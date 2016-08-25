@@ -1,6 +1,6 @@
 <div class="widget widget-default">
-    <div class="widget-header">分类</div>
-    <ul class="list-group">
+    <div class="widget-header"><h4>分类</h4></div>
+    <ul class="widget-body list-group">
         @foreach($categories as $category)
             @if(str_contains(request()->getPathInfo(),'category/'.$category->name))
                 <li href="{{ route('category.show',$category->name) }}"

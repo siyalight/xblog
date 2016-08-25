@@ -137,11 +137,14 @@ a:active, a:focus, a img {
   padding-top: 30px; }
 
 .widget .widget-header {
-  font-size: 2em;
-  padding-bottom: 20px; }
+  padding: 10px 30px;
+  border-bottom: 1px solid #f5f5f5;
+  border-top-left-radius: 3px;
+  /*background-color: #f5f5f5;*/
+  border-top-right-radius: 3px; }
 
-.widget-default {
-  padding: 30px 35px 30px 35px; }
+.widget-body {
+  padding: 30px 30px; }
 
 .description-block {
   display: block;

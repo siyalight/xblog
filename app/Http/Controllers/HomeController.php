@@ -29,4 +29,9 @@ class HomeController extends Controller
         $posts = $this->postRepository->pagedPosts();
         return view('index', ['posts' => $posts]);
     }
+
+    public function passport()
+    {
+        return view('passport');
+    }
 }

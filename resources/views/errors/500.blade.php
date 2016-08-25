@@ -7,7 +7,9 @@
         </div>
         <div class="col-md-8">
             <div class="widget widget-default">
-                <h1>500...Error</h1>
+                <div class="widget-body">
+                    <h1>500...Error</h1>
+                </div>
             </div>
         </div>
     </div>

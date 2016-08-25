@@ -7,20 +7,12 @@
             @include('widget.categories')
         </div>
         <div class="col-md-8">
-            <passport-clients></passport-clients>
-            <passport-authorized-clients></passport-authorized-clients>
-            <passport-personal-access-tokens></passport-personal-access-tokens>
             @if(empty($posts))
-                <div class="widget widget-default">
-                    <h1>Nothing here</h1>
-                </div>
+                @include('partials.empty')
             @else
                 @each('post.item',$posts,'post');
                 {{ $posts->links() }}
             @endif
         </div>
     </div>
-@endsection
-@section('script')
-    <script src="js/app.js"></script>
 @endsection

@@ -12,9 +12,7 @@
         </div>
         <div class="col-md-8">
             @if($posts->isEmpty())
-                <div class="widget widget-default">
-                    <h1>Sorry...Nothing here</h1>
-                </div>
+                @include('partials.empty')
             @else
                 @each('post.item',$posts,'post')
                 {{ $posts->links() }}

@@ -7,7 +7,9 @@
         </div>
         <div class="col-md-8">
             <div class="widget widget-default">
-                <h1>404...Nothing here</h1>
+                <div class="widget-body">
+                    <h1>404...Nothing here</h1>
+                </div>
             </div>
         </div>
     </div>

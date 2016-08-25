@@ -13,6 +13,7 @@
 
 
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
+Route::get('/passport', ['uses' => 'HomeController@passport', 'as' => 'passport']);
 
 Auth::routes();
 Route::get('post/{slug}', ['uses' => 'PostController@show', 'as' => 'post.show']);
