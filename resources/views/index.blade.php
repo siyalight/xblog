@@ -11,7 +11,9 @@
                 @include('partials.empty')
             @else
                 @each('post.item',$posts,'post');
-                {{ $posts->links() }}
+                @if($posts->lastPage() > 1)
+                    {{ $posts->links() }}
+                @endif
             @endif
         </div>
     </div>
