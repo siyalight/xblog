@@ -1,4 +1,6 @@
 $mainColor: #607D8B;
+$shadowColor: #333333;
+$shadowBlur: 2px;
 html, body {
   color: #505050;
   line-height: 1.75em;
@@ -72,7 +74,14 @@ a:active, a:focus, a img {
   margin-bottom: 35px;
   position: relative;
   overflow: hidden;
-  box-shadow: 1px 1px 2px #888888;
+
+  box-shadow: 1px 1px $shadowBlur $shadowColor;
+  -moz-box-shadow:1px 1px $shadowBlur $shadowColor;
+  -webkit-box-shadow:1px 1px $shadowBlur $shadowColor;
+
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
 
 .post .post-header .post-title {
@@ -159,9 +168,16 @@ a:active, a:focus, a img {
 
 .widget {
   background: white;
-  box-shadow: 1px 1px 2px #888888;
   overflow: auto;
   margin-bottom: 35px;
+  box-shadow: 1px 1px $shadowBlur $shadowColor;
+  -moz-box-shadow:1px 1px $shadowBlur $shadowColor;
+  -webkit-box-shadow:1px 1px $shadowBlur $shadowColor;
+
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  /*box-shadow:2px 2px 5px #333333;*/
 }
 
 .widget-default {
