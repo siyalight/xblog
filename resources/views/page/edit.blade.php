@@ -7,19 +7,25 @@
     <div class="row">
         <div class="col-md-12">
             <div id="data" class="widget widget-default" data-id="{{ $page->id }}">
-                <form role="form" class="form-horizontal" action="{{ route('page.update',$page->id) }}" method="post">
+                <div class="widget-header">
+                    <h3>修改页面</h3>
+                </div>
+                <div class="widget-body">
+                    <form role="form" class="form-horizontal" action="{{ route('page.update',$page->id) }}" method="post">
 
-                    @include('page.form-content')
-                    <input type="hidden" name="_method" value="put">
-                    <div class="form-group">
-                        <div class="col-md-8 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">
-                                修改
-                            </button>
+                        @include('page.form-content')
+                        <input type="hidden" name="_method" value="put">
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    修改
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                </form>
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>

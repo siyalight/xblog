@@ -7,19 +7,25 @@
     <div class="row">
         <div class="col-md-12">
             <div class="widget widget-default">
-                <form role="form" class="form-horizontal" action="{{ route('page.store') }}" method="post">
+                <div class="widget-header">
+                    <h3>新建页面</h3>
+                </div>
+                <div class="widget-body">
+                    <form role="form" class="form-horizontal" action="{{ route('page.store') }}" method="post">
 
-                    @include('page.form-content')
+                        @include('page.form-content')
 
-                    <div class="form-group">
-                        <div class="col-md-8 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">
-                                创建
-                            </button>
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    创建
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                </form>
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>
