@@ -41,9 +41,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <a class="branding" href="/" title="title">
+                            {{--<a class="branding" href="/" title="title">
                                 <img class="img-circle" src="https://avatars1.githubusercontent.com/u/20706332">
-                            </a>
+                            </a>--}}
                             <h2>{{ Auth::check() ? Auth::user()->name : 'lufficc' }}</h2>
                             <p>Stay hungry.Stay Foolish.</p>
                         </div>

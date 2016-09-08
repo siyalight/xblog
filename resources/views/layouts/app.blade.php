@@ -16,7 +16,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>lufficc @yield('title')</title>
+    <title>lufficc-聪聪 @yield('title')</title>
 
     <!-- Styles -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">

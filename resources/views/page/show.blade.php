@@ -22,9 +22,11 @@
             </div>
             <div id="field" data-content="{{ $page->content }}"></div>
         </div>
-        <div style="margin-top: 20px" class="ds-thread widget widget-default"
-             data-thread-key="{{$page->name.$page->display_name }}"
-             data-title="{{ $page->title }}" data-url="{{ request()->url() }}">
+        <div style="margin-top: 20px" class="widget widget-default">
+            <div class="ds-thread widget-body"
+                 data-thread-key="{{$page->name.$page->display_name }}"
+                 data-title="{{ $page->title }}" data-url="{{ request()->url() }}">
+            </div>
         </div>
     </div>
 @endsection
