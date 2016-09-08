@@ -1,6 +1,6 @@
 $mainColor: #607D8B;
-$shadowColor: #333333;
-$shadowBlur: 2px;
+$shadowColor: #666666;
+$shadowBlur: 3px;
 html, body {
   color: #505050;
   line-height: 1.75em;
@@ -66,15 +66,8 @@ a:active, a:focus, a img {
   background: #507D8B;
 }
 
-/*post*/
-
-.post {
-  padding: 35px 35px 20px 35px;
-  background: white;
-  margin-bottom: 35px;
-  position: relative;
-  overflow: hidden;
-
+/* shadow*/
+.shadow-block{
   box-shadow: 1px 1px $shadowBlur $shadowColor;
   -moz-box-shadow:1px 1px $shadowBlur $shadowColor;
   -webkit-box-shadow:1px 1px $shadowBlur $shadowColor;
@@ -82,6 +75,49 @@ a:active, a:focus, a img {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
+}
+
+/*sidebar*/
+
+.widget {
+  @extend .shadow-block;
+  background: white;
+  overflow: auto;
+  margin-bottom: 35px;
+}
+
+.widget-default {
+
+}
+
+.widget .widget-footer {
+  padding-top: 30px;
+}
+
+.widget .widget-header {
+  padding: 10px 30px;
+  border-bottom: 1px solid #f5f5f5;
+  border-top-left-radius: 3px;
+  /*background-color: #f5f5f5;*/
+  border-top-right-radius: 3px
+}
+
+.widget .widget-body {
+  padding: 30px 30px;
+}
+
+
+
+
+/*post*/
+
+.post {
+  @extend .shadow-block;
+  padding: 35px 35px 20px 35px;
+  background: white;
+  margin-bottom: 35px;
+  position: relative;
+  overflow: hidden;
 }
 
 .post .post-header .post-title {
@@ -143,16 +179,16 @@ a:active, a:focus, a img {
 }
 
 .post-detail {
+  @extend .shadow-block;
   padding: 50px 35px;
   margin-bottom: 20px;
   background: white;
   box-shadow: 1px 1px 2px #888888;
-}
-
-.post-detail {
   font-size: 110%;
   line-height: 2.5em;
 }
+
+
 
 .post-detail img {
   box-sizing: border-box;
@@ -164,41 +200,6 @@ a:active, a:focus, a img {
   height: auto;
 }
 
-/*sidebar*/
-
-.widget {
-  background: white;
-  overflow: auto;
-  margin-bottom: 35px;
-  box-shadow: 1px 1px $shadowBlur $shadowColor;
-  -moz-box-shadow:1px 1px $shadowBlur $shadowColor;
-  -webkit-box-shadow:1px 1px $shadowBlur $shadowColor;
-
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  /*box-shadow:2px 2px 5px #333333;*/
-}
-
-.widget-default {
-
-}
-
-.widget .widget-footer {
-  padding-top: 30px;
-}
-
-.widget .widget-header {
-  padding: 10px 30px;
-  border-bottom: 1px solid #f5f5f5;
-  border-top-left-radius: 3px;
-  /*background-color: #f5f5f5;*/
-  border-top-right-radius: 3px
-}
-
-.widget .widget-body {
-  padding: 30px 30px;
-}
 
 .description-block {
   display: block;
