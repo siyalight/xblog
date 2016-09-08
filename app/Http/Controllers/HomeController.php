@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Repository\PostRepository;
+use App\P;
 use App\Post;
+use App\Project;
 use DB;
 
 class HomeController extends Controller
@@ -27,6 +29,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        dd(Project::all());
         $posts = $this->postRepository->pagedPosts();
         return view('index', ['posts' => $posts]);
     }
