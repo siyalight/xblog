@@ -60,10 +60,13 @@
                 </div>
             </div>
 
-            <div style="margin-top: 20px" class="ds-thread widget widget-default"
+        <div style="margin-top: 20px" class="widget widget-default">
+            <div style="margin-top: 20px" class="ds-thread widget-body"
                  data-thread-key="{{ $post->slug }}"
                  data-title="{{ $post->title }}" data-url="{{ request()->url() }}">
             </div>
+        </div>
+
     </div>
 
 @endsection
