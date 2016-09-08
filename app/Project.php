@@ -15,6 +15,4 @@ class Project extends Model
 
     public $type = 'project';
     protected $table = 'objects';
-
-
 }
