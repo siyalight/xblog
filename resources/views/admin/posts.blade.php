@@ -4,81 +4,83 @@
     <div class="row">
         <div class="col-md-12">
             <div class="widget widget-default">
-                <table class="table table-hover table-bordered table-responsive" style="overflow: auto">
-                    <thead>
-                    <tr>
-                        <th>标题</th>
-                        <th>状态</th>
-                        <th>slug</th>
-                        <th>action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($posts as $post)
-                        <?php
-                        $class = '';
-                        $status = 'Un published';
-                        if ($post->trashed()) {
-                            $class = 'danger';
-                            $status = 'deleted';
-                        } else if ($post->isPublished()) {
-                            $class = 'success';
-                            $status = 'published';
-                        }
-                        ?>
-                        <tr class="{{ $class }}">
-                            <td>{{ $post->title }}</td>
-                            <td>{{ $status }}</td>
-                            <td>{{ $post->slug }}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-default" data-toggle="modal" data-title="{{ $post->title }}"
-                                            data-url="{{ route('post.destroy',$post->id) }}"
-                                            data-force="{{ $post->trashed() }}"
-                                            data-target="#delete-post-modal">
-                                        删除
-                                    </button>
-                                    <a {{ $post->trashed()?'disabled':'' }} href="{{ $post->trashed()?'#':route('post.edit',$post->id) }}"
-                                       class="btn btn-default">
-                                        编辑
-                                    </a>
-                                    @if($post->trashed())
-                                        <form style="display: inline" method="post" action="{{ route('post.restore',$post->id) }}">
-                                            {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-default">
-                                            恢复
-                                            </button>
-                                        </form>
-
-                                    @elseif($post->isPublished())
-                                        <a href="{{ route('post.show',$post->slug) }}"
-                                           class="btn btn-default">
-                                            查看
-                                        </a>
-                                        <form style="display: inline" method="post" action="{{ route('post.publish',$post->id) }}">
-                                            {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-default">
-                                                撤销
-                                            </button>
-                                        </form>
-                                    @else
-                                        <a href="{{ route('post.preview',$post->slug) }}"
-                                           class="btn btn-default">
-                                            预览
-                                        </a>
-                                    <form style="display: inline" method="post" action="{{ route('post.publish',$post->id) }}">
-                                        {{ csrf_field() }}
-                                        <button type="submit" class="btn btn-default">
-                                            发布
-                                        </button>
-                                    </form>
-                                    @endif
-                                </div>
-                            </td>
+                <div class="widget-body">
+                    <table class="table table-hover table-bordered table-responsive">
+                        <thead>
+                        <tr>
+                            <th>标题</th>
+                            <th>状态</th>
+                            {{--<th>slug</th>--}}
+                            <th>action</th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        @foreach($posts as $post)
+                            <?php
+                            $class = '';
+                            $status = 'Un published';
+                            if ($post->trashed()) {
+                                $class = 'danger';
+                                $status = 'deleted';
+                            } else if ($post->isPublished()) {
+                                $class = 'success';
+                                $status = 'published';
+                            }
+                            ?>
+                            <tr class="{{ $class }}">
+                                <td>{{ $post->title }}</td>
+                                <td>{{ $status }}</td>
+                                {{--<td>{{ $post->slug }}</td>--}}
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-default" data-toggle="modal" data-title="{{ $post->title }}"
+                                                data-url="{{ route('post.destroy',$post->id) }}"
+                                                data-force="{{ $post->trashed() }}"
+                                                data-target="#delete-post-modal">
+                                            删除
+                                        </button>
+                                        <a {{ $post->trashed()?'disabled':'' }} href="{{ $post->trashed()?'javascript:void(0)':route('post.edit',$post->id) }}"
+                                           class="btn btn-default">
+                                            编辑
+                                        </a>
+                                        @if($post->trashed())
+                                            <form style="display: inline" method="post" action="{{ route('post.restore',$post->id) }}">
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-default">
+                                                    恢复
+                                                </button>
+                                            </form>
+
+                                        @elseif($post->isPublished())
+                                            <a href="{{ route('post.show',$post->slug) }}"
+                                               class="btn btn-default">
+                                                查看
+                                            </a>
+                                            <form style="display: inline" method="post" action="{{ route('post.publish',$post->id) }}">
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-default">
+                                                    撤销
+                                                </button>
+                                            </form>
+                                        @else
+                                            <a href="{{ route('post.preview',$post->slug) }}"
+                                               class="btn btn-default">
+                                                预览
+                                            </a>
+                                            <form style="display: inline" method="post" action="{{ route('post.publish',$post->id) }}">
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-default">
+                                                    发布
+                                                </button>
+                                            </form>
+                                        @endif
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
                 {{ $posts->links() }}
             </div>
         </div>
@@ -119,7 +121,7 @@
             var force = $(e.relatedTarget).data('force');
             if (force == '1')
             {
-                $('#confirm-btn').text('确定(這將永久刪除)');
+                $('#confirm-btn').text('确定(这将永久刪除)');
                 $('#confirm-btn').attr('class','btn btn-danger');
             }
             $('#span-title').text(title);

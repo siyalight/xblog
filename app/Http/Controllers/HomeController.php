@@ -29,7 +29,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dd(Project::all());
         $posts = $this->postRepository->pagedPosts();
         return view('index', ['posts' => $posts]);
     }

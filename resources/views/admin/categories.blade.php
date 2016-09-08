@@ -4,38 +4,40 @@
     <div class="row">
         <div class="col-md-12">
             <div class="widget widget-default">
-                <table class="table table-hover table-bordered table-responsive" style="overflow: auto">
-                    <thead>
-                    <tr>
-                        <th>名称</th>
-                        <th>日期</th>
-                        <th>文章</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($categories as $category)
+                <div class="widget-body">
+                    <table class="table table-hover table-bordered table-responsive" style="overflow: auto">
+                        <thead>
                         <tr>
-                            <td>{{ $category->name }}</td>
-                            <td>{{ $category->created_at->format('Y-m-d') }}</td>
-                            <td>{{ $category->posts_count }}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <a href="{{ route('category.edit',$category->id) }}" class="btn btn-default">
-                                        编辑
-                                    </a>
-                                    <button class="btn btn-default" data-toggle="modal"
-                                            data-title="{{ $category->name }}"
-                                            data-url="{{ route('category.destroy',$category->id) }}"
-                                            data-target="#delete-category-modal">
-                                        删除
-                                    </button>
-                                </div>
-                            </td>
+                            <th>名称</th>
+                            <th>日期</th>
+                            <th>文章</th>
+                            <th>操作</th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        @foreach($categories as $category)
+                            <tr>
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->created_at->format('Y-m-d') }}</td>
+                                <td>{{ $category->posts_count }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ route('category.edit',$category->id) }}" class="btn btn-default">
+                                            编辑
+                                        </a>
+                                        <button class="btn btn-default" data-toggle="modal"
+                                                data-title="{{ $category->name }}"
+                                                data-url="{{ route('category.destroy',$category->id) }}"
+                                                data-target="#delete-category-modal">
+                                            删除
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
