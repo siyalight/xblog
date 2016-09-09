@@ -36,7 +36,7 @@
         </div>
     </div>
     <!-- post content -->
-    <div class="post-content">
+    <div class="post-description">
         <p>
             {{ $post->description }}
         </p>

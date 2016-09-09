@@ -1,14 +1,13 @@
 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
     <label for="title" class="control-label">文章标题*</label>
-
     <input id="title" type="text" class="form-control" name="title"
            value="{{ isset($post) ? $post->title : old('title') }}"
            autofocus>
 
     @if ($errors->has('title'))
         <span class="help-block">
-                                        <strong>{{ $errors->first('title') }}</strong>
-                                    </span>
+            <strong>{{ $errors->first('title') }}</strong>
+        </span>
     @endif
 </div>
 <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
@@ -19,21 +18,20 @@
 
     @if ($errors->has('description'))
         <span class="help-block">
-                                        <strong>{{ $errors->first('description') }}</strong>
-                                    </span>
+            <strong>{{ $errors->first('description') }}</strong>
+        </span>
     @endif
 </div>
 
 <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
     <label for="slug" class="control-label">文章slug*</label>
-
     <input id="slug" type="text" class="form-control" name="slug"
            value="{{ isset($post) ? $post->slug : old('slug') }}">
 
     @if ($errors->has('slug'))
         <span class="help-block">
-                                        <strong>{{ $errors->first('slug') }}</strong>
-                                    </span>
+            <strong>{{ $errors->first('slug') }}</strong>
+        </span>
     @endif
 </div>
 
@@ -51,8 +49,8 @@
 
     @if ($errors->has('description'))
         <span class="help-block">
-                                        <strong>{{ $errors->first('description') }}</strong>
-                                    </span>
+            <strong>{{ $errors->first('description') }}</strong>
+        </span>
     @endif
 </div>
 <div class="form-group{{ $errors->has('tags[]') ? ' has-error' : '' }}">
@@ -69,8 +67,8 @@
 
     @if ($errors->has('tags[]'))
         <span class="help-block">
-                                        <strong>{{ $errors->first('tags[]') }}</strong>
-                                    </span>
+            <strong>{{ $errors->first('tags[]') }}</strong>
+        </span>
     @endif
 </div>
 <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
@@ -78,19 +76,24 @@
 
     <textarea spellcheck="false" id="content" type="text" class="form-control" name="content"
               rows="25"
-              style="line-height: 1.85em; resize: vertical">{{ isset($post) ? $post->content : old('content') }}</textarea>
-    @if ($errors->has('content'))
+              style="line-height: 1.85em; font-size:1.5em;resize: vertical">{{ isset($post) ? $post->content : old('content') }}</textarea>
+    @if($errors->has('content'))
         <span class="help-block">
-                                        <strong>{{ $errors->first('content') }}</strong>
-                                    </span>
+            <strong>{{ $errors->first('content') }}</strong>
+        </span>
     @endif
 </div>
 
 <div class="form-group">
     <label for="status" class="control-label">文章狀態</label>
     <select id="status" name="status" class="form-control">
-        <option value="0">草稿</option>
-        <option value="1">发布</option>
+        @if(isset($post))
+            <option value="0" {{ $post->status == 0?' selected':'' }}>草稿</option>
+            <option value="1" {{ $post->status == 1?' selected':'' }}>发布</option>
+        @else
+            <option value="0">草稿</option>
+            <option value="1">发布</option>
+        @endif
     </select>
 </div>
 {{ csrf_field() }}

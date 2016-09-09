@@ -10,7 +10,7 @@
             @if(empty($posts))
                 @include('partials.empty')
             @else
-                @each('post.item',$posts,'post');
+                @each('post.item',$posts,'post')
                 @if($posts->lastPage() > 1)
                     {{ $posts->links() }}
                 @endif

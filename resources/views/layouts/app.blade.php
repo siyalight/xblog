@@ -7,8 +7,8 @@
     <meta name="description" content="Stay Hungry.Stay Foolish.">
     <meta name="Keywords" content="Php,Android,Laravel,Spring,Java">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="lufficc">
-    <meta property="og:site_name" content="lufficc">
+    <meta property="og:title" content="lufficc-聪聪">
+    <meta property="og:site_name" content="lufficc-聪聪">
     <meta property="og:description" content="Stay Hungry.Stay Foolish.">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="lufficc">
@@ -29,7 +29,7 @@
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-    <script>
+    {{--<script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function () {
@@ -43,7 +43,7 @@
         })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-81713716-2', 'auto');
         ga('send', 'pageview');
-    </script>
+    </script>--}}
 
 </head>
 <body>

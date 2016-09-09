@@ -1,19 +1,21 @@
-<header class="main-header jumbotron">
+<header class="main-header">
     <div class="container-fluid" style="margin-top: -15px">
-        <nav class="navbar">
+        <nav class="navbar site-navbar"  role="navigation">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle"
-                        data-toggle="collapse" data-target="#example-navbar-collapse">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#blog-navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <div class="collapse navbar-collapse" id="example-navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
+            <div class="collapse navbar-collapse" id="blog-navbar-collapse">
+                <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">文章</a></li>
+                    <li><a href="http://blog.lufficc.com/">博客</a></li>
                     <li><a href="{{ route('page.about') }}">关于</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())
                         <li>
                             <a href="{{ url('/logout') }}" style="color: white;"
@@ -31,27 +33,12 @@
                     @endif
                 </ul>
             </div>
-
         </nav>
-
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            {{--<a class="branding" href="/" title="title">
-                                <img class="img-circle" src="https://avatars1.githubusercontent.com/u/20706332">
-                            </a>--}}
-                            <a style="text-decoration: none" class="branding" href="/">
-                                <h2>{{ Auth::check() ? Auth::user()->name : 'lufficc' }}</h2>
-                            </a>
-                            <p>Stay hungry.Stay Foolish.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container"  style="margin-top: -20px">
+        <a style="text-decoration: none" class="branding" href="/">
+            <h2>{{ Auth::check() ? Auth::user()->name : 'lufficc' }}</h2>
+        </a>
+        <p>Stay hungry.Stay Foolish.</p>
     </div>
 </header>
