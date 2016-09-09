@@ -4,17 +4,17 @@
     <link href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
 @endsection
 @section('content')
-    <div class="row" style="background-color: inherit">
+    <div class="row">
         <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
             <li class="active">{{ $page->name }}</li>
         </ol>
-        @can('update',$page)
-            <div class="btn-group pull-right">
-                <a class="btn" href="{{ route('page.edit',$page->id) }}"><i class="fa fa-edit"></i></a>
-            </div>
-        @endcan
         <div class="post-detail">
+            @can('update',$page)
+                <div class="btn-group pull-right" style="margin-top: -25px">
+                    <a class="btn" href="{{ route('page.edit',$page->id) }}"><i class="fa fa-edit"></i></a>
+                </div>
+            @endcan
             <div class="center-block">
                 <h1>{{ $page->display_name }}</h1>
             </div>
@@ -22,7 +22,7 @@
             </div>
             <div id="field" data-content="{{ $page->content }}"></div>
         </div>
-        <div style="margin-top: 20px" class="widget widget-default">
+        <div class="widget widget-default">
             <div class="ds-thread widget-body"
                  data-thread-key="{{$page->name.$page->display_name }}"
                  data-title="{{ $page->title }}" data-url="{{ request()->url() }}">
@@ -35,7 +35,6 @@
     <script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
     <script src="https://cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
     <script>
-
         document.getElementById('content').innerHTML =
                 marked($('#field').data("content"), {
                     renderer: new marked.Renderer(),
@@ -49,6 +48,7 @@
                         return hljs.highlightAuto(code).value;
                     }
                 });
+        $('table').addClass('table table-hover table-bordered table-responsive');
     </script>
 
     <script type="text/javascript">

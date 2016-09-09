@@ -130,7 +130,6 @@ a:active, a:focus, a img {
   padding: 10px 30px;
   border-bottom: 1px solid #f5f5f5;
   border-top-left-radius: 3px;
-  /*background-color: #f5f5f5;*/
   border-top-right-radius: 3px
 }
 
@@ -200,11 +199,13 @@ a:active, a:focus, a img {
   padding: 0 3px;
 }
 
+/* post detail*/
 .post-detail {
   @extend .shadow-block;
-  padding: 50px 35px;
+  padding: 35px 35px;
   margin-bottom: 20px;
   background: white;
+  overflow: auto;
 }
 
 .post-detail {
@@ -217,10 +218,14 @@ a:active, a:focus, a img {
   margin: 10px auto;
   border: 1px solid #ddd;
   display: block;
-  padding: 5px;
+  padding: 2px;
   max-width: 100%;
   height: auto;
 }
+
+
+/*widget-user*/
+
 
 .description-block {
   display: block;
@@ -238,8 +243,6 @@ a:active, a:focus, a img {
 .widget .border-right {
   border-right: 1px solid #f4f4f4;
 }
-
-/*widget-user*/
 
 $userProfileHeight: 120px;
 $userAvatarRadius: 45px;
@@ -317,7 +320,7 @@ pre, .highlight {
 }
 
 pre {
-  border-left: 3px solid $mainColor;
+  border-left: 2px solid $mainColor;
 }
 
 pre code {

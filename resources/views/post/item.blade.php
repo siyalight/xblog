@@ -14,12 +14,11 @@
             <span class="post-category">
                            &nbsp;|&nbsp;
                            <i class="fa fa-folder-o"></i>
-                           <span>
                            <a href="{{ route('category.show',$post->category->name) }}">
-                           <span>{{ $post->category->name }}</span>
+                           {{ $post->category->name }}
                            </a>
                            </span>
-                           </span>
+
             {{--<span class="post-comments-count">
                            &nbsp;|&nbsp;
                            <i class="fa fa-comment-o" aria-hidden="true"></i>

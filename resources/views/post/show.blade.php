@@ -4,69 +4,62 @@
     <link href="//cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
 @endsection
 @section('content')
-    <div class="row" style="background-color: inherit">
-        @can('update',$post)
-            <div class="btn-group pull-right">
-                <a class="btn" href="{{ route('post.edit',$post->id) }}"><i class="fa fa-edit"></i></a>
-                <a class="btn" role="button" data-toggle="modal" data-target="#delete-post-modal">
-                    <i class="fa fa-trash-o"></i>
-                </a>
-            </div>
-            @include('post.delete-modal',$post)
-            @endif
-            <div class="post-detail">
-                <div class="center-block">
-                    <h1>{{ $post->title }}</h1>
-                    <div class="post-meta">
+    <div class="row">
+        <div class="post-detail">
+            @can('update',$post)
+                <div class="btn-group pull-right" style="margin-top: -25px">
+                    <a class="btn" href="{{ route('post.edit',$post->id) }}"><i class="fa fa-edit"></i></a>
+                    <a class="btn" role="button" data-toggle="modal" data-target="#delete-post-modal">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                </div>
+                @include('post.delete-modal',$post)
+            @endcan
+            <div class="center-block">
+                <h1>{{ $post->title }}</h1>
+                <div class="post-meta">
                            <span class="post-time">
                            <i class="fa fa-calendar-o"></i>
                            <time datetime="2016-08-05T00:10:14+08:00" content="2016-08-05">
                            {{ $post->published_at==null?'Un Published':$post->published_at->format('Y-m-d H:i') }}
                            </time>
                            </span>
-                        <span class="post-category">
+                    <span class="post-category">
                            &nbsp;|&nbsp;
                            <i class="fa fa-folder-o"></i>
-                           <span>
                            <a href="{{ route('category.show',$post->category->name) }}">
-                           <span>{{ $post->category->name }}</span>
+                           {{ $post->category->name }}
                            </a>
                            </span>
+                    {{--<span class="post-comments-count">
+                           &nbsp;|&nbsp;
+                           <i class="fa fa-comment-o" aria-hidden="true"></i>
+                           <span>7条评论</span>
+                           </span>--}}
+                    <span>
+                           &nbsp;|&nbsp;
+                           <i class="fa fa-eye"></i>
+                           <span>{{ $post->view_count }}</span>
                            </span>
-                        {{--<span class="post-comments-count">
-                               &nbsp;|&nbsp;
-                               <i class="fa fa-comment-o" aria-hidden="true"></i>
-                               <span>7条评论</span>
-                               </span>
-                        <span>
-                               &nbsp;|&nbsp;
-                               <span class="post-meta-item-icon">
-                               <i class="fa fa-eye"></i>
-                               </span>
-                               <span class="post-meta-item-text">热度</span>
-                               <span class="leancloud-visitors-count">872</span>
-                               </span>--}}
-                    </div>
-                </div>
-                <br>
-                <div id="field" data-content="{{ $post->content }}"></div>
-                <div id="content" style="overflow-x: auto">
-                </div>
-                <div class="pull-left tag-list post-footer" style="font-size: 80%">
-                    <i class="fa fa-tags"></i>
-                    @foreach($post->tags as $tag)
-                        <a href="#">{{ $tag->name }}</a>
-                    @endforeach
                 </div>
             </div>
-
-        <div style="margin-top: 20px" class="widget widget-default">
-            <div style="margin-top: 20px" class="ds-thread widget-body"
+            <br>
+            <div id="field" data-content="{{ $post->content }}"></div>
+            <div id="content">
+            </div>
+            <div class="pull-left tag-list post-footer" style="font-size: 80%">
+                <i class="fa fa-tags"></i>
+                @foreach($post->tags as $tag)
+                    <a href="#">{{ $tag->name }}</a>
+                @endforeach
+            </div>
+        </div>
+        <div class="widget widget-default">
+            <div class="ds-thread widget-body"
                  data-thread-key="{{ $post->slug }}"
                  data-title="{{ $post->title }}" data-url="{{ request()->url() }}">
             </div>
         </div>
-
     </div>
 
 @endsection
@@ -90,7 +83,7 @@
                     }
                 });
 
-        $('table').addClass('table table-bordered table-striped table-responsive')
+        $('table').addClass('table table-hover table-bordered table-responsive');
     </script>
 
     <script type="text/javascript">
