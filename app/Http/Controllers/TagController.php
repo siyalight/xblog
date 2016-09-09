@@ -16,6 +16,7 @@ class TagController extends Controller
     public function __construct(TagRepository $tagRepository)
     {
         $this->tagRepository = $tagRepository;
+        $this->middleware(['auth', 'admin']);
     }
 
     public function store(Request $request)

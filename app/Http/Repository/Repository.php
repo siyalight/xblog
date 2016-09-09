@@ -14,6 +14,9 @@ abstract class Repository
 {
     public $time = 1440;
 
+    /**
+     * @return string
+     */
     public abstract function tag();
 
     public function remember($key, Closure $entity)

@@ -45,6 +45,11 @@ class AdminController extends Controller
         return view('admin.index', compact('info'));
     }
 
+    public function settings()
+    {
+        return view('admin.settings');
+    }
+
     public function posts()
     {
         $posts = $this->postRepository->pagedPostsWithoutGlobalScopes();

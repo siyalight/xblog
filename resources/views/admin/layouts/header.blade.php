@@ -13,7 +13,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ route('admin.index') }}">后台主页</a></li>
                     <li><a href="{{ route('post.create') }}">写作</a></li>
-                    <li><a href="{{ route('page.create') }}">New页面</a></li>
+                    <li><a href="{{ route('admin.settings') }}">设置</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ url('/') }}">回到站点</a></li>

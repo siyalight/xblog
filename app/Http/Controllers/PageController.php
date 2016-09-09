@@ -20,6 +20,7 @@ class PageController extends Controller
     public function __construct(PageRepository $pageRepository)
     {
         $this->pageRepository = $pageRepository;
+        $this->middleware(['auth', 'admin'], ['except' => 'about']);
     }
 
 
@@ -56,9 +57,7 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param $name
      * @return \Illuminate\Http\Response
-     * @internal param int $id
      */
     public function about()
     {
@@ -83,7 +82,7 @@ class PageController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param Page $page
-     * @return \Illuminate\Http\Response
+     * @return mixed
      * @internal param $name
      * @internal param string $page
      * @internal param int $id

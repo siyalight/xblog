@@ -25,6 +25,7 @@ Route::get('category/{name}', ['uses' => 'CategoryController@show', 'as' => 'cat
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
 
     Route::get('/index', ['uses' => 'AdminController@index', 'as' => 'admin.index']);
+    Route::get('/settings', ['uses' => 'AdminController@settings', 'as' => 'admin.settings']);
     Route::get('/posts', ['uses' => 'AdminController@posts', 'as' => 'admin.posts']);
     Route::get('/tags', ['uses' => 'AdminController@tags', 'as' => 'admin.tags']);
     Route::get('/users', ['uses' => 'AdminController@users', 'as' => 'admin.users']);
@@ -37,7 +38,6 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
 
     Route::delete('tag/{tag}', ['uses' => 'TagController@destroy', 'as' => 'tag.destroy']);
     Route::post('tag', ['uses' => 'TagController@store', 'as' => 'tag.store']);
-
 
     Route::resource('post', 'PostController', ['except' => ['show', 'index']]);
     Route::resource('category', 'CategoryController', ['except' => ['index', 'show', 'create']]);
