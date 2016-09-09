@@ -237,7 +237,7 @@ pre, .highlight {
   font-size: 1em;
   color: #4d4d4c;
   border: none;
-  border-radius: 0;
+  border-radius: 3px;
   background: #f7f7f7;
   line-height: 1.6;
   word-wrap: normal; }
