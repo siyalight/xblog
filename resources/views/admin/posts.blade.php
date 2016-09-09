@@ -21,10 +21,10 @@
                             $status = 'Un published';
                             if ($post->trashed()) {
                                 $class = 'danger';
-                                $status = 'deleted';
+                                $status = 'Deleted';
                             } else if ($post->isPublished()) {
                                 $class = 'success';
-                                $status = 'published';
+                                $status = 'Published';
                             }
                             ?>
                             <tr class="{{ $class }}">
@@ -33,7 +33,7 @@
                                 {{--<td>{{ $post->slug }}</td>--}}
                                 <td>
                                     <div class="btn-group">
-                                        <button class="btn btn-default" data-toggle="modal" data-title="{{ $post->title }}"
+                                        <button class="btn btn-danger" data-toggle="modal" data-title="{{ $post->title }}"
                                                 data-url="{{ route('post.destroy',$post->id) }}"
                                                 data-force="{{ $post->trashed() }}"
                                                 data-target="#delete-post-modal">
@@ -80,13 +80,11 @@
                         @endforeach
                         </tbody>
                     </table>
+                    {{ $posts->links() }}
                 </div>
-                {{ $posts->links() }}
             </div>
         </div>
     </div>
-
-
     {{-- modal --}}
     <div class="modal fade" id="delete-post-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">

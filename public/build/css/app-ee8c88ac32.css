@@ -79,10 +79,10 @@ a:active, a:focus, a img {
   margin-bottom: 35px; }
 
 .widget .widget-body {
-  padding: 30px 30px 10px 30px; }
+  padding: 30px 30px 30px 30px; }
 
 .widget .widget-footer {
-  padding: 10px 30px; }
+  padding: 0 30px 10px 30px; }
 
 .widget .widget-footer .widget-meta {
   color: #959595;

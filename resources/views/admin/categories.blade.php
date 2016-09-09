@@ -5,6 +5,9 @@
         <div class="col-md-12">
             <div class="widget widget-default">
                 <div class="widget-body">
+                    <a class="btn pull-right" role="button" data-toggle="modal" data-target="#add-category-modal">
+                        <i class="fa fa-folder-o"></i>
+                    </a>
                     <table class="table table-hover table-bordered table-responsive" style="overflow: auto">
                         <thead>
                         <tr>
@@ -25,7 +28,7 @@
                                         <a href="{{ route('category.edit',$category->id) }}" class="btn btn-default">
                                             编辑
                                         </a>
-                                        <button class="btn btn-default" data-toggle="modal"
+                                        <button class="btn btn-danger" data-toggle="modal"
                                                 data-title="{{ $category->name }}"
                                                 data-url="{{ route('category.destroy',$category->id) }}"
                                                 data-target="#delete-category-modal">
@@ -59,12 +62,13 @@
                         <input type="hidden" name="_method" value="DELETE">
                         {{ csrf_field() }}
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="submit" class="btn btn-primary">确定</button>
+                        <button type="submit" class="btn btn-danger">确定</button>
                     </form>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    @include('admin.modals.add-category-modal')
 @endsection
 @section('script')
     <script>

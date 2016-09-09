@@ -97,7 +97,7 @@ class CategoryController extends Controller
         ]);
 
         if ($this->categoryRepository->update($request, $category)) {
-            return redirect()->route('admin.index')->with('success', '分类' . $request['name'] . '修改成功');
+            return redirect()->route('admin.categories')->with('success', '分类' . $request['name'] . '修改成功');
         }
 
         return redirect()->back()->withInput()->withErrors('分类' . $request['name'] . '修改失败');

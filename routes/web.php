@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
 
 
     Route::resource('post', 'PostController', ['except' => ['show', 'index']]);
-    Route::resource('category', 'CategoryController', ['except' => ['index', 'show']]);
+    Route::resource('category', 'CategoryController', ['except' => ['index', 'show', 'create']]);
     Route::resource('page', 'PageController', ['except' => ['show', 'index']]);
 
 
