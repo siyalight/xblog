@@ -1,9 +1,9 @@
 $mainColor: #607D8B;
 $shadowColor: #666666;
 $shadowBlur: 3px;
+
 html, body {
   color: #505050;
-  line-height: 1.75em;
   background: #ebebeb;
   font-family: "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;
 }
@@ -108,8 +108,23 @@ a:active, a:focus, a img {
 
 }
 
+.widget .widget-body {
+  padding: 30px 30px 10px 30px;
+}
+
 .widget .widget-footer {
-  padding-top: 30px;
+  padding: 10px 30px;
+}
+
+
+.widget .widget-footer .widget-meta {
+  color: #959595;
+  font-size: 12px;
+  margin: 14px 0 5px;
+}
+
+.meta-item{
+  padding: 0 10px;
 }
 
 .widget .widget-header {
@@ -120,9 +135,7 @@ a:active, a:focus, a img {
   border-top-right-radius: 3px
 }
 
-.widget .widget-body {
-  padding: 30px 30px;
-}
+
 
 /*post*/
 

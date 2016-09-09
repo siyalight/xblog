@@ -11,15 +11,15 @@
 |
 */
 
+Auth::routes();
 
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
 Route::get('/home', ['uses' => 'HomeController@home']);
-
-Route::get('/passport', ['uses' => 'HomeController@passport', 'as' => 'passport']);
-
-Auth::routes();
-Route::get('post/{slug}', ['uses' => 'PostController@show', 'as' => 'post.show']);
 Route::get('/about', ['uses' => 'PageController@about', 'as' => 'page.about']);
+Route::get('/projects', ['uses' => 'HomeController@projects', 'as' => 'projects']);
+
+
+Route::get('post/{slug}', ['uses' => 'PostController@show', 'as' => 'post.show']);
 Route::get('category/{name}', ['uses' => 'CategoryController@show', 'as' => 'category.show']);
 
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {

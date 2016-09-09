@@ -13,6 +13,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">文章</a></li>
                     <li><a href="http://blog.lufficc.com/">博客</a></li>
+                    <li><a href="{{ url('projects') }}">项目</a></li>
                     <li><a href="{{ route('page.about') }}">关于</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

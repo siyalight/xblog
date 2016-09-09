@@ -37,9 +37,8 @@ class HomeController extends Controller
     {
         return redirect('/');
     }
-
-    public function passport()
+    public function projects()
     {
-        return view('passport');
+        return view('projects');
     }
 }
