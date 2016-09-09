@@ -6,7 +6,7 @@
     <div class="widget-user-image">
         <img class="img-circle" src="https://avatars1.githubusercontent.com/u/20706332" alt="User Avatar">
     </div>
-    <div class="widget-footer">
+    <div class="widget-footer" style="padding-top: 25px;">
         <div class="row">
             <div class="col-sm-3 border-right">
                 <div class="description-block">
