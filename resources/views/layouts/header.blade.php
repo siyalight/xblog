@@ -19,8 +19,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())
                         <li>
-                            <a href="{{ url('/logout') }}" style="color: white;"
-                               onclick="event.preventDefault();
+                            <a href="{{ url('/logout') }}" style="color: white;" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                 退出登录
                             </a>
