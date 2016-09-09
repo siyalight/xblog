@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Repository\MapRepository;
 use App\Http\Repository\PostRepository;
 use App\P;
 use App\Post;
@@ -12,14 +13,18 @@ class HomeController extends Controller
 {
     protected $postRepository;
 
+    protected $mapRepository;
+
     /**
      * Create a new controller instance.
      *
      * @param PostRepository $postRepository
+     * @param MapRepository $mapRepository
      */
-    public function __construct(PostRepository $postRepository)
+    public function __construct(PostRepository $postRepository, MapRepository $mapRepository)
     {
         $this->postRepository = $postRepository;
+        $this->mapRepository = $mapRepository;
     }
 
     /**
@@ -29,7 +34,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = $this->postRepository->pagedPosts();
+        $page_size = 7;
+        if ($map = $this->mapRepository->get('page_size')) {
+            $page_size = $map->value;
+        }
+        $posts = $this->postRepository->pagedPosts($page_size);
         return view('index', ['posts' => $posts]);
     }
 
@@ -37,6 +46,7 @@ class HomeController extends Controller
     {
         return redirect('/');
     }
+
     public function projects()
     {
         return view('projects');

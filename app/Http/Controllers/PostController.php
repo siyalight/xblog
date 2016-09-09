@@ -149,7 +149,7 @@ class PostController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param $id
-     * @return \Illuminate\Http\Response
+     * @return mixed
      * @internal param Post $post
      * @internal param int $id
      */
@@ -184,7 +184,7 @@ class PostController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
     public function destroy($id)
     {

@@ -116,14 +116,13 @@ a:active, a:focus, a img {
   padding: 0 30px 10px 30px;
 }
 
-
 .widget .widget-footer .widget-meta {
   color: #959595;
   font-size: 12px;
   margin: 14px 0 5px;
 }
 
-.meta-item{
+.meta-item {
   padding: 0 10px;
 }
 
@@ -134,8 +133,6 @@ a:active, a:focus, a img {
   /*background-color: #f5f5f5;*/
   border-top-right-radius: 3px
 }
-
-
 
 /*post*/
 
@@ -244,13 +241,16 @@ a:active, a:focus, a img {
 
 /*widget-user*/
 
+$userProfileHeight: 120px;
+$userAvatarRadius: 45px;
+
 .widget-user {
   position: relative;
 }
 
 .widget-user .widget-user-header {
   padding: 20px;
-  height: 120px;
+  height: $userProfileHeight;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
   color: white;
@@ -270,15 +270,19 @@ a:active, a:focus, a img {
 
 .widget-user .widget-user-image {
   position: absolute;
-  top: 65px;
+  top: $userProfileHeight - $userAvatarRadius;
   left: 50%;
   margin-left: -45px;
 }
 
 .widget-user .widget-user-image > img {
-  width: 90px;
+  width: $userAvatarRadius * 2;
   height: auto;
   border: 3px solid #fff;
+}
+
+.widget-user .widget-user-footer {
+  padding: $userAvatarRadius 30px 10px 30px;
 }
 
 /*footer*/
@@ -304,16 +308,18 @@ pre, .highlight {
   margin: 20px 0;
   padding: 15px;
   font-size: 1em;
-  color: rgb(77,77,76);
+  color: rgb(77, 77, 76);
   border: none;
   border-radius: 3px;
-  background: rgb(247,247,247);
+  background: rgb(247, 247, 247);
   line-height: 1.6;
   word-wrap: normal;
 }
-pre{
+
+pre {
   border-left: 3px solid $mainColor;
 }
+
 pre code {
   overflow: auto;
   word-wrap: normal;
