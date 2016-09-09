@@ -26,6 +26,9 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
 
     Route::get('/index', ['uses' => 'AdminController@index', 'as' => 'admin.index']);
     Route::get('/settings', ['uses' => 'AdminController@settings', 'as' => 'admin.settings']);
+    Route::post('/settings', ['uses' => 'AdminController@saveSettings', 'as' => 'admin.save-settings']);
+
+
     Route::get('/posts', ['uses' => 'AdminController@posts', 'as' => 'admin.posts']);
     Route::get('/tags', ['uses' => 'AdminController@tags', 'as' => 'admin.tags']);
     Route::get('/users', ['uses' => 'AdminController@users', 'as' => 'admin.users']);
@@ -42,6 +45,5 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
     Route::resource('post', 'PostController', ['except' => ['show', 'index']]);
     Route::resource('category', 'CategoryController', ['except' => ['index', 'show', 'create']]);
     Route::resource('page', 'PageController', ['except' => ['show', 'index']]);
-
 
 });

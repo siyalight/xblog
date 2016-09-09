@@ -9,9 +9,10 @@ namespace App\Http\ViewComposers;
 
 use App\Category;
 use App\Http\Repository\CategoryRepository;
+use App\Http\Repository\MapRepository;
 use Illuminate\View\View;
 
-class ViewComposer
+class CategoriesComposer
 {
 
     protected $categoryRepository;
@@ -30,7 +31,7 @@ class ViewComposer
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
+     * @param  View $view
      * @return void
      */
     public function compose(View $view)

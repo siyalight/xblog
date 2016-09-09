@@ -8,7 +8,6 @@
 namespace App\Http\Repository;
 
 use App\Map;
-use App\Tag;
 use Illuminate\Http\Request;
 
 /**
@@ -21,10 +20,37 @@ class MapRepository extends Repository
 
     public function getAll()
     {
-        $tags = $this->remember('tag.all', function () {
+        $maps = $this->remember('map.all', function () {
             return Map::all();
         });
-        return $tags;
+        return $maps;
+    }
+
+    public function getByTag($tag)
+    {
+        $maps = $this->remember('map.tag.' . $tag, function () use ($tag) {
+            return Map::where('tag', $tag)->get();
+        });
+        return $maps;
+    }
+
+    public function getArrayByTag($tag)
+    {
+        $maps = $this->getByTag($tag);
+        $arr = [];
+        foreach ($maps as $map)
+        {
+            $arr[$map->key] = $map->value;
+        }
+        return $arr;
+    }
+
+    public function get($key)
+    {
+        $map = $this->remember('map.one.' . $key, function ()  use ($key){
+            return Map::where('key', $key)->first();
+        });
+        return $map;
     }
 
     public function create(Request $request)
@@ -32,11 +58,12 @@ class MapRepository extends Repository
         $this->clearCache();
 
         $map = Map::create([
-            'name' => $request['name'],
+            'key' => $request['key'],
             'value' => $request['value'],
         ]);
         return $map;
     }
+
     public function tag()
     {
         return MapRepository::$tag;

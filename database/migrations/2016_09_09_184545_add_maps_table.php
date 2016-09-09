@@ -16,6 +16,7 @@ class AddMapsTable extends Migration
         Schema::create('maps', function (Blueprint $table) {
             $table->increments('id');
             $table->string('key')->unique();
+            $table->string('tag')->index();
             $table->text('value')->nullable(false);
         });
     }

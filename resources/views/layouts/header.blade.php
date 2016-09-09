@@ -39,6 +39,6 @@
         <a style="text-decoration: none" class="branding" href="/">
             <h2 style="-webkit-text-stroke: 1px #555555;">{{ Auth::check() ? Auth::user()->name : 'lufficc' }}</h2>
         </a>
-        <p>Stay hungry.Stay Foolish.</p>
+        <p>{{ $description or '' }}</p>
     </div>
 </header>

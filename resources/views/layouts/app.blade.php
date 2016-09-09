@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Stay Hungry.Stay Foolish.">
+    <meta name="description" content="{{ $description or '' }}">
     <meta name="Keywords" content="Php,Android,Laravel,Spring,Java">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="lufficc-聪聪">
-    <meta property="og:site_name" content="lufficc-聪聪">
+    <meta property="og:title" content="{{ $title or '' }}">
+    <meta property="og:site_name" content="{{ $title or '' }}">
     <meta property="og:description" content="Stay Hungry.Stay Foolish.">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="lufficc">
@@ -16,7 +16,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>lufficc-聪聪 @yield('title')</title>
+    <title>{{ $title or '' }} @yield('title')</title>
 
     <!-- Styles -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-    <script>
+    {{--<script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function () {
@@ -44,7 +44,7 @@
         })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-81713716-2', 'auto');
         ga('send', 'pageview');
-    </script>
+    </script>--}}
 
 </head>
 <body>

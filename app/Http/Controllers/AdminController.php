@@ -4,32 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Repository\CategoryRepository;
+use App\Http\Repository\MapRepository;
 use App\Http\Repository\PostRepository;
 use App\Http\Repository\TagRepository;
 use App\Http\Requests;
+use App\Map;
 use App\Page;
 use App\Post;
 use App\Tag;
 use App\User;
 use DB;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     protected $postRepository;
     protected $tagRepository;
     protected $categoryRepository;
+    protected $mapRepository;
 
     /**
      * AdminController constructor.
      * @param PostRepository $postRepository
      * @param CategoryRepository $categoryRepository
      * @param TagRepository $tagRepository
+     * @param MapRepository $mapRepository
      */
-    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, TagRepository $tagRepository)
+    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, TagRepository $tagRepository, MapRepository $mapRepository)
     {
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
+        $this->mapRepository = $mapRepository;
         $this->middleware(['auth', 'admin']);
     }
 
@@ -47,7 +53,24 @@ class AdminController extends Controller
 
     public function settings()
     {
-        return view('admin.settings');
+        $settings = $this->mapRepository->getArrayByTag('settings');
+        return view('admin.settings',$settings);
+    }
+
+    public function saveSettings(Request $request)
+    {
+        $inputs = $request->except('_token');
+
+        foreach ($inputs as $key => $value) {
+            $map = Map::firstOrNew([
+                'key' => $key,
+            ]);
+            $map->tag = 'settings';
+            $map->value = $value;
+            $map->save();
+        }
+        $this->mapRepository->clearCache();
+        return redirect()->back()->with('success','保存成功');
     }
 
     public function posts()

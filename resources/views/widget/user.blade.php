@@ -1,10 +1,10 @@
 <div class="widget widget-user" style="overflow: hidden">
-    <div class="widget-user-header" style="background: url('/img/luffy.jpg') center center;">
+    <div class="widget-user-header" style="background: url('{{ $profile_image or '' }}') center center;">
         <h3 class="widget-user-username">lufficc</h3>
         <h5 class="widget-user-desc">One piece</h5>
     </div>
     <div class="widget-user-image">
-        <img class="img-circle" src="https://avatars1.githubusercontent.com/u/20706332" alt="User Avatar">
+        <img class="img-circle" src="{{ $avatar or '' }}" alt="User Avatar">
     </div>
     <div class="widget-footer" style="padding-top: 30px;">
         <div class="row">
