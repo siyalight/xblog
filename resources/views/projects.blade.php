@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="projects row">
-        <div class="blankslate"><h3>Loading...</h3></div>
+        <div class="center-block"><h3>Loading...</h3></div>
     </div>
 @endsection
 @section('script')

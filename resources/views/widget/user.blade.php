@@ -15,8 +15,7 @@
             </div>
             <div class="col-sm-3 border-right">
                 <div class="description-block">
-                    <a href="{{ config('social.github') }}" class="description-header fa-lg"><i class="fa fa-github fa-lg"
-                                                                                       aria-hidden="true"></i></a>
+                    <a href="{{ config('social.github') }}" class="description-header fa-lg"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="col-sm-3 border-right">
