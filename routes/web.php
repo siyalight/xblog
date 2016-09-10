@@ -18,7 +18,6 @@ Route::get('/home', ['uses' => 'HomeController@home']);
 Route::get('/about', ['uses' => 'PageController@about', 'as' => 'page.about']);
 Route::get('/projects', ['uses' => 'HomeController@projects', 'as' => 'projects']);
 Route::get('/search', ['uses' => 'HomeController@search', 'as' => 'search']);
-Route::post('/upload', ['uses' => 'HomeController@upload', 'as' => 'upload']);
 
 
 Route::get('post/{slug}', ['uses' => 'PostController@show', 'as' => 'post.show']);
@@ -26,9 +25,12 @@ Route::get('category/{name}', ['uses' => 'CategoryController@show', 'as' => 'cat
 
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
 
+
+
     Route::get('/', ['uses' => 'AdminController@index', 'as' => 'admin.index']);
     Route::get('/settings', ['uses' => 'AdminController@settings', 'as' => 'admin.settings']);
     Route::post('/settings', ['uses' => 'AdminController@saveSettings', 'as' => 'admin.save-settings']);
+    Route::post('/upload/image', ['uses' => 'AdminController@uploadImage', 'as' => 'admin.upload.image']);
 
 
     Route::get('/posts', ['uses' => 'AdminController@posts', 'as' => 'admin.posts']);
@@ -36,6 +38,8 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
     Route::get('/users', ['uses' => 'AdminController@users', 'as' => 'admin.users']);
     Route::get('/pages', ['uses' => 'AdminController@pages', 'as' => 'admin.pages']);
     Route::get('/categories', ['uses' => 'AdminController@categories', 'as' => 'admin.categories']);
+    Route::get('/images', ['uses' => 'AdminController@images', 'as' => 'admin.images']);
+
 
     Route::post('post/{post}/restore', ['uses' => 'PostController@restore', 'as' => 'post.restore']);
     Route::get('post/{slug}/preview', ['uses' => 'PostController@preview', 'as' => 'post.preview']);

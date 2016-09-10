@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddMapsTable extends Migration
+class AddMetaColumnToMapsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class AddMapsTable extends Migration
      */
     public function up()
     {
-        Schema::create('maps', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('key')->unique();
-            $table->string('tag')->index();
-            $table->text('value')->nullable(true);
+        Schema::table('maps', function (Blueprint $table) {
+            $table->json('meta')->nullable(true);
         });
     }
 
@@ -28,6 +25,8 @@ class AddMapsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('maps');
+        Schema::table('maps', function (Blueprint $table) {
+            $table->dropColumn('meta');
+        });
     }
 }

@@ -38,8 +38,7 @@ class MapRepository extends Repository
     {
         $maps = $this->getByTag($tag);
         $arr = [];
-        foreach ($maps as $map)
-        {
+        foreach ($maps as $map) {
             $arr[$map->key] = $map->value;
         }
         return $arr;
@@ -47,7 +46,7 @@ class MapRepository extends Repository
 
     public function get($key)
     {
-        $map = $this->remember('map.one.' . $key, function ()  use ($key){
+        $map = $this->remember('map.one.' . $key, function () use ($key) {
             return Map::where('key', $key)->first();
         });
         return $map;

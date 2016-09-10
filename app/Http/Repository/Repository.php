@@ -19,18 +19,18 @@ abstract class Repository
      */
     public abstract function tag();
 
-    public function remember($key, Closure $entity)
+    public function remember($key, Closure $entity, $tag = null)
     {
-        return cache()->tags($this->tag())->remember($key, $this->time, $entity);
+        return cache()->tags($tag == null ? $this->tag() : $tag)->remember($key, $this->time, $entity);
     }
 
     /**
      * clear all cache whit tag post
-     *
+     * @param null $tag
      */
-    public function clearCache()
+    public function clearCache($tag = null)
     {
-        cache()->tags($this->tag())->flush();
+        cache()->tags($tag == null ? $this->tag() : $tag)->flush();
     }
 
     public function clearAllCache()

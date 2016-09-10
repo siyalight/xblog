@@ -58,9 +58,10 @@ class HomeController extends Controller
         return view('projects');
     }
 
-    public function upload(Request $request)
+    public function uploadImage(Request $request)
     {
-        $path = $request->file('file')->store('test');
+
+        $path = $request->file('image')->store('images');
         return back()->with('success', $path);
     }
 }
