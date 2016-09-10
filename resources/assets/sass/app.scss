@@ -55,6 +55,9 @@ a {
 a:active, a:focus, a img {
   outline: none;
 }
+.site-navbar{
+  align-items: center;
+}
 
 .site-navbar .navbar-toggle {
   border: 1px solid $colorPrimaryDark;
@@ -84,13 +87,16 @@ a:active, a:focus, a img {
 }
 
 .navbar-nav li a {
+  margin: 8px 10px;
+  padding: 5px 20px;
+  border: $colorPrimaryDark solid 1px;
+  border-radius: 20px;
   color: white;
   text-shadow:$shadowColor 1px 1px 2px;
 }
 
 .navbar-nav li a:hover {
   color: $colorAccent;
-  text-shadow:$shadowColor 1px 1px 3px;
 }
 
 .navbar-nav li a:hover {

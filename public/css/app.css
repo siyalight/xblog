@@ -41,6 +41,11 @@ a {
 a:active, a:focus, a img {
   outline: none; }
 
+.site-navbar {
+  -webkit-box-align: center;
+  -ms-grid-row-align: center;
+  align-items: center; }
+
 .site-navbar .navbar-toggle {
   border: 1px solid #546E7A; }
 
@@ -64,12 +69,15 @@ a:active, a:focus, a img {
   border-radius: 1px; }
 
 .navbar-nav li a {
+  margin: 8px 10px;
+  padding: 5px 20px;
+  border: #546E7A solid 1px;
+  border-radius: 20px;
   color: white;
   text-shadow: #666666 1px 1px 2px; }
 
 .navbar-nav li a:hover {
-  color: #FF6E40;
-  text-shadow: #666666 1px 1px 3px; }
+  color: #FF6E40; }
 
 .navbar-nav li a:hover {
   background: #546E7A;
