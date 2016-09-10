@@ -67,7 +67,7 @@
                     <h4 class="modal-title" id="myModalLabel">删除</h4>
                 </div>
                 <div class="modal-body">
-                    确定删除<strong class="bg-info" id="span-title"></strong>吗?
+                    确定删除<strong id="span-title"></strong>吗?
                 </div>
                 <div class="modal-footer">
                     <form id="delete-form" method="post">
