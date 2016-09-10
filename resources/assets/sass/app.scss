@@ -19,6 +19,8 @@ html, body {
 .main-header {
   text-align: center;
   background-color: $colorPrimary;
+  /*background: url("https://drscdn.500px.org/photo/130540669/q%3D85_w%3D560_s%3D1_tf%3D1/6893e0af66d4724ef17de5e165a9a8d7") no-repeat center center;*/
+  background-size: 100% auto;
   color: #fff;
   margin-bottom: 20px;
   padding-top: 30px;
@@ -69,7 +71,7 @@ a:active, a:focus, a img {
 .site-navbar form input[type="text"] {
   border: 1px solid $colorPrimaryDark;
   color: white;
-  background: $colorPrimaryDark;
+  background: transparent;
   vertical-align: middle;
 }
 
@@ -83,10 +85,12 @@ a:active, a:focus, a img {
 
 .navbar-nav li a {
   color: white;
+  text-shadow:$shadowColor 1px 1px 2px;
 }
 
 .navbar-nav li a:hover {
   color: $colorAccent;
+  text-shadow:$shadowColor 1px 1px 3px;
 }
 
 .navbar-nav li a:hover {
@@ -147,7 +151,7 @@ a:active, a:focus, a img {
   border-top-right-radius: 3px;
   color: #333;
   border-bottom: 1px solid #ddd;
-  background-color: #f5f5f5;
+  background-color: #F5F8FA;
 }
 
 /*post*/

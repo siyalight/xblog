@@ -11,6 +11,8 @@ html, body {
 .main-header {
   text-align: center;
   background-color: #607D8B;
+  /*background: url("https://drscdn.500px.org/photo/130540669/q%3D85_w%3D560_s%3D1_tf%3D1/6893e0af66d4724ef17de5e165a9a8d7") no-repeat center center;*/
+  background-size: 100% auto;
   color: #fff;
   margin-bottom: 20px;
   padding-top: 30px;
@@ -51,7 +53,7 @@ a:active, a:focus, a img {
 .site-navbar form input[type="text"] {
   border: 1px solid #546E7A;
   color: white;
-  background: #546E7A;
+  background: transparent;
   vertical-align: middle; }
 
 .navbar-toggle .icon-bar {
@@ -62,10 +64,12 @@ a:active, a:focus, a img {
   border-radius: 1px; }
 
 .navbar-nav li a {
-  color: white; }
+  color: white;
+  text-shadow: #666666 1px 1px 2px; }
 
 .navbar-nav li a:hover {
-  color: #FF6E40; }
+  color: #FF6E40;
+  text-shadow: #666666 1px 1px 3px; }
 
 .navbar-nav li a:hover {
   background: #546E7A;
@@ -108,7 +112,7 @@ a:active, a:focus, a img {
   border-top-right-radius: 3px;
   color: #333;
   border-bottom: 1px solid #ddd;
-  background-color: #f5f5f5; }
+  background-color: #F5F8FA; }
 
 /*post*/
 .post {

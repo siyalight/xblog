@@ -47,7 +47,12 @@
                                 <input class="form-control" type="text" name="profile_image" value="{{ $profile_image or ''}}">
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">背景图片</div>
+                                <input class="form-control" type="text" name="background_image" value="{{ $background_image or ''}}">
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-4 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
