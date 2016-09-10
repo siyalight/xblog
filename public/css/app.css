@@ -47,6 +47,12 @@ a:active, a:focus, a img {
 .site-navbar .navbar-toggle .icon-bar {
   background-color: #ddd; }
 
+.site-navbar form input[type="text"] {
+  border: 1px solid #546E7A;
+  color: white;
+  background: #546E7A;
+  vertical-align: middle; }
+
 .navbar-toggle .icon-bar {
   display: block;
   width: 22px;

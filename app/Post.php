@@ -24,6 +24,16 @@ class Post extends Model
         static::addGlobalScope(new PublishedScope());
     }
 
+    /*public function toSearchableArray()
+    {
+        return [
+            'title' => $this->title,
+            'description' => $this->description,
+            'content' => $this->content,
+            'view_count' => $this->view_count,
+        ];
+    }*/
+
     /**
      * The attributes that should be mutated to dates.
      *

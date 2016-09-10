@@ -32,6 +32,10 @@
                         <li><a href="{{ url('register') }}">注册</a></li>
                     @endif
                 </ul>
+                <form class="navbar-form navbar-right" role="search" method="get" action="{{ route('search') }}">
+                    <input type="text" class="form-control" name="query" placeholder="搜索" required>
+                    {{--<button type="submit" class="btn btn-default">搜索</button>--}}
+                </form>
             </div>
         </nav>
     </div>
