@@ -24,15 +24,16 @@
                                 <td>{{ $category->created_at->format('Y-m-d') }}</td>
                                 <td>{{ $category->posts_count }}</td>
                                 <td>
-                                    <div class="btn-group">
-                                        <a href="{{ route('category.edit',$category->id) }}" class="btn btn-default">
-                                            编辑
+                                    <div>
+                                        <a href="{{ route('category.edit',$category->id) }}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="编辑">
+                                            <i class="fa fa-pencil fa-fw"></i>
                                         </a>
                                         <button class="btn btn-danger" data-toggle="modal"
+                                                data-toggle="tooltip" data-placement="top" title="删除"
                                                 data-title="{{ $category->name }}"
                                                 data-url="{{ route('category.destroy',$category->id) }}"
                                                 data-target="#delete-category-modal">
-                                            删除
+                                            <i class="fa fa-trash-o fa-fw"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -55,7 +56,7 @@
                     <h4 class="modal-title" id="myModalLabel">删除</h4>
                 </div>
                 <div class="modal-body">
-                    确定删除<span id="span-title"></span>吗?
+                    确定删除<strong id="span-title"></strong>吗?
                 </div>
                 <div class="modal-footer">
                     <form id="delete-form" method="post">

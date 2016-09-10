@@ -19,7 +19,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())
                         <li>
-                            <a href="{{ url('/logout') }}" style="color: white;" onclick="event.preventDefault();
+                            <a href="{{ url('/logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                 退出登录
                             </a>
@@ -37,7 +37,7 @@
     </div>
     <div class="container"  style="margin-top: -20px">
         <a style="text-decoration: none" class="branding" href="/">
-            <h2 style="-webkit-text-stroke: 1px #555555;">{{ Auth::check() ? Auth::user()->name : 'lufficc' }}</h2>
+            <h2 style="-webkit-text-stroke: 1px #555555;">{{ $author or ''}}</h2>
         </a>
         <p>{{ $description or '' }}</p>
     </div>

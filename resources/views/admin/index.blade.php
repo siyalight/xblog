@@ -5,16 +5,22 @@
 
         <div class="col-lg-4 col-md-6">
             <div class="widget widget-default center-block">
-                <div class="widget-header"><h1>User</h1></div>
+                <div class="widget-header">
+                    <h3><i class="fa fa-user fa-fw"></i>User</h3>
+                </div>
                 <div class="widget-body">
-                    <h3><a href="{{ route('admin.users') }}">{{ $info['user_count'] }}</a></h3>
+                    <h3>
+                        <a href="{{ route('admin.users') }}">{{ $info['user_count'] }}</a>
+                    </h3>
                 </div>
             </div>
         </div>
 
         <div class="col-lg-4 col-md-6">
             <div class="widget widget-default center-block">
-                <div class="widget-header"><h1>Page</h1></div>
+                <div class="widget-header">
+                    <h3><i class="fa fa-file fa-fw"></i>Page</h3>
+                </div>
                 <div class="widget-body">
                     <h3>
                         <a href="{{ route('admin.pages') }}">{{ $info['page_count'] }}</a>
@@ -25,7 +31,9 @@
 
         <div class="col-lg-4 col-md-6">
             <div class="widget widget-default center-block">
-                <div class="widget-header"><h1>Post</h1></div>
+                <div class="widget-header">
+                    <h3><i class="fa fa-sticky-note fa-fw"></i>Post</h3>
+                </div>
                 <div class="widget-body">
                     <h3>
                         <a href="{{ route('admin.posts') }}">{{ $info['post_count'] }}</a>
@@ -36,7 +44,9 @@
 
         <div class="col-lg-4 col-md-6">
             <div class="widget widget-default center-block">
-                <div class="widget-header"><h1>Tag</h1></div>
+                <div class="widget-header">
+                    <h3><i class="fa fa-tags fa-fw"></i>Tag</h3>
+                </div>
                 <div class="widget-body">
                     <h3>
                         <a href="{{route('admin.tags')}}">{{ $info['tag_count'] }}</a>
@@ -47,7 +57,9 @@
 
         <div class="col-lg-4 col-md-6">
             <div class="widget widget-default center-block">
-                <div class="widget-header"><h1>Category</h1></div>
+                <div class="widget-header">
+                    <h3><i class="fa fa-folder fa-fw"></i>Category</h3>
+                </div>
                 <div class="widget-body">
                     <h3>
                         <a href="{{ route('admin.categories') }}">{{ $info['category_count'] }}</a>

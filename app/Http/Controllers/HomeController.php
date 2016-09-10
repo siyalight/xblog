@@ -39,6 +39,7 @@ class HomeController extends Controller
             $page_size = $map->value;
         }
         $posts = $this->postRepository->pagedPosts($page_size);
+        $posts = Post::search('1')->paginate($page_size);
         return view('index', ['posts' => $posts]);
     }
 

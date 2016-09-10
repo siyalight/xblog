@@ -6,10 +6,12 @@ use App\Scopes\PublishedScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Searchable;
+
     /**
      * The "booting" method of the model.
      *
@@ -21,6 +23,7 @@ class Post extends Model
 
         static::addGlobalScope(new PublishedScope());
     }
+
     /**
      * The attributes that should be mutated to dates.
      *
@@ -33,17 +36,17 @@ class Post extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo(Category::class);
     }
 
     public function tags()
     {
-        return $this->belongsToMany('App\Tag');
+        return $this->belongsToMany(Tag::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     public function isPublished()

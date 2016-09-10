@@ -12,7 +12,7 @@
         <div class="post-detail">
             @can('update',$page)
                 <div class="btn-group pull-right" style="margin-top: -25px">
-                    <a class="btn" href="{{ route('page.edit',$page->id) }}"><i class="fa fa-edit"></i></a>
+                    <a class="btn" href="{{ route('page.edit',$page->id) }}"><i class="fa fa-pencil"></i></a>
                 </div>
             @endcan
             <div class="center-block">

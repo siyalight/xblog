@@ -34,7 +34,10 @@
         </div>
     </div>
     <div class="projects row">
-        <div class="center-block"><h3>Loading...</h3></div>
+        <div class="center-block">
+            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+            <h3>加载中...</h3>
+        </div>
     </div>
 @endsection
 @section('script')

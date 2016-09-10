@@ -19,15 +19,17 @@
                                 <td>{{ $page->display_name }}</td>
                                 <td>/{{ $page->name }}</td>
                                 <td>
-                                    <div class="btn-group">
+                                    <div>
 
                                         <a href="{{ route('page.edit',$page->id) }}"
-                                           class="btn btn-default">
-                                            编辑
+                                           data-toggle="tooltip" data-placement="top" title="编辑"
+                                           class="btn btn-info">
+                                            <i class="fa fa-pencil fa-fw"></i>
                                         </a>
                                         <a href="/{{ $page->name }}"
-                                           class="btn btn-default">
-                                            查看
+                                           data-toggle="tooltip" data-placement="top" title="查看"
+                                           class="btn btn-success">
+                                            <i class="fa fa-eye fa-fw"></i>
                                         </a>
                                     </div>
                                 </td>

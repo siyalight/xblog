@@ -19,20 +19,26 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
+                                <div class="input-group-addon">作者</div>
+                                <input class="form-control" type="text" name="author" value="{{ $author or ''}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
                                 <div class="input-group-addon">描述</div>
                                 <input class="form-control" type="text" name="description" value="{{ $description or ''}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <div class="input-group-addon">每页数量</div>
-                                <input class="form-control" type="number" name="page_size" value="{{ $page_size or 7 }}">
+                                <div class="input-group-addon">头像</div>
+                                <input class="form-control" type="text" name="avatar" value="{{ $avatar or ''}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <div class="input-group-addon">头像</div>
-                                <input class="form-control" type="text" name="avatar" value="{{ $avatar or ''}}">
+                                <div class="input-group-addon">每页数量</div>
+                                <input class="form-control" type="number" name="page_size" value="{{ $page_size or 7 }}">
                             </div>
                         </div>
                         <div class="form-group">

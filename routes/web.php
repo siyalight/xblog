@@ -24,7 +24,7 @@ Route::get('category/{name}', ['uses' => 'CategoryController@show', 'as' => 'cat
 
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
 
-    Route::get('/index', ['uses' => 'AdminController@index', 'as' => 'admin.index']);
+    Route::get('/', ['uses' => 'AdminController@index', 'as' => 'admin.index']);
     Route::get('/settings', ['uses' => 'AdminController@settings', 'as' => 'admin.settings']);
     Route::post('/settings', ['uses' => 'AdminController@saveSettings', 'as' => 'admin.save-settings']);
 

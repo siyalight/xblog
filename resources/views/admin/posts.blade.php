@@ -32,48 +32,51 @@
                                 <td>{{ $status }}</td>
                                 {{--<td>{{ $post->slug }}</td>--}}
                                 <td>
-                                    <div class="btn-group">
-                                        <button class="btn btn-danger" data-toggle="modal" data-title="{{ $post->title }}"
-                                                data-url="{{ route('post.destroy',$post->id) }}"
-                                                data-force="{{ $post->trashed() }}"
-                                                data-target="#delete-post-modal">
-                                            删除
-                                        </button>
+                                    <div>
                                         <a {{ $post->trashed()?'disabled':'' }} href="{{ $post->trashed()?'javascript:void(0)':route('post.edit',$post->id) }}"
-                                           class="btn btn-default">
-                                            编辑
+                                           data-toggle="tooltip" data-placement="top" title="编辑"
+                                           class="btn btn-info">
+                                            <i class="fa fa-pencil fa-fw"></i>
                                         </a>
                                         @if($post->trashed())
                                             <form style="display: inline" method="post" action="{{ route('post.restore',$post->id) }}">
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-default">
-                                                    恢复
+                                                <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="恢复">
+                                                    <i class="fa fa-repeat fa-fw"></i>
                                                 </button>
                                             </form>
 
                                         @elseif($post->isPublished())
                                             <a href="{{ route('post.show',$post->slug) }}"
-                                               class="btn btn-default">
-                                                查看
+                                               data-toggle="tooltip" data-placement="top" title="查看"
+                                               class="btn btn-success">
+                                                <i class="fa fa-eye fa-fw"></i>
                                             </a>
                                             <form style="display: inline" method="post" action="{{ route('post.publish',$post->id) }}">
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-default">
-                                                    撤销
+                                                <button type="submit" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="撤销发布">
+                                                    <i class="fa fa-undo fa-fw"></i>
                                                 </button>
                                             </form>
                                         @else
-                                            <a href="{{ route('post.preview',$post->slug) }}"
+                                            <a href="{{ route('post.preview',$post->slug) }}"  data-toggle="tooltip" data-placement="top" title="预览"
                                                class="btn btn-default">
-                                                预览
+                                                <i class="fa fa-eye fa-fw"></i>
                                             </a>
                                             <form style="display: inline" method="post" action="{{ route('post.publish',$post->id) }}">
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-default">
-                                                    发布
+                                                <button type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="发布">
+                                                    <i class="fa fa-send-o fa-fw"></i>
                                                 </button>
                                             </form>
                                         @endif
+                                        <button class="btn btn-danger" data-toggle="modal" data-title="{{ $post->title }}"
+                                                data-toggle="tooltip" data-placement="top" title="删除"
+                                                data-url="{{ route('post.destroy',$post->id) }}"
+                                                data-force="{{ $post->trashed() }}"
+                                                data-target="#delete-post-modal">
+                                            <i class="fa fa-trash-o  fa-fw"></i>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>

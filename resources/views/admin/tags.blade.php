@@ -26,8 +26,8 @@
                                           action="{{ route('tag.destroy',$tag->id) }}">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="delete">
-                                        <button type="submit" class="btn btn-danger">
-                                            刪除
+                                        <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="删除">
+                                            <i class="fa fa-trash-o fa-fw"></i>
                                         </button>
                                     </form>
                                 </td>
