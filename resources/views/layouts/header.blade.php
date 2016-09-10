@@ -56,7 +56,7 @@
     </div>
     <div class="container-fluid" style="margin-top: -20px">
         <a style="text-decoration: none" class="branding" href="/">
-            <h2 style="-webkit-text-stroke: 1px #555555;">{{ $author or ''}}</h2>
+            <h2>{{ $author or ''}}</h2>
         </a>
         <p>{{ $description or '' }}</p>
     </div>

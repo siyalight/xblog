@@ -6,7 +6,7 @@
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-<a class="btn btn-success" href="https://lufficc.com">Welcom</a>
+<a class="btn btn-success" href="https://lufficc.com">Welcome to my website</a>
 
 <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

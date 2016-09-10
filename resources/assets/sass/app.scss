@@ -24,7 +24,6 @@ html, body {
 .main-header {
   text-align: center;
   background-color: $colorPrimary;
-  /*background: url("https://drscdn.500px.org/photo/130540669/q%3D85_w%3D560_s%3D1_tf%3D1/6893e0af66d4724ef17de5e165a9a8d7") no-repeat center center;*/
   background-size: 100% auto;
   color: #fff;
   margin-bottom: 20px;
@@ -39,6 +38,7 @@ html, body {
 .main-header h2 {
   font-size: 2.9em;
   color: white;
+  text-shadow: 5px 5px 5px $colorPrimaryDark;
 }
 
 .main-header p {
