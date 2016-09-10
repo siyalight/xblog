@@ -1,6 +1,6 @@
 @if(isset($background_image) && $background_image)
     <style>
-        @media screen and (min-width: 768px){
+        @media screen and (min-width: 768px) {
             .main-header {
                 background: url("{{ $background_image }}") no-repeat center center;
                 background-size: 100% auto;
@@ -30,6 +30,9 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())
+                        @if(isAdmin(Auth::user()))
+                            <li><a href="{{ route('admin.index') }}">后台</a></li>
+                        @endif
                         <li>
                             <a href="{{ url('/logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

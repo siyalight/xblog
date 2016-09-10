@@ -7,7 +7,7 @@
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
-            <li class="active">{{ $page->name }}</li>
+            <li class="active">{{ ucfirst($page->name) }}</li>
         </ol>
         <div class="post-detail">
             @can('update',$page)

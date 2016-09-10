@@ -105,8 +105,8 @@ a:active, a:focus, a img {
 .navbar-nav li a:hover {
   color: $colorAccent;
   background: $colorPrimaryDark;
-  transition: all 0.15s ease-in-out;
-  -webkit-transition: all 0.15s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
 }
 
 .navbar-nav li a:active {
