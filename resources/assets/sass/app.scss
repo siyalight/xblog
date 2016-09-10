@@ -2,6 +2,10 @@ $colorPrimary: #607D8B;
 $colorPrimaryDark: #546E7A;
 $colorAccent: #FF6E40;
 
+$widgetPaddingLeftRight: 20px;
+$postItemPaddingLeftRight: 25px;
+$postItemPaddingUpDown: 20px;
+
 $shadowColor: #666666;
 $shadowBlur: 3px;
 
@@ -55,7 +59,8 @@ a {
 a:active, a:focus, a img {
   outline: none;
 }
-.site-navbar{
+
+.site-navbar {
   align-items: center;
 }
 
@@ -92,7 +97,7 @@ a:active, a:focus, a img {
   border: $colorPrimaryDark solid 1px;
   border-radius: 20px;
   color: white;
-  text-shadow:$shadowColor 1px 1px 2px;
+  text-shadow: $shadowColor 1px 1px 2px;
 }
 
 .navbar-nav li a:hover {
@@ -134,11 +139,11 @@ a:active, a:focus, a img {
 }
 
 .widget .widget-body {
-  padding: 30px 30px 30px 30px;
+  padding: 30px $widgetPaddingLeftRight;
 }
 
 .widget .widget-footer {
-  padding: 0 30px 10px 30px;
+  padding: 0 $widgetPaddingLeftRight 10px $widgetPaddingLeftRight;
 }
 
 .widget .widget-footer .widget-meta {
@@ -152,7 +157,7 @@ a:active, a:focus, a img {
 }
 
 .widget .widget-header {
-  padding: 10px 30px;
+  padding: 10px $widgetPaddingLeftRight;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   color: #333;
@@ -164,39 +169,58 @@ a:active, a:focus, a img {
 
 .post {
   @extend .shadow-block;
-  padding: 35px 35px 20px 35px;
+  padding: $postItemPaddingUpDown $postItemPaddingLeftRight;
   background: white;
   margin-bottom: 35px;
   position: relative;
   overflow: hidden;
 }
 
+.post .post-title {
+  margin-top: - 0.2 * $postItemPaddingUpDown;
+}
+
 .post .post-header .post-title {
-  margin: 0;
-  font-size: 2.1em;
-  line-height: 1em;
+  font-size: 1.8em;
+  line-height: 1.85em;
 }
 
 .post .post-header .post-title a {
   color: #303030;
   text-decoration: none;
+  margin-top: -$postItemPaddingUpDown;
 }
 
 .post .post-header .post-title a:hover {
-  color: $colorPrimary;
+  color: $colorAccent;
 }
 
 .post-meta {
   color: #959595;
-  font-size: 12px;
-  margin: 14px 0 5px;
+  font-size: 0.85em;
+  padding: $postItemPaddingUpDown 0 0;
+  border-top: 1px solid #ebebeb;
 }
 
 .post-description {
   font-size: 1.3em;
   line-height: 1.7em;
   color: #444443;
-  margin: 10px 0;
+  margin: $postItemPaddingUpDown 0;
+}
+
+.post .post-footer {
+  margin-top: 20px;
+  border-top: 1px solid #ebebeb;
+  padding: $postItemPaddingUpDown 0 0;
+}
+
+.post .post-footer .tag-list {
+  color: #959595;
+}
+
+.post .post-footer .tag-list a {
+  padding: 0 3px;
 }
 
 /*.btn {
@@ -210,20 +234,6 @@ a:active, a:focus, a img {
   color: white;
   transition: all 0.15s ease-in-out;
   -webkit-transition: all 0.15s ease-in-out;
-}
-
-.post .post-footer {
-  margin-top: 20px;
-  border-top: 1px solid #ebebeb;
-  padding: 17px 0 0
-}
-
-.post .post-footer .tag-list {
-  color: #959595;
-}
-
-.post .post-footer .tag-list a {
-  padding: 0 3px;
 }
 
 /* post detail*/
