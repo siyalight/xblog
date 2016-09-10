@@ -1,8 +1,20 @@
+@if(isset($background_image) && $background_image)
+    <style>
+        @media screen and (min-width: 768px) {
+            .main-header {
+                background: url("{{ $background_image }}") no-repeat center center;
+                background-size: 100% auto;
+                position: static;
+            }
+        }
+    </style>
+@endif
 <header class="main-header">
     <div class="container-fluid" style="margin-top: -15px">
-        <nav class="navbar site-navbar"  role="navigation">
+        <nav class="navbar site-navbar" role="navigation">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#blog-navbar-collapse">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#blog-navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -20,7 +32,8 @@
                     <li><a href="{{ url('/') }}">回到站点</a></li>
                     @if(Auth::check())
                         <li>
-                            <a href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            <a href="{{ url('/logout') }}"
+                               onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 退出登录
                             </a>
                             <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
@@ -35,8 +48,11 @@
             </div>
         </nav>
     </div>
-    <div class="container"  style="margin-top: -20px">
+    <div class="container-fluid" style="margin-top: -20px">
         <a style="text-decoration: none" class="branding" href="{{ route('admin.index') }}">
+            @if(isset($avatar) && $avatar)
+                <img class="img-circle" width="66px" height="66px" src="{{ $avatar }}">
+            @endif
             <h2 style="-webkit-text-stroke: 1px #555555;">Admin-{{ $author or '' }}</h2>
         </a>
         <p>Stay hungry.Stay Foolish.</p>

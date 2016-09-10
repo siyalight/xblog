@@ -1,24 +1,23 @@
 @extends('admin.layouts.app')
 @section('title','Admin')
 @section('content')
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+    <div class="container">
+        <div class="col-md-12">
             <form role="form" class="form-horizontal" action="{{ route('admin.upload.image') }}"
+                  datatype="image"
                   enctype="multipart/form-data" method="post">
                 {{ csrf_field() }}
                 <div class="row">
-                    <div class="form-group col-md-8">
+                    <div class="form-group col-md-10 col-xs-10">
                         <div class="input-group">
                             <span class="input-group-addon">图片</span>
-                            <input class="form-control" type="file" name="image">
+                            <input class="form-control" accept="image/*" type="file" name="image">
                         </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                上传
-                            </button>
-                        </div>
+                    <div class="form-group col-md-2 col-xs-2">
+                        <button type="submit" class="btn btn-primary">
+                            上传
+                        </button>
                     </div>
                 </div>
 
@@ -27,17 +26,16 @@
     </div>
     <div class="row">
         @foreach($images as $image)
-            <div class="col-lg-4 col-md-4">
+            <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="widget widget-default">
-                    <img src="{{ $image->value }}" style="width: 100%" height="200px">
+                    <img src="{{ $image->value }}" style="width: 100% ;height: 200px">
                     <div class="widget-footer">
-                        <pre>{{ asset($image->value) }}</pre>
                         <div class="widget-meta">
                             <button class="btn btn-default"
                                     data-toggle="popover"
                                     data-title="地址"
                                     data-placement="left"
-                                    data-content="{{ asset($image->value) }}">
+                                    data-content="<pre>{{ asset($image->value) }}</pre>">
                                 <i class="fa fa-copy fa-fw"></i>
                             </button>
                             <button class="btn btn-danger"
@@ -69,7 +67,7 @@
                     <h4 class="modal-title" id="myModalLabel">删除</h4>
                 </div>
                 <div class="modal-body">
-                    确定删除<strong style="color: red" id="span-title"></strong>吗?
+                    确定删除<strong class="bg-info" id="span-title"></strong>吗?
                 </div>
                 <div class="modal-footer">
                     <form id="delete-form" method="post">
@@ -85,6 +83,10 @@
 @endsection
 @section('script')
     <script>
+        $("button[data-toggle=popover]").popover({
+            html: true
+        });
+
         $('#delete-image-modal').on('show.bs.modal', function (e) {
             var url = $(e.relatedTarget).data('url');
             var key = $(e.relatedTarget).data('key');

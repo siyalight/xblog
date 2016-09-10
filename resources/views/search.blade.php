@@ -2,12 +2,6 @@
 @section('title','文章')
 @section('content')
     <div class="row">
-        <div class="col-md-4">
-            <div class="slide">
-                @include('widget.user')
-                @include('widget.categories')
-            </div>
-        </div>
         <div class="col-md-8">
             @if($posts->count() == 0)
                 <div class="widget widget-default">
@@ -26,6 +20,12 @@
                 </div>
                 @each('post.item',$posts,'post')
             @endif
+        </div>
+        <div class="col-md-4">
+            <div class="slide">
+                @include('widget.user')
+                @include('widget.categories')
+            </div>
         </div>
     </div>
 @endsection

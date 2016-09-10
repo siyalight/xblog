@@ -12,12 +12,14 @@ use Closure;
 
 abstract class Repository
 {
-    public $time = 120;
+    public $time = 720;
 
     /**
      * @return string
      */
     public abstract function tag();
+
+    public abstract function model();
 
     public function remember($key, Closure $entity, $tag = null)
     {
@@ -31,6 +33,22 @@ abstract class Repository
     public function clearCache($tag = null)
     {
         cache()->tags($tag == null ? $this->tag() : $tag)->flush();
+    }
+
+    public function count()
+    {
+        $count = $this->remember($this->tag() . '.count', function () {
+            return $this->model()->count();
+        });
+        return $count;
+    }
+
+    public function all()
+    {
+        $all = $this->remember($this->tag() . '.all', function () {
+            return $this->model()->all();
+        });
+        return $all;
     }
 
     public function clearAllCache()

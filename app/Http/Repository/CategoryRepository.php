@@ -17,6 +17,10 @@ use Illuminate\Http\Request;
 class CategoryRepository extends Repository
 {
     static $tag = 'category';
+    public function model()
+    {
+        return app(Category::class);
+    }
 
     /**
      * @return mixed

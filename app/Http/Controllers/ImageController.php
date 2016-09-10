@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Repository\ImageRepository;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use Storage;
-
 class ImageController extends Controller
 {
     protected $imageRepository;
@@ -52,13 +49,9 @@ class ImageController extends Controller
      */
     public function deleteImage(Request $request)
     {
-        $key = $request->get('key');
-        $result = false;
-        if ($this->imageRepository->delete($key)) {
-            $result = Storage::delete($key);
-        }
-        if ($result)
+        if ($this->imageRepository->delete($request->get('key'))) {
             return back()->with('success', '删除成功');
+        }
         return back()->with('success', '删除失败');
     }
 }

@@ -18,6 +18,11 @@ class TagRepository extends Repository
 {
     static $tag = 'tag';
 
+    public function model()
+    {
+        return app(Tag::class);
+    }
+
     public function getAll()
     {
         $tags = $this->remember('tag.all', function () {
@@ -37,4 +42,5 @@ class TagRepository extends Repository
     {
         return TagRepository::$tag;
     }
+
 }

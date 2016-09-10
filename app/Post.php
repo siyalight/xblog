@@ -5,7 +5,6 @@ namespace App;
 use App\Scopes\PublishedScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon;
 use Laravel\Scout\Searchable;
 
 class Post extends Model

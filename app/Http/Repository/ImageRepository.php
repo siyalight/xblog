@@ -8,8 +8,8 @@
 namespace App\Http\Repository;
 
 use App\Map;
-use Storage;
 use Illuminate\Http\Request;
+use Storage;
 
 /**
  * Class TagRepository
@@ -57,6 +57,20 @@ class ImageRepository extends MapRepository
             $result = false;
         }
         $this->clearCache();
+        return $result;
+    }
+
+    public function count($tag = null)
+    {
+        return parent::count('images');
+    }
+
+    public function delete($key)
+    {
+        $result = false;
+        if (parent::delete($key)) {
+            $result = Storage::delete($key);
+        }
         return $result;
     }
 

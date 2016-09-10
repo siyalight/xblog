@@ -7,12 +7,10 @@
  */
 namespace App\Http\Repository;
 
-use App\Http\Controllers\CategoryController;
 use App\Post;
 use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use DB;
 
 /**
  * design for cache
@@ -25,6 +23,19 @@ class PostRepository extends Repository
 {
 
     static $tag = 'post';
+
+    public function model()
+    {
+        return app(Post::class);
+    }
+
+    public function count()
+    {
+        $count = $this->remember($this->tag() . '.count', function () {
+            return $this->model()->withoutGlobalScopes()->count();
+        });
+        return $count;
+    }
 
     /**
      * @param int $page

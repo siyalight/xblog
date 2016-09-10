@@ -17,6 +17,10 @@ use Illuminate\Http\Request;
 class PageRepository extends Repository
 {
     static $tag = 'page';
+    public function model()
+    {
+        return app(Page::class);
+    }
 
     /**
      * @param $name string

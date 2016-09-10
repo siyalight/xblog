@@ -18,6 +18,11 @@ class MapRepository extends Repository
 {
     static $tag = 'map';
 
+    public function model()
+    {
+        return app(Map::class);
+    }
+
     public function getAll()
     {
         $maps = $this->remember('map.all', function () {
@@ -32,6 +37,16 @@ class MapRepository extends Repository
             return Map::where('tag', $tag)->get();
         });
         return $maps;
+    }
+
+    public function count($tag = null)
+    {
+        $count = $this->remember('map.count.' . $tag, function () use ($tag) {
+            if ($tag)
+                return Map::where('tag', $tag)->count();
+            return Map::count();
+        });
+        return $count;
     }
 
     public function getArrayByTag($tag)
