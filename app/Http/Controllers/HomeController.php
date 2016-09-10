@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Repository\MapRepository;
 use App\Http\Repository\PostRepository;
-use App\Jobs\Test;
 use App\P;
 use App\Post;
-use App\Project;
-use DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -36,8 +33,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $this->dispatch(new Test());
-
         $page_size = 7;
         if ($map = $this->mapRepository->get('page_size')) {
             $page_size = $map->value;
