@@ -1,15 +1,27 @@
+@if(isset($background_image) && $background_image)
+    <style>
+        @media screen and (min-width: 768px){
+            .main-header {
+                background: url("{{ $background_image }}") no-repeat center center;
+                background-size: 100% auto;
+                position: static;
+            }
+        }
+    </style>
+@endif
 <header class="main-header">
     <div class="container-fluid" style="margin-top: -15px">
-        <nav class="navbar site-navbar"  role="navigation">
+        <nav class="navbar site-navbar" role="navigation">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#blog-navbar-collapse">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#blog-navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <div class="collapse navbar-collapse" id="blog-navbar-collapse">
+            <div class="collapse navbar-collapse fix-top" id="blog-navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">文章</a></li>
                     <li><a href="http://blog.lufficc.com/">博客</a></li>
@@ -39,7 +51,7 @@
             </div>
         </nav>
     </div>
-    <div class="container"  style="margin-top: -20px">
+    <div class="container" style="margin-top: -20px">
         <a style="text-decoration: none" class="branding" href="/">
             <h2 style="-webkit-text-stroke: 1px #555555;">{{ $author or ''}}</h2>
         </a>

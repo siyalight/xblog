@@ -2,12 +2,6 @@
 @section('title','文章')
 @section('content')
     <div class="row">
-        <div class="col-md-4">
-            <div class="slide">
-                @include('widget.user')
-                @include('widget.categories')
-            </div>
-        </div>
         <div class="col-md-8">
             @if(empty($posts))
                 @include('partials.empty')
@@ -17,6 +11,12 @@
                     {{ $posts->links() }}
                 @endif
             @endif
+        </div>
+        <div class="col-md-4">
+            <div class="slide">
+                @include('widget.user')
+                @include('widget.categories')
+            </div>
         </div>
     </div>
 @endsection

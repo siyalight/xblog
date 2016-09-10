@@ -1,5 +1,6 @@
 $colorPrimary: #607D8B;
 $colorPrimaryDark: #546E7A;
+$colorPrimaryDarkTransparent: rgba(84,110,122,0.25);
 $colorAccent: #FF6E40;
 
 $widgetPaddingLeftRight: 20px;
@@ -96,15 +97,13 @@ a:active, a:focus, a img {
   padding: 5px 20px;
   border: $colorPrimaryDark solid 1px;
   border-radius: 20px;
+  background: $colorPrimaryDarkTransparent;
   color: white;
   text-shadow: $shadowColor 1px 1px 2px;
 }
 
 .navbar-nav li a:hover {
   color: $colorAccent;
-}
-
-.navbar-nav li a:hover {
   background: $colorPrimaryDark;
   transition: all 0.15s ease-in-out;
   -webkit-transition: all 0.15s ease-in-out;
