@@ -51,6 +51,9 @@ class HomeController extends Controller
         return view('search', compact('posts'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function projects()
     {
         return view('projects');
