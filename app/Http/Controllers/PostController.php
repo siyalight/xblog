@@ -104,11 +104,11 @@ class PostController extends Controller
 
     public function publish($id)
     {
-        $this->clearAllCache();
         $post = Post::withoutGlobalScopes()->find($id);
         if ($post->trashed()) {
             return back()->withErrors($post->title . '发布失败，请先恢复删除');
         }
+        $this->clearAllCache();
         if ($post->status == 0) {
             $post->status = 1;
             $post->published_at = Carbon::now();
@@ -162,19 +162,19 @@ class PostController extends Controller
 
         $this->validatePostForm($request, true);
 
-        if ($this->postRepository->update($request, $post))
+        if ($this->postRepository->update($request, $post)) {
             return redirect('admin/posts')->with('success', '文章' . $request['name'] . '修改成功');
+        }
         else
             return redirect('admin/posts')->withErrors('文章' . $request['name'] . '修改失败');
     }
 
     public function restore($id)
     {
-        $this->clearAllCache();
-
         $post = Post::withoutGlobalScopes()->findOrFail($id);
         if ($post->trashed()) {
             $post->restore();
+            $this->clearAllCache();
             return redirect()->route('admin.posts')->with('success', '恢复成功');
         }
         return redirect()->route('admin.posts')->withErrors('恢复失败');
@@ -188,7 +188,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $this->clearAllCache();
 
         $post = Post::withoutGlobalScopes()->findOrFail($id);
         $redirect = '/admin/posts';
@@ -200,8 +199,10 @@ class PostController extends Controller
         } else {
             $result = $post->delete();
         }
-        if ($result)
+        if ($result) {
+            $this->clearAllCache();
             return redirect($redirect)->with('success', '删除成功');
+        }
         else
             return redirect($redirect)->withErrors('删除失败');
     }

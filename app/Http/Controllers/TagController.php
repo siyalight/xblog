@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Repository\TagRepository;
 use App\Tag;
 use Illuminate\Http\Request;
+
 class TagController extends Controller
 {
     public $tagRepository;
@@ -25,8 +26,10 @@ class TagController extends Controller
             'name' => 'required|unique:tags',
         ]);
 
-        if ($this->tagRepository->create($request))
+        if ($this->tagRepository->create($request)) {
+            $this->tagRepository->clearCache();
             return back()->with('success', 'Tag' . $request['name'] . '创建成功');
+        }
         else
             return back()->with('error', 'Tag' . $request['name'] . '创建失败');
     }
@@ -36,10 +39,10 @@ class TagController extends Controller
         if ($tag->posts()->withoutGlobalScopes()->count() > 0) {
             return redirect()->route('admin.tags')->withErrors($tag->name . '下面有文章，不能刪除');
         }
-        $this->tagRepository->clearCache();
-
-        if ($tag->delete())
+        if ($tag->delete()) {
+            $this->tagRepository->clearCache();
             return back()->with('success', $tag->name . '刪除成功');
+        }
         return back()->withErrors($tag->name . '刪除失败');
     }
 }
