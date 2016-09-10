@@ -30,7 +30,8 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
     Route::get('/', ['uses' => 'AdminController@index', 'as' => 'admin.index']);
     Route::get('/settings', ['uses' => 'AdminController@settings', 'as' => 'admin.settings']);
     Route::post('/settings', ['uses' => 'AdminController@saveSettings', 'as' => 'admin.save-settings']);
-    Route::post('/upload/image', ['uses' => 'AdminController@uploadImage', 'as' => 'admin.upload.image']);
+    Route::post('/upload/image', ['uses' => 'ImageController@uploadImage', 'as' => 'admin.upload.image']);
+    Route::delete('/delete/image', ['uses' => 'ImageController@deleteImage', 'as' => 'admin.delete.image']);
 
 
     Route::get('/posts', ['uses' => 'AdminController@posts', 'as' => 'admin.posts']);
@@ -38,7 +39,7 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
     Route::get('/users', ['uses' => 'AdminController@users', 'as' => 'admin.users']);
     Route::get('/pages', ['uses' => 'AdminController@pages', 'as' => 'admin.pages']);
     Route::get('/categories', ['uses' => 'AdminController@categories', 'as' => 'admin.categories']);
-    Route::get('/images', ['uses' => 'AdminController@images', 'as' => 'admin.images']);
+    Route::get('/images', ['uses' => 'ImageController@images', 'as' => 'admin.images']);
 
 
     Route::post('post/{post}/restore', ['uses' => 'PostController@restore', 'as' => 'post.restore']);

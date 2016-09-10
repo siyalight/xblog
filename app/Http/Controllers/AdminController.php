@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Repository\CategoryRepository;
-use App\Http\Repository\ImageRepository;
 use App\Http\Repository\MapRepository;
 use App\Http\Repository\PostRepository;
 use App\Http\Repository\TagRepository;
@@ -15,7 +14,6 @@ use App\Post;
 use App\Tag;
 use App\User;
 use Illuminate\Http\Request;
-use Storage;
 
 class AdminController extends Controller
 {
@@ -23,7 +21,6 @@ class AdminController extends Controller
     protected $tagRepository;
     protected $categoryRepository;
     protected $mapRepository;
-    protected $imageRepository;
 
     /**
      * AdminController constructor.
@@ -31,19 +28,16 @@ class AdminController extends Controller
      * @param CategoryRepository $categoryRepository
      * @param TagRepository $tagRepository
      * @param MapRepository $mapRepository
-     * @param ImageRepository $imageRepository
      */
     public function __construct(PostRepository $postRepository,
                                 CategoryRepository $categoryRepository,
                                 TagRepository $tagRepository,
-                                MapRepository $mapRepository,
-                                ImageRepository $imageRepository)
+                                MapRepository $mapRepository)
     {
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
         $this->mapRepository = $mapRepository;
-        $this->imageRepository = $imageRepository;
         $this->middleware(['auth', 'admin']);
     }
 
@@ -105,22 +99,6 @@ class AdminController extends Controller
         return view('admin.users', compact('users'));
     }
 
-    public function images()
-    {
-        $images = $this->imageRepository->getAll();
-        return view('admin.images',compact('images'));
-    }
-
-    public function uploadImage(Request $request)
-    {
-        $this->validate($request, [
-            'image' => 'required|image|max:5000'
-        ]);
-
-        if ($this->imageRepository->uploadImage($request))
-            return back()->with('success', '上传成功');
-        return back()->withErrors('上传失败');
-    }
 
     public function pages()
     {

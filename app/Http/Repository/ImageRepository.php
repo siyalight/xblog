@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
  * Class TagRepository
  * @package App\Http\Repository
  */
-class ImageRepository extends Repository
+class ImageRepository extends MapRepository
 {
     static $tag = 'map.image';
 

@@ -52,6 +52,12 @@ class MapRepository extends Repository
         return $map;
     }
 
+    public function delete($key)
+    {
+        $this->clearCache();
+        return Map::where('key', $key)->delete();
+    }
+
     public function create(Request $request)
     {
         $this->clearCache();
