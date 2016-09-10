@@ -38,6 +38,8 @@ class CategoryRepository extends Repository
         $category = $this->remember('category.one.' . $name, function () use ($name) {
             return Category::where('name', $name)->first();
         });
+        if (!$category)
+            abort(404);
         return $category;
     }
 

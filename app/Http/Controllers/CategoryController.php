@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Repository\CategoryRepository;
+use App\Http\Repository\MapRepository;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -12,14 +13,17 @@ use App\Http\Requests;
 class CategoryController extends Controller
 {
     protected $categoryRepository;
+    protected $mapRepository;
 
     /**
      * CategoryController constructor.
      * @param CategoryRepository $categoryRepository
+     * @param MapRepository $mapRepository
      */
-    public function __construct(CategoryRepository $categoryRepository)
+    public function __construct(CategoryRepository $categoryRepository, MapRepository $mapRepository)
     {
         $this->categoryRepository = $categoryRepository;
+        $this->mapRepository = $mapRepository;
         $this->middleware(['auth', 'admin'], ['except' => 'show']);
     }
 
@@ -47,9 +51,9 @@ class CategoryController extends Controller
         ]);
 
         if ($this->categoryRepository->create($request))
-            return redirect()->back()->with('success', '分类' . $request['name'] . '创建成功');
+            return back()->with('success', '分类' . $request['name'] . '创建成功');
         else
-            return redirect()->back()->with('error', '分类' . $request['name'] . '创建失败');
+            return back()->with('error', '分类' . $request['name'] . '创建失败');
     }
 
     /**
@@ -63,10 +67,11 @@ class CategoryController extends Controller
     public function show($name)
     {
         $category = $this->categoryRepository->get($name);
-        if (!$category)
-            abort(404);
-
-        $posts = $this->categoryRepository->pagedPostsByCategory($category);
+        $page_size = 7;
+        if ($map = $this->mapRepository->get('page_size')) {
+            $page_size = $map->value;
+        }
+        $posts = $this->categoryRepository->pagedPostsByCategory($category, $page_size);
         return view('category.show', compact('posts', 'name'));
     }
 
@@ -100,7 +105,7 @@ class CategoryController extends Controller
             return redirect()->route('admin.categories')->with('success', '分类' . $request['name'] . '修改成功');
         }
 
-        return redirect()->back()->withInput()->withErrors('分类' . $request['name'] . '修改失败');
+        return back()->withInput()->withErrors('分类' . $request['name'] . '修改失败');
     }
 
     /**
@@ -117,7 +122,7 @@ class CategoryController extends Controller
         }
         $this->categoryRepository->clearCache();
         if ($category->delete())
-            return redirect()->back()->with('success', $category->name . '刪除成功');
-        return redirect()->back()->withErrors($category->name . '刪除失败');
+            return back()->with('success', $category->name . '刪除成功');
+        return back()->withErrors($category->name . '刪除失败');
     }
 }

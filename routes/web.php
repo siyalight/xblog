@@ -18,6 +18,7 @@ Route::get('/home', ['uses' => 'HomeController@home']);
 Route::get('/about', ['uses' => 'PageController@about', 'as' => 'page.about']);
 Route::get('/projects', ['uses' => 'HomeController@projects', 'as' => 'projects']);
 Route::get('/search', ['uses' => 'HomeController@search', 'as' => 'search']);
+Route::post('/upload', ['uses' => 'HomeController@upload', 'as' => 'upload']);
 
 
 Route::get('post/{slug}', ['uses' => 'PostController@show', 'as' => 'post.show']);

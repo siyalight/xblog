@@ -26,9 +26,9 @@ class TagController extends Controller
         ]);
 
         if ($this->tagRepository->create($request))
-            return redirect()->back()->with('success', 'Tag' . $request['name'] . '创建成功');
+            return back()->with('success', 'Tag' . $request['name'] . '创建成功');
         else
-            return redirect()->back()->with('error', 'Tag' . $request['name'] . '创建失败');
+            return back()->with('error', 'Tag' . $request['name'] . '创建失败');
     }
 
     public function destroy(Tag $tag)
@@ -39,7 +39,7 @@ class TagController extends Controller
         $this->tagRepository->clearCache();
 
         if ($tag->delete())
-            return redirect()->back()->with('success', $tag->name . '刪除成功');
-        return redirect()->back()->withErrors($tag->name . '刪除失败');
+            return back()->with('success', $tag->name . '刪除成功');
+        return back()->withErrors($tag->name . '刪除失败');
     }
 }

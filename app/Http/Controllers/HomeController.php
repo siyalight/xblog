@@ -49,10 +49,6 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $query = $request->get('query');
-        /*$page_size = 7;
-        if ($map = $this->mapRepository->get('page_size')) {
-            $page_size = $map->value;
-        }*/
         $posts = Post::search($query)->get();
         return view('search', compact('posts'));
     }
@@ -60,5 +56,11 @@ class HomeController extends Controller
     public function projects()
     {
         return view('projects');
+    }
+
+    public function upload(Request $request)
+    {
+        $path = $request->file('file')->store('test');
+        return back()->with('success', $path);
     }
 }

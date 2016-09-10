@@ -5,9 +5,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-                <div class="panel-body">
+            <div class="widget widget-default">
+                <div class="widget-header">Reset Password</div>
+                <div class="widget-body">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}

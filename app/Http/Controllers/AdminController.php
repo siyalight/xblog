@@ -70,7 +70,7 @@ class AdminController extends Controller
             $map->save();
         }
         $this->mapRepository->clearCache();
-        return redirect()->back()->with('success','保存成功');
+        return back()->with('success','保存成功');
     }
 
     public function posts()
