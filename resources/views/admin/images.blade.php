@@ -34,7 +34,7 @@
                             <button class="btn btn-default"
                                     data-toggle="popover"
                                     data-title="地址"
-                                    data-placement="left"
+                                    data-placement="right"
                                     data-content="<pre>{{ asset($image->value) }}</pre>">
                                 <i class="fa fa-copy fa-fw"></i>
                             </button>
