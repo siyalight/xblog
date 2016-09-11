@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title',$post->title)
 @section('css')
-    <link href="//cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-heath.light.min.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="row">
