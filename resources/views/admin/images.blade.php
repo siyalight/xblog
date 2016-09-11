@@ -31,16 +31,14 @@
                     <img src="{{ $image->value }}" style="width: 100% ;height: 200px">
                     <div class="widget-footer">
                         <div class="widget-meta">
-                            <a class="btn btn-default"
-                               tabindex="0"
-                               role="button"
-                               data-trigger="focus"
-                               data-toggle="popover"
-                               data-title="地址"
-                               data-placement="right"
-                               data-content="<pre>{{ asset($image->value) }}</pre>">
+                            <button id="clipboard-btn" class="btn btn-default"
+                                    type="button"
+                                    data-clipboard-text="{{ asset($image->value) }}"
+                                    data-toggle="tooltip"
+                                    data-placement="left"
+                                    title="Copied">
                                 <i class="fa fa-copy fa-fw"></i>
-                            </a>
+                            </button>
                             <button class="btn btn-danger"
                                     data-toggle="modal"
                                     data-target="#delete-image-modal"
@@ -85,7 +83,12 @@
     </div><!-- /.modal -->
 @endsection
 @section('script')
+    <script src="//cdn.bootcss.com/clipboard.js/1.5.12/clipboard.min.js"></script>
     <script>
+        new Clipboard('.btn');
+        $('.btn').tooltip({
+            trigger:'click',
+        });
         $("a[data-toggle=popover]").popover({
             html: true
         });
