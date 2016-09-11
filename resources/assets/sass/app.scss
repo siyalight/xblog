@@ -177,12 +177,13 @@ a:active, a:focus, a img {
 }
 
 .post .post-header {
-  background: $widgetHeaderBgColor;
-  padding: ($postItemPaddingUpDown / 5) $postItemPaddingLeftRight $postItemPaddingUpDown / 2;
   border-bottom: 1px solid #ebebeb;
 }
 
 .post .post-header .post-title {
+  margin: 0;
+  background: $widgetHeaderBgColor;
+  padding: $postItemPaddingUpDown / 2 $postItemPaddingLeftRight $postItemPaddingUpDown / 2;
   font-size: 1.7em;
   line-height: 1.85em;
 }
@@ -199,7 +200,7 @@ a:active, a:focus, a img {
 .post-meta {
   color: #959595;
   font-size: 0.85em;
-  padding: $postItemPaddingUpDown/2 0 0;
+  padding: $postItemPaddingUpDown/2 $postItemPaddingLeftRight $postItemPaddingUpDown / 2;
   border-top: 1px solid #ebebeb;
 }
 
@@ -275,8 +276,8 @@ a:active, a:focus, a img {
 }
 
 .post-detail .post-content {
-  line-height: 1.8em;
-  font-size: 1.2em;
+  line-height: 2.4em;
+  font-size: 1.8em;
 }
 
 .post-detail img {
