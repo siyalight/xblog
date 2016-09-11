@@ -31,13 +31,16 @@
                     <img src="{{ $image->value }}" style="width: 100% ;height: 200px">
                     <div class="widget-footer">
                         <div class="widget-meta">
-                            <button class="btn btn-default"
-                                    data-toggle="popover"
-                                    data-title="地址"
-                                    data-placement="right"
-                                    data-content="<pre>{{ asset($image->value) }}</pre>">
+                            <a class="btn btn-default"
+                               tabindex="0"
+                               role="button"
+                               data-trigger="focus"
+                               data-toggle="popover"
+                               data-title="地址"
+                               data-placement="right"
+                               data-content="<pre>{{ asset($image->value) }}</pre>">
                                 <i class="fa fa-copy fa-fw"></i>
-                            </button>
+                            </a>
                             <button class="btn btn-danger"
                                     data-toggle="modal"
                                     data-target="#delete-image-modal"
@@ -83,7 +86,7 @@
 @endsection
 @section('script')
     <script>
-        $("button[data-toggle=popover]").popover({
+        $("a[data-toggle=popover]").popover({
             html: true
         });
 
