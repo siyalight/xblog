@@ -178,12 +178,12 @@ a:active, a:focus, a img {
 
 .post .post-header {
   background: $widgetHeaderBgColor;
-  padding: $postItemPaddingUpDown / 2 $postItemPaddingLeftRight $postItemPaddingUpDown / 2;
+  padding: ($postItemPaddingUpDown / 5) $postItemPaddingLeftRight $postItemPaddingUpDown / 2;
   border-bottom: 1px solid #ebebeb;
 }
 
 .post .post-header .post-title {
-  font-size: 1.8em;
+  font-size: 1.7em;
   line-height: 1.85em;
 }
 
@@ -204,20 +204,20 @@ a:active, a:focus, a img {
 }
 
 .post-description {
-  font-size: 1.4em;
-  line-height: 1.7em;
+  font-size: 1.3em;
+  line-height: 1.6em;
   color: #444443;
   margin: $postItemPaddingUpDown $postItemPaddingLeftRight $postItemPaddingUpDown;
 }
 
-.post .post-permalink{
+.post .post-permalink {
   padding: 0 $postItemPaddingLeftRight 0;
 }
 
 .post .post-footer {
   margin-top: $postItemPaddingUpDown;
   border-top: 1px solid #ebebeb;
-  padding: $postItemPaddingUpDown / 2  $postItemPaddingLeftRight $postItemPaddingUpDown / 2;
+  padding: $postItemPaddingUpDown / 2 $postItemPaddingLeftRight $postItemPaddingUpDown / 2;
 }
 
 .post .post-footer .tag-list {
