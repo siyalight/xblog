@@ -17,7 +17,7 @@
     <meta name="theme-color" content="#607D8B">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title or '' }} @yield('title')</title>
+    <title>@yield('title') {{ $title or '' }} </title>
 
     <!-- Styles -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
