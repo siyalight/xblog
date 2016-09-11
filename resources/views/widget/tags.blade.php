@@ -3,10 +3,17 @@
     <ul class="widget-body">
         <div class="tag-list">
             @foreach($tags as $tag)
-                <a href="{{ route('tag.show',$tag->name) }}" class="tag">
-                    {{ $tag->name }}
-                    <span class="badge">{{ $tag->posts_count }}</span>
-                </a>
+                @if(str_contains(urldecode(request()->getPathInfo()),'tag/'.$tag->name))
+                    <span class="tag tag-active">
+                        {{ $tag->name }}
+                        <span class="badge badge-active">{{ $tag->posts_count }}</span>
+                    </span>
+                @else
+                    <a href="{{ route('tag.show',$tag->name) }}" class="tag">
+                        {{ $tag->name }}
+                        <span class="badge">{{ $tag->posts_count }}</span>
+                    </a>
+                @endif
             @endforeach
         </div>
     </ul>

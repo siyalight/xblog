@@ -238,6 +238,13 @@ a:active, a:focus, a img {
   border: 1px solid $colorPrimary;
   border-radius: 20px;
 }
+.tag-active {
+  color: $colorAccent;
+  border: 1px solid $colorAccent;
+}
+.tag-active .badge-active  {
+  background-color: $colorAccent;
+}
 
 
 .tag:hover {
