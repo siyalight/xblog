@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html lang="Zh_cn" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="{{ $author or '' }}">
     <meta name="description" content="{{ $description or '' }}">
-    <meta name="Keywords" content="Php,Android,Laravel,Spring,Java">
+    <meta name="Keywords" content="海贼王,One Piece,爱科技,爱生活,Php,Android,Laravel,Spring,Java">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ $title or '' }}">
     <meta property="og:site_name" content="{{ $title or '' }}">
@@ -13,7 +14,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="lufficc">
     <meta name="twitter:description" content="Stay Hungry.Stay Foolish.">
-
+    <meta name="theme-color" content="#607D8B">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ $title or '' }} @yield('title')</title>

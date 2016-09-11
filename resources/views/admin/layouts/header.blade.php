@@ -53,7 +53,7 @@
             @if(isset($avatar) && $avatar)
                 <img class="img-circle" width="66px" height="66px" src="{{ $avatar }}">
             @endif
-            <h2 style="-webkit-text-stroke: 1px #555555;">Admin-{{ $author or '' }}</h2>
+            <h2>Admin-{{ $author or '' }}</h2>
         </a>
         <p>Stay hungry.Stay Foolish.</p>
     </div>

@@ -4,20 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Stay Hungry.Stay Foolish.">
-    <meta name="Keywords" content="Php,Android,Laravel,Spring,Java">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="lufficc">
-    <meta property="og:site_name" content="lufficc">
-    <meta property="og:description" content="Stay Hungry.Stay Foolish.">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="lufficc">
-    <meta name="twitter:description" content="Stay Hungry.Stay Foolish.">
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta name="theme-color" content="#607D8B">
     <title>lufficc  @yield('title')</title>
-
     <!-- Styles -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
