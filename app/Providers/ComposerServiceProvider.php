@@ -15,6 +15,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('widget.categories', 'App\Http\ViewComposers\CategoriesComposer');
+        View::composer('widget.tags', 'App\Http\ViewComposers\TagsComposer');
         View::composer('*', 'App\Http\ViewComposers\SettingsComposer');
     }
 

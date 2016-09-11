@@ -51,6 +51,7 @@ abstract class Repository
         return $all;
     }
 
+
     public function clearAllCache()
     {
         cache()->flush();

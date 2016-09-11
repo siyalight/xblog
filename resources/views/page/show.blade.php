@@ -18,7 +18,7 @@
             <div class="center-block">
                 <h1>{{ $page->display_name }}</h1>
             </div>
-            <div id="content">
+            <div id="content" class="post-content">
             </div>
             <div id="field" data-content="{{ $page->content }}"></div>
         </div>

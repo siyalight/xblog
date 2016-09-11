@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title','分类 文章')
+@section('title','标签 文章')
 @section('content')
     <ol class="breadcrumb">
         <li><a href="/">Home</a></li>
-        <li><a href="{{ route('category.index') }}">Category</a></li>
+        <li><a href="{{ route('tag.index') }}">Tag</a></li>
         <li class="active">{{ $name }}</li>
     </ol>
     <div class="row">

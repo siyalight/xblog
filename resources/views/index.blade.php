@@ -14,8 +14,7 @@
         </div>
         <div class="col-md-4">
             <div class="slide">
-                @include('widget.user')
-                @include('widget.categories')
+                @include('layouts.widgets')
             </div>
         </div>
     </div>

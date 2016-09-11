@@ -40,6 +40,17 @@ class Post extends Model
      */
     protected $dates = ['deleted_at', 'published_at'];
 
+    static $selectArray = [
+        'id',
+        'user_id',
+        'title',
+        'slug',
+        'description',
+        'deleted_at',
+        'category_id',
+        'published_at',
+        'status'
+    ];
 
     protected $fillable = ['title', 'description', 'slug', 'category_id', 'user_id', 'content', 'published_at', 'status'];
 

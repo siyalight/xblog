@@ -7,6 +7,7 @@
  */
 namespace App\Http\Repository;
 
+use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,24 @@ class TagRepository extends Repository
             return Tag::withCount('posts')->get();
         });
         return $tags;
+    }
+
+    public function get($name)
+    {
+        $tag = $this->remember('tag.one.' . $name, function () use ($name) {
+            return Tag::where('name', $name)->first();
+        });
+        if (!$tag)
+            abort(404);
+        return $tag;
+    }
+
+    public function pagedPostsByTag(Tag $tag, $page = 7)
+    {
+        $posts = $this->remember('tag.posts.' . $tag->name . $page . request()->get('page', 1), function () use ($tag, $page) {
+            return $tag->posts()->select(Post::$selectArray)->with(['tags', 'category'])->orderBy('published_at', 'desc')->paginate($page);
+        });
+        return $posts;
     }
 
     public function create(Request $request)

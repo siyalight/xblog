@@ -217,15 +217,39 @@ a:active, a:focus, a img {
 .post .post-footer {
   margin-top: $postItemPaddingUpDown;
   border-top: 1px solid #ebebeb;
-  padding: $postItemPaddingUpDown / 2 $postItemPaddingLeftRight $postItemPaddingUpDown / 2;
+  padding: $postItemPaddingUpDown $postItemPaddingLeftRight $postItemPaddingUpDown;
 }
 
 .post .post-footer .tag-list {
   color: #959595;
 }
 
-.post .post-footer .tag-list a {
-  padding: 0 3px;
+.tag-list a {
+  text-decoration: none;
+}
+
+.tag {
+  padding: 3px 10px;
+  font-size: 0.85em;
+  display: inline-block;
+  margin: 4px 5px ;
+  color: $colorPrimary;
+  border: 1px solid $colorPrimary;
+  border-radius: 20px;
+}
+
+
+.tag:hover {
+  color: $colorAccent;
+  border: 1px solid $colorAccent;
+
+  transition: all 0.15s ease-in-out;
+  -webkit-transition: all 0.15s ease-in-out;
+}
+.tag .badge:hover {
+  background-color: $colorAccent;
+  transition: all 0.15s ease-in-out;
+  -webkit-transition: all 0.15s ease-in-out;
 }
 
 /*.btn {
@@ -250,9 +274,9 @@ a:active, a:focus, a img {
   overflow: auto;
 }
 
-.post-detail {
-  font-size: 110%;
-  line-height: 2.5em;
+.post-detail .post-content {
+  line-height: 1.8em;
+  font-size: 1.2em;
 }
 
 .post-detail img {

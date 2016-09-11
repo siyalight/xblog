@@ -95,7 +95,7 @@ class PageController extends Controller
             'content' => 'required',
         ]);
         if ($this->pageRepository->update($request, $page)) {
-            return route('admin.index')->with('success', '页面' . $request['name'] . '修改成功');
+            return redirect()->route('admin.index')->with('success', '页面' . $request['name'] . '修改成功');
         }
         return back()->withInput()->withErrors('页面' . $request['name'] . '修改失败');
     }

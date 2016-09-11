@@ -19,8 +19,12 @@ Route::get('/projects', ['uses' => 'HomeController@projects', 'as' => 'projects'
 Route::get('/search', ['uses' => 'HomeController@search', 'as' => 'search']);
 
 
-Route::get('post/{slug}', ['uses' => 'PostController@show', 'as' => 'post.show']);
-Route::get('category/{name}', ['uses' => 'CategoryController@show', 'as' => 'category.show']);
+Route::get('/post/{slug}', ['uses' => 'PostController@show', 'as' => 'post.show']);
+Route::get('/category/{name}', ['uses' => 'CategoryController@show', 'as' => 'category.show']);
+Route::get('/category', ['uses' => 'CategoryController@index', 'as' => 'category.index']);
+Route::get('/tag/{name}', ['uses' => 'TagController@show', 'as' => 'tag.show']);
+Route::get('/tag', ['uses' => 'TagController@index', 'as' => 'tag.index']);
+
 
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
 
@@ -42,12 +46,12 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
     Route::get('/images', ['uses' => 'ImageController@images', 'as' => 'admin.images']);
 
 
-    Route::post('post/{post}/restore', ['uses' => 'PostController@restore', 'as' => 'post.restore']);
-    Route::get('post/{slug}/preview', ['uses' => 'PostController@preview', 'as' => 'post.preview']);
-    Route::post('post/{post}/publish', ['uses' => 'PostController@publish', 'as' => 'post.publish']);
+    Route::post('/post/{post}/restore', ['uses' => 'PostController@restore', 'as' => 'post.restore']);
+    Route::get('/post/{slug}/preview', ['uses' => 'PostController@preview', 'as' => 'post.preview']);
+    Route::post('/post/{post}/publish', ['uses' => 'PostController@publish', 'as' => 'post.publish']);
 
-    Route::delete('tag/{tag}', ['uses' => 'TagController@destroy', 'as' => 'tag.destroy']);
-    Route::post('tag', ['uses' => 'TagController@store', 'as' => 'tag.store']);
+    Route::delete('/tag/{tag}', ['uses' => 'TagController@destroy', 'as' => 'tag.destroy']);
+    Route::post('/tag', ['uses' => 'TagController@store', 'as' => 'tag.store']);
 
     /**
      * admin resource

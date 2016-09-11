@@ -26,7 +26,10 @@ class CategoryController extends Controller
         $this->mapRepository = $mapRepository;
         $this->middleware(['auth', 'admin'], ['except' => 'show']);
     }
-
+    public function index()
+    {
+        return view('category.index');
+    }
 
     /**
      * Show the form for creating a new resource.
