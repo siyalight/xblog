@@ -89,9 +89,6 @@
         $('.btn').tooltip({
             trigger:'click',
         });
-        $("a[data-toggle=popover]").popover({
-            html: true
-        });
         $('#delete-image-modal').on('show.bs.modal', function (e) {
             var url = $(e.relatedTarget).data('url');
             var key = $(e.relatedTarget).data('key');
