@@ -1,29 +1,7 @@
 /**
- * First we will load all of this project's JavaScript dependencies which
- * include Vue and Vue Resource. This gives a great starting point for
- * building robust, powerful web applications using Vue and Laravel.
+ * @author lufficc
  */
-
-/*require('./bootstrap');
-
-/!**
- * Next, we will create a fresh Vue application instance and attach it to
- * the body of the page. From here, you may begin adding components to
- * the application, or feel free to tweak this setup for your needs.
- *!/
-
-Vue.component('example', require('./components/Example.vue'));
-Vue.component('categories', require('./components/Category.vue'));
-Vue.component('posts', require('./components/Posts.vue'));
-Vue.component('post', require('./components/Post.vue'));
-Vue.component('passport-clients', require('./components/passport/Clients.vue'));
-Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue'));
-Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue'));
-
-const app = new Vue({
-    el: 'body',
-});*/
-require('./footer');
+require('./footer')
 $(document).ready(function()
 {
     $(document).pjax('a:not(a[target="_blank"])', '#lufficc-blog-container',{
@@ -32,6 +10,8 @@ $(document).ready(function()
     });
     $(document).on('pjax:complete', function() {
         initMarkdownTarget();
+        initFooterPosition();
+        $(window).resize(initFooterPosition);
     });
 });
 
@@ -54,5 +34,3 @@ function initMarkdownTarget() {
             });
     }
 }
-
-
