@@ -50,7 +50,7 @@
 .post .post-footer {
   margin-top: $postItemPaddingUpDown;
   border-top: 1px solid #ebebeb;
-  padding: $postItemPaddingUpDown $postItemPaddingLeftRight $postItemPaddingUpDown;
+  padding: $postItemPaddingUpDown * 0.5 $postItemPaddingLeftRight;
 }
 
 .post .post-footer .tag-list {
