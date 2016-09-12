@@ -56,3 +56,30 @@
 .post .post-footer .tag-list {
   color: #959595;
 }
+
+
+/* post detail*/
+.post-detail {
+  @extend .shadow-block;
+  padding: 35px 15px;
+  margin-bottom: 20px;
+  background: white;
+  overflow: auto;
+}
+
+.post-detail .post-content {
+  line-height: 1.7em;
+  font-size: 1.15em;
+  font-weight: normal;
+  word-wrap: break-word;
+}
+
+.post-detail img {
+  box-sizing: border-box;
+  margin: 10px auto;
+  border: 1px solid #ddd;
+  display: block;
+  padding: 2px;
+  max-width: 100%;
+  height: auto;
+}

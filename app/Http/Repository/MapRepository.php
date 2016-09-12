@@ -76,7 +76,6 @@ class MapRepository extends Repository
     public function create(Request $request)
     {
         $this->clearCache();
-
         $map = Map::create([
             'key' => $request['key'],
             'value' => $request['value'],

@@ -30,6 +30,7 @@
                             </label>
                         </div>
                         {{--duoshuo--}}
+                        <div class="alone-divider"></div>
                         <div class="radio">
                             <label>
                                 <input type="radio"
