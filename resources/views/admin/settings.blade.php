@@ -29,6 +29,23 @@
                                        value="false">禁用谷歌分析
                             </label>
                         </div>
+                        {{--duoshuo--}}
+                        <div class="radio">
+                            <label>
+                                <input type="radio"
+                                       {{ isset($duoshuo_enable) && $duoshuo_enable == 'true' ? ' checked ':'' }}
+                                       name="duoshuo_enable"
+                                       value="true">启用多说评论
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio"
+                                       {{ isset($duoshuo_enable) && $duoshuo_enable == 'true' ? '':' checked ' }}
+                                       name="duoshuo_enable"
+                                       value="false">禁用多说评论
+                            </label>
+                        </div>
                     </div>
 
                 </div>
@@ -37,7 +54,6 @@
                 <div class="widget widget-default">
                     <div class="widget-body">
                         {{ csrf_field() }}
-
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-addon">标题</div>

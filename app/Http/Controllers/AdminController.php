@@ -71,7 +71,6 @@ class AdminController extends Controller
     public function saveSettings(Request $request)
     {
         $inputs = $request->except('_token');
-
         foreach ($inputs as $key => $value) {
             $map = Map::firstOrNew([
                 'key' => $key,

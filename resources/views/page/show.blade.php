@@ -22,12 +22,10 @@
             </div>
             <div id="field" data-content="{{ $page->content }}"></div>
         </div>
-        <div class="widget widget-default">
-            <div class="ds-thread widget-body"
-                 data-thread-key="{{$page->name.$page->display_name }}"
-                 data-title="{{ $page->title }}" data-url="{{ request()->url() }}">
-            </div>
-        </div>
+        @include('widget.duoshuo',[
+        'duoshuo_data_key'=>'page-'.$page->name,
+        'duoshuo_data_title'=>$page->title,
+        'duoshuo_data_url'=>request()->url(),])
     </div>
 @endsection
 
@@ -49,18 +47,5 @@
                     }
                 });
         $('table').addClass('table table-hover table-bordered table-responsive');
-    </script>
-
-    <script type="text/javascript">
-        var duoshuoQuery = {short_name: "lcc-luffy-blog"};
-        (function () {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';
-            ds.async = true;
-            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
     </script>
 @endsection

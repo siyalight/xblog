@@ -23,7 +23,7 @@
 
     @include('admin.layouts.header')
     {{--@include('layouts.nav')--}}
-    <section class="content-wrap" style="margin-top: 35px">
+    <section class="content-wrap clearfix" style="margin-top: 35px">
         <div class="container">
             @include('partials.errors')
             @include('partials.success')

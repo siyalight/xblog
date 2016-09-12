@@ -54,12 +54,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="widget widget-default">
-            <div class="ds-thread widget-body"
-                 data-thread-key="{{ $post->slug }}"
-                 data-title="{{ $post->title }}" data-url="{{ request()->url() }}">
-            </div>
-        </div>
+        @include('widget.duoshuo',['duoshuo_data_key'=>$post->slug,'duoshuo_data_title'=>$post->title,'duoshuo_data_url'=>request()->url(),])
     </div>
 
 @endsection
@@ -68,7 +63,6 @@
     <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
     <script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
     <script>
-
         document.getElementById('content').innerHTML =
                 marked($('#field').data("content"), {
                     renderer: new marked.Renderer(),
@@ -82,20 +76,6 @@
                         return hljs.highlightAuto(code).value;
                     }
                 });
-
         $('table').addClass('table table-hover table-bordered table-responsive');
-    </script>
-
-    <script type="text/javascript">
-        var duoshuoQuery = {short_name: "lcc-luffy-blog"};
-        (function () {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';
-            ds.async = true;
-            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
     </script>
 @endsection

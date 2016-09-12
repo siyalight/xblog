@@ -46,13 +46,13 @@
 </head>
 <body>
 @include('layouts.header')
-<section id="app" class="content-wrap" style="margin-top: 35px">
+<div class="content-wrap" style="margin-top: 30px">
     <div class="container">
         @include('partials.errors')
         @include('partials.success')
         @yield('content')
     </div>
-</section>
+</div>
 
 @include('layouts.footer')
 <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
