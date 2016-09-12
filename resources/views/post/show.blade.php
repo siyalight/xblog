@@ -1,8 +1,9 @@
 @extends('layouts.app')
+@section('description',$post->description)
 @section('title',$post->title)
-@section('css')
+{{--@section('css')
     <link href="//cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-heath.light.min.css" rel="stylesheet">
-@endsection
+@endsection--}}
 @section('content')
     <div class="row">
         <div class="post-detail">
@@ -44,8 +45,8 @@
                 </div>
             </div>
             <br>
-            <div id="field" data-content="{{ $post->content }}"></div>
-            <div id="content" class="post-content">
+            <div id="markdown-content" data-markdown="{{ $post->content }}"></div>
+            <div id="markdown-target" class="post-content">
             </div>
             <div class="pull-left post-footer tag-list">
                 <i class="fa fa-tags"></i>
@@ -56,26 +57,4 @@
         </div>
         @include('widget.duoshuo',['duoshuo_data_key'=>$post->slug,'duoshuo_data_title'=>$post->title,'duoshuo_data_url'=>request()->url(),])
     </div>
-
-@endsection
-
-@section('script')
-    <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
-    <script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
-    <script>
-        document.getElementById('content').innerHTML =
-                marked($('#field').data("content"), {
-                    renderer: new marked.Renderer(),
-                    gfm: true,
-                    tables: true,
-                    breaks: false,
-                    pedantic: false,
-                    smartLists: true,
-                    smartypants: false,
-                    highlight: function (code) {
-                        return hljs.highlightAuto(code).value;
-                    }
-                });
-        $('table').addClass('table table-hover table-bordered table-responsive');
-    </script>
 @endsection
