@@ -14,6 +14,7 @@ require('./markdown')*/
             $(document).on('pjax:complete', function () {
                 self.bootUp();
             });
+            self.bootUp();
         },
         bootUp: function () {
             initMarkdownTarget();
@@ -53,5 +54,5 @@ require('./markdown')*/
     window.LufficcBlog = LufficcBlog;
 })(jQuery);
 $(document).ready(function () {
-    LufficcBlog.bootUp();
+    LufficcBlog.init();
 });
