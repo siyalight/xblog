@@ -16,15 +16,11 @@
     <meta name="twitter:description" content="Stay Hungry.Stay Foolish.">
     <meta name="theme-color" content="#607D8B">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>@yield('title') {{ $title or '' }} </title>
-
-    <!-- Styles -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 @yield('css')
-<!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
@@ -61,6 +57,23 @@
 @include('layouts.footer')
 <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    $(function(){
+        function footerPosition(){
+            $("#footer").removeClass("fixed-bottom");
+            var contentHeight = document.body.scrollHeight,//网页正文全文高度
+                    winHeight = window.innerHeight;//可视窗口高度，不包括浏览器顶部工具栏
+            if(!(contentHeight > winHeight)){
+                //当网页正文高度小于可视窗口高度时，为footer添加类fixed-bottom
+                $("footer").addClass("fixed-bottom");
+            } else {
+                $("footer").removeClass("fixed-bottom");
+            }
+        }
+        footerPosition();
+        $(window).resize(footerPosition);
+    });
+</script>
 @yield('script')
 </body>
 </html>

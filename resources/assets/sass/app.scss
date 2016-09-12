@@ -8,7 +8,7 @@ html, body {
   font-size: 14px;
   height: 100%;
   background: #ebebeb;
-  font-family: NotoSansHans-Regular,AvenirNext-Regular,arial,Hiragino Sans GB,"Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
+  font-family: NotoSansHans-Regular, AvenirNext-Regular, arial, Hiragino Sans GB, "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
 }
 
 .center-block {
@@ -106,7 +106,6 @@ a:active, a:focus, a img {
 .navbar-nav li a:active {
   background: $colorPrimaryDark;
 }
-
 
 .btn-more {
   border: 1px solid $colorPrimary;
@@ -207,12 +206,15 @@ $userAvatarRadius: 45px;
 
 /*footer*/
 
-footer {
-  margin-top: 35px;
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer {
-
+  margin-top: 20px;
 }
 
 .copyright {
