@@ -6,12 +6,14 @@
 
 .tag {
   padding: 3px 10px;
-  font-size: 0.85em;
+  font-size: 0.8em;
   display: inline-block;
   margin: 4px 5px ;
   color: $colorPrimary;
   border: 1px solid $colorPrimary;
   border-radius: 20px;
+  text-align: center;
+  vertical-align: center;
 }
 .tag-active {
   color: $colorAccent;

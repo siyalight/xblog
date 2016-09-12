@@ -1,17 +1,6 @@
-@if(isset($background_image) && $background_image)
-    <style>
-        @media screen and (min-width: 768px) {
-            .main-header {
-                background: url("{{ $background_image }}") no-repeat center center;
-                background-size: 100% auto;
-                position: static;
-            }
-        }
-    </style>
-@endif
-<header class="main-header">
-    <div class="container-fluid" style="margin-top: -15px">
-        <nav class="navbar site-navbar" role="navigation">
+<header class="main-header" style="padding: 10px 0;">
+    <div class="container-fluid">
+        <nav class="navbar site-navbar" style="margin-bottom: 0" role="navigation">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#blog-navbar-collapse">
@@ -47,14 +36,5 @@
                 </ul>
             </div>
         </nav>
-    </div>
-    <div class="container-fluid" style="margin-top: -20px">
-        <a style="text-decoration: none" class="branding" href="{{ route('admin.index') }}">
-            @if(isset($avatar) && $avatar)
-                <img class="img-circle" width="66px" height="66px" src="{{ $avatar }}">
-            @endif
-            <h2>Admin-{{ $author or '' }}</h2>
-        </a>
-        <p>Stay hungry.Stay Foolish.</p>
     </div>
 </header>
