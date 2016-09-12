@@ -71,7 +71,7 @@
         </span>
     @endif
 </div>
-<div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+<div class="form-group{{ $errors->has('content') ? ' has-error ' : ' ' }}">
     <label for="content" class="control-label">文章内容*</label>
 
     <textarea spellcheck="false" id="content" type="text" class="form-control" name="content"

@@ -9,9 +9,9 @@
         <div class="col-md-12">
             <div class="widget widget-default">
                 <div class="widget-header">
-                    <h3>写文章</h3>
+                    <h3><i class="fa fa-pencil  fa-fw"></i>写文章</h3>
                 </div>
-                <div class="widget-body">
+                <div class="widget-body" style="font-size: 1.1em;font-weight: normal;line-height: 1.5em">
                     <form role="form" class="form-horizontal" action="{{ route('post.store') }}" method="post">
 
                         @include('post.form-content')

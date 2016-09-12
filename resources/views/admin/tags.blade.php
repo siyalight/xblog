@@ -4,6 +4,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="widget widget-default">
+                <div class="widget-header">
+                    <h3><i class="fa fa-tags fa-fw"></i>标签</h3>
+                </div>
                 <div class="widget-body">
                     <a class="btn pull-right" role="button" data-toggle="modal" data-target="#add-tag-modal">
                         <i class="fa fa-tag"></i>

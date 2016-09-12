@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="widget widget-default">
                     <div class="widget-header">
-                        <h3>设置</h3>
+                        <h3><i class="fa fa-cog fa-fw"></i>设置</h3>
                     </div>
                 </div>
             </div>

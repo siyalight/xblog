@@ -4,6 +4,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="widget widget-default">
+                <div class="widget-header">
+                    <h3><i class="fa fa-sticky-note fa-fw"></i>文章</h3>
+                </div>
                 <div class="widget-body">
                     <table class="table table-hover table-bordered table-responsive">
                         <thead>

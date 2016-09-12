@@ -4,6 +4,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="widget widget-default">
+                <div class="widget-header">
+                    <h3><i class="fa fa-folder fa-fw"></i>分类</h3>
+                </div>
                 <div class="widget-body">
                     <a class="btn pull-right" role="button" data-toggle="modal" data-target="#add-category-modal">
                         <i class="fa fa-folder-o"></i>
