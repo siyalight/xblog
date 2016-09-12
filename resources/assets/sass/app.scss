@@ -1,21 +1,14 @@
-$colorPrimary: #607D8B;
-$colorPrimaryDark: #546E7A;
-$colorPrimaryDarkTransparent: rgba(84, 110, 122, 0.25);
-$colorAccent: #FF6E40;
-$widgetHeaderBgColor: #F5F8FA;
-
-$widgetPaddingLeftRight: 20px;
-$postItemPaddingLeftRight: 25px;
-$postItemPaddingUpDown: 20px;
-
-$shadowColor: #666666;
-$shadowBlur: 3px;
+@import "common";
+@import "post-item";
+@import "tag";
+@import "widget";
 
 html, body {
   color: #505050;
-  min-height: 100%;
+  font-size: 14px;
+  height: 100%;
   background: #ebebeb;
-  font-family: "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;
+  font-family: NotoSansHans-Regular,AvenirNext-Regular,arial,Hiragino Sans GB,"Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
 }
 
 .center-block {
@@ -114,156 +107,6 @@ a:active, a:focus, a img {
   background: $colorPrimaryDark;
 }
 
-/* shadow*/
-.shadow-block {
-  box-shadow: 1px 1px $shadowBlur $shadowColor;
-  -moz-box-shadow: 1px 1px $shadowBlur $shadowColor;
-  -webkit-box-shadow: 1px 1px $shadowBlur $shadowColor;
-
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-}
-
-/*sidebar*/
-
-.widget {
-  @extend .shadow-block;
-  background: white;
-  overflow: auto;
-  margin-bottom: 35px;
-}
-
-.widget-default {
-
-}
-
-.widget .widget-body {
-  padding: 30px $widgetPaddingLeftRight;
-}
-
-.widget .widget-footer {
-  padding: 0 $widgetPaddingLeftRight 10px $widgetPaddingLeftRight;
-  overflow-x: auto;
-}
-
-.widget .widget-footer .widget-meta {
-  color: #959595;
-  font-size: 12px;
-  margin: 14px 0 5px;
-}
-
-.meta-item {
-  padding: 0 10px;
-}
-
-.widget .widget-header {
-  padding: 10px $widgetPaddingLeftRight;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  color: #333;
-  border-bottom: 1px solid #ddd;
-  background-color: $widgetHeaderBgColor;
-}
-
-/*post*/
-
-.post {
-  @extend .shadow-block;
-  background: white;
-  margin-bottom: 35px;
-  position: relative;
-  overflow: hidden;
-}
-
-.post .post-header {
-  border-bottom: 1px solid #ebebeb;
-}
-
-.post .post-header .post-title {
-  margin: 0;
-  background: $widgetHeaderBgColor;
-  padding: $postItemPaddingUpDown / 2 $postItemPaddingLeftRight $postItemPaddingUpDown / 2;
-  font-size: 1.7em;
-  line-height: 1.85em;
-}
-
-.post .post-header .post-title a {
-  color: #303030;
-  text-decoration: none;
-}
-
-.post .post-header .post-title a:hover {
-  color: $colorAccent;
-}
-
-.post-meta {
-  color: #959595;
-  font-size: 0.85em;
-  padding: $postItemPaddingUpDown/2 $postItemPaddingLeftRight $postItemPaddingUpDown / 2;
-  border-top: 1px solid #ebebeb;
-}
-
-.post-description {
-  font-size: 1.3em;
-  line-height: 1.6em;
-  color: #444443;
-  margin: $postItemPaddingUpDown $postItemPaddingLeftRight $postItemPaddingUpDown;
-}
-
-.post .post-permalink {
-  padding: 0 $postItemPaddingLeftRight 0;
-}
-
-.post .post-footer {
-  margin-top: $postItemPaddingUpDown;
-  border-top: 1px solid #ebebeb;
-  padding: $postItemPaddingUpDown $postItemPaddingLeftRight $postItemPaddingUpDown;
-}
-
-.post .post-footer .tag-list {
-  color: #959595;
-}
-
-.tag-list a {
-  text-decoration: none;
-}
-
-.tag {
-  padding: 3px 10px;
-  font-size: 0.85em;
-  display: inline-block;
-  margin: 4px 5px ;
-  color: $colorPrimary;
-  border: 1px solid $colorPrimary;
-  border-radius: 20px;
-}
-.tag-active {
-  color: $colorAccent;
-  border: 1px solid $colorAccent;
-}
-.tag-active .badge-active  {
-  background-color: $colorAccent;
-}
-
-
-.tag:hover {
-  color: $colorAccent;
-  border: 1px solid $colorAccent;
-
-  transition: all 0.15s ease-in-out;
-  -webkit-transition: all 0.15s ease-in-out;
-}
-.tag .badge:hover {
-  background-color: $colorAccent;
-  transition: all 0.15s ease-in-out;
-  -webkit-transition: all 0.15s ease-in-out;
-}
-
-/*.btn {
-  padding: 6px 13px;
-  border-radius: 2px;
-}*/
 
 .btn-more {
   border: 1px solid $colorPrimary;
@@ -283,9 +126,10 @@ a:active, a:focus, a img {
 }
 
 .post-detail .post-content {
-  line-height: 1.8em;
-  font-size: 1.25em;
+  line-height: 1.7em;
+  font-size: 1.15em;
   font-weight: normal;
+  word-wrap: break-word;
 }
 
 .post-detail img {

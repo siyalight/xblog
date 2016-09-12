@@ -1,0 +1,41 @@
+@import "common";
+
+
+.widget {
+  @extend .shadow-block;
+  background: white;
+  overflow: auto;
+  margin-bottom: 35px;
+}
+
+.widget-default {
+
+}
+
+.widget .widget-body {
+  padding: 30px $widgetPaddingLeftRight;
+}
+
+.widget .widget-footer {
+  padding: 0 $widgetPaddingLeftRight 10px $widgetPaddingLeftRight;
+  overflow-x: auto;
+}
+
+.widget .widget-footer .widget-meta {
+  color: #959595;
+  font-size: 12px;
+  margin: 14px 0 5px;
+}
+
+.meta-item {
+  padding: 0 10px;
+}
+
+.widget .widget-header {
+  padding: 10px $widgetPaddingLeftRight;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  background-color: $widgetHeaderBgColor;
+}

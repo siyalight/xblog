@@ -1,0 +1,11 @@
+@import "variables";
+/* shadow*/
+.shadow-block {
+  box-shadow: 1px 1px $shadowBlur $shadowColor;
+  -moz-box-shadow: 1px 1px $shadowBlur $shadowColor;
+  -webkit-box-shadow: 1px 1px $shadowBlur $shadowColor;
+
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}

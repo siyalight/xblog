@@ -16,7 +16,7 @@
                 @include('post.delete-modal',$post)
             @endcan
             <div class="center-block">
-                <h1>{{ $post->title }}</h1>
+                <h2>{{ $post->title }}</h2>
                 <div class="post-meta">
                            <span class="post-time">
                            <i class="fa fa-calendar-o"></i>

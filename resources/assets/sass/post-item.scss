@@ -1,0 +1,58 @@
+@import "common";
+
+.post {
+  @extend .shadow-block;
+  background: white;
+  margin-bottom: 35px;
+  position: relative;
+  overflow: hidden;
+}
+
+.post .post-header {
+  border-bottom: 1px solid #ebebeb;
+}
+
+.post .post-header .post-title {
+  margin: 0;
+  background: $widgetHeaderBgColor;
+  padding: $postItemPaddingUpDown / 2 $postItemPaddingLeftRight $postItemPaddingUpDown / 2;
+  font-size: 1.6em;
+  line-height: 1.75em;
+}
+
+.post .post-header .post-title a {
+  color: #303030;
+  text-decoration: none;
+}
+
+.post .post-header .post-title a:hover {
+  color: $colorAccent;
+}
+
+.post-meta {
+  color: #959595;
+  font-size: 0.85em;
+  padding: $postItemPaddingUpDown/2 $postItemPaddingLeftRight $postItemPaddingUpDown / 2;
+  border-top: 1px solid #ebebeb;
+}
+
+.post-description {
+  font-size: 1.3em;
+  line-height: 1.6em;
+  color: #444443;
+  margin: $postItemPaddingUpDown $postItemPaddingLeftRight $postItemPaddingUpDown;
+}
+
+.post .post-permalink {
+  padding: 0 $postItemPaddingLeftRight 0;
+}
+
+.post .post-footer {
+  margin-top: $postItemPaddingUpDown;
+  border-top: 1px solid #ebebeb;
+  padding: $postItemPaddingUpDown $postItemPaddingLeftRight $postItemPaddingUpDown;
+}
+
+.post .post-footer .tag-list {
+  color: #959595;
+}
