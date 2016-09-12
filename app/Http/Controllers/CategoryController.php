@@ -24,7 +24,7 @@ class CategoryController extends Controller
     {
         $this->categoryRepository = $categoryRepository;
         $this->mapRepository = $mapRepository;
-        $this->middleware(['auth', 'admin'], ['except' => 'show']);
+        $this->middleware(['auth', 'admin'], ['except' => ['show','index']]);
     }
     public function index()
     {
