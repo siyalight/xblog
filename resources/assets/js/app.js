@@ -4,13 +4,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+/*require('./bootstrap');
 
-/**
+/!**
  * Next, we will create a fresh Vue application instance and attach it to
  * the body of the page. From here, you may begin adding components to
  * the application, or feel free to tweak this setup for your needs.
- */
+ *!/
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('categories', require('./components/Category.vue'));
@@ -22,4 +22,5 @@ Vue.component('passport-personal-access-tokens', require('./components/passport/
 
 const app = new Vue({
     el: 'body',
-});
+});*/
+require('./footer')
