@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Repository\CategoryRepository;
+use App\Http\Repository\MapRepository;
 use App\Http\Repository\PostRepository;
 use App\Http\Repository\TagRepository;
 use App\Http\Requests;
@@ -18,19 +19,21 @@ class PostController extends Controller
     protected $postRepository;
     protected $tagRepository;
     protected $categoryRepository;
-
+    protected $mapRepository;
 
     /**
      * PostController constructor.
      * @param PostRepository $postRepository
      * @param CategoryRepository $categoryRepository
      * @param TagRepository $tagRepository
+     * @param MapRepository $mapRepository
      */
-    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, TagRepository $tagRepository)
+    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, TagRepository $tagRepository, MapRepository $mapRepository)
     {
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
+        $this->mapRepository = $mapRepository;
 
         $this->middleware(['auth', 'admin'], ['except' => 'show']);
     }
@@ -42,7 +45,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        return redirect('/');
+        $page_size = 7;
+        if ($map = $this->mapRepository->get('page_size')) {
+            $page_size = $map->value;
+        }
+        $posts = $this->postRepository->pagedPosts($page_size);
+        return view('post.index', ['posts' => $posts]);
     }
 
     /**
@@ -164,8 +172,7 @@ class PostController extends Controller
 
         if ($this->postRepository->update($request, $post)) {
             return redirect('admin/posts')->with('success', '文章' . $request['name'] . '修改成功');
-        }
-        else
+        } else
             return redirect('admin/posts')->withErrors('文章' . $request['name'] . '修改失败');
     }
 
@@ -202,8 +209,7 @@ class PostController extends Controller
         if ($result) {
             $this->clearAllCache();
             return redirect($redirect)->with('success', '删除成功');
-        }
-        else
+        } else
             return redirect($redirect)->withErrors('删除失败');
     }
 

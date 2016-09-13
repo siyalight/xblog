@@ -18,7 +18,7 @@ Route::get('/about', ['uses' => 'PageController@about', 'as' => 'page.about']);
 Route::get('/projects', ['uses' => 'HomeController@projects', 'as' => 'projects']);
 Route::get('/search', ['uses' => 'HomeController@search', 'as' => 'search']);
 
-
+Route::get('/post', ['uses' => 'PostController@index', 'as' => 'post.index']);
 Route::get('/post/{slug}', ['uses' => 'PostController@show', 'as' => 'post.show']);
 Route::get('/category/{name}', ['uses' => 'CategoryController@show', 'as' => 'category.show']);
 Route::get('/category', ['uses' => 'CategoryController@index', 'as' => 'category.index']);

@@ -18,7 +18,7 @@
                     <li><a href="{{ route('admin.settings') }}">设置</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url('/') }}">回到站点</a></li>
+                    <li><a href="{{ route('post.index') }}">回到站点</a></li>
                     @if(Auth::check())
                         <li>
                             <a href="{{ url('/logout') }}"

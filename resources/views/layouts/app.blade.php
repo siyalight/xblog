@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="{{ $author or '' }}">
     <meta name="description" content="@yield('description') {{ $description or '' }}">
-    <meta name="Keywords" content="海贼王,One Piece,爱科技,爱生活,Php,Android,Laravel,Spring,Java">
+    <meta name="Keywords" content="聪聪,博客,海贼王,One Piece,爱科技,爱生活,Php,Android,Laravel,Spring,Java">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ $title or '' }}">
     <meta property="og:site_name" content="{{ $title or '' }}">
