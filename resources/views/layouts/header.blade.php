@@ -55,7 +55,7 @@
         </nav>
     </div>
     <div class="container-fluid" style="margin-top: -20px">
-        <a style="text-decoration: none" class="branding" href="/">
+        <a style="text-decoration: none" class="branding" href="{{ route('post.index') }}">
             <h2>{{ $author or ''}}</h2>
         </a>
         <p>{{ $description or '' }}</p>
