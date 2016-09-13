@@ -35,12 +35,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $page_size = 7;
-        if ($map = $this->mapRepository->get('page_size')) {
-            $page_size = $map->value;
-        }
-        $posts = $this->postRepository->pagedPosts($page_size);
-        return view('index', ['posts' => $posts]);
+        return view('index');
     }
 
 
@@ -57,12 +52,5 @@ class HomeController extends Controller
     public function projects()
     {
         return view('projects');
-    }
-
-    public function uploadImage(Request $request)
-    {
-
-        $path = $request->file('image')->store('images');
-        return back()->with('success', $path);
     }
 }

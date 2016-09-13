@@ -7,7 +7,7 @@
 @section('content')
     <div class="row">
         <ol class="breadcrumb">
-            <li><a href="/">Home</a></li>
+            <li><a href="{{ route('post.index') }}">博客</a></li>
             <li class="active">{{ ucfirst($page->name) }}</li>
         </ol>
         <div class="post-detail">

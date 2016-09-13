@@ -35,7 +35,7 @@ class PostController extends Controller
         $this->tagRepository = $tagRepository;
         $this->mapRepository = $mapRepository;
 
-        $this->middleware(['auth', 'admin'], ['except' => 'show']);
+        $this->middleware(['auth', 'admin'], ['except' => ['show','index']]);
     }
 
     /**
@@ -50,7 +50,7 @@ class PostController extends Controller
             $page_size = $map->value;
         }
         $posts = $this->postRepository->pagedPosts($page_size);
-        return view('post.index', ['posts' => $posts]);
+        return view('post.index', compact('posts'));
     }
 
     /**

@@ -25,7 +25,6 @@ Route::get('/category', ['uses' => 'CategoryController@index', 'as' => 'category
 Route::get('/tag/{name}', ['uses' => 'TagController@show', 'as' => 'tag.show']);
 Route::get('/tag', ['uses' => 'TagController@index', 'as' => 'tag.index']);
 
-
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
 
     /**

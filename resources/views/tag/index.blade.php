@@ -2,8 +2,8 @@
 @section('title','标签')
 @section('content')
     <ol class="breadcrumb">
-        <li><a href="/">Home</a></li>
-        <li class="active">Tag</li>
+        <li><a href="{{ route('post.index') }}">博客</a></li>
+        <li class="active">标签</li>
     </ol>
     <div class="row">
         <div class="col-md-12">
