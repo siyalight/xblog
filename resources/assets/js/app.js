@@ -23,9 +23,9 @@
             self.bootUp();
         },
         bootUp: function () {
-            hightLightCode();
             NProgress.configure({showSpinner: false});
             initMarkdownTarget();
+            hightLightCode();
             initFooterPosition();
             $(window).resize(initFooterPosition);
         },
@@ -58,7 +58,7 @@
         });
     }
     function hightLightCode() {
-        console.log('hightLightCode')
+        console.log('hightLightCode');
         $('pre code').each(function(i, block) {
             hljs.highlightBlock(block);
         });
