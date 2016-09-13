@@ -23,6 +23,7 @@
             self.bootUp();
         },
         bootUp: function () {
+            hightLightCode();
             NProgress.configure({showSpinner: false});
             initMarkdownTarget();
             initFooterPosition();
@@ -53,10 +54,13 @@
                     pedantic: false,
                     smartLists: true,
                     smartypants: false,
-                    highlight: function (code) {
-                        return hljs.highlightAuto(code).value;
-                    }
                 });
+        });
+    }
+    function hightLightCode() {
+        console.log('hightLightCode')
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
         });
     }
 

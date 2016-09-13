@@ -39,8 +39,7 @@
     <script>
         $("#post-tags").select2({
             tags: true
-        })
-
+        });
         new SimpleMDE({
             autoDownloadFontAwesome:true,
             element: document.getElementById("post-content-textarea"),

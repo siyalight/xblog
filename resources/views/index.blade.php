@@ -15,7 +15,6 @@
     <meta name="twitter:title" content="lufficc">
     <meta name="twitter:description" content="Stay Hungry.Stay Foolish.">
     <meta name="theme-color" content="#607D8B">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') {{ $title or '' }} </title>
     <style>
         html, body {

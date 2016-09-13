@@ -44,7 +44,6 @@ blockquote {
   color: $colorPrimary;
 }
 
-
 .btn-more {
   border: 1px solid $colorPrimary;
   background: $colorPrimary;
@@ -87,6 +86,10 @@ pre, .highlight {
   background: rgb(247, 250, 247);
   line-height: 1.5em;
   word-wrap: normal;
+}
+
+.hljs {
+  background: rgb(247, 250, 247);
 }
 
 /*pre {

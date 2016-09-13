@@ -16,3 +16,19 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 });
+Artisan::command('parse', function () {
+    $posts = \App\Post::all();
+    $parseDown = new Parsedown();
+    foreach ($posts as $post) {
+        $post->html_content = $parseDown->text($post->content);
+        $post->save();
+    }
+});
+Artisan::command('parsePage', function () {
+    $posts = \App\Page::all();
+    $parseDown = new Parsedown();
+    foreach ($posts as $post) {
+        $post->html_content = $parseDown->text($post->content);
+        $post->save();
+    }
+});

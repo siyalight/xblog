@@ -22,29 +22,13 @@
     <link href="//cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-heath.light.min.css" rel="stylesheet">
     <meta http-equiv="x-pjax-version" content="{{ elixir('css/app.css') }}">
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
-@yield('css')
+    @yield('css')
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-    @if(isset($google_analytics) && $google_analytics == 'true')
-        <script>
-            (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function () {
-                            (i[r].q = i[r].q || []).push(arguments)
-                        }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                        m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-            ga('create', 'UA-81713716-2', 'auto');
-            ga('send', 'pageview');
-        </script>
-    @endif
+    @include('widget.google_analytics')
 </head>
 <body id="lufficc-blog-container">
 @include('layouts.header')
@@ -55,9 +39,7 @@
         @yield('content')
     </div>
 </div>
-
 @include('layouts.footer')
-{{--<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>--}}
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>

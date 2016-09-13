@@ -11,6 +11,7 @@ use App\Post;
 use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Parsedown;
 
 /**
  * design for cache
@@ -22,7 +23,17 @@ use Illuminate\Http\Request;
 class PostRepository extends Repository
 {
 
+    protected $parseDown;
+
     static $tag = 'post';
+
+    /**
+     * PostRepository constructor.
+     */
+    public function __construct()
+    {
+        $this->parseDown = new Parsedown();
+    }
 
     public function model()
     {
@@ -99,7 +110,10 @@ class PostRepository extends Repository
         }
 
         $post = auth()->user()->posts()->create(
-            $request->all()
+            array_merge(
+                $request->except('_token'),
+                ['html_content' => $this->parseDown->text($request->get('content'))]
+            )
         );
         $post->tags()->sync($ids);
 
@@ -131,7 +145,11 @@ class PostRepository extends Repository
             $request['published_at'] = Carbon::now();
         }
 
-        return $post->update($request->all());
+        return $post->update(
+            array_merge(
+                $request->except('_token'),
+                ['html_content' => $this->parseDown->text($request->get('content'))]
+            ));
     }
 
 

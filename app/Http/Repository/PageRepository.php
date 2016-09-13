@@ -9,6 +9,7 @@ namespace App\Http\Repository;
 
 use App\Page;
 use Illuminate\Http\Request;
+use Parsedown;
 
 /**
  * Class PageRepository
@@ -17,6 +18,13 @@ use Illuminate\Http\Request;
 class PageRepository extends Repository
 {
     static $tag = 'page';
+    protected $parseDown;
+
+    public function __construct()
+    {
+        $this->parseDown = new Parsedown();
+    }
+
     public function model()
     {
         return app(Page::class);
@@ -44,13 +52,19 @@ class PageRepository extends Repository
     public function create(Request $request)
     {
         $this->clearCache();
-        return Page::create($request->all());
+        return Page::create(array_merge(
+            $request->except('_token'),
+            ['html_content' => $this->parseDown->text($request->get('content'))]
+        ));
     }
 
     public function update(Request $request, Page $page)
     {
         $this->clearCache();
-        return $page->update($request->all());
+        return $page->update(array_merge(
+            $request->except('_token'),
+            ['html_content' => $this->parseDown->text($request->get('content'))]
+        ));
     }
 
     public function tag()

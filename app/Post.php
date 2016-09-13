@@ -52,7 +52,7 @@ class Post extends Model
         'status'
     ];
 
-    protected $fillable = ['title', 'description', 'slug', 'category_id', 'user_id', 'content', 'published_at', 'status'];
+    protected $fillable = ['title', 'description', 'slug', 'category_id', 'user_id', 'content', 'published_at', 'status', 'html_content'];
 
     public function category()
     {
