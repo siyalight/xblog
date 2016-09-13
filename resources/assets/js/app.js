@@ -11,22 +11,19 @@
                 maxCacheLength: 500,
             });
             $(document).on('pjax:start', function () {
-                console.log('pjax:start')
                 NProgress.start();
             });
             $(document).on('pjax:end', function () {
-                console.log('pjax:end')
                 NProgress.done();
                 self.bootUp();
             });
             $(document).on('pjax:complete', function () {
-                console.log('pjax:complete')
                 NProgress.done();
             });
-            console.log('LufficcBlog:init')
             self.bootUp();
         },
         bootUp: function () {
+            NProgress.configure({showSpinner: false});
             initMarkdownTarget();
             initFooterPosition();
             $(window).resize(initFooterPosition);
@@ -46,10 +43,9 @@
     }
 
     function initMarkdownTarget() {
-        var markdownTarget = document.getElementById('markdown-target');
-        if (markdownTarget) {
-            markdownTarget.innerHTML =
-                marked($('#markdown-content').data("markdown"), {
+        $('.markdown-target').each(function (i, element) {
+            element.innerHTML =
+                marked($(element).data("markdown"), {
                     renderer: new marked.Renderer(),
                     gfm: true,
                     tables: true,
@@ -61,12 +57,11 @@
                         return hljs.highlightAuto(code).value;
                     }
                 });
-        }
+        });
     }
 
     window.LufficcBlog = LufficcBlog;
 })(jQuery);
 $(document).ready(function () {
-    console.log('document:ready');
     LufficcBlog.init();
 });

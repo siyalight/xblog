@@ -45,8 +45,7 @@
                 </div>
             </div>
             <br>
-            <div id="markdown-content" data-markdown="{{ $post->content }}"></div>
-            <div id="markdown-target" class="post-content">
+            <div class="post-content markdown-target"  data-markdown="{{ $post->content }}">
             </div>
             <div class="pull-left post-footer tag-list">
                 <i class="fa fa-tags"></i>

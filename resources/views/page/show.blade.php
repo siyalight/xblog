@@ -19,9 +19,8 @@
             <div class="center-block">
                 <h1>{{ $page->display_name }}</h1>
             </div>
-            <div id="markdown-target" class="post-content">
+            <div data-markdown="{{ $page->content }}" class="post-content markdown-target">
             </div>
-            <div id="markdown-content" data-markdown="{{ $page->content }}"></div>
         </div>
         @include('widget.duoshuo',[
         'duoshuo_data_key'=>'page-'.$page->name,
