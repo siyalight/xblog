@@ -13,8 +13,8 @@
 <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
     <label for="description" class="control-label">文章描述*</label>
 
-    <input id="description" type="text" class="form-control" name="description"
-           value="{{ isset($post) ? $post->description : old('description') }}">
+    <textarea style="resize: vertical" rows="3" spellcheck="false" id="description" class="form-control"
+              name="description">{{ isset($post) ? $post->description : old('description') }}</textarea>
 
     @if ($errors->has('description'))
         <span class="help-block">
@@ -72,11 +72,10 @@
     @endif
 </div>
 <div class="form-group{{ $errors->has('content') ? ' has-error ' : ' ' }}">
-    <label for="content" class="control-label">文章内容*</label>
-
-    <textarea spellcheck="false" id="content" type="text" class="form-control" name="content"
+    <label for="post-content-textarea" class="control-label">文章内容*</label>
+    <textarea spellcheck="false" id="post-content-textarea" type="text" class="form-control" name="content"
               rows="25"
-              style="line-height: 1.85em; font-size:1.5em;resize: vertical">{{ isset($post) ? $post->content : old('content') }}</textarea>
+              style="resize: vertical">{{ isset($post) ? $post->content : old('content') }}</textarea>
     @if($errors->has('content'))
         <span class="help-block">
             <strong>{{ $errors->first('content') }}</strong>

@@ -42,6 +42,7 @@
 
         new SimpleMDE({
             autoDownloadFontAwesome:true,
+            element: document.getElementById("post-content-textarea"),
             autosave: {
                 enabled: true,
                 uniqueId: "post.create",

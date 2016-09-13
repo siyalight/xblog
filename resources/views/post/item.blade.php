@@ -36,8 +36,7 @@
     </div>
     <!-- post content -->
     <div class="post-description">
-        <p>
-            {{ $post->description }}
+        <p class="markdown-target" data-markdown="{{ $post->description }}">
         </p>
     </div>
     <!-- read more -->
