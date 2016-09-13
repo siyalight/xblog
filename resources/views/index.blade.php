@@ -49,7 +49,7 @@
         }
 
         .title {
-            font-size: 60px;
+            font-size: 36px;
             margin-top: -100px;
         }
 
