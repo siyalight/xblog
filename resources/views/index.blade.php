@@ -22,6 +22,7 @@
             height: 100%;
             background: #F5F8FA;
         }
+
         body {
             margin: 0;
             padding: 0;
@@ -31,12 +32,14 @@
             font-weight: 300;
             font-family: 'Lato', sans-serif;
         }
+
         .container {
             text-align: center;
             display: table-cell;
             vertical-align: middle;
         }
-        a{
+
+        a {
             text-decoration: none;
         }
 
@@ -50,7 +53,7 @@
             margin-top: -100px;
         }
 
-        .urls{
+        .urls {
             margin-top: 20px;
         }
     </style>

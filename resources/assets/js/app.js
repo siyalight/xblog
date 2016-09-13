@@ -1,8 +1,7 @@
 /**
  * @author lufficc
  */
-/*require('./footer')
-require('./markdown')*/
+
 (function ($) {
     var LufficcBlog = {
         init: function () {
@@ -11,28 +10,42 @@ require('./markdown')*/
                 timeout: 2000,
                 maxCacheLength: 500,
             });
-            $(document).on('pjax:complete', function () {
+            $(document).on('pjax:start', function () {
+                console.log('pjax:start')
+                NProgress.start();
+            });
+            $(document).on('pjax:end', function () {
+                console.log('pjax:end')
+                NProgress.done();
                 self.bootUp();
             });
+            $(document).on('pjax:complete', function () {
+                console.log('pjax:complete')
+                NProgress.done();
+            });
+            console.log('LufficcBlog:init')
             self.bootUp();
         },
         bootUp: function () {
+            NProgress.configure({ trickle: false });
             initMarkdownTarget();
             initFooterPosition();
             $(window).resize(initFooterPosition);
         },
     };
-    function initFooterPosition(){
+
+    function initFooterPosition() {
         $("#footer").removeClass("fixed-bottom");
         var contentHeight = document.body.scrollHeight,//网页正文全文高度
             winHeight = window.innerHeight;//可视窗口高度，不包括浏览器顶部工具栏
-        if(!(contentHeight > winHeight)){
+        if (!(contentHeight > winHeight)) {
             //当网页正文高度小于可视窗口高度时，为footer添加类fixed-bottom
             $("footer").addClass("fixed-bottom");
         } else {
             $("footer").removeClass("fixed-bottom");
         }
     }
+
     function initMarkdownTarget() {
         var markdownTarget = document.getElementById('markdown-target');
         if (markdownTarget) {
@@ -51,8 +64,10 @@ require('./markdown')*/
                 });
         }
     }
+
     window.LufficcBlog = LufficcBlog;
 })(jQuery);
 $(document).ready(function () {
+    console.log('document:ready');
     LufficcBlog.init();
 });
