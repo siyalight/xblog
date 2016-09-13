@@ -27,7 +27,6 @@
             self.bootUp();
         },
         bootUp: function () {
-            NProgress.configure({ trickle: false });
             initMarkdownTarget();
             initFooterPosition();
             $(window).resize(initFooterPosition);
