@@ -48,8 +48,7 @@
                 spellChecker:false,
                 toolbar: ["bold", "italic", "heading", "|", "quote",'code','ordered-list','unordered-list','link','image','table','|','preview','side-by-side','fullscreen'],
             });
-
-            $('#post-content-textarea').inlineattach ({
+            /*$('#post-content-textarea').inlineattach ({
                 uploadUrl: '/',
                 extraParams: {
                     '_token': '',
@@ -60,8 +59,7 @@
                 onUploadedFile: function(response) {
                     console.log(response);
                 },
-            });
-
+            });*/
         });
 
 
