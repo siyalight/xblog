@@ -19,14 +19,14 @@
 </head>
 <body>
     @include('admin.layouts.header')
-    <div id="content-wrap" style="margin-top: 35px">
+    <div id="content-wrap">
         <div class="container">
             @include('partials.errors')
             @include('partials.success')
             @yield('content')
         </div>
-        @include('layouts.footer')
     </div>
+    @include('layouts.footer')
     <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/js/inline-attach.min.js"></script>

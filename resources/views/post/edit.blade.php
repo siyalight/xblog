@@ -1,7 +1,6 @@
 @extends('admin.layouts.app')
 @section('css')
     <link href="//cdn.bootcss.com/select2/4.0.3/css/select2.min.css" rel="stylesheet">
-    <link href="//cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/simplemde/1.11.2/simplemde.min.css" rel="stylesheet">
 @endsection
 @section('content')
@@ -16,17 +15,11 @@
 
                         @include('post.form-content')
                         <input type="hidden" name="_method" value="put">
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    修改
-                                </button>
-                            </div>
-                        </div>
-
+                        <button type="submit" class="btn btn-primary">
+                            修改
+                        </button>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>

@@ -3,7 +3,6 @@
     <input id="title" type="text" class="form-control" name="title"
            value="{{ isset($post) ? $post->title : old('title') }}"
            autofocus>
-
     @if ($errors->has('title'))
         <span class="help-block">
             <strong>{{ $errors->first('title') }}</strong>
@@ -13,7 +12,7 @@
 <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
     <label for="description" class="control-label">文章描述*</label>
 
-    <textarea style="resize: vertical" rows="3" spellcheck="false" id="description" class="form-control"
+    <textarea id="post-description-textarea" style="resize: vertical" rows="3" spellcheck="false" id="description" class="form-control" placeholder="请使用 Markdown 格式书写"
               name="description">{{ isset($post) ? $post->description : old('description') }}</textarea>
 
     @if ($errors->has('description'))
@@ -73,8 +72,9 @@
 </div>
 <div class="form-group{{ $errors->has('content') ? ' has-error ' : ' ' }}">
     <label for="post-content-textarea" class="control-label">文章内容*</label>
-    <textarea spellcheck="false" id="post-content-textarea" type="text" class="form-control" name="content"
+    <textarea spellcheck="false" id="post-content-textarea" class="form-control" name="content"
               rows="25"
+              placeholder="请使用 Markdown 格式书写"
               style="resize: vertical">{{ isset($post) ? $post->content : old('content') }}</textarea>
     @if($errors->has('content'))
         <span class="help-block">
@@ -84,15 +84,21 @@
 </div>
 
 <div class="form-group">
-    <label for="status" class="control-label">文章狀態</label>
-    <select id="status" name="status" class="form-control">
-        @if(isset($post))
-            <option value="0" {{ $post->status == 0?' selected':'' }}>草稿</option>
-            <option value="1" {{ $post->status == 1?' selected':'' }}>发布</option>
-        @else
-            <option value="0">草稿</option>
-            <option value="1">发布</option>
-        @endif
-    </select>
+    <div class="radio radio-inline">
+        <label>
+            <input type="radio"
+                   {{ (isset($post)) && $post->status == 1 ? ' checked ':'' }}
+                   name="status"
+                   value="1">发布
+        </label>
+    </div>
+    <div class="radio radio-inline">
+        <label>
+            <input type="radio"
+                   {{ (!isset($post)) || $post->status == 0 ? ' checked ':'' }}
+                   name="status"
+                   value="0">草稿
+        </label>
+    </div>
 </div>
 {{ csrf_field() }}

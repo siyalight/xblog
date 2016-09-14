@@ -43,15 +43,16 @@ class Post extends Model
     const selectArrayWithOutContent = [
         'id',
         'user_id',
+        'category_id',
         'title',
         'slug',
         'description',
         'deleted_at',
-        'category_id',
+        'created_at',
+        'updated_at',
         'published_at',
         'status'
     ];
-
 
     protected $fillable = ['title', 'description', 'slug', 'category_id', 'user_id', 'content', 'published_at', 'status', 'html_content'];
 
