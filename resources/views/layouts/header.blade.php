@@ -25,6 +25,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ route('post.index') }}">博客</a></li>
                     <li><a href="{{ route('page.about') }}">关于</a></li>
+                    <li><a href="{{ route('projects') }}">项目</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())
