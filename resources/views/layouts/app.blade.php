@@ -19,7 +19,6 @@
     <title>@yield('title') {{ $title or '' }} </title>
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-    <link href="//cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-heath.light.min.css" rel="stylesheet">
     <meta http-equiv="x-pjax-version" content="{{ elixir('css/app.css') }}">
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
     @yield('css')

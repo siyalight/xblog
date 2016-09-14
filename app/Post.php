@@ -40,7 +40,7 @@ class Post extends Model
      */
     protected $dates = ['deleted_at', 'published_at'];
 
-    static $selectArray = [
+    const selectArrayWithOutContent = [
         'id',
         'user_id',
         'title',
@@ -51,6 +51,7 @@ class Post extends Model
         'published_at',
         'status'
     ];
+
 
     protected $fillable = ['title', 'description', 'slug', 'category_id', 'user_id', 'content', 'published_at', 'status', 'html_content'];
 

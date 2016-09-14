@@ -1,5 +1,6 @@
 @import "common";
 @import "post";
+@import "pre-code";
 @import "header";
 @import "tag";
 @import "widget";
@@ -81,6 +82,7 @@ blockquote {
 }
 
 /*code*/
+$codeBg : rgb(247, 249, 247);
 
 pre, .highlight {
   overflow: auto;
@@ -90,13 +92,13 @@ pre, .highlight {
   color: rgb(77, 77, 76);
   border: none;
   border-radius: 4px;
-  background: rgb(247, 250, 247);
+  background: $codeBg;
   line-height: 1.5em;
   word-wrap: normal;
 }
 
 .hljs {
-  background: rgb(247, 250, 247);
+  background: $codeBg;
 }
 
 /*pre {

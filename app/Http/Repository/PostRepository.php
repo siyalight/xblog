@@ -67,7 +67,7 @@ class PostRepository extends Repository
     public function pagedPosts($page = 7)
     {
         $posts = $this->remember('post.page.' . $page . '' . request()->get('page', 1), function () use ($page) {
-            return Post::select(Post::$selectArray)->with(['tags', 'category'])->orderBy('created_at', 'desc')->paginate($page);
+            return Post::select(Post::selectArrayWithOutContent)->with(['tags', 'category'])->orderBy('created_at', 'desc')->paginate($page);
         });
         return $posts;
     }
