@@ -39,7 +39,6 @@
         $("#post-tags").select2({
             tags: true
         })
-
         new SimpleMDE({
             autoDownloadFontAwesome:true,
             element: document.getElementById("post-content-textarea"),
@@ -53,6 +52,19 @@
             },
             spellChecker:false,
             toolbar: ["bold", "italic", "heading", "|", "quote",'code','ordered-list','unordered-list','link','image','table','|','preview','side-by-side','fullscreen'],
+        });
+
+        $('#post-content-textarea').inlineattach ({
+            uploadUrl: '',
+            extraParams: {
+                '_token': '',
+            },
+            onReceivedFile: function(file) {
+                console.log('received file!', file);
+            },
+            onUploadedFile: function(response) {
+                console.log(response);
+            },
         });
     </script>
 @endsection

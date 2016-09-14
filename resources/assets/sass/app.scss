@@ -13,6 +13,16 @@ html, body {
   font-family: NotoSansHans-Regular, AvenirNext-Regular, arial, Hiragino Sans GB, "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
 }
 
+#content-wrap {
+  min-height: 100%;
+  margin-bottom: -$footerHeight;
+}
+
+#content-wrap:after {
+  content: "";
+  display: block;
+}
+
 .center-block {
   text-align: center;
 }
@@ -53,17 +63,14 @@ blockquote {
 }
 
 /*footer*/
-.fixed-bottom {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+
+#footer,#content-wrap:after {
+  height: $footerHeight;
 }
 
-.footer {
-  margin-top: 20px;
-}
 
 .copyright {
+  height: 100%;
   background: #333;
   font-size: 13px;
   text-align: center;

@@ -26,22 +26,10 @@
             NProgress.configure({showSpinner: false});
             initMarkdownTarget();
             hightLightCode();
-            initFooterPosition();
-            $(window).resize(initFooterPosition);
+            initTables();
+            initInlineAttachment();
         },
     };
-
-    function initFooterPosition() {
-        $("#footer").removeClass("fixed-bottom");
-        var contentHeight = document.body.scrollHeight,//网页正文全文高度
-            winHeight = window.innerHeight;//可视窗口高度，不包括浏览器顶部工具栏
-        if (!(contentHeight > winHeight)) {
-            //当网页正文高度小于可视窗口高度时，为footer添加类fixed-bottom
-            $("footer").addClass("fixed-bottom");
-        } else {
-            $("footer").removeClass("fixed-bottom");
-        }
-    }
 
     function initMarkdownTarget() {
         $('.markdown-target').each(function (i, element) {
@@ -62,6 +50,12 @@
         $('pre code').each(function(i, block) {
             hljs.highlightBlock(block);
         });
+    }
+    function initTables() {
+        $('table').addClass('table table-bordered table-responsive');
+    }
+    function initInlineAttachment() {
+
     }
 
     window.LufficcBlog = LufficcBlog;

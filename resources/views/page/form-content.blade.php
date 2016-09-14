@@ -7,8 +7,8 @@
 
     @if ($errors->has('name'))
         <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+            <strong>{{ $errors->first('name') }}</strong>
+        </span>
     @endif
 </div>
 
@@ -21,8 +21,8 @@
 
     @if ($errors->has('display_name'))
         <span class="help-block">
-                                        <strong>{{ $errors->first('display_name') }}</strong>
-                                    </span>
+            <strong>{{ $errors->first('display_name') }}</strong>
+        </span>
     @endif
 </div>
 
@@ -34,8 +34,8 @@
               rows="25"style="line-height: 1.85em; resize: vertical">{{ isset($page) ? $page->content : old('content') }}</textarea>
     @if ($errors->has('content'))
         <span class="help-block">
-                                        <strong>{{ $errors->first('content') }}</strong>
-                                    </span>
+            <strong>{{ $errors->first('content') }}</strong>
+        </span>
     @endif
 </div>
 

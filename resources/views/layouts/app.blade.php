@@ -32,7 +32,7 @@
 </head>
 <body id="lufficc-blog-container">
 @include('layouts.header')
-<div class="content-wrap" style="margin-top: 30px">
+<div id="content-wrap">
     <div class="container">
         @include('partials.errors')
         @include('partials.success')
