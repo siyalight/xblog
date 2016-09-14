@@ -2,7 +2,8 @@
 @section('title','文章')
 @section('content')
     <div class="row">
-        <form role="form" id="setting-form" class="form-horizontal" action="{{ route('admin.save-settings') }}" method="post">
+        <form role="form" id="setting-form" class="form-horizontal" action="{{ route('admin.save-settings') }}"
+              method="post">
             <div class="col-md-12">
                 <div class="widget widget-default">
                     <div class="widget-header">
@@ -54,12 +55,8 @@
             <div class="col-md-8">
                 <div class="widget widget-default">
                     <div class="widget-body">
-                        {{ csrf_field() }}
                         <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-addon">标题</div>
-                                <input class="form-control" type="text" name="title" value="{{ $title or ''}}">
-                            </div>
+
                         </div>
                         <div class="form-group">
                             <div class="input-group">
@@ -88,6 +85,27 @@
                     <div class="widget-body">
                         <div class="form-group">
                             <div class="input-group">
+                                <div class="input-group-addon">标题</div>
+                                <input class="form-control" type="text" name="site_title"
+                                       value="{{ $site_title or ''}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">关键字</div>
+                                <input placeholder="网站关键字" class="form-control" type="text" name="site_keywords"
+                                       value="{{ $site_keywords or ''}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">网站描述</div>
+                                <input class="form-control" type="text" name="site_description"
+                                       value="{{ $site_description or '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
                                 <div class="input-group-addon">每页数量</div>
                                 <input class="form-control" type="number" name="page_size"
                                        value="{{ $page_size or 7 }}">
@@ -110,6 +128,7 @@
                     </div>
                 </div>
             </div>
+            {{ csrf_field() }}
             <div class="col-md-12">
                 <button type="submit" class="btn bg-primary">
                     保存

@@ -5,17 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="{{ $author or '' }}">
-    <meta name="description" content="@yield('description') {{ $description or '' }}">
-    <meta name="Keywords" content="聪聪,博客,海贼王,One Piece,爱科技,爱生活,Php,Android,Laravel,Spring,Java">
+    <title>@yield('title') {{ $site_title or '' }} </title>
+    <meta name="keywords" content="{{ $site_keywords or '' }}">
+    <meta name="description" content="@yield('description') {{ $site_description or '' }}">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ $title or '' }}">
-    <meta property="og:site_name" content="{{ $title or '' }}">
-    <meta property="og:description" content="Stay Hungry.Stay Foolish.">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="lufficc">
-    <meta name="twitter:description" content="Stay Hungry.Stay Foolish.">
+    <meta property="og:title" content="{{ $site_title or '' }}">
+    <meta property="og:site_name" content="{{ $site_title or '' }}">
+    <meta property="og:description" content="{{ $site_description or '' }}">
     <meta name="theme-color" content="#607D8B">
-    <title>@yield('title') {{ $title or '' }} </title>
+    @include('widget.google_analytics')
     <style>
         html, body {
             height: 100%;
