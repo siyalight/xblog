@@ -24,9 +24,9 @@ class FileUploadManager
      */
     public function __construct()
     {
-        $accessKey = env('QINIU_AK');
-        $secretKey = env('QINIU_SK');
-        $this->bucket = env('QINIU_BUCKET');
+        $accessKey = config('filesystems.disks.qiniu.access_key');
+        $secretKey = config('filesystems.disks.qiniu.secret_key');
+        $this->bucket = env('bucket');
         $auth = new Auth($accessKey, $secretKey);
         $this->token = $auth->uploadToken($this->bucket);
         $this->uploadManager = new UploadManager();
