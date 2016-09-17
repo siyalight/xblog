@@ -48,6 +48,7 @@ class FileUploadManager
     {
         $err = $this->bucketManager->delete($this->bucket, $key);
         if ($err !== null) {
+            dd($err);
             return false;
         } else {
             return true;
