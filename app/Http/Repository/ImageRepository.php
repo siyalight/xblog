@@ -7,8 +7,8 @@
  */
 namespace App\Http\Repository;
 
+use App\File;
 use App\Image;
-use App\Map;
 use Illuminate\Http\Request;
 use Lufficc\FileUploadManager;
 use Storage;
@@ -36,7 +36,7 @@ class ImageRepository extends Repository
     public function getAll($page = 12)
     {
         $maps = $this->remember('image.page.' . $page . request()->get('page', 1), function () use ($page) {
-            return Image::paginate($page);
+            return File::where('type', 'image')->paginate($page);
         });
         return $maps;
     }
@@ -44,7 +44,7 @@ class ImageRepository extends Repository
     public function get($key)
     {
         $map = $this->remember('image.one.' . $key, function () use ($key) {
-            return Map::where('key', $key)->first();
+            return File::where('key', $key)->first();
         });
         return $map;
     }
@@ -55,10 +55,11 @@ class ImageRepository extends Repository
         $file = $request->file('image');
         $fileName = 'images/' . $file->hashName();
         if ($this->fileUploadManager->uploadFile($fileName, $file->getRealPath())) {
-            $image = Image::firstOrNew([
+            $image = File::firstOrNew([
                 'name' => $file->getClientOriginalName(),
                 'key' => $fileName,
                 'size' => $file->getSize(),
+                'type' => 'image'
             ]);
             if ($image->save()) {
                 if ($html) {
@@ -85,18 +86,14 @@ class ImageRepository extends Repository
     {
         $file = $request->file('image');
         $path = $file->store('public/images');
+        $url = Storage::url($path);
+
         if ($path) {
-            $image = Map::firstOrNew([
-                'key' => $path
-            ]);
-            $url = Storage::url($path);
-            $image->tag = 'images';
-            $image->value = $url;
-            $image->meta = json_encode([
+            $image = File::firstOrNew([
                 'name' => $file->getClientOriginalName(),
+                'key' => $url,
                 'size' => $file->getSize(),
-                'mimeType' => $file->getMimeType(),
-                'ctime' => $file->getCTime(),
+                'type' => 'image'
             ]);
             $result = $image->save();
         } else {
@@ -124,6 +121,6 @@ class ImageRepository extends Repository
 
     public function model()
     {
-        return app(Image::class);
+        return app(File::class);
     }
 }
