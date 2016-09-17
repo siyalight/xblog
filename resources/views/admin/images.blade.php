@@ -65,10 +65,10 @@
         @empty
         @endforelse
     </div>
-    @if($posts->lastPage() > 1)
+    @if($images->lastPage() > 1)
         <div class="row">
             <div class="col-md-12">
-                {{ $posts->links() }}
+                {{ $images->links() }}
             </div>
         </div>
     @endif
