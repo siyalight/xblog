@@ -54,6 +54,8 @@
                                 <i class="fa fa-trash-o fa-fw"></i>
                             </button>
                             {{ formatBytes($image->size) }}
+                            -
+                            {{ $image->created_at->format('Y-m-d H:m') }}
                         </div>
                     </div>
                 </div>
