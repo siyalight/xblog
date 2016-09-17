@@ -62,15 +62,16 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    {{ $images->links() }}
-                </div>
-            </div>
         @empty
         @endforelse
     </div>
-
+    @if($posts->lastPage() > 1)
+        <div class="row">
+            <div class="col-md-12">
+                {{ $posts->links() }}
+            </div>
+        </div>
+    @endif
 
     {{-- modal --}}
     <div class="modal fade" id="delete-image-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -101,7 +102,7 @@
     <script>
         new Clipboard('.btn');
         $('.btn').tooltip({
-            trigger:'click',
+            trigger: 'click',
         });
         $('#delete-image-modal').on('show.bs.modal', function (e) {
             var url = $(e.relatedTarget).data('url');
