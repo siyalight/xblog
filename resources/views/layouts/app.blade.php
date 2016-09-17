@@ -36,12 +36,6 @@
     </div>
 </div>
 @include('layouts.footer')
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>
-<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
-<script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
-<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.js"></script>
 <script src="{{ elixir('js/app.js') }}"></script>
 @yield('script')
 </body>

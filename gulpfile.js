@@ -12,9 +12,19 @@ require('laravel-elixir-vue');
  | file for our application, as well as publishing vendor resources.
  |
  */
-
-elixir(function(mix){
+var basejs = [
+    'resources/assets/js/jquery.js',
+    'resources/assets/js/bootstrap.js',
+    'resources/assets/js/hightlight.js',
+    'resources/assets/js/marked.js',
+    'resources/assets/js/nprogress.js',
+    'resources/assets/js/pjax.js',
+    'autosize.min.js',
+    'codemirror-4.inline-attachment.js',
+    'resources/assets/js/app.js',
+];
+elixir(function (mix) {
     mix.sass('app.scss')
-    mix.webpack(['app.js'],'./public/js/app.js');
-    mix.version(['css/app.css','js/app.js']);
+    .scripts(basejs, './public/js/app.js')
+    .version(['css/app.css', 'js/app.js']);
 });
