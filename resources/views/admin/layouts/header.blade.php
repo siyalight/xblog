@@ -15,6 +15,7 @@
                     <li><a href="{{ route('admin.index') }}">后台主页</a></li>
                     <li><a href="{{ route('post.create') }}">写作</a></li>
                     <li><a href="{{ route('admin.images') }}">图片</a></li>
+                    <li><a href="{{ route('admin.files') }}">文件</a></li>
                     <li><a href="{{ route('admin.settings') }}">设置</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

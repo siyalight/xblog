@@ -16,8 +16,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-    <meta http-equiv="x-pjax-version" content="{{ elixir('css/app.css') }}">
-    <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+    <meta http-equiv="x-pjax-version" content="{{ (isset($site_css) && $site_css) ? $site_css : elixir('css/app.css') }}">
+    @if(isset($site_css) && $site_css)
+        <script src="{{ $site_css }}"></script>
+    @else
+        <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+    @endif
+
     @yield('css')
     <script>
         window.Laravel = <?php echo json_encode([
@@ -26,7 +31,7 @@
     </script>
     @include('widget.google_analytics')
 </head>
-<body id="lufficc-blog-container">
+<body id="lufficc-pjax-container">
 @include('layouts.header')
 <div id="content-wrap">
     <div class="container">
@@ -36,7 +41,11 @@
     </div>
 </div>
 @include('layouts.footer')
-<script src="{{ elixir('js/app.js') }}"></script>
+@if(isset($site_js) && $site_js)
+    <script src="{{ $site_js }}"></script>
+@else
+    <script src="{{ elixir('js/app.js') }}"></script>
+@endif
 @yield('script')
 </body>
 </html>

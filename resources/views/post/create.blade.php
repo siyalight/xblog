@@ -34,20 +34,6 @@
             tags: true
         });
         $(document).ready(function () {
-            /*$('#post-content-textarea').inlineattach ({
-             uploadUrl: '/',
-             extraParams: {
-             '_token': '',
-             },
-             onReceivedFile: function(file) {
-             console.log('received file!', file);
-             },
-             onUploadedFile: function(response) {
-             console.log(response);
-             },
-             });*/
-
-
             var simplemde = new SimpleMDE({
                 autoDownloadFontAwesome: true,
                 element: document.getElementById("post-content-textarea"),
@@ -71,7 +57,5 @@
                 },
             });
         });
-
-
     </script>
 @endsection

@@ -35,6 +35,8 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
     Route::post('/settings', ['uses' => 'AdminController@saveSettings', 'as' => 'admin.save-settings']);
     Route::post('/upload/image', ['uses' => 'ImageController@uploadImage', 'as' => 'upload.image']);
     Route::delete('/delete/image', ['uses' => 'ImageController@deleteImage', 'as' => 'delete.image']);
+    Route::post('/upload/js', ['uses' => 'FileController@uploadJs', 'as' => 'upload.js']);
+    Route::post('/upload/css', ['uses' => 'FileController@uploadCss', 'as' => 'upload.css']);
 
 
     Route::get('/posts', ['uses' => 'AdminController@posts', 'as' => 'admin.posts']);
@@ -43,6 +45,7 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
     Route::get('/pages', ['uses' => 'AdminController@pages', 'as' => 'admin.pages']);
     Route::get('/categories', ['uses' => 'AdminController@categories', 'as' => 'admin.categories']);
     Route::get('/images', ['uses' => 'ImageController@images', 'as' => 'admin.images']);
+    Route::get('/files', ['uses' => 'FileController@files', 'as' => 'admin.files']);
 
 
     Route::post('/post/{post}/restore', ['uses' => 'PostController@restore', 'as' => 'post.restore']);

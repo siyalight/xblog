@@ -9,7 +9,6 @@ namespace App\Http\Repositories;
 
 use App\File;
 use Illuminate\Http\Request;
-use Lufficc\FileUploadManager;
 use Storage;
 
 
@@ -17,21 +16,9 @@ use Storage;
  * Class TagRepository
  * @package App\Http\Repository
  */
-class ImageRepository extends Repository
+class ImageRepository extends FileRepository
 {
     static $tag = 'image';
-    private $fileUploadManager;
-
-    /**
-     * ImageRepository constructor.
-     * @param FileUploadManager $fileUploadManager
-     */
-    public function __construct(FileUploadManager $fileUploadManager)
-    {
-        $this->fileUploadManager = $fileUploadManager;
-    }
-
-
     public function getAll($page = 12)
     {
         $maps = $this->remember('image.page.' . $page . request()->get('page', 1), function () use ($page) {
@@ -40,46 +27,24 @@ class ImageRepository extends Repository
         return $maps;
     }
 
-    public function get($key)
-    {
-        $map = $this->remember('image.one.' . $key, function () use ($key) {
-            return File::where('key', $key)->first();
-        });
-        return $map;
-    }
-
     public function uploadImageToQiNiu(Request $request, $html)
     {
-        $data = [];
         $file = $request->file('image');
-        $fileName = 'images/' . $file->hashName();
-        if ($this->fileUploadManager->uploadFile($fileName, $file->getRealPath())) {
-            $image = File::firstOrNew([
-                'name' => $file->getClientOriginalName(),
-                'key' => $fileName,
-                'size' => $file->getSize(),
-                'type' => 'image'
-            ]);
-            if ($image->save()) {
-                if ($html) {
-                    $this->clearCache();
-                    return true;
-                }
-                $data['filename'] = getUrlByFileName($fileName);
+        $data = [];
+        $url = $this->uploadFile($file);
+        if ($url) {
+            if ($html) {
+                return true;
             } else {
-                if ($html)
-                    return false;
-                $data['error'] = 'upload failed';
+                $data['filename'] = $url;
             }
         } else {
             if ($html)
                 return false;
             $data['error'] = 'upload failed';
         }
-        $this->clearCache();
         return $data;
     }
-
 
     public function uploadImageToLocal(Request $request)
     {
@@ -102,17 +67,6 @@ class ImageRepository extends Repository
         return $result;
     }
 
-
-    public function delete($key)
-    {
-        $result = $this->fileUploadManager->deleteFile($key);
-        if ($result) {
-            $this->clearCache();
-            File::where('key', $key)->delete();
-        }
-        return $result;
-    }
-
     public function tag()
     {
         return ImageRepository::$tag;
@@ -121,5 +75,10 @@ class ImageRepository extends Repository
     public function model()
     {
         return app(File::class);
+    }
+
+    public function type()
+    {
+        return ImageRepository::$tag;
     }
 }

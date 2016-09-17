@@ -7,8 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#607D8B">
     <title>lufficc  @yield('title')</title>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
     @yield('css')
     <script>
@@ -27,7 +27,11 @@
         </div>
     </div>
     @include('layouts.footer')
-    <script src="{{ elixir('js/app.js') }}"></script>
+    @if(isset($site_js) && $site_js)
+        <script src="{{ $site_js }}"></script>
+    @else
+        <script src="{{ elixir('js/app.js') }}"></script>
+    @endif
     @yield('script')
 </body>
 </html>

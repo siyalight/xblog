@@ -25,6 +25,6 @@ var basejs = [
 ];
 elixir(function (mix) {
     mix.sass('app.scss')
-    .scripts(basejs, './public/js/app.js')
+    /*.scripts(basejs, './public/js/app.js')*/
     .version(['css/app.css', 'js/app.js']);
 });

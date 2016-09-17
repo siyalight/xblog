@@ -6,20 +6,25 @@
     var LufficcBlog = {
         init: function () {
             var self = this;
-            $(document).pjax('a:not(a[target="_blank"])', '#lufficc-blog-container', {
-                timeout: 2000,
-                maxCacheLength: 500,
-            });
-            $(document).on('pjax:start', function () {
-                NProgress.start();
-            });
-            $(document).on('pjax:end', function () {
-                NProgress.done();
-                self.bootUp();
-            });
-            $(document).on('pjax:complete', function () {
-                NProgress.done();
-            });
+            var pjaxContainer = $('#lufficc-pjax-container');
+            if (pjaxContainer.length > 0)
+            {
+                $(document).pjax('a:not(a[target="_blank"])', pjaxContainer, {
+                    timeout: 2000,
+                    maxCacheLength: 500,
+                });
+                $(document).on('pjax:start', function () {
+                    NProgress.start();
+                });
+                $(document).on('pjax:end', function () {
+                    NProgress.done();
+                    self.bootUp();
+                });
+                $(document).on('pjax:complete', function () {
+                    NProgress.done();
+                });
+            }
+
             self.bootUp();
         },
         bootUp: function () {
@@ -27,7 +32,7 @@
             initMarkdownTarget();
             hightLightCode();
             initTables();
-            initInlineAttachment();
+            autoSize();
         },
     };
 
@@ -45,17 +50,20 @@
                 });
         });
     }
+
     function hightLightCode() {
         console.log('hightLightCode');
-        $('pre code').each(function(i, block) {
+        $('pre code').each(function (i, block) {
             hljs.highlightBlock(block);
         });
     }
+
     function initTables() {
         $('table').addClass('table table-bordered table-responsive');
     }
-    function initInlineAttachment() {
 
+    function autoSize() {
+        autosize($('.autosize-target'));
     }
 
     window.LufficcBlog = LufficcBlog;

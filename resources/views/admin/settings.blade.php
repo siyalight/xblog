@@ -90,6 +90,23 @@
                                        value="{{ $site_title or ''}}">
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">Js</div>
+                                <input class="form-control" type="text" name="site_js"
+                                       value="{{ $site_js or ''}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">Css</div>
+                                <input class="form-control" type="text" name="site_css"
+                                       value="{{ $site_css or ''}}">
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-addon">关键字</div>

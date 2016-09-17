@@ -12,7 +12,7 @@
 <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
     <label for="description" class="control-label">文章描述*</label>
 
-    <textarea id="post-description-textarea" style="resize: vertical" rows="3" spellcheck="false" id="description" class="form-control" placeholder="请使用 Markdown 格式书写"
+    <textarea id="post-description-textarea" style="resize: vertical" rows="3" spellcheck="false" id="description" class="form-control autosize-target" placeholder="请使用 Markdown 格式书写"
               name="description">{{ isset($post) ? $post->description : old('description') }}</textarea>
 
     @if ($errors->has('description'))
