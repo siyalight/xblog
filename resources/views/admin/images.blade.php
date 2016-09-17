@@ -53,6 +53,7 @@
                                     data-key="{{ $image->key }}">
                                 <i class="fa fa-trash-o fa-fw"></i>
                             </button>
+                            {{ formatBytes($image->size) }}
                         </div>
                     </div>
                 </div>
