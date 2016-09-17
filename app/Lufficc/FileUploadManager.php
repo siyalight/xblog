@@ -37,6 +37,7 @@ class FileUploadManager
     {
         list($ret, $err) = $this->uploadManager->putFile($this->token, $key, $filePath);
         if ($err !== null) {
+            dd($err);
             return false;
         } else {
             return true;

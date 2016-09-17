@@ -5,6 +5,7 @@
 @endsection
 @section('content')
     <div class="row">
+        <div id="upload-img-url" data-upload-img-url="{{ route('upload.image') }}"></div>
         <div class="col-md-12">
             <div id="data" class="widget widget-default" data-id="{{ $post->id }}">
                 <div class="widget-header">
@@ -33,14 +34,24 @@
         $("#post-tags").select2({
             tags: true
         });
-        new SimpleMDE({
-            autoDownloadFontAwesome:true,
-            element: document.getElementById("post-content-textarea"),
-            renderingConfig:{
-                codeSyntaxHighlighting:true,
-            },
-            spellChecker:false,
-            toolbar: ["bold", "italic", "heading", "|", "quote",'code','ordered-list','unordered-list','link','image','table','|','preview','side-by-side','fullscreen'],
+        $(document).ready(function () {
+            var simplemde = new SimpleMDE({
+                autoDownloadFontAwesome: true,
+                element: document.getElementById("post-content-textarea"),
+                renderingConfig: {
+                    codeSyntaxHighlighting: true,
+                },
+                spellChecker: false,
+                toolbar: ["bold", "italic", "heading", "|", "quote", 'code', 'ordered-list', 'unordered-list', 'link', 'image', 'table', '|', 'preview', 'side-by-side', 'fullscreen'],
+            });
+            inlineAttachment.editors.codemirror4.attach(simplemde.codemirror, {
+                uploadUrl: $("#upload-img-url").data('upload-img-url'),
+                uploadFieldName: 'image',
+                extraParams: {
+                    '_token': Laravel.csrfToken,
+                    'type': 'xrt'
+                },
+            });
         });
     </script>
 @endsection

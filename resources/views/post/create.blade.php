@@ -1,7 +1,6 @@
 @extends('admin.layouts.app')
 @section('css')
     <link href="//cdn.bootcss.com/select2/4.0.3/css/select2.min.css" rel="stylesheet">
-    <link href="//cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/simplemde/1.11.2/simplemde.min.css" rel="stylesheet">
 @endsection
 @section('content')
@@ -27,7 +26,6 @@
 
 @section('script')
     <script src="//cdn.bootcss.com/select2/4.0.3/js/select2.min.js"></script>
-    <script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
     <script src="//cdn.bootcss.com/simplemde/1.11.2/simplemde.min.js"></script>
     <script>
         $("#post-tags").select2({

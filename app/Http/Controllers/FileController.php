@@ -61,21 +61,6 @@ class FileController extends Controller
         return back()->withErrors('上传失败');
     }
 
-    public function uploadFile(Request $request)
-    {
-        $this->validate($request, [
-            'image' => 'required|image|max:5000'
-        ]);
-        $type = $request->input('type', null);
-        if ($type != null && $type == 'xrt') {
-            return $this->imageRepository->uploadImageToQiNiu($request, false);
-        } else {
-            if ($this->imageRepository->uploadImageToQiNiu($request, true))
-                return back()->with('success', '上传成功');
-            return back()->withErrors('上传失败');
-        }
-    }
-
     /**
      * @param Request $request
      * @return mixed
