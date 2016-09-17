@@ -26,7 +26,7 @@ class FileUploadManager
     {
         $accessKey = config('filesystems.disks.qiniu.access_key');
         $secretKey = config('filesystems.disks.qiniu.secret_key');
-        $this->bucket = env('filesystems.disks.qiniu.bucket');
+        $this->bucket = config('filesystems.disks.qiniu.bucket');
         $auth = new Auth($accessKey, $secretKey);
         $this->token = $auth->uploadToken($this->bucket);
         $this->uploadManager = new UploadManager();
