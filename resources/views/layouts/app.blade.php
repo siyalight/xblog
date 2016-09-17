@@ -18,7 +18,7 @@
     <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <meta http-equiv="x-pjax-version" content="{{ (isset($site_css) && $site_css) ? $site_css : elixir('css/app.css') }}">
     @if(isset($site_css) && $site_css)
-        <script src="{{ $site_css }}"></script>
+        <link href="{{ $site_css }}" rel="stylesheet">
     @else
         <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
     @endif
