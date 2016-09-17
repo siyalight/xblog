@@ -68,6 +68,14 @@ class ImageRepository extends FileRepository
         return $result;
     }
 
+    public function count()
+    {
+        $count = $this->remember($this->tag() . '.count', function () {
+            return File::where('type', $this->type())->count();
+        });
+        return $count;
+    }
+
     public function tag()
     {
         return ImageRepository::$tag;
