@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Repository\ImageRepository;
+use App\Http\Repositories\ImageRepository;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller

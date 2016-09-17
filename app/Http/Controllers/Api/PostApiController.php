@@ -10,9 +10,9 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Repository\CategoryRepository;
-use App\Http\Repository\PostRepository;
-use App\Http\Repository\TagRepository;
+use App\Http\Repositories\CategoryRepository;
+use App\Http\Repositories\PostRepository;
+use App\Http\Repositories\TagRepository;
 
 class PostApiController extends Controller
 {

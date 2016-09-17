@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Http\Repository\CategoryRepository;
-use App\Http\Repository\MapRepository;
+use App\Http\Repositories\CategoryRepository;
+use App\Http\Repositories\MapRepository;
 use App\Post;
 use Illuminate\Http\Request;
 

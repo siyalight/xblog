@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Repository\MapRepository;
+use App\Http\Repositories\MapRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;

@@ -5,7 +5,7 @@
  * Date: 2016/8/19
  * Time: 17:41
  */
-namespace App\Http\Repository;
+namespace App\Http\Repositories;
 
 use App\Map;
 use Illuminate\Http\Request;

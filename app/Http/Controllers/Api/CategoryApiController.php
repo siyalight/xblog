@@ -10,7 +10,7 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Repository\CategoryRepository;
+use App\Http\Repositories\CategoryRepository;
 
 class CategoryApiController extends Controller
 {

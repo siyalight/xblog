@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Repository\PageRepository;
+use App\Http\Repositories\PageRepository;
 use App\Page;
 use Illuminate\Http\Request;
 

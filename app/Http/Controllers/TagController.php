@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Repository\MapRepository;
-use App\Http\Repository\TagRepository;
+use App\Http\Repositories\MapRepository;
+use App\Http\Repositories\TagRepository;
 use App\Tag;
 use Illuminate\Http\Request;
 

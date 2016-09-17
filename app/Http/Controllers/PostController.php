@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Http\Repository\CategoryRepository;
-use App\Http\Repository\MapRepository;
-use App\Http\Repository\PostRepository;
-use App\Http\Repository\TagRepository;
+use App\Http\Repositories\CategoryRepository;
+use App\Http\Repositories\MapRepository;
+use App\Http\Repositories\PostRepository;
+use App\Http\Repositories\TagRepository;
 use App\Http\Requests;
 use App\Post;
 use App\Tag;

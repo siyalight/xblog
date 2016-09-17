@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Repository\MapRepository;
-use App\Http\Repository\PostRepository;
+use App\Http\Repositories\MapRepository;
+use App\Http\Repositories\PostRepository;
 use App\Post;
 use Illuminate\Http\Request;
 use Lufficc\FileUploadManager;

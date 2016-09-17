@@ -6,7 +6,7 @@
  * Time: 13:07
  */
 
-namespace App\Http\Repository;
+namespace App\Http\Repositories;
 
 use Closure;
 
