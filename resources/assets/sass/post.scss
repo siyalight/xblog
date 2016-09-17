@@ -74,11 +74,15 @@
 }
 
 .post-detail img {
+  box-shadow: 0 0 30px #ccc;
+  -moz-box-shadow: 0 0 30px #ccc;
+  -webkit-box-shadow: 0 0 30px #ccc;
+
   box-sizing: border-box;
-  margin: 20px auto;
+  margin: 10px auto 30px auto;
   border: 1px solid #ddd;
   display: block;
   padding: 1px;
-  width: 95%;
+  width: 100%;
   height: auto;
 }
