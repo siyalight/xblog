@@ -1,14 +1,12 @@
 /**
  * @author lufficc
  */
-
 (function ($) {
     var LufficcBlog = {
         init: function () {
             var self = this;
             var pjaxContainer = $('#lufficc-pjax-container');
-            if (pjaxContainer.length > 0)
-            {
+            if (pjaxContainer.length > 0) {
                 $(document).pjax('a:not(a[target="_blank"])', pjaxContainer, {
                     timeout: 2000,
                     maxCacheLength: 500,
@@ -24,15 +22,16 @@
                     NProgress.done();
                 });
             }
-
             self.bootUp();
         },
         bootUp: function () {
+            console.log('bootUp');
             NProgress.configure({showSpinner: false});
             initMarkdownTarget();
             hightLightCode();
             initTables();
             autoSize();
+            initDuoshuo();
         },
     };
 
@@ -52,7 +51,6 @@
     }
 
     function hightLightCode() {
-        console.log('hightLightCode');
         $('pre code').each(function (i, block) {
             hljs.highlightBlock(block);
         });
@@ -64,6 +62,24 @@
 
     function autoSize() {
         autosize($('.autosize-target'));
+    }
+
+    function initDuoshuo() {
+        if (Laravel.duoshuo_enable) {
+            var dr = $(".ds-thread");
+            var dus = $("#ds-thread");
+            console.log('dus:' + $(dus).length);
+            console.log('dr:' + $(dr).length);
+            if ($(dus).length <= 1 && $(dr).length == 0) {
+                var el = document.createElement('div');//该div不需要设置class="ds-thread"
+                el.setAttribute('data-thread-key', $(dus).data('thread-key'));//必选参数
+                el.setAttribute('data-url', $(dus).data('url'));//必选参数
+                el.setAttribute('data-title', $(dus).data('title'));//必选参数
+                DUOSHUO.EmbedThread(el);
+                $(dus).html(el);
+            }
+        }
+
     }
 
     window.LufficcBlog = LufficcBlog;

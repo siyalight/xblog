@@ -21,10 +21,11 @@ var basejs = [
     'resources/assets/js/pjax.js',
     'autosize.min.js',
     'codemirror-4.inline-attachment.js',
+    'duoshuojs.js',
     'resources/assets/js/app.js',
 ];
 elixir(function (mix) {
     mix.sass('app.scss')
-    /*.scripts(basejs, './public/js/app.js')*/
+    .scripts(basejs, './public/js/app.js')
     .version(['css/app.css', 'js/app.js']);
 });

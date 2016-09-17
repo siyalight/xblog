@@ -48,8 +48,8 @@
                                        value="false">禁用多说评论
                             </label>
                         </div>
+                        <div class="alone-divider"></div>
                     </div>
-
                 </div>
             </div>
             <div class="col-md-8">
@@ -85,14 +85,6 @@
                     <div class="widget-body">
                         <div class="form-group">
                             <div class="input-group">
-                                <div class="input-group-addon">标题</div>
-                                <input class="form-control" type="text" name="site_title"
-                                       value="{{ $site_title or ''}}">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="input-group">
                                 <div class="input-group-addon">Js</div>
                                 <input class="form-control" type="text" name="site_js"
                                        value="{{ $site_js or ''}}">
@@ -109,11 +101,20 @@
 
                         <div class="form-group">
                             <div class="input-group">
+                                <div class="input-group-addon">标题</div>
+                                <input class="form-control" type="text" name="site_title"
+                                       value="{{ $site_title or ''}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
                                 <div class="input-group-addon">关键字</div>
                                 <input placeholder="网站关键字" class="form-control" type="text" name="site_keywords"
                                        value="{{ $site_keywords or ''}}">
                             </div>
                         </div>
+
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-addon">网站描述</div>
@@ -142,6 +143,13 @@
                                        value="{{ $background_image or ''}}">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">多说name</div>
+                                <input placeholder="多说short_name" class="form-control" type="text" name="duoshuo_short_name"
+                                       value="{{ $duoshuo_short_name or ''}}">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -153,5 +161,7 @@
             </div>
         </form>
     </div>
+    <br>
+    <br>
 @endsection
 
