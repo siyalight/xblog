@@ -8,12 +8,9 @@
 
 Blog powed by laravel 5.3
 
-## Official Documentation
+## screen shots
 
-## Contributing
-
-## Security Vulnerabilities
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+This blog is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
