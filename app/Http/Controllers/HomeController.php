@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Repository\MapRepository;
 use App\Http\Repository\PostRepository;
-use App\Mail\WelcomeToLufficc;
-use App\P;
 use App\Post;
 use Illuminate\Http\Request;
-use Mail;
+use Lufficc\FileUploadManager;
 
 class HomeController extends Controller
 {
@@ -37,7 +35,6 @@ class HomeController extends Controller
     {
         return view('index');
     }
-
 
     public function search(Request $request)
     {

@@ -5,6 +5,7 @@
     <link href="//cdn.bootcss.com/simplemde/1.11.2/simplemde.min.css" rel="stylesheet">
 @endsection
 @section('content')
+    <div id="upload-img-url" data-upload-img-url="{{ route('upload.image') }}"></div>
     <div class="row">
         <div class="col-md-12">
             <div class="widget widget-default">
@@ -29,37 +30,46 @@
     <script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
     <script src="//cdn.bootcss.com/simplemde/1.11.2/simplemde.min.js"></script>
     <script>
+        $("#post-tags").select2({
+            tags: true
+        });
         $(document).ready(function () {
-            $("#post-tags").select2({
-                tags: true
-            });
+            /*$('#post-content-textarea').inlineattach ({
+             uploadUrl: '/',
+             extraParams: {
+             '_token': '',
+             },
+             onReceivedFile: function(file) {
+             console.log('received file!', file);
+             },
+             onUploadedFile: function(response) {
+             console.log(response);
+             },
+             });*/
+
 
             var simplemde = new SimpleMDE({
-                autoDownloadFontAwesome:true,
+                autoDownloadFontAwesome: true,
                 element: document.getElementById("post-content-textarea"),
                 autosave: {
                     enabled: true,
                     uniqueId: "post.create",
                     delay: 1000,
                 },
-                renderingConfig:{
-                    codeSyntaxHighlighting:true,
+                renderingConfig: {
+                    codeSyntaxHighlighting: true,
                 },
-                spellChecker:false,
-                toolbar: ["bold", "italic", "heading", "|", "quote",'code','ordered-list','unordered-list','link','image','table','|','preview','side-by-side','fullscreen'],
+                spellChecker: false,
+                toolbar: ["bold", "italic", "heading", "|", "quote", 'code', 'ordered-list', 'unordered-list', 'link', 'image', 'table', '|', 'preview', 'side-by-side', 'fullscreen'],
             });
-            /*$('#post-content-textarea').inlineattach ({
-                uploadUrl: '/',
+            inlineAttachment.editors.codemirror4.attach(simplemde.codemirror, {
+                uploadUrl: $("#upload-img-url").data('upload-img-url'),
+                uploadFieldName: 'image',
                 extraParams: {
-                    '_token': '',
+                    '_token': Laravel.csrfToken,
+                    'type': 'xrt'
                 },
-                onReceivedFile: function(file) {
-                    console.log('received file!', file);
-                },
-                onUploadedFile: function(response) {
-                    console.log(response);
-                },
-            });*/
+            });
         });
 
 

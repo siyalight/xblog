@@ -27,9 +27,13 @@
         </div>
     </div>
     @include('layouts.footer')
-    <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="/js/inline-attach.min.js"></script>
+    {{--<script src="/js/inline-attach.min.js"></script>--}}
+    <script src="/js/autosize.min.js"></script>
+    <script src="/js/inline-attachment.js"></script>
+    <script src="/js/codemirror-4.inline-attachment.js"></script>
+    {{--<script src="/js/codemirror-3.inline-attachment.min.js"></script>--}}
     @yield('script')
 </body>
 </html>

@@ -37,10 +37,14 @@ class ImageController extends Controller
         $this->validate($request, [
             'image' => 'required|image|max:5000'
         ]);
-
-        if ($this->imageRepository->uploadImage($request))
-            return back()->with('success', '上传成功');
-        return back()->withErrors('上传失败');
+        $type = $request->input('type', null);
+        if ($type != null && $type == 'xrt') {
+            return $this->imageRepository->uploadImageToQiNiu($request, false);
+        } else {
+            if ($this->imageRepository->uploadImageToQiNiu($request, true))
+                return back()->with('success', '上传成功');
+            return back()->withErrors('上传失败');
+        }
     }
 
     /**

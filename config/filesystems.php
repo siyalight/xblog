@@ -61,7 +61,18 @@ return [
             'region' => 'your-region',
             'bucket' => 'your-bucket',
         ],
-
+        'qiniu' => [
+            'driver'  => 'qiniu',
+            'domains' => [
+                'default'   => 'obba2pep8.bkt.clouddn.com', //你的七牛域名
+                'https'     => '',         //你的HTTPS域名
+                'custom'    => 'static.lufficc.com',                //你的自定义域名
+            ],
+            'access_key'=> env('QINIU_AK'),  //AccessKey
+            'secret_key'=> env('QINIU_SK'),  //SecretKey
+            'bucket'    => env('QINIU_BUCKET'),  //Bucket名字
+            'notify_url'=> '',  //持久化处理回调地址
+        ],
     ],
 
 ];

@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="col-md-10 col-md-offset-2">
-            <form role="form" class="form-horizontal" action="{{ route('admin.upload.image') }}"
+            <form role="form" class="form-horizontal" action="{{ route('upload.image') }}"
                   datatype="image"
                   enctype="multipart/form-data" method="post">
                 {{ csrf_field() }}
@@ -35,12 +35,12 @@
         @foreach($images as $image)
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="widget widget-default">
-                    <img src="{{ $image->value }}" style="width: 100% ;height: 200px">
+                    <img src="{{ getUrlByFileName($image->key) }}" style="width: 100% ;height: 200px">
                     <div class="widget-footer">
                         <div class="widget-meta">
                             <button id="clipboard-btn" class="btn btn-default"
                                     type="button"
-                                    data-clipboard-text="{{ asset($image->value) }}"
+                                    data-clipboard-text="{{ getUrlByFileName($image->key) }}"
                                     data-toggle="tooltip"
                                     data-placement="left"
                                     title="Copied">
@@ -49,7 +49,7 @@
                             <button class="btn btn-danger"
                                     data-toggle="modal"
                                     data-target="#delete-image-modal"
-                                    data-url="{{ route('admin.delete.image').'?key='.$image->key }}"
+                                    data-url="{{ route('delete.image').'?key='.$image->key }}"
                                     data-key="{{ $image->key }}">
                                 <i class="fa fa-trash-o fa-fw"></i>
                             </button>
