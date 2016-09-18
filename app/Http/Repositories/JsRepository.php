@@ -33,12 +33,6 @@ class JsRepository extends FileRepository
         return JsRepository::$tag;
     }
 
-
-    public function model()
-    {
-        return app(File::class);
-    }
-
     public function type()
     {
         return 'js';

@@ -47,16 +47,4 @@ class ImageController extends Controller
             return back()->withErrors('上传失败');
         }
     }
-
-    /**
-     * @param Request $request
-     * @return mixed
-     */
-    public function deleteImage(Request $request)
-    {
-        if ($this->imageRepository->delete($request->get('key'))) {
-            return back()->with('success', '删除成功');
-        }
-        return back()->with('success', '删除失败');
-    }
 }

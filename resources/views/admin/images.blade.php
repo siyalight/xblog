@@ -50,8 +50,8 @@
                             </button>
                             <button class="btn btn-danger"
                                     data-toggle="modal"
-                                    data-target="#delete-image-modal"
-                                    data-url="{{ route('delete.image').'?key='.$image->key }}"
+                                    data-target="#delete-file-modal"
+                                    data-url="{{ route('delete.file').'?key='.$image->key.'&type=image' }}"
                                     data-key="{{ $image->key }}">
                                 <i class="fa fa-trash-o fa-fw"></i>
                             </button>
@@ -74,7 +74,7 @@
     @endif
 
     {{-- modal --}}
-    <div class="modal fade" id="delete-image-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <div class="modal fade" id="delete-file-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -104,7 +104,7 @@
         $('.btn').tooltip({
             trigger: 'click',
         });
-        $('#delete-image-modal').on('show.bs.modal', function (e) {
+        $('#delete-file-modal').on('show.bs.modal', function (e) {
             var url = $(e.relatedTarget).data('url');
             var key = $(e.relatedTarget).data('key');
             $('#span-title').text(key);

@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
     Route::get('/settings', ['uses' => 'AdminController@settings', 'as' => 'admin.settings']);
     Route::post('/settings', ['uses' => 'AdminController@saveSettings', 'as' => 'admin.save-settings']);
     Route::post('/upload/image', ['uses' => 'ImageController@uploadImage', 'as' => 'upload.image']);
-    Route::delete('/delete/image', ['uses' => 'ImageController@deleteImage', 'as' => 'delete.image']);
+    Route::delete('/delete/file', ['uses' => 'FileController@deleteFile', 'as' => 'delete.file']);
     Route::post('/upload/js', ['uses' => 'FileController@uploadJs', 'as' => 'upload.js']);
     Route::post('/upload/css', ['uses' => 'FileController@uploadCss', 'as' => 'upload.css']);
 

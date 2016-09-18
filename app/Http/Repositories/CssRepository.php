@@ -33,10 +33,6 @@ class CssRepository extends FileRepository
         return JsRepository::$tag;
     }
 
-    public function model()
-    {
-        return app(File::class);
-    }
 
     public function type()
     {

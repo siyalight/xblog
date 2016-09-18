@@ -17,8 +17,6 @@ abstract class FileRepository extends Repository
 {
     protected $fileUploadManager;
 
-    public abstract function type();
-
     /**
      * ImageRepository constructor.
      * @param FileUploadManager $fileUploadManager
@@ -40,9 +38,9 @@ abstract class FileRepository extends Repository
 
     public function getAllFiles()
     {
-        $files = $this->remember($this->type() . '.all', function () {
+        $files = $this->remember('file.all', function () {
             return File::where('type', '<>', ImageRepository::$tag)->get();
-        });
+        }, 'files');
         return $files;
     }
 
@@ -93,6 +91,14 @@ abstract class FileRepository extends Repository
             $result = false;
         }
         $this->clearCache();
+        $this->clearCache('files');
         return $result;
+    }
+
+    public abstract function type();
+
+    public function model()
+    {
+        app(File::class);
     }
 }

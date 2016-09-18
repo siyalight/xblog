@@ -81,11 +81,6 @@ class ImageRepository extends FileRepository
         return ImageRepository::$tag;
     }
 
-    public function model()
-    {
-        return app(File::class);
-    }
-
     public function type()
     {
         return ImageRepository::$tag;
