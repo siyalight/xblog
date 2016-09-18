@@ -31,6 +31,7 @@ abstract class FileRepository extends Repository
         $result = $this->fileUploadManager->deleteFile($key);
         if ($result) {
             $this->clearCache();
+            $this->clearCache('files');
             File::where('key', $key)->delete();
         }
         return $result;
