@@ -43,7 +43,6 @@
     </div>
 </div>
 @include('layouts.footer')
-<script>var duoshuoQuery = {short_name: "{{ $duoshuo_short_name or '' }}"};</script>
 @if(isset($site_js) && $site_js)
     <script src="{{ $site_js }}"></script>
 @else

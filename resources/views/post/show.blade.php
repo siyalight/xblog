@@ -55,6 +55,5 @@
                 @endforeach
             </div>
         </div>
-        @include('widget.duoshuo',['duoshuo_data_key'=>$post->slug,'duoshuo_data_title'=>$post->title,'duoshuo_data_url'=>request()->url(),])
     </div>
 @endsection

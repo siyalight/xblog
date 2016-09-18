@@ -31,7 +31,7 @@
                             </label>
                         </div>
                         {{--duoshuo--}}
-                        <div class="alone-divider"></div>
+                        {{--<div class="alone-divider"></div>
                         <div class="radio">
                             <label>
                                 <input type="radio"
@@ -47,8 +47,7 @@
                                        name="duoshuo_enable"
                                        value="false">禁用多说评论
                             </label>
-                        </div>
-                        <div class="alone-divider"></div>
+                        </div>--}}
                     </div>
                 </div>
             </div>
@@ -143,13 +142,13 @@
                                        value="{{ $background_image or ''}}">
                             </div>
                         </div>
-                        <div class="form-group">
+                        {{--<div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-addon">多说name</div>
                                 <input placeholder="多说short_name" class="form-control" type="text" name="duoshuo_short_name"
                                        value="{{ $duoshuo_short_name or ''}}">
                             </div>
-                        </div>
+                        </div>--}}
                     </div>
                 </div>
             </div>

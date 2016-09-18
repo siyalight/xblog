@@ -23,9 +23,5 @@
                 {!! $page->html_content !!}
             </div>
         </div>
-        @include('widget.duoshuo',[
-        'duoshuo_data_key'=>'page-'.$page->name,
-        'duoshuo_data_title'=>$page->title,
-        'duoshuo_data_url'=>request()->url(),])
     </div>
 @endsection

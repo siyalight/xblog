@@ -29,7 +29,7 @@ class CategoryRepository extends Repository
     public function getAll()
     {
         $categories = $this->remember('category.all', function () {
-            return Category::withCount('posts')->get();
+            return Category::withCount('posts')->has('posts','>',0)->get();
         });
         return $categories;
     }

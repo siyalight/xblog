@@ -31,7 +31,7 @@
             hightLightCode();
             initTables();
             autoSize();
-            initDuoshuo();
+            /*initDuoshuo();*/
         },
     };
 
@@ -65,7 +65,7 @@
     }
 
     function initDuoshuo() {
-        if (Laravel.duoshuo_enable) {
+        /*if (Laravel.duoshuo_enable) {
             var dr = $(".ds-thread");
             var dus = $("#ds-thread");
             console.log('dus:' + $(dus).length);
@@ -78,8 +78,7 @@
                 DUOSHUO.EmbedThread(el);
                 $(dus).html(el);
             }
-        }
-
+        }*/
     }
 
     window.LufficcBlog = LufficcBlog;

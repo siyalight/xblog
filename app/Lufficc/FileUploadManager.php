@@ -20,7 +20,7 @@ class FileUploadManager
     private $bucketManager;
 
     /**
-     * ImageRepository constructor.
+     * FileUploadManager constructor.
      */
     public function __construct()
     {
