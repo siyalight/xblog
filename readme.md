@@ -39,7 +39,18 @@ php artisan serve
 ```
 
 ## screen shots
-![](https://static.lufficc.com/image/0ff8cce36cc3f53cb6190c27e2abc219.png)
+
+![](https://static.lufficc.com/image/fb64b85e479461649486aa126da693a2.jpeg)
+
+![](https://static.lufficc.com/image/c06518bf4839623e1482e77dc8759431.jpeg)
+
+![](https://static.lufficc.com/image/83f871667596b90d49cbf1657be06255.jpeg)
+
+![](https://static.lufficc.com/image/63c8a1409256fec6b088b5f50ac22703.jpeg)
+
+![](https://static.lufficc.com/image/89f0432eab0e4c8ba492505f98696a6e.jpeg)
+
+![](https://static.lufficc.com/image/8291c34b8560050f7cb7aa136c48a97e.jpeg)
 
 ## License
 
