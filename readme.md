@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
+[中文README](https://lufficc.com/blog/about-my-blog)
+
 A fast and powerful blog system powed by laravel 5.3.
 
 ## Features
@@ -13,7 +15,7 @@ A fast and powerful blog system powed by laravel 5.3.
 1. Images and files management.
 1. Pjax support.
 1. Google analytics,admin management.
-1. Posts with category, tags and different status. 
+1. Posts with category, tags,code highlight and different status. 
 1. More customs...
  
 ## Requires
