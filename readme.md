@@ -1,13 +1,18 @@
 # Laravel Blog
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
 Blog powed by laravel 5.3
 
+## Features
+
+1. Separate models from controllers with repository design pattern.
+1. Cache with redis database `0` and session with redis database `1`.
+1. Markdown editor,upload images to qiniu cloud by draging or from clipboard.
+1. Images and files management.
+1. Pjax support.
+ 
 ## screen shots
 
 
