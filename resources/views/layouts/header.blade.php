@@ -20,10 +20,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <a href="{{ route('post.index') }}" class="navbar-brand">{{ isset($author) ? strtoupper($author) : ''}}</a>
             </div>
             <div class="collapse navbar-collapse fix-top" id="blog-navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ route('post.index') }}">博客</a></li>
+                    {{--<li><a href="{{ route('post.index') }}">博客</a></li>--}}
                     <li><a href="{{ route('projects') }}">项目</a></li>
                     <li><a href="{{ route('page.about') }}">关于</a></li>
                 </ul>
@@ -52,10 +53,10 @@
             </div>
         </nav>
     </div>
-    <div class="container-fluid" style="margin-top: -20px">
-        <a style="text-decoration: none" class="branding" href="{{ route('post.index') }}">
+    <div class="container-fluid">
+        {{--<a style="text-decoration: none" class="branding" href="{{ route('post.index') }}">
             <h2>{{ $author or ''}}</h2>
-        </a>
-        <p>{{ $description or '' }}</p>
+        </a>--}}
+        <div class="description">{{ $description or '' }}</div>
     </div>
 </header>

@@ -40,6 +40,7 @@
         </div>
     </div>
 @endsection
+{{--
 @section('script')
     <script>
         $(document).ready(function () {
@@ -68,4 +69,4 @@
                     });
         });
     </script>
-@endsection
+@endsection--}}

@@ -14,12 +14,12 @@
                 $(document).on('pjax:start', function () {
                     NProgress.start();
                 });
-                $(document).on('pjax:end', function () {
+                /*$(document).on('pjax:end', function () {
                     NProgress.done();
-                    self.bootUp();
-                });
+                });*/
                 $(document).on('pjax:complete', function () {
                     NProgress.done();
+                    self.bootUp();
                 });
             }
             self.bootUp();
@@ -32,6 +32,7 @@
             initTables();
             autoSize();
             /*initDuoshuo();*/
+            initProjects();
         },
     };
 
@@ -79,6 +80,34 @@
                 $(dus).html(el);
             }
         }*/
+    }
+
+    function initProjects() {
+        var projects = $('.projects');
+        if (projects.length > 0)
+        {
+            $.get('https://api.github.com/users/lufficc/repos?type=owner',
+                function (repositories) {
+                    if (!repositories) {
+                        projects.html('<div><h3>加载失败</h3><p>请刷新或稍后再试...</p></div>');
+                        return;
+                    }
+                    projects.html('');
+                    repositories = repositories.sort(function (repo1, repo2) {
+                        return repo2.stargazers_count - repo1.stargazers_count;
+                    });
+                    repositories = repositories.filter(function (repo) {
+                        return repo.description != null;
+                    });
+                    repositories.forEach(function (repo) {
+                        var repoTemplate = $('#repo-template').html();
+                        var item = repoTemplate.replace(/\[(.*?)\]/g, function () {
+                            return eval(arguments[1]);
+                        });
+                        projects.append(item)
+                    })
+                });
+        }
     }
 
     window.LufficcBlog = LufficcBlog;

@@ -9,6 +9,7 @@
     <title>lufficc  @yield('title')</title>
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="https://static.lufficc.com/favicon.ico"/>
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
     @yield('css')
     <script>

@@ -81,7 +81,7 @@ blockquote {
 }
 
 /*code*/
-$codeBg : rgb(247, 249, 247);
+$codeBg : rgb(247, 249, 247)/*#20201d*/;
 
 pre, .highlight {
   overflow: auto;
@@ -92,7 +92,7 @@ pre, .highlight {
   border: none;
   border-radius: 4px;
   background: $codeBg;
-  line-height: 1.5em;
+  line-height: 1.6em;
   word-wrap: normal;
 }
 

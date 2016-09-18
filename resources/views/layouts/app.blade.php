@@ -16,9 +16,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-    <meta http-equiv="x-pjax-version"
-          content="{{ (isset($site_css) && $site_css) ? $site_css : elixir('css/app.css') }}">
-
+    <link rel="shortcut icon" href="https://static.lufficc.com/favicon.ico"/>
+    <meta http-equiv="x-pjax-version" content="{{ (isset($site_css) && $site_css) ? $site_css : elixir('css/app.css') }}">
     @if(isset($site_css) && $site_css)
         <link href="{{ $site_css }}" rel="stylesheet">
     @else
@@ -28,7 +27,6 @@
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
-                'duoshuo_enable' => isset($duoshuo_enable) && $duoshuo_enable == 'true',
         ]); ?>
     </script>
     @include('widget.google_analytics')
