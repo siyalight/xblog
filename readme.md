@@ -43,7 +43,7 @@ php artisan serve
 
 ![1](https://static.lufficc.com/image/fb64b85e479461649486aa126da693a2.jpeg)
 
-![2](https://static.lufficc.com/image/c06518bf4839623e1482e77dc8759431.jpeg)
+![2](https://static.lufficc.com/image/a0798ecb83ed0a0be74baff3688fa730.jpeg)
 
 ![3](https://static.lufficc.com/image/b271b1c53654340c3f828d7f67cbb8bb.jpeg)
 
