@@ -87,6 +87,16 @@ class PostRepository extends Repository
         return $post;
     }
 
+    public function getWithoutContent($post_id)
+    {
+        $post = $this->remember('post.one.wc.' . $post_id, function () use ($post_id) {
+            return Post::where('id', $post_id)->select(Post::selectArrayWithOutContent)->first();
+        });
+        if (!$post)
+            abort(404);
+        return $post;
+    }
+
     /**
      * @param Request $request
      * @return mixed

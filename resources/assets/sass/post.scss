@@ -30,7 +30,7 @@
 }
 
 .post-meta {
-  color: #959595;
+  color: $metaColor;
   font-size: 0.85em;
   padding: $postItemPaddingUpDown/2 $postItemPaddingLeftRight $postItemPaddingUpDown / 2;
   border-top: 1px solid #ebebeb;
@@ -61,17 +61,15 @@
 /* post detail*/
 .post-detail {
   @extend .shadow-block;
-  padding: 35px 15px;
+  padding: 35px 25px;
   margin-bottom: 20px;
   background: white;
 }
 
 .post-detail .post-content {
-  line-height: 1.7em;
-  font-size: 1.15em;
-  font-weight: normal;
-  word-wrap: break-word;
+  @extend .markdown-content;
 }
+
 
 .post-detail img {
   box-shadow: 0 0 30px #ccc;

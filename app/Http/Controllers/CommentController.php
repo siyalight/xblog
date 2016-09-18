@@ -2,24 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
 use App\Http\Repositories\CommentRepository;
-use Illuminate\Http\Request;
-
+use App\Http\Repositories\PostRepository;
 use App\Http\Requests;
+use App\Post;
+use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
     protected $commentRepository;
+    protected $postRepository;
 
     /**
      * CommentController constructor.
-     * @param $commentRepository
+     * @param CommentRepository $commentRepository
+     * @param PostRepository $postRepository
      */
-    public function __construct(CommentRepository $commentRepository)
+    public function __construct(CommentRepository $commentRepository, PostRepository $postRepository)
     {
         $this->commentRepository = $commentRepository;
-        $this->middleware('auth');
+        $this->postRepository = $postRepository;
+        $this->middleware('auth',['except'=>'show']);
     }
 
     /**
@@ -36,61 +39,42 @@ class CommentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response | mixed
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'content' => 'required'
-        ]);
-
-        if ($this->commentRepository->create($request))
-            return back()->with('success', '回复成功');
-        return back()->with('success', '回复失败');
+        if (!$request->get('content')) {
+            return ['status' => 500, 'msg' => 'empty content'];
+        }
+        if ($comment = $this->commentRepository->create($request))
+            return ['status' => 200, 'msg' => 'success', 'comment' => $comment];
+        return ['status' => 500, 'msg' => 'failed'];
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param $post_id
+     * @return \Illuminate\Http\Response|mixed
      */
-    public function show($id)
+    public function show($post_id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        $post = $this->postRepository->getWithoutContent($post_id);
+        $comments = $this->commentRepository->getByPost($post);
+        return view('post.comments', compact('post', 'comments'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response | mixed
      */
     public function destroy($id)
     {
-        //
+        if ($this->commentRepository->delete($id)) {
+            return back()->with('success', '删除成功');
+        }
+        return back()->withErrors('删除失败');
     }
 }

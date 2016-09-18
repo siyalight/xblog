@@ -25,14 +25,16 @@
                                 <td>{{ $tag->name }}</td>
                                 <td>{{ $tag->posts_count }}</td>
                                 <td>
-                                    <form style="display: inline" method="post"
-                                          action="{{ route('tag.destroy',$tag->id) }}">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="_method" value="delete">
-                                        <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="删除">
-                                            <i class="fa fa-trash-o fa-fw"></i>
-                                        </button>
-                                    </form>
+                                    <button type="submit"
+                                            class="btn btn-danger"
+                                            data-modal-target="确定删除{{ $tag->name }}?"
+                                            data-url="{{ route('tag.destroy',$tag->id) }}"
+                                            data-method="delete"
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="删除">
+                                        <i class="fa fa-trash-o fa-fw"></i>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
@@ -42,8 +44,5 @@
             </div>
         </div>
     </div>
-
-
-    {{-- modal --}}
     @include('admin.modals.add-tag-modal')
 @endsection

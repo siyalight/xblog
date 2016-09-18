@@ -9,8 +9,8 @@ namespace App\Http\Repositories;
 
 use App\Comment;
 use App\Post;
-use App\Tag;
 use Illuminate\Http\Request;
+use Lufficc\Mention;
 use Parsedown;
 
 /**
@@ -21,12 +21,15 @@ class CommentRepository extends Repository
 {
     static $tag = 'comment';
     protected $parseDown;
+    protected $mention;
 
     /**
      * PostRepository constructor.
+     * @param Mention $mention
      */
-    public function __construct()
+    public function __construct(Mention $mention)
     {
+        $this->mention = $mention;
         $this->parseDown = new Parsedown();
     }
 
@@ -35,9 +38,14 @@ class CommentRepository extends Repository
         return app(Comment::class);
     }
 
+    private function getCacheKey($post_id)
+    {
+        return 'post.' . $post_id . 'comments';
+    }
+
     public function getByPost(Post $post)
     {
-        $comments = $this->remember('comments.' . $post->slug, function () use ($post) {
+        $comments = $this->remember($this->getCacheKey($post->id), function () use ($post) {
             return $post->comments()->with(['user'])->get();
         });
         return $comments;
@@ -50,12 +58,19 @@ class CommentRepository extends Repository
         $comment = new Comment();
         $post_id = $request->get('post_id');
         $post = Post::findOrFail($post_id);
-        $comment->content = $request->get('content');
+        $comment->content = $this->mention->parse($request->get('content'));
         $comment->html_content = $this->parseDown->text($comment->content);
         $comment->user_id = auth()->id();
         $post->comments()->save($comment);
 
         return $post->comments()->save($comment);
+    }
+
+    public function delete($id)
+    {
+        $comment = Comment::findOrFail($id);
+        $this->forget($this->getCacheKey($comment->commentable_id));
+        return $comment->delete();
     }
 
     public function tag()

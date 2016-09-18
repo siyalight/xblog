@@ -20,11 +20,14 @@ Route::get('/search', ['uses' => 'HomeController@search', 'as' => 'search']);
 
 Route::get('/blog', ['uses' => 'PostController@index', 'as' => 'post.index']);
 Route::get('/blog/{slug}', ['uses' => 'PostController@show', 'as' => 'post.show']);
+Route::get('/blog/{post_id}/comments', ['uses' => 'CommentController@show', 'as' => 'post.comments']);
 Route::get('/category/{name}', ['uses' => 'CategoryController@show', 'as' => 'category.show']);
 Route::get('/category', ['uses' => 'CategoryController@index', 'as' => 'category.index']);
 Route::get('/tag/{name}', ['uses' => 'TagController@show', 'as' => 'tag.show']);
 Route::get('/tag', ['uses' => 'TagController@index', 'as' => 'tag.index']);
-Route::resource('comment', 'CommentController', ['except' => ['show', 'index', 'create']]);
+Route::get('/user/{name}', ['uses' => 'UserController@show', 'as' => 'user.show']);
+
+Route::resource('comment', 'CommentController', ['only' => ['store', 'destroy']]);
 
 
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {

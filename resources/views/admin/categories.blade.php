@@ -33,9 +33,9 @@
                                         </a>
                                         <button class="btn btn-danger" data-toggle="modal"
                                                 data-toggle="tooltip" data-placement="top" title="删除"
-                                                data-title="{{ $category->name }}"
+                                                data-method="delete"
                                                 data-url="{{ route('category.destroy',$category->id) }}"
-                                                data-target="#delete-category-modal">
+                                                data-modal-target="确定删除{{ $category->name }}?">
                                             <i class="fa fa-trash-o fa-fw"></i>
                                         </button>
                                     </div>
@@ -49,38 +49,5 @@
         </div>
     </div>
 
-    {{-- modal --}}
-    <div class="modal fade" id="delete-category-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">删除</h4>
-                </div>
-                <div class="modal-body">
-                    确定删除<strong id="span-title"></strong>吗?
-                </div>
-                <div class="modal-footer">
-                    <form id="delete-form" method="post">
-                        <input type="hidden" name="_method" value="DELETE">
-                        {{ csrf_field() }}
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="submit" class="btn btn-danger">确定</button>
-                    </form>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
     @include('admin.modals.add-category-modal')
-@endsection
-@section('script')
-    <script>
-        $('#delete-category-modal').on('show.bs.modal', function (e) {
-            var url = $(e.relatedTarget).data('url');
-            var title = $(e.relatedTarget).data('title');
-            $('#span-title').text(title);
-            $('#delete-form').attr('action', url);
-        });
-    </script>
 @endsection

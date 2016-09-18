@@ -51,6 +51,10 @@ abstract class Repository
         return $all;
     }
 
+    public function forget($key, $tag = null)
+    {
+        cache()->tags($tag == null ? $this->tag() : $tag)->forget($key);
+    }
 
     public function clearAllCache()
     {

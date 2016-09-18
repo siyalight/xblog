@@ -21,7 +21,6 @@ var js = [
     'resources/assets/js/pjax.js',
     'autosize.min.js',
     'codemirror-4.inline-attachment.js',
-    /*'duoshuojs.js',*/
     'resources/assets/js/app.js',
 ];
 elixir(function (mix) {
