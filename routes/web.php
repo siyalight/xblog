@@ -24,6 +24,8 @@ Route::get('/category/{name}', ['uses' => 'CategoryController@show', 'as' => 'ca
 Route::get('/category', ['uses' => 'CategoryController@index', 'as' => 'category.index']);
 Route::get('/tag/{name}', ['uses' => 'TagController@show', 'as' => 'tag.show']);
 Route::get('/tag', ['uses' => 'TagController@index', 'as' => 'tag.index']);
+Route::resource('comment', 'CommentController', ['except' => ['show', 'index', 'create']]);
+
 
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
 

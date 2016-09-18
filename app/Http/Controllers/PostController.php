@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Repositories\CategoryRepository;
+use App\Http\Repositories\CommentRepository;
 use App\Http\Repositories\MapRepository;
 use App\Http\Repositories\PostRepository;
 use App\Http\Repositories\TagRepository;
@@ -20,6 +21,7 @@ class PostController extends Controller
     protected $tagRepository;
     protected $categoryRepository;
     protected $mapRepository;
+    protected $commentRepository;
 
     /**
      * PostController constructor.
@@ -27,15 +29,21 @@ class PostController extends Controller
      * @param CategoryRepository $categoryRepository
      * @param TagRepository $tagRepository
      * @param MapRepository $mapRepository
+     * @param CommentRepository $commentRepository
      */
-    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, TagRepository $tagRepository, MapRepository $mapRepository)
+    public function __construct(PostRepository $postRepository,
+                                CategoryRepository $categoryRepository,
+                                TagRepository $tagRepository,
+                                MapRepository $mapRepository,
+                                CommentRepository $commentRepository)
     {
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
         $this->mapRepository = $mapRepository;
+        $this->commentRepository = $commentRepository;
 
-        $this->middleware(['auth', 'admin'], ['except' => ['show','index']]);
+        $this->middleware(['auth', 'admin'], ['except' => ['show', 'index']]);
     }
 
     /**
@@ -96,11 +104,12 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = $this->postRepository->get($slug);
+        $comments = $this->commentRepository->getByPost($post);
         if (!(auth()->check() && auth()->id() == 1)) {
             $post->increment('view_count');
         }
 
-        return view('post.show', compact('post'));
+        return view('post.show', compact('post','comments'));
     }
 
     public function preview($slug)
