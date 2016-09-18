@@ -27,7 +27,7 @@ class TagRepository extends Repository
     public function getAll()
     {
         $tags = $this->remember('tag.all', function () {
-            return Tag::withCount('posts')->has('posts','>',0)->get();
+            return Tag::withCount('posts')->get();
         });
         return $tags;
     }
