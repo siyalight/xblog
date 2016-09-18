@@ -7,11 +7,13 @@ Blog powed by laravel 5.3
 
 ## Features
 
+1. Markdown editor,upload images to qiniu cloud by draging or from clipboard.
 1. Separate models from controllers with repository design pattern.
 1. Cache with redis database `0` and session with redis database `1`.
-1. Markdown editor,upload images to qiniu cloud by draging or from clipboard.
 1. Images and files management.
 1. Pjax support.
+1. Google analytics,admin management,posts with category and tags.
+1. More customs...
  
 ## screen shots
 
