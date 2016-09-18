@@ -39,7 +39,7 @@ php artisan serve
 ```
 
 ## screen shots
-
+![](https://static.lufficc.com/image/0ff8cce36cc3f53cb6190c27e2abc219.png)
 
 ## License
 
