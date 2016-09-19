@@ -6,19 +6,19 @@
         init: function () {
             var self = this;
             /*var pjaxContainer = $('#lufficc-pjax-container');
-            if (pjaxContainer.length > 0) {
-                $(document).pjax('a:not(a[target="_blank"])', pjaxContainer, {
-                    timeout: 2000,
-                    maxCacheLength: 500,
-                });
-                $(document).on('pjax:start', function () {
-                    NProgress.start();
-                });
-                $(document).on('pjax:complete', function () {
-                    NProgress.done();
-                    self.bootUp();
-                });
-            }*/
+             if (pjaxContainer.length > 0) {
+             $(document).pjax('a:not(a[target="_blank"])', pjaxContainer, {
+             timeout: 2000,
+             maxCacheLength: 500,
+             });
+             $(document).on('pjax:start', function () {
+             NProgress.start();
+             });
+             $(document).on('pjax:complete', function () {
+             NProgress.done();
+             self.bootUp();
+             });
+             }*/
             self.bootUp();
         },
         bootUp: function () {

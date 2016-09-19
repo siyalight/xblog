@@ -4,7 +4,7 @@
             <?php
             $href = $comment->user ? route('user.show', $comment->username) : 'javascript:void(0);';
             ?>
-            <a href="{{ $href }}">
+            <a name="{{$loop->index}}" href="{{ $href }}">
                 <img width="48px" height="48px" class="img-circle"
                      src="{{ $comment->user ? $comment->user->avatar :'https://static.lufficc.com/image/default_avatar.png' }}">
             </a>
@@ -19,6 +19,9 @@
                            href="javascript:void (0);"
                            data-url="{{ route('comment.destroy',$comment->id) }}"><i
                                     class="fa fa-trash-o fa-fw"></i></a>
+                        <a href="{{ route('comment.edit',[$comment->id,'redirect'=>(isset($redirect) && $redirect.'#'.$loop->index ? $redirect : '')]) }}">
+                            <i class="fa fa-pencil fa-fw"></i>
+                        </a>
                     @endcan
                     <a href="javascript:void (0);" onclick="replySomeone('{{ $comment->username }}')"><i
                                 class="fa fa-reply fa-fw"></i></a>

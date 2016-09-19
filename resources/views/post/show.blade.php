@@ -52,6 +52,8 @@
                 @endforeach
             </div>
         </div>
-        @include('widget.comment',['commentable'=>$post,'commentable_type'=>'App\Post'])
+        @include('widget.comment',['commentable'=>$post,
+        'redirect'=>request()->fullUrl(),
+        'commentable_type'=>'App\Post'])
     </div>
 @endsection

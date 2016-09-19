@@ -34,7 +34,7 @@ Route::patch('/user/upload/info', ['uses' => 'UserController@update', 'as' => 'u
 
 
 Route::get('/commentable/{commentable_id}/comments', ['uses' => 'CommentController@show', 'as' => 'comment.show']);
-Route::resource('comment', 'CommentController', ['only' => ['store', 'destroy']]);
+Route::resource('comment', 'CommentController', ['only' => ['store', 'destroy', 'edit', 'update']]);
 
 
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
@@ -52,6 +52,7 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
 
 
     Route::get('/posts', ['uses' => 'AdminController@posts', 'as' => 'admin.posts']);
+    Route::get('/comments', ['uses' => 'AdminController@comments', 'as' => 'admin.comments']);
     Route::get('/tags', ['uses' => 'AdminController@tags', 'as' => 'admin.tags']);
     Route::get('/users', ['uses' => 'AdminController@users', 'as' => 'admin.users']);
     Route::get('/pages', ['uses' => 'AdminController@pages', 'as' => 'admin.pages']);

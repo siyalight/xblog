@@ -13,7 +13,7 @@ class Comment extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['key','value'];
+    protected $fillable = ['content'];
     /**
      * The attributes that should be mutated to dates.
      *

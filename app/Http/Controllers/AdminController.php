@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Repositories\CategoryRepository;
+use App\Http\Repositories\CommentRepository;
 use App\Http\Repositories\ImageRepository;
 use App\Http\Repositories\MapRepository;
 use App\Http\Repositories\PageRepository;
 use App\Http\Repositories\PostRepository;
 use App\Http\Repositories\TagRepository;
+use App\Http\Repositories\UserRepository;
 use App\Http\Requests;
 use App\Map;
 use App\Page;
@@ -17,6 +19,8 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     protected $postRepository;
+    protected $commentRepository;
+    protected $userRepository;
     protected $tagRepository;
     protected $categoryRepository;
     protected $pageRepository;
@@ -26,6 +30,8 @@ class AdminController extends Controller
     /**
      * AdminController constructor.
      * @param PostRepository $postRepository
+     * @param CommentRepository $commentRepository
+     * @param UserRepository $userRepository
      * @param CategoryRepository $categoryRepository
      * @param TagRepository $tagRepository
      * @param PageRepository $pageRepository
@@ -34,6 +40,8 @@ class AdminController extends Controller
      * @internal param MapRepository $mapRepository
      */
     public function __construct(PostRepository $postRepository,
+                                CommentRepository $commentRepository,
+                                UserRepository $userRepository,
                                 CategoryRepository $categoryRepository,
                                 TagRepository $tagRepository,
                                 PageRepository $pageRepository,
@@ -41,6 +49,8 @@ class AdminController extends Controller
                                 ImageRepository $imageRepository)
     {
         $this->postRepository = $postRepository;
+        $this->commentRepository = $commentRepository;
+        $this->userRepository = $userRepository;
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
         $this->pageRepository = $pageRepository;
@@ -53,7 +63,8 @@ class AdminController extends Controller
     {
         $info = [];
         $info['post_count'] = $this->postRepository->count();
-        $info['user_count'] = User::count();
+        $info['comment_count'] = $this->commentRepository->count();
+        $info['user_count'] = $this->userRepository->count();
         $info['category_count'] = $this->categoryRepository->count();
         $info['tag_count'] = $this->tagRepository->count();
         $info['page_count'] = $this->pageRepository->count();
@@ -87,6 +98,12 @@ class AdminController extends Controller
     {
         $posts = $this->postRepository->pagedPostsWithoutGlobalScopes();
         return view('admin.posts', compact('posts'));
+    }
+
+    public function comments()
+    {
+        $comments = $this->commentRepository->getAll();
+        return view('admin.comments', compact('comments'));
     }
 
     public function tags()

@@ -93,13 +93,13 @@ pre, .highlight {
   color: rgb(77, 77, 76);
   border: none;
   border-radius: 4px;
-  background: $codeBg;
+  background: $codeBg !important;
   line-height: 1.6em;
   word-wrap: normal;
 }
 
 .hljs {
-  background: $codeBg;
+  background: $codeBg !important;
 }
 
 /*pre {

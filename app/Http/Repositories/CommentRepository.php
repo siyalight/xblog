@@ -52,6 +52,14 @@ class CommentRepository extends Repository
         return $comments;
     }
 
+    public function getAll($page = 20)
+    {
+        $comments = $this->remember('comment.page.' . $page . '' . request()->get('page', 1), function () use ($page) {
+            return Comment::orderBy('created_at', 'desc')->paginate($page);
+        });
+        return $comments;
+    }
+
     public function create(Request $request)
     {
         $this->clearCache();
@@ -76,9 +84,19 @@ class CommentRepository extends Repository
         return $commentable->comments()->save($comment);
     }
 
+    public function update($content, $comment)
+    {
+        $comment->content = $this->mention->parse($content);
+        $comment->html_content = $this->parseDown->text($comment->content);
+        $result = $comment->save();
+        if ($result)
+            $this->clearCache();
+        return $result;
+    }
+
     public function delete(Comment $comment)
     {
-        $this->forget($this->getCacheKey($comment->commentable_type, $comment->commentable_id));
+        $this->clearCache();
         return $comment->delete();
     }
 
