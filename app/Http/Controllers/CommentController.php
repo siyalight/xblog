@@ -22,7 +22,7 @@ class CommentController extends Controller
     {
         $this->commentRepository = $commentRepository;
         $this->postRepository = $postRepository;
-        $this->middleware('auth',['except'=>'show']);
+        $this->middleware('auth', ['except' => ['show', 'store']]);
     }
 
     /**
@@ -45,6 +45,11 @@ class CommentController extends Controller
     {
         if (!$request->get('content')) {
             return ['status' => 500, 'msg' => 'empty content'];
+        }
+        if (!auth()->check()) {
+            if (!($request->get('username') && $request->get('email')) || !str_contains($request->get('email'), '@')) {
+                return ['status' => 500, 'msg' => 'empty info'];
+            }
         }
         if ($comment = $this->commentRepository->create($request))
             return ['status' => 200, 'msg' => 'success', 'comment' => $comment];

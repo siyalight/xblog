@@ -6,20 +6,20 @@
         init: function () {
             var self = this;
             var pjaxContainer = $('#lufficc-pjax-container');
-             if (pjaxContainer.length > 0) {
-             $(document).pjax('a:not(a[target="_blank"])', pjaxContainer, {
-             timeout: 2000,
-             maxCacheLength: 500,
-             });
-             $(document).on('pjax:start', function () {
-             NProgress.start();
-             });
+            if (pjaxContainer.length > 0) {
+                $(document).pjax('a:not(a[target="_blank"])', pjaxContainer, {
+                    timeout: 2000,
+                    maxCacheLength: 500,
+                });
+                $(document).on('pjax:start', function () {
+                    NProgress.start();
+                });
 
-             $(document).on('pjax:complete', function () {
-             NProgress.done();
-             self.bootUp();
-             });
-             }
+                $(document).on('pjax:complete', function () {
+                    NProgress.done();
+                    self.bootUp();
+                });
+            }
             self.bootUp();
         },
         bootUp: function () {
@@ -39,10 +39,10 @@
 
     function initAjax() {
         /*$.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });*/
+         headers: {
+         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+         }
+         });*/
     }
 
     function initDeleteTarget() {
@@ -79,11 +79,28 @@
     function initComment() {
         var form = $('#comment-form');
         var submitBtn = form.find('input[type=submit]');
-        var commentContent = form.find('textarea[name=content]');
+        var commentContent = form.find('#comment-content');
+
+        var username = form.find('#username');
+        var email = form.find('#email');
+        console.log(username.length);
+        console.log(email.length);
         form.on('submit', function () {
             if ($.trim(commentContent.val()) == '') {
+                commentContent.focus();
                 return false;
             }
+            if (username.length > 0) {
+                if ($.trim(username.val()) == '') {
+                    username.focus();
+                    return false;
+                }
+                else if ($.trim(email.val()) == '') {
+                    email.focus();
+                    return false;
+                }
+            }
+
             submitBtn.val('提交中...').addClass('disabled').prop('disabled', true);
             $.ajax({
                 method: 'post',
@@ -94,10 +111,14 @@
                 data: {
                     post_id: form.find('input[name=post_id]').val(),
                     content: commentContent.val(),
-                }
+                    username: username.val(),
+                    email: email.val(),
+                },
             }).done(function (data) {
                 if (data.status === 200) {
                     commentContent.val('');
+                    username.val('');
+                    email.val('');
                     loadComments();
                 } else {
                     console.log(data.msg);

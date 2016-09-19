@@ -1,14 +1,12 @@
 @extends('layouts.app')
 @section('title','博客')
 @section('content')
-    <div class="row">
-        <div class="col-md-8">
-            {{ $user->name }}
+    <div class="widget widget-default">
+        <div class="widget-header">
+            <h3>{{ $user->name }}</h3>
         </div>
-        <div class="col-md-4">
-            <div class="slide">
-                @include('layouts.widgets')
-            </div>
+        <div class="widget-body">
+            <h3>{{ $user->name }}</h3>
         </div>
     </div>
 @endsection

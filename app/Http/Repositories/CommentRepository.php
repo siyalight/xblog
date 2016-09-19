@@ -60,8 +60,16 @@ class CommentRepository extends Repository
         $post = Post::findOrFail($post_id);
         $comment->content = $this->mention->parse($request->get('content'));
         $comment->html_content = $this->parseDown->text($comment->content);
-        $comment->user_id = auth()->id();
-        $post->comments()->save($comment);
+
+        if (auth()->check()) {
+            $user = auth()->user();
+            $comment->user_id = $user->id;
+            $comment->username = $user->name;
+            $comment->email = $user->email;
+        } else {
+            $comment->username = $request->get('username');
+            $comment->email = $request->get('email');
+        }
 
         return $post->comments()->save($comment);
     }

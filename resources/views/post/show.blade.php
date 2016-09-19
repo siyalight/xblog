@@ -59,21 +59,21 @@
             <div class="widget-body">
                 <div id="comments-container" data-api-url="{{ route('post.comments',$post->id) }}">
                 </div>
-                @if(auth()->check())
-                    <form class="form-group" id="comment-form" method="post" action="{{ route('comment.store') }}">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="post_id" value="{{ $post->id }}">
-                        <label for="comment-content">评论内容</label>
-                        <textarea placeholder="支持Markdown" style="resize: vertical" id="comment-content" name="content"
-                                  rows="5" spellcheck="false" class="form-control  autosize-target"></textarea>
-                        <input style="margin-top: 10px" type="submit" class="btn btn-primary" value="回复"/>
-                    </form>
-                @else
-                    <div class="center-block" style="margin-top: 35px">
-                        <a href="{{ url('login') }}" class="btn btn-primary">登陆</a>
-                        <a href="{{ url('register') }}" class="btn btn-default">注册</a>
-                    </div>
-                @endif
+
+                <form class="form-group" id="comment-form" method="post" action="{{ route('comment.store') }}">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="post_id" value="{{ $post->id }}">
+                    <label for="comment-content">评论内容<span style="color: red">*</span></label>
+                    <textarea placeholder="支持Markdown" style="resize: vertical" id="comment-content" name="content"
+                              rows="5" spellcheck="false" class="form-control  autosize-target"></textarea>
+                    @if(!auth()->check())
+                        <label for="username">姓名<span style="color: red">*</span></label>
+                        <input class="form-control" id="username" type="text" name="username" placeholder="您的大名">
+                        <label for="email">邮箱<span style="color: red">*</span></label>
+                        <input class="form-control" id="email" type="email" name="email" placeholder="邮箱不会公开">
+                    @endif
+                    <input style="margin-top: 10px" type="submit" class="btn btn-primary" value="回复"/>
+                </form>
             </div>
         </div>
     </div>
