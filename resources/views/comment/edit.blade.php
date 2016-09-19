@@ -18,7 +18,7 @@
                                       required
                                       name="content"
                                       rows="5" spellcheck="false"
-                                      class="form-control  autosize-target">{{ $comment->content }}</textarea>
+                                      class="form-control markdown-content autosize-target">{{ $comment->content }}</textarea>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary"
