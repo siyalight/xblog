@@ -10,10 +10,11 @@ A fast and powerful blog system powed by laravel 5.3.
 ## Features
 
 1. Markdown editor,upload images to qiniu cloud by drag or from clipboard.
+1. Comment system. 
 1. Separate models from controllers with repository design pattern.
 1. Cache with redis database `0` and session with redis database `1`.
 1. Images and files management.
-1. Pjax support.
+1. ~~Pjax support.~~
 1. Google analytics,admin management.
 1. Posts with category, tags,code highlight and different status. 
 1. More customs...
@@ -47,15 +48,19 @@ php artisan serve
 
 ![2](https://static.lufficc.com/image/a0798ecb83ed0a0be74baff3688fa730.jpeg)
 
-![3](https://static.lufficc.com/image/b271b1c53654340c3f828d7f67cbb8bb.jpeg)
+![3](https://static.lufficc.com/image/4d1127cebf4533b26aa026829d36a47d.jpeg)
 
-![4](https://static.lufficc.com/image/83f871667596b90d49cbf1657be06255.jpeg)
+![4](https://static.lufficc.com/image/a719a0e1711084c142e889ad91d6dc39.jpeg)
 
-![5](https://static.lufficc.com/image/63c8a1409256fec6b088b5f50ac22703.jpeg)
+![5](https://static.lufficc.com/image/b271b1c53654340c3f828d7f67cbb8bb.jpeg)
 
-![6](https://static.lufficc.com/image/89f0432eab0e4c8ba492505f98696a6e.jpeg)
+![6](https://static.lufficc.com/image/83f871667596b90d49cbf1657be06255.jpeg)
 
-![7](https://static.lufficc.com/image/8291c34b8560050f7cb7aa136c48a97e.jpeg)
+![7](https://static.lufficc.com/image/63c8a1409256fec6b088b5f50ac22703.jpeg)
+
+![8](https://static.lufficc.com/image/89f0432eab0e4c8ba492505f98696a6e.jpeg)
+
+![9](https://static.lufficc.com/image/8291c34b8560050f7cb7aa136c48a97e.jpeg)
 
 
 ## License
