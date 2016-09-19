@@ -37,7 +37,7 @@ class PageRepository extends Repository
     public function get($name)
     {
         $page = $this->remember('page.one.' . $name, function () use ($name) {
-            return Page::where('name', $name)->first();
+            return Page::where('name', $name)->withCount(['comments'])->first();
         });
 
         if (!$page)

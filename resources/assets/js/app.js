@@ -23,7 +23,7 @@
         },
         bootUp: function () {
             console.log('bootUp');
-            NProgress.configure({showSpinner: false});
+            /*NProgress.configure({showSpinner: false});*/
             loadComments(false);
             initComment();
             initMarkdownTarget();
@@ -80,11 +80,11 @@
 
     function initComment() {
         var form = $('#comment-form');
-        var submitBtn = form.find('input[type=submit]');
+        var submitBtn = form.find('#comment-submit');
         var commentContent = form.find('#comment-content');
 
-        var username = form.find('#username');
-        var email = form.find('#email');
+        var username = form.find('input[name=username]');
+        var email = form.find('input[name=email]');
         console.log(username.length);
         console.log(email.length);
         form.on('submit', function () {
@@ -112,7 +112,8 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data: {
-                    post_id: form.find('input[name=post_id]').val(),
+                    commentable_id: form.find('input[name=commentable_id]').val(),
+                    commentable_type: form.find('input[name=commentable_type]').val(),
                     content: commentContent.val(),
                     username: username.val(),
                     email: email.val(),

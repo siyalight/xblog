@@ -79,11 +79,8 @@ class PostRepository extends Repository
     public function get($slug)
     {
         $post = $this->remember('post.one.' . $slug, function () use ($slug) {
-            return Post::where('slug', $slug)->with(['tags', 'category'])->withCount('comments')->first();
+            return Post::where('slug', $slug)->with(['tags', 'category'])->withCount('comments')->firstOrFail();
         });
-
-        if (!$post)
-            abort(404);
         return $post;
     }
 

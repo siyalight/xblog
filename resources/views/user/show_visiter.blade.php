@@ -1,10 +1,22 @@
 <div>
     <div class="form-group">
         <label>名称：</label>
-        <input class="form-control" name="name" type="text" value="{{ $user->name }}" readonly>
+        <span>{{ $user->name }}sf</span>
     </div>
     <div class="form-group">
         <label>描述：</label>
-        <input class="form-control" name="description" type="text" value="{{ $user->description }}" readonly>
+        <span>{{ $user->description }}</span>
     </div>
+    <div class="form-group">
+        <label>个人网站：</label>
+        <span>{{ $user->website }}</span>
+    </div>
+    @if($user->meta)
+        @foreach($user->meta as $key=>$value)
+            <div class="form-group">
+                <label>{{ ucfirst($key) }}：</label>
+                <span>{{ $value }}</span>
+            </div>
+        @endforeach
+    @endif
 </div>

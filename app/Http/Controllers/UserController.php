@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Repositories\ImageRepository;
+use App\Http\Repositories\UserRepository;
 use App\Http\Requests;
 use App\User;
 use Gate;
@@ -12,19 +13,23 @@ class UserController extends Controller
 {
     protected $imageRepository;
 
+    protected $userRepository;
+
     /**
      * UserController constructor.
+     * @param UserRepository $userRepository
      * @param ImageRepository $imageRepository
      */
-    public function __construct(ImageRepository $imageRepository)
+    public function __construct(UserRepository $userRepository, ImageRepository $imageRepository)
     {
+        $this->userRepository = $userRepository;
         $this->imageRepository = $imageRepository;
         $this->middleware('auth', ['except' => 'show']);
     }
 
     public function show($name)
     {
-        $user = User::where('name', $name)->firstOrFail();
+        $user = $this->userRepository->get($name);
         return view('user.show', compact('user'));
     }
 
@@ -35,15 +40,10 @@ class UserController extends Controller
         $this->validate($request, [
             'description' => 'max:66',
         ]);
-        $user->description = $request->get('description');
-        $user->website = $request->get('website');
-        $user->real_name = $request->get('real_name');
 
-        $meta = $request->except(['_method', '_token', 'description', 'website', 'real_name', 'name',]);
-        $user->meta = json_encode($meta);
-
-        if ($user->save())
+        if ($this->userRepository->update($request, $user)) {
             return back()->with('success', '修改成功');
+        }
         return back()->with('success', '修改失败');
     }
 
@@ -56,8 +56,10 @@ class UserController extends Controller
         if ($url = $this->uploadImage($user, $request, $key)) {
             $user->profile_image = $url;
         }
-        if ($user->save())
+        if ($user->save()) {
+            $this->userRepository->clearCache();
             return back()->with('success', '修改成功');
+        }
         return back()->with('success', '修改失败');
     }
 
@@ -69,8 +71,10 @@ class UserController extends Controller
         if ($url = $this->uploadImage($user, $request, $key)) {
             $user->avatar = $url;
         }
-        if ($user->save())
+        if ($user->save()) {
+            $this->userRepository->clearCache();
             return back()->with('success', '修改成功');
+        }
         return back()->with('success', '修改失败');
     }
 

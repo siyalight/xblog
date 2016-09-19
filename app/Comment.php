@@ -5,6 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @property mixed commentable_type
+ * @property mixed commentable_id
+ */
 class Comment extends Model
 {
     use SoftDeletes;

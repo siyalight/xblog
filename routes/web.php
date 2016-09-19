@@ -23,7 +23,6 @@ Route::get('/search', ['uses' => 'HomeController@search', 'as' => 'search']);
 
 Route::get('/blog', ['uses' => 'PostController@index', 'as' => 'post.index']);
 Route::get('/blog/{slug}', ['uses' => 'PostController@show', 'as' => 'post.show']);
-Route::get('/blog/{post_id}/comments', ['uses' => 'CommentController@show', 'as' => 'post.comments']);
 Route::get('/category/{name}', ['uses' => 'CategoryController@show', 'as' => 'category.show']);
 Route::get('/category', ['uses' => 'CategoryController@index', 'as' => 'category.index']);
 Route::get('/tag/{name}', ['uses' => 'TagController@show', 'as' => 'tag.show']);
@@ -33,6 +32,8 @@ Route::patch('/user/upload/avatar', ['uses' => 'UserController@uploadAvatar', 'a
 Route::patch('/user/upload/profile', ['uses' => 'UserController@uploadProfile', 'as' => 'user.upload.profile']);
 Route::patch('/user/upload/info', ['uses' => 'UserController@update', 'as' => 'user.update.info']);
 
+
+Route::get('/commentable/{commentable_id}/comments', ['uses' => 'CommentController@show', 'as' => 'comment.show']);
 Route::resource('comment', 'CommentController', ['only' => ['store', 'destroy']]);
 
 

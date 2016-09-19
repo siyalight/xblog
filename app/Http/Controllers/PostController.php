@@ -107,7 +107,6 @@ class PostController extends Controller
         if (!(auth()->check() && auth()->id() == 1)) {
             $post->increment('view_count');
         }
-
         return view('post.show', compact('post'));
     }
 

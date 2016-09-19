@@ -23,5 +23,6 @@
                 {!! $page->html_content !!}
             </div>
         </div>
+        @include('widget.comment',['commentable'=>$page,'commentable_type'=>'App\Page'])
     </div>
 @endsection

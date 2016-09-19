@@ -1,4 +1,4 @@
-@include('widget.delete_modal')
+@include('partials.delete_modal')
 <footer class="footer" id="footer">
    <div class="copyright">
       <div class="container">

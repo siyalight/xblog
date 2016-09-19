@@ -35,10 +35,8 @@ class TagRepository extends Repository
     public function get($name)
     {
         $tag = $this->remember('tag.one.' . $name, function () use ($name) {
-            return Tag::where('name', $name)->first();
+            return Tag::where('name', $name)->firstOrFail();
         });
-        if (!$tag)
-            abort(404);
         return $tag;
     }
 

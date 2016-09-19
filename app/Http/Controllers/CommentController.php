@@ -26,15 +26,6 @@ class CommentController extends Controller
         $this->middleware('auth', ['except' => ['show', 'store']]);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -60,14 +51,15 @@ class CommentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param $post_id
+     * @param Request $request
+     * @param $commentable_id
      * @return \Illuminate\Http\Response|mixed
      */
-    public function show($post_id)
+    public function show(Request $request, $commentable_id)
     {
-        $post = $this->postRepository->getWithoutContent($post_id);
-        $comments = $this->commentRepository->getByPost($post);
-        return view('post.comments', compact('post', 'comments'));
+        $commentable_type = $request->get('commentable_type');
+        $comments = $this->commentRepository->getByCommentable($commentable_type,$commentable_id);
+        return view('comment.show', compact('comments', 'commentable'));
     }
 
     /**
@@ -78,9 +70,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        $this->checkPolicy('manager',$comment);
-
-        dd(back()->with('success', '删除成功'));
+        $this->checkPolicy('manager', $comment);
 
         if ($this->commentRepository->delete($comment)) {
             return back()->with('success', '删除成功');

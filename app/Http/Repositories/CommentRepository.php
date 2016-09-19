@@ -38,15 +38,16 @@ class CommentRepository extends Repository
         return app(Comment::class);
     }
 
-    private function getCacheKey($post_id)
+    private function getCacheKey($commentable_type, $commentable_id)
     {
-        return 'post.' . $post_id . 'comments';
+        return $commentable_type . '.' . $commentable_id . 'comments';
     }
 
-    public function getByPost(Post $post)
+    public function getByCommentable($commentable_type, $commentable_id)
     {
-        $comments = $this->remember($this->getCacheKey($post->id), function () use ($post) {
-            return $post->comments()->with(['user'])->get();
+        $comments = $this->remember($this->getCacheKey($commentable_type, $commentable_id), function () use ($commentable_type, $commentable_id) {
+            $commentable = app($commentable_type)->where('id', $commentable_id)->select(['id'])->firstOrFail();
+            return $commentable->comments()->with(['user'])->get();
         });
         return $comments;
     }
@@ -56,8 +57,9 @@ class CommentRepository extends Repository
         $this->clearCache();
 
         $comment = new Comment();
-        $post_id = $request->get('post_id');
-        $post = Post::findOrFail($post_id);
+        $commentable_id = $request->get('commentable_id');
+        $commentable = app($request->get('commentable_type'))->where('id', $commentable_id)->firstOrFail();
+
         $comment->content = $this->mention->parse($request->get('content'));
         $comment->html_content = $this->parseDown->text($comment->content);
 
@@ -71,12 +73,12 @@ class CommentRepository extends Repository
             $comment->email = $request->get('email');
         }
 
-        return $post->comments()->save($comment);
+        return $commentable->comments()->save($comment);
     }
 
     public function delete(Comment $comment)
     {
-        $this->forget($this->getCacheKey($comment->commentable_id));
+        $this->forget($this->getCacheKey($comment->commentable_type, $comment->commentable_id));
         return $comment->delete();
     }
 

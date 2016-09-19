@@ -56,7 +56,7 @@ abstract class FileRepository extends Repository
     public function get($key)
     {
         $map = $this->remember($this->type() . '.one.' . $key, function () use ($key) {
-            return File::where('key', $key)->first();
+            return File::where('key', $key)->firstOrFail();
         });
         return $map;
     }
