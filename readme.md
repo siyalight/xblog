@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-[中文README](https://lufficc.com/blog/about-my-blog)
+[中文README](/README_zh.md)
 
 A fast and powerful blog system powed by laravel 5.3.
 
