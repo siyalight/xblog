@@ -92,15 +92,7 @@ class PostController extends Controller
             return redirect('admin/posts')->withErrors('文章' . $request['name'] . '创建失败');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param $slug
-     * @return \Illuminate\Http\Response
-     * @internal param $id
-     * @internal param Post $post
-     * @internal param int $id
-     */
+
     public function show($slug)
     {
         $post = $this->postRepository->get($slug);
