@@ -12,6 +12,8 @@ return [
     | any other location as required by the application or its packages.
     */
 
+    'avatar'    => env('AVATAR'),
+
     'name' => 'My Blog',
 
     /*

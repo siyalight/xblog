@@ -19,5 +19,5 @@ Artisan::command('inspire', function () {
 
 
 Artisan::command('avatar', function () {
-    \App\User::where('id', '>', 0)->update(['avatar' => 'https://static.lufficc.com/image/default_avatar.png']);
+    $this->comment(\App\User::whereNull('avatar')->update(['avatar' => config('app.avatar')]));
 });

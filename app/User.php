@@ -14,7 +14,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar'
     ];
 
     /**
@@ -29,7 +29,7 @@ class User extends Authenticatable
     public function getMetaAttribute($meta)
     {
 
-        return json_decode($meta,true);
+        return json_decode($meta, true);
     }
 
     public function posts()

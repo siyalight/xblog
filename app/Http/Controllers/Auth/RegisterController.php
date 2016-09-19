@@ -66,7 +66,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'avatar' => 'https://static.lufficc.com/image/default_avatar.png'
+            'avatar' => config('app.avatar')
         ]);
     }
 }
