@@ -1,7 +1,7 @@
 <div>
     <div class="form-group">
         <label>名称：</label>
-        <span>{{ $user->name }}sf</span>
+        <span>{{ $user->name }}</span>
     </div>
     <div class="form-group">
         <label>描述：</label>
