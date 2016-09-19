@@ -77,9 +77,9 @@
                                 </div>
                             </div>
                         </form>
-                        <a href="{{ route('github.login') }}" class="pull-right">
+                        {{--<a href="{{ route('github.login') }}" class="pull-right">
                             <i class="fa fa-lg fa-github fa-fw"></i>
-                        </a>
+                        </a>--}}
                     </div>
                 </div>
             </div>
