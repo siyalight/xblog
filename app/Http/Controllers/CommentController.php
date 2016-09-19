@@ -34,8 +34,6 @@ class CommentController extends Controller
     public function update(Request $request, Comment $comment)
     {
         $this->checkPolicy('manager', $comment);
-        /*$str = $comment->commentable_type;
-        $prefix = strtolower(substr($str, strpos($str, "\\") + 1));*/
 
         if ($this->commentRepository->update($request->get('content'), $comment)) {
             $redirect = request('redirect');
