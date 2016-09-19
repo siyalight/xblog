@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('description',$post->description)
 @section('title',$post->title)
-{{--@section('css')
-    <link href="//cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-heath.light.min.css" rel="stylesheet">
-@endsection--}}
 @section('content')
     <div class="row">
         <div class="post-detail">
@@ -32,11 +29,11 @@
                            {{ $post->category->name }}
                            </a>
                            </span>
-                    {{--<span class="post-comments-count">
+                    <span class="post-comments-count">
                            &nbsp;|&nbsp;
                            <i class="fa fa-comment-o" aria-hidden="true"></i>
-                           <span>7条评论</span>
-                           </span>--}}
+                           <span>{{ $post->comments_count }}条评论</span>
+                           </span>
                     <span>
                            &nbsp;|&nbsp;
                            <i class="fa fa-eye"></i>
@@ -74,7 +71,7 @@
                 @else
                     <div class="center-block" style="margin-top: 35px">
                         <a href="{{ url('login') }}" class="btn btn-primary">登陆</a>
-                        <a href="{{ url('register') }}"class="btn btn-default">注册</a>
+                        <a href="{{ url('register') }}" class="btn btn-default">注册</a>
                     </div>
                 @endif
             </div>

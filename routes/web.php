@@ -12,6 +12,9 @@
 */
 
 Auth::routes();
+Route::get('auth/github', ['uses' => 'Auth\AuthController@redirectToGithub', 'as' => 'github.login']);
+Route::get('auth/github/callback', ['uses' => 'Auth\AuthController@handleGithubCallback', 'as' => 'github.callback']);
+
 
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
 Route::get('/about', ['uses' => 'PageController@about', 'as' => 'page.about']);

@@ -104,12 +104,11 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = $this->postRepository->get($slug);
-        $comments = $this->commentRepository->getByPost($post);
         if (!(auth()->check() && auth()->id() == 1)) {
             $post->increment('view_count');
         }
 
-        return view('post.show', compact('post','comments'));
+        return view('post.show', compact('post'));
     }
 
     public function preview($slug)
