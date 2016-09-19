@@ -19,16 +19,23 @@
                     <li><a href="{{ route('admin.settings') }}">设置</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ route('post.index') }}">回到站点</a></li>
                     @if(Auth::check())
-                        <li>
-                            <a href="{{ url('/logout') }}"
-                               onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                退出登录
-                            </a>
-                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ auth()->user()->name }}
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ route('post.index') }}">回到站点</a></li>
+                                <li><a href="{{ route('user.show',auth()->user()->name) }}">个人中心</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ url('/logout') }}" onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        退出登录
+                                    </a></li>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </ul>
                         </li>
                     @else
                         <li><a href="{{ url('login') }}">登录</a></li>

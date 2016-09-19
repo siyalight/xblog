@@ -66,24 +66,26 @@ a:active, a:focus, a img {
   border-radius: 1px;
 }
 
-.navbar-nav li a {
+.navbar-nav > li > a {
   margin: 8px 10px;
-  padding: 5px 20px;
-  border: $colorPrimaryDark solid 1px;
-  border-radius: 20px;
-  background: $colorPrimaryDarkTransparent;
+  padding: 5px 20px !important;
+  border: $colorPrimaryDark solid 1px !important;
+  border-radius: 50px;
+  background: $colorPrimaryDarkTransparent !important;
   color: white;
+  font-size: 1em;
+  line-height: 1.1em;
   text-shadow: $shadowColor 1px 1px 2px;
 }
 
-.navbar-nav li a:hover {
+.navbar-nav > li > a:hover {
   color: $colorAccent;
   background: $colorPrimaryDark;
   transition: all 0.25s ease-in-out;
   -webkit-transition: all 0.25s ease-in-out;
 }
 
-.navbar-nav li a:active {
+.navbar-nav > li > a:active {
   background: $colorPrimaryDark;
 }
 
@@ -100,7 +102,11 @@ a:active, a:focus, a img {
   text-shadow: 5px 5px 5px $colorPrimaryDark;
 }
 
-header .description{
+.navbar-header .navbar-brand:hover{
+  color: $colorAccent;
+}
+
+header .description {
   font-family: 'Pacifico', cursive;
   font-size: 1.5em;
   text-shadow: 5px 5px 5px $colorPrimaryDark;

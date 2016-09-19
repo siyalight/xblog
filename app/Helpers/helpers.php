@@ -15,6 +15,16 @@ if (!function_exists('isAdmin')) {
     }
 }
 
+if (!function_exists('array_safe_get')) {
+    function array_safe_get($array, $key, $default = '')
+    {
+        if (array_has($array, $key)) {
+            return $array[$key];
+        }
+        return $default;
+    }
+}
+
 if (!function_exists('getUrlByFileName')) {
     function getUrlByFileName($fileName)
     {

@@ -29,6 +29,9 @@ Route::get('/category', ['uses' => 'CategoryController@index', 'as' => 'category
 Route::get('/tag/{name}', ['uses' => 'TagController@show', 'as' => 'tag.show']);
 Route::get('/tag', ['uses' => 'TagController@index', 'as' => 'tag.index']);
 Route::get('/user/{name}', ['uses' => 'UserController@show', 'as' => 'user.show']);
+Route::patch('/user/upload/avatar', ['uses' => 'UserController@uploadAvatar', 'as' => 'user.upload.avatar']);
+Route::patch('/user/upload/profile', ['uses' => 'UserController@uploadProfile', 'as' => 'user.upload.profile']);
+Route::patch('/user/upload/info', ['uses' => 'UserController@update', 'as' => 'user.update.info']);
 
 Route::resource('comment', 'CommentController', ['only' => ['store', 'destroy']]);
 

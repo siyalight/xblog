@@ -9,6 +9,7 @@ namespace App\Http\Repositories;
 
 use App\File;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Storage;
 
 
@@ -26,6 +27,11 @@ class ImageRepository extends FileRepository
             return File::where('type', 'image')->orderBy('created_at', 'desc')->paginate($page);
         });
         return $maps;
+    }
+
+    public function uploadImage(UploadedFile $file, $key)
+    {
+        return $this->uploadFile($file, $key);
     }
 
     public function uploadImageToQiNiu(Request $request, $html)

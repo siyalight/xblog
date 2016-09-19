@@ -26,6 +26,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function getMetaAttribute($meta)
+    {
+
+        return json_decode($meta,true);
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);

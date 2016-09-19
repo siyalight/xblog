@@ -1919,7 +1919,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
     var LufficcBlog = {
         init: function () {
             var self = this;
-            var pjaxContainer = $('#lufficc-pjax-container');
+            /*var pjaxContainer = $('#lufficc-pjax-container');
             if (pjaxContainer.length > 0) {
                 $(document).pjax('a:not(a[target="_blank"])', pjaxContainer, {
                     timeout: 2000,
@@ -1928,19 +1928,17 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
                 $(document).on('pjax:start', function () {
                     NProgress.start();
                 });
-
                 $(document).on('pjax:complete', function () {
                     NProgress.done();
                     self.bootUp();
                 });
-            }
+            }*/
             self.bootUp();
         },
         bootUp: function () {
             console.log('bootUp');
             NProgress.configure({showSpinner: false});
-            initAjax();
-            loadComments();
+            loadComments(false);
             initComment();
             initMarkdownTarget();
             initTables();
@@ -1948,16 +1946,9 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
             initProjects();
             initDeleteTarget();
             highLightCode();
+            initUploadAvatar();
         },
     };
-
-    function initAjax() {
-        /*$.ajaxSetup({
-         headers: {
-         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-         }
-         });*/
-    }
 
     function initDeleteTarget() {
         $('[data-modal-target]').append(function () {
@@ -1978,15 +1969,26 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
             });
     }
 
-    function loadComments() {
+    function loadComments(shouldMoveEnd) {
         var container = $('#comments-container');
-        $.ajax({
-            method: 'get',
-            url: container.data('api-url'),
-        }).done(function (data) {
-            container.html(data);
-            initDeleteTarget();
-            highLightCodeOfChild(container);
+        if (container.length > 0) {
+            $.ajax({
+                method: 'get',
+                url: container.data('api-url'),
+            }).done(function (data) {
+                container.html(data);
+                initDeleteTarget();
+                highLightCodeOfChild(container);
+                if (shouldMoveEnd) {
+                    moveEnd($('#comment-submit'));
+                }
+            });
+        }
+    }
+
+    function initUploadAvatar() {
+        $('#upload-avatar').on('click', function () {
+
         });
     }
 
@@ -2000,10 +2002,6 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
         console.log(username.length);
         console.log(email.length);
         form.on('submit', function () {
-            if ($.trim(commentContent.val()) == '') {
-                commentContent.focus();
-                return false;
-            }
             if (username.length > 0) {
                 if ($.trim(username.val()) == '') {
                     username.focus();
@@ -2013,6 +2011,11 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
                     email.focus();
                     return false;
                 }
+            }
+
+            if ($.trim(commentContent.val()) == '') {
+                commentContent.focus();
+                return false;
             }
 
             submitBtn.val('提交中...').addClass('disabled').prop('disabled', true);
@@ -2033,7 +2036,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
                     commentContent.val('');
                     username.val('');
                     email.val('');
-                    loadComments();
+                    loadComments(true);
                 } else {
                     console.log(data.msg);
                 }
@@ -2066,7 +2069,6 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
     }
 
     function highLightCodeOfChild(parent) {
-        console.log('highLightCodeOfChild');
         $('pre code', parent).each(function (i, block) {
             console.log(block);
             hljs.highlightBlock(block);

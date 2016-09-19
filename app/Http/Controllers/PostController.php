@@ -151,9 +151,8 @@ class PostController extends Controller
     {
         $post = Post::withoutGlobalScopes()->find($id);
 
-        if (Gate::denies('update', $post)) {
-            abort(403);
-        }
+        $this->checkPolicy('update',$post);
+
         return view('post.edit', [
             'post' => $post,
             'categories' => $this->categoryRepository->getAll(),
@@ -173,10 +172,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::withoutGlobalScopes()->find($id);
-        if (Gate::denies('update', $post)) {
-            abort(403);
-        }
-
+        $this->checkPolicy('update',$post);
         $this->validatePostForm($request, true);
 
         if ($this->postRepository->update($request, $post)) {

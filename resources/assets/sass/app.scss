@@ -66,10 +66,9 @@ blockquote {
 
 /*footer*/
 
-#footer,#content-wrap:after {
+#footer, #content-wrap:after {
   height: $footerHeight;
 }
-
 
 .copyright {
   height: 100%;
@@ -83,7 +82,8 @@ blockquote {
 }
 
 /*code*/
-$codeBg : rgb(247, 249, 247)/*#20201d*/;
+$codeBg: rgb(247, 249, 247)/*#20201d*/
+;
 
 pre, .highlight {
   overflow: auto;
@@ -111,6 +111,9 @@ pre code {
   word-wrap: normal;
   white-space: pre;
 }
+
+
+
 
 /* table */
 

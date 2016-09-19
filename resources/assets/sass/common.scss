@@ -1,9 +1,9 @@
-/*@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "node_modules/font-awesome/scss/font-awesome";*/
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+/*@import "node_modules/font-awesome/scss/font-awesome";*/
 @import "variables";
 /* shadow*/
 
-.shadow{
+.shadow {
   box-shadow: 1px 1px $shadowBlur $shadowColor;
   -moz-box-shadow: 1px 1px $shadowBlur $shadowColor;
   -webkit-box-shadow: 1px 1px $shadowBlur $shadowColor;
@@ -15,10 +15,15 @@
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
-.markdown-content{
+
+.markdown-content {
   line-height: 1.7em;
   font-size: 1.15em;
   font-weight: normal;
   word-wrap: break-word;
+}
+
+.required {
+  color: $colorAccent;
 }
 

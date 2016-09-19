@@ -74,9 +74,8 @@ class CommentRepository extends Repository
         return $post->comments()->save($comment);
     }
 
-    public function delete($id)
+    public function delete(Comment $comment)
     {
-        $comment = Comment::findOrFail($id);
         $this->forget($this->getCacheKey($comment->commentable_id));
         return $comment->delete();
     }

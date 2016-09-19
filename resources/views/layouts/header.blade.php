@@ -20,27 +20,34 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="{{ route('post.index') }}" class="navbar-brand">{{ isset($author) ? strtoupper($author) : ''}}</a>
+                <a href="{{ route('post.index') }}"
+                   class="navbar-brand">{{ isset($author) ? strtoupper($author) : ''}}</a>
             </div>
             <div class="collapse navbar-collapse fix-top" id="blog-navbar-collapse">
                 <ul class="nav navbar-nav">
-                    {{--<li><a href="{{ route('post.index') }}">博客</a></li>--}}
-                    <li><a href="{{ route('projects') }}">项目</a></li>
-                    <li><a href="{{ route('page.about') }}">关于</a></li>
+                    <li><a class="menu-item" href="{{ route('projects') }}">项目</a></li>
+                    <li><a class="menu-item" href="{{ route('page.about') }}">关于</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right blog-navbar">
                     @if(Auth::check())
-                        @if(isAdmin(Auth::user()))
-                            <li><a href="{{ route('admin.index') }}">后台</a></li>
-                        @endif
-                        <li>
-                            <a href="{{ url('/logout') }}" onclick="event.preventDefault();
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ auth()->user()->name }}
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ route('user.show',auth()->user()->name) }}">个人中心</a></li>
+                                @if(isAdmin(Auth::user()))
+                                    <li><a href="{{ route('admin.index') }}">后台管理</a></li>
+                                @endif
+                                <li class="divider"></li>
+                                <li><a href="{{ url('/logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                退出登录
-                            </a>
-                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
+                                        退出登录
+                                    </a></li>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </ul>
                         </li>
                     @else
                         <li><a href="{{ url('login') }}">登录</a></li>

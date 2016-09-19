@@ -6,24 +6,22 @@
             ?>
             <a href="{{ $href }}">
                 <img width="48px" height="48px" class="img-circle"
-                     src="https://static.lufficc.com/image/e0b3974866e759a93e5d41a669dc2b61.png">
+                     src="{{ $comment->user ? $comment->user->avatar :'https://static.lufficc.com/image/default_avatar.png' }}">
             </a>
         </div>
         <div class="comment-info" style="margin-left: 66px">
             <div style="font-size: 1.2em">
                 <a href="{{ $href }}">{{ $comment->username }}</a>
                 <span class="pull-right" style="color: #d0d0d0">
-                    @if($comment->user && auth()->id() == $comment->user_id)
+                    @can('manager',$comment)
                         <a data-method="delete"
                            data-modal-target="确定删除评论吗?"
                            href="javascript:void (0);"
-                           data-url="{{ route('comment.destroy',$comment->id) }}">
-                            <i class="fa fa-trash-o fa-fw"></i>
-                        </a>
-                    @endif
-                    <a href="javascript:void (0);" onclick="replySomeone('{{ $comment->username }}')">
-                        <i class="fa fa-reply fa-fw"></i>
-                    </a>
+                           data-url="{{ route('comment.destroy',$comment->id) }}"><i
+                                    class="fa fa-trash-o fa-fw"></i></a>
+                    @endcan
+                    <a href="javascript:void (0);" onclick="replySomeone('{{ $comment->username }}')"><i
+                                class="fa fa-reply fa-fw"></i></a>
             </span>
             </div>
             <div style="font-size: 0.9em;color: #d0d0d0">

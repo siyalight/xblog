@@ -16,3 +16,8 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 });
+
+
+Artisan::command('avatar', function () {
+    \App\User::where('id', '>', 0)->update(['avatar' => 'https://static.lufficc.com/image/default_avatar.png']);
+});

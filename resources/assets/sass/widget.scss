@@ -58,6 +58,10 @@
   border-right: 1px solid #f4f4f4;
 }
 
+.widget-user-body{
+  @extend .widget-body
+}
+
 
 .widget-user {
   position: relative;

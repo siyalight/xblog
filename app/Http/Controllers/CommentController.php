@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Http\Repositories\CommentRepository;
 use App\Http\Repositories\PostRepository;
 use App\Http\Requests;
-use App\Post;
+use Gate;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -72,12 +73,16 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
-     * @return \Illuminate\Http\Response | mixed
+     * @param Comment $comment
+     * @return \Illuminate\Http\Response|mixed
      */
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
-        if ($this->commentRepository->delete($id)) {
+        $this->checkPolicy('manager',$comment);
+
+        dd(back()->with('success', '删除成功'));
+
+        if ($this->commentRepository->delete($comment)) {
             return back()->with('success', '删除成功');
         }
         return back()->withErrors('删除失败');
