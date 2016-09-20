@@ -36,7 +36,7 @@
     @foreach($images->chunk(3) as $chunk)
         <div class="row">
             @foreach ($chunk as $image)
-                <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="widget widget-default">
                         <img src="{{ getUrlByFileName($image->key) }}" style="width: 100% ;height: 200px">
                         <div class="widget-footer">
