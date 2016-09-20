@@ -6,7 +6,7 @@
         if ($user->profile_image)
             $style = "background: url($user->profile_image) center center;";
         else
-            $style = "background-color: #1b6d85;";
+            $style = "background-color: #607D8B;";
         ?>
         <div class="widget-user-header" style="{{ $style }}">
             <h3 class="widget-user-username">{{ $user->name }}</h3>
