@@ -51,6 +51,7 @@ class AuthController extends Controller
         $user->name = $name;
         $user->email = $email;
         $user->avatar = config('app.avatar');
+        $user->register_from = 'github';
         $user->password = bcrypt($request->get('password'));
         if ($user = $this->bindGithub($user, session('githubData'))) {
             auth()->loginUsingId($user->id);

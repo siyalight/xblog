@@ -21,6 +21,15 @@
         </div>
         <button class="btn btn-primary" id="upload-button" type="submit">上传简介图片</button>
     </form>
+
+    @if(!$user->github_id)
+        <div class="form-group mt-30">
+            <a style="text-decoration: none" class="btn btn-primary" href="{{ route('github.login') }}">
+                绑定<i class="fa fa-github fa-lg fa-fw"></i>
+            </a>
+        </div>
+    @endif
+
     <div class="alone-divider"></div>
     <form class="mt-30" action="{{ route('user.update.info') }}" method="post">
         {{ csrf_field() }}
@@ -47,7 +56,8 @@
         </div>
         <div class="form-group">
             <label>Facebook：</label>
-            <input class="form-control" name="facebook" type="text" value="{{ array_safe_get($user->meta,'facebook') }}">
+            <input class="form-control" name="facebook" type="text"
+                   value="{{ array_safe_get($user->meta,'facebook') }}">
         </div>
         <div class="form-group">
             <label>Weibo：</label>
