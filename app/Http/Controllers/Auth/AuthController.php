@@ -77,13 +77,17 @@ class AuthController extends Controller
     {
         $githubUser = Socialite::driver('github')->user();
         $user = User::where('github_id', $githubUser->id)->first();
+        /*var_dump($githubUser);
+        echo '<br><br><br>';
+        var_dump($user);
+        echo '<br><br><br>';*/
 
         if (auth()->check()) {
             $currentUser = auth()->user();
             if ($currentUser->github_id && $currentUser->github_id == $githubUser->id) {
                 return redirect()->route('post.index');
             } else if ($currentUser->github_id == null) {
-                if ($this->bindGithub($currentUser, $githubUser))
+                if ($this->bindGithub($currentUser, $this->getDataFromGithubUser($githubUser)))
                     return redirect()->route('post.index')->with('success', '绑定 Github 成功');
                 return redirect()->route('post.index')->withErrors('绑定 Github 失败');
             } else {
