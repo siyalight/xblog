@@ -14,6 +14,7 @@ use App\Tag;
 use Gate;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Session\TokenMismatchException;
 
 class PostController extends Controller
 {
@@ -53,8 +54,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $milliseconds = round(microtime(true) * 1000);
-
+        throw new TokenMismatchException('FSD');
         $page_size = 7;
         if ($map = $this->mapRepository->get('page_size')) {
             $page_size = $map->value;

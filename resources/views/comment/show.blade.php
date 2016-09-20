@@ -18,7 +18,7 @@
                            data-url="{{ route('comment.destroy',$comment->id) }}">
                             <i class="fa fa-trash-o fa-fw"></i>
                         </a>
-                        <a href="{{ route('comment.edit',[$comment->id,'redirect'=>(isset($redirect) && $redirect.'#'.$loop->index ? $redirect : '')]) }}">
+                        <a style="text-decoration: none" href="{{ route('comment.edit',[$comment->id,'redirect'=>(isset($redirect) && $redirect.'#'.$loop->index ? $redirect : '')]) }}">
                             <i class="fa fa-pencil fa-fw"></i>
                         </a>
                     @endcan
