@@ -37,6 +37,9 @@ class TagsComposer
      */
     public function compose(View $view)
     {
-        $view->with('tags', $this->tagRepository->getAll());
+        $tags = $this->tagRepository->getAll()->reject(function ($tag) {
+            return $tag->posts_count == 0;
+        });
+        $view->with('tags', $tags);
     }
 }

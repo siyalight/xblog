@@ -40,7 +40,7 @@ abstract class FileRepository extends Repository
     public function getAllFiles()
     {
         $files = $this->remember('file.all', function () {
-            return File::where('type', '<>', ImageRepository::$tag)->get();
+            return File::where('type', '<>', ImageRepository::$tag)->orderBy('type', 'desc')->get();
         }, 'files');
         return $files;
     }

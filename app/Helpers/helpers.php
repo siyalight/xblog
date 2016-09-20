@@ -15,6 +15,13 @@ if (!function_exists('isAdmin')) {
     }
 }
 
+if (!function_exists('getMilliseconds')) {
+    function getMilliseconds()
+    {
+        return round(microtime(true) * 1000);
+    }
+}
+
 if (!function_exists('array_safe_get')) {
     function array_safe_get($array, $key, $default = '')
     {

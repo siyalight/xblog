@@ -51,7 +51,10 @@ class UserController extends Controller
     public function uploadProfile(Request $request)
     {
         $user = auth()->user();
-        $key = 'user/' . $user->name . '/profile.' . $request->file('image')->guessClientExtension();
+
+        $milliseconds = getMilliseconds();
+
+        $key = 'user/' . $user->name . "/profile/$milliseconds." . $request->file('image')->guessClientExtension();
 
         if ($url = $this->uploadImage($user, $request, $key)) {
             $user->profile_image = $url;
@@ -66,7 +69,10 @@ class UserController extends Controller
     public function uploadAvatar(Request $request)
     {
         $user = auth()->user();
-        $key = 'user/' . $user->name . '/avatar.' . $request->file('image')->guessClientExtension();
+
+        $milliseconds = getMilliseconds();
+
+        $key = 'user/' . $user->name . "/avatar/$milliseconds." . $request->file('image')->guessClientExtension();
 
         if ($url = $this->uploadImage($user, $request, $key)) {
             $user->avatar = $url;

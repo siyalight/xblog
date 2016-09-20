@@ -36,6 +36,9 @@ class CategoriesComposer
      */
     public function compose(View $view)
     {
-        $view->with('categories', $this->categoryRepository->getAll());
+        $categories = $this->categoryRepository->getAll()->reject(function ($category) {
+            return $category->posts_count == 0;
+        });
+        $view->with('categories', $categories);
     }
 }

@@ -53,6 +53,8 @@ class PostController extends Controller
      */
     public function index()
     {
+        $milliseconds = round(microtime(true) * 1000);
+
         $page_size = 7;
         if ($map = $this->mapRepository->get('page_size')) {
             $page_size = $map->value;
