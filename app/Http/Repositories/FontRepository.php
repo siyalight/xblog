@@ -17,11 +17,11 @@ use Storage;
  * Class TagRepository
  * @package App\Http\Repository
  */
-class JsRepository extends FileRepository
+class FontRepository extends FileRepository
 {
-    static $tag = 'js';
+    static $tag = 'font';
 
-    public function uploadJs(Request $request)
+    public function uploadFont(Request $request)
     {
         $this->deleteAllByType();
         $file = $request->file('file');
@@ -30,11 +30,11 @@ class JsRepository extends FileRepository
 
     public function tag()
     {
-        return JsRepository::$tag;
+        return FontRepository::$tag;
     }
 
     public function type()
     {
-        return 'js';
+        return FontRepository::$tag;
     }
 }

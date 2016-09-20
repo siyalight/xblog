@@ -19,23 +19,23 @@ use Storage;
  */
 class CssRepository extends FileRepository
 {
-    static $tag = 'js';
+    static $tag = 'css';
 
     public function uploadCss(Request $request)
     {
         $this->deleteAllByType();
-        $file = $request->file('css');
+        $file = $request->file('file');
         return $this->uploadFile($file, $file->getClientOriginalName());
     }
 
     public function tag()
     {
-        return JsRepository::$tag;
+        return CssRepository::$tag;
     }
 
 
     public function type()
     {
-        return 'css';
+        return CssRepository::$tag;
     }
 }

@@ -14,11 +14,17 @@
                 <a href="{{ $href }}">{{ $comment->username }}</a>
                 <span class="pull-right" style="color: #d0d0d0">
                     @can('manager',$comment)
-                        <a href="javascript:void (0);" data-method="delete" data-modal-target="确定删除评论吗?" data-url="{{ route('comment.destroy',$comment->id) }}"><i class="fa fa-trash-o fa-fw"></i></a>
-                        <a href="{{ route('comment.edit',[$comment->id,'redirect'=>(isset($redirect) && $redirect.'#'.$loop->index ? $redirect : '')]) }}"><i class="fa fa-pencil fa-fw"></i></a>
+                        <a href="javascript:void (0)" data-method="delete" data-modal-target="确定删除评论吗?"
+                           data-url="{{ route('comment.destroy',$comment->id) }}">
+                            <i class="fa fa-trash-o fa-fw"></i>
+                        </a>
+                        <a href="{{ route('comment.edit',[$comment->id,'redirect'=>(isset($redirect) && $redirect.'#'.$loop->index ? $redirect : '')]) }}">
+                            <i class="fa fa-pencil fa-fw"></i>
+                        </a>
                     @endcan
-                    <a href="javascript:void (0);" onclick="replySomeone('{{ $comment->username }}')"><i
-                                class="fa fa-reply fa-fw"></i></a>
+                    <a href="javascript:void (0);" onclick="replySomeone('{{ $comment->username }}')">
+                        <i class="fa fa-reply fa-fw"></i>
+                    </a>
             </span>
             </div>
             <div style="font-size: 0.9em;color: #d0d0d0">

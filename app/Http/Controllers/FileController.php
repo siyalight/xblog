@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Repositories\CssRepository;
 use App\Http\Repositories\FileRepository;
+use App\Http\Repositories\FontRepository;
 use App\Http\Repositories\ImageRepository;
 use App\Http\Repositories\JsRepository;
 use Illuminate\Http\Request;
@@ -13,17 +14,23 @@ class FileController extends Controller
     protected $imageRepository;
     protected $cssRepository;
     protected $jsRepository;
+    protected $fontRepository;
 
     /**
      * ImageController constructor.
      * @param ImageRepository $imageRepository
      * @param JsRepository $jsRepository
+     * @param FontRepository $fontRepository
      * @param CssRepository $cssRepository
      */
-    public function __construct(ImageRepository $imageRepository, JsRepository $jsRepository, CssRepository $cssRepository)
+    public function __construct(ImageRepository $imageRepository,
+                                JsRepository $jsRepository,
+                                FontRepository $fontRepository,
+                                CssRepository $cssRepository)
     {
         $this->imageRepository = $imageRepository;
         $this->jsRepository = $jsRepository;
+        $this->fontRepository = $fontRepository;
         $this->cssRepository = $cssRepository;
         $this->middleware(['auth', 'admin']);
     }
@@ -37,6 +44,12 @@ class FileController extends Controller
         return view('admin.files', compact('files'));
     }
 
+
+    public function uploadCss(Request $request)
+    {
+        return ($this->cssRepository->uploadCss($request));
+    }
+
     /**
      * @param Request $request
      * @return mixed
@@ -44,23 +57,37 @@ class FileController extends Controller
 
     public function uploadJs(Request $request)
     {
+        return ($this->jsRepository->uploadJs($request));
+    }
+
+    public function uploadFont(Request $request)
+    {
+        return ($this->fontRepository->uploadFont($request));
+    }
+
+    public function uploadFile(Request $request)
+    {
         $this->validate($request, [
-            'js' => 'required'
+            'file' => 'required',
+            'type' => 'required',
         ]);
-        if ($this->jsRepository->uploadJs($request))
+        $result = false;
+        switch ($request->get('type')) {
+            case 'js':
+                $result = $this->uploadJs($request);
+                break;
+            case 'css':
+                $result = $this->uploadJs($request);
+                break;
+            case 'font':
+                $result = $this->uploadFont($request);
+                break;
+        }
+        if ($result)
             return back()->with('success', '上传成功');
         return back()->withErrors('上传失败');
     }
 
-    public function uploadCss(Request $request)
-    {
-        $this->validate($request, [
-            'css' => 'required'
-        ]);
-        if ($this->cssRepository->uploadCss($request))
-            return back()->with('success', '上传成功');
-        return back()->withErrors('上传失败');
-    }
 
     /**
      * @param Request $request

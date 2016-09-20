@@ -1,4 +1,11 @@
-@import 'https://fonts.googleapis.com/css?family=Pacifico';
+@font-face {
+  font-family: 'Pacifico';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Pacifico Regular'), local('Pacifico-Regular'), url(https://static.lufficc.com/font/Pacifico.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
 @import "post";
 @import "pre-code";
 @import "header";
@@ -10,7 +17,7 @@ html, body {
   color: #505050;
   font-size: 14px;
   height: 100%;
-  background: #ebebeb;
+  background: $body-bg;
   font-family: NotoSansHans-Regular, AvenirNext-Regular, arial, Hiragino Sans GB, "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
 }
 
@@ -59,6 +66,10 @@ blockquote {
   border: 1px solid $colorPrimary;
   background: $colorPrimary;
   color: white;
+}
+
+.btn-more:hover{
+  color: $colorAccent;
   transition: all 0.15s ease-in-out;
   -webkit-transition: all 0.15s ease-in-out;
 }
@@ -110,8 +121,6 @@ pre code {
   word-wrap: normal;
   white-space: pre;
 }
-
-
 
 
 /* table */

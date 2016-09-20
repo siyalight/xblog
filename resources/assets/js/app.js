@@ -43,7 +43,7 @@
                 "   <input type='hidden' name='_method' value='" + $(this).data('method') + "'>\n" +
                 "   <input type='hidden' name='_token' value='" + Laravel.csrfToken + "'>\n" +
                 "</form>\n"
-        }).attr('style', 'cursor:pointer;')
+        }).attr('style', 'cursor:pointer;text-decoration: none;')
             .click(function () {
                 var deleteForm = $(this).find("form");
                 var $modal = $('#delete-modal');

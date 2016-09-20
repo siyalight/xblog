@@ -1,6 +1,6 @@
 $colorPrimary: #607D8B;
 $colorPrimaryDark: #546E7A;
-$colorPrimaryDarkTransparent: rgba(84, 110, 122, 0.25);
+$colorPrimaryDarkTransparent: rgba($colorPrimary, 0.25);
 $colorAccent: #FF6E40;
 $widgetHeaderBgColor: #F5F8FA;
 
@@ -17,6 +17,16 @@ $userProfileHeight: 150px;
 $userAvatarRadius: 45px;
 
 $metaColor: #959595;
+
+
+/* bootstrap*/
+$brand-primary: $colorPrimary;
+$body-bg: #eee;
+
+
+
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
 
 /*boot strap*/
 

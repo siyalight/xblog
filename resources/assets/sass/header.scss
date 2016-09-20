@@ -80,6 +80,7 @@ a:active, a:focus, a img {
 
 .navbar-nav > li > a:hover {
   color: $colorAccent;
+  border: $colorAccent solid 1px !important;
   background: $colorPrimaryDark;
   transition: all 0.25s ease-in-out;
   -webkit-transition: all 0.25s ease-in-out;

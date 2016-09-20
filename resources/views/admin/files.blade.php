@@ -11,15 +11,16 @@
         </div>
         <div class="col-md-12">
             <div class="col-sm-12">
-                <form role="form" class="form-horizontal" action="{{ route('upload.js') }}"
+                <form role="form" class="form-horizontal" action="{{ route('upload.file') }}"
                       datatype="image"
                       enctype="multipart/form-data" method="post">
                     {{ csrf_field() }}
+                    <input type="hidden" name="type" value="js">
                     <div class="row">
                         <div class="form-group col-md-10">
                             <div class="input-group">
                                 <span class="input-group-addon">Js</span>
-                                <input class="form-control" type="file" name="js">
+                                <input class="form-control" type="file" name="file">
                             </div>
                         </div>
                         <div class="form-group col-md-2">
@@ -29,15 +30,19 @@
                         </div>
                     </div>
                 </form>
-                <form role="form" class="form-horizontal" action="{{ route('upload.css') }}"
+
+
+
+                <form role="form" class="form-horizontal" action="{{ route('upload.file') }}"
                       datatype="image"
                       enctype="multipart/form-data" method="post">
                     {{ csrf_field() }}
+                    <input type="hidden" name="type" value="css">
                     <div class="row">
                         <div class="form-group col-md-10">
                             <div class="input-group">
                                 <span class="input-group-addon">Css</span>
-                                <input class="form-control" type="file" name="css">
+                                <input class="form-control" type="file" name="file">
                             </div>
                         </div>
                         <div class="form-group col-md-2">
@@ -47,6 +52,32 @@
                         </div>
                     </div>
                 </form>
+
+
+
+                <form role="form" class="form-horizontal" action="{{ route('upload.file') }}"
+                      datatype="image"
+                      enctype="multipart/form-data" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="type" value="font">
+                    <div class="row">
+                        <div class="form-group col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon">Font</span>
+                                <input class="form-control" type="file" name="file">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <button type="submit" class="btn btn-primary" style="margin-left: 5px">
+                                上传
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+
+
+
             </div>
         </div>
     </div>
