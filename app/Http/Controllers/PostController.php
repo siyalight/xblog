@@ -55,6 +55,7 @@ class PostController extends Controller
      */
     public function index()
     {
+
         /*$githubData['github_id'] = 1124124;
         $githubData['email'] = 'luffy.lcc@gmail.com';
         $githubData['avatar'] = 'https://avatars1.githubusercontent.com/u/20706332';

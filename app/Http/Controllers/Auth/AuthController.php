@@ -67,7 +67,7 @@ class AuthController extends Controller
         $user->avatar = config('app.avatar');
         $user->register_from = 'github';
         $user->password = bcrypt($request->get('password'));
-        if ($user = $this->bindGithub($user, session('githubData'))) {
+        if ($this->bindGithub($user, session('githubData'))) {
             auth()->loginUsingId($user->id);
             session()->forget('githubData');
             return redirect()->route('post.index')->with('success', '使用Github注册成功');
