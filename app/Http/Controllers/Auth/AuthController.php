@@ -60,7 +60,6 @@ class AuthController extends Controller
             'name.unique' => "Username  '$name'  has been registered,if it is you,then you can login to bind your github account",
             'email.unique' => "Email  '$email'  has been registered,if it is you,then you can login to bind your github account",
         ]);
-        dd(array_merge(session('githubData'), request()->all()));
 
         $user = new User();
         $user->name = $name;

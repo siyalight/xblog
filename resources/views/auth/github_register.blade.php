@@ -10,7 +10,7 @@
                     <div class="widget-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('github.store') }}">
                             {{ csrf_field() }}
-
+                            <input type="hidden" name="github_id" value="{{ $githubData['github_id'] }}">
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-4 control-label">昵称</label>
 
