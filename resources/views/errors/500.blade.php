@@ -1,6 +1,6 @@
 @extends('layouts.plain')
 @section('content')
-    <div class="title">500,{{ isset($errors)&&count($errors) ? $errors:'' }}</div>
+    <div class="title">500</div>
     <div class="urls">
         <a href="{{ route('post.index') }}">博客</a>
         <span>/</span>

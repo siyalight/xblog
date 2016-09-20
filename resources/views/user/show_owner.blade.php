@@ -1,4 +1,5 @@
 @can('manager',$user)
+
     <form method="post" action="{{ route('user.upload.avatar') }}"
           enctype="multipart/form-data">
         {{ csrf_field() }}

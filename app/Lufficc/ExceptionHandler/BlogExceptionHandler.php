@@ -7,8 +7,10 @@
  */
 
 namespace Lufficc\ExceptionHandler;
+
 use Exception;
 use Illuminate\Session\TokenMismatchException;
+use Laravel\Socialite\Two\InvalidStateException;
 
 class BlogExceptionHandler
 {
@@ -20,6 +22,8 @@ class BlogExceptionHandler
     public function handler($request, Exception $exception)
     {
         if ($exception instanceof TokenMismatchException) {
+            abort(403);
+        } else if ($exception instanceof InvalidStateException) {
             abort(403);
         }
         return false;

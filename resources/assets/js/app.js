@@ -33,8 +33,13 @@
             initDeleteTarget();
             highLightCode();
             initUploadAvatar();
+            initClickOnce();
         },
     };
+
+    function initClickOnce() {
+
+    }
 
     function initDeleteTarget() {
         $('[data-modal-target]').append(function () {
