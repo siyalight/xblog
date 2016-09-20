@@ -87,7 +87,6 @@ class UserController extends Controller
     private function uploadImage(User $user, Request $request, $key, $max = 1024, $fileName = 'image')
     {
         $this->checkPolicy('manager', $user);
-
         $this->validate($request, [
             $fileName => 'required|image|mimes:jpeg,jpg,png|max:' . $max,
         ]);
