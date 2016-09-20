@@ -23,7 +23,7 @@ class AuthController extends Controller
             $currentUser->avatar = $githubData['avatar'];
 
         $meta = $currentUser->meta;
-        $meta['github'] = $githubData->user['html_url'];
+        $meta['github'] = $githubData['html_url'];
         $currentUser->meta = $meta;
 
         return $currentUser->save();
