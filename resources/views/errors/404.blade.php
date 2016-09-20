@@ -1,15 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.plain')
 @section('content')
-    <div class="row">
-        <div class="col-md-8">
-            <div class="widget widget-default">
-                <div class="widget-body">
-                    <h1>404...Nothing here</h1>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            @include('layouts.widgets')
-        </div>
+    <div class="title">404,{{ isset($errors)&&count($errors) ? $errors:'' }}</div>
+    <div class="urls">
+        <a href="{{ route('post.index') }}">博客</a>
+        <span>/</span>
+        <a href="{{ route('page.about') }}">关于</a>
     </div>
 @endsection

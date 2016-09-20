@@ -14,7 +14,7 @@
                 <a href="{{ $href }}">{{ $comment->username }}</a>
                 <span class="pull-right" style="color: #d0d0d0">
                     @can('manager',$comment)
-                        <a href="javascript:void (0)" data-method="delete" data-modal-target="确定删除评论吗?"
+                        <a href="javascript:void (0)" data-method="delete" data-modal-target="这条评论"
                            data-url="{{ route('comment.destroy',$comment->id) }}">
                             <i class="fa fa-trash-o fa-fw"></i>
                         </a>

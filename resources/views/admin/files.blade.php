@@ -96,7 +96,7 @@
                                     </button>
                                     <button class="btn btn-danger"
                                             data-method="delete"
-                                            data-modal-target="确定删除{{ $file->key }}吗?"
+                                            data-modal-target="{{ $file->key }}"
                                             data-url="{{ route('delete.file').'?key='.$file->key."&type=".$file->type }}">
                                         <i class="fa fa-trash-o fa-fw"></i>
                                     </button>

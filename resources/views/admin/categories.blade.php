@@ -35,7 +35,7 @@
                                                 data-toggle="tooltip" data-placement="top" title="删除"
                                                 data-method="delete"
                                                 data-url="{{ route('category.destroy',$category->id) }}"
-                                                data-modal-target="确定删除{{ $category->name }}?">
+                                                data-modal-target="{{ $category->name }}">
                                             <i class="fa fa-trash-o fa-fw"></i>
                                         </button>
                                     </div>

@@ -9,7 +9,7 @@ use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
-    use SoftDeletes, Searchable;
+    use SoftDeletes/*, Searchable*/;
 
     /**
      * The "booting" method of the model.

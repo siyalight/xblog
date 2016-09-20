@@ -27,7 +27,7 @@
                                 <td>
                                     <button type="submit"
                                             class="btn btn-danger"
-                                            data-modal-target="确定删除{{ $tag->name }}?"
+                                            data-modal-target="{{ $tag->name }}"
                                             data-url="{{ route('tag.destroy',$tag->id) }}"
                                             data-method="delete"
                                             data-toggle="tooltip"

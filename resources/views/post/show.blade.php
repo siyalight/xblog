@@ -7,11 +7,13 @@
             @can('update',$post)
                 <div class="btn-group pull-right" style="margin-top: -25px">
                     <a class="btn" href="{{ route('post.edit',$post->id) }}"><i class="fa fa-pencil"></i></a>
-                    <a class="btn" role="button" data-toggle="modal" data-target="#delete-post-modal">
+                    <a class="btn" role="button"
+                       data-method="delete"
+                       data-url="{{ route('post.destroy',$post->id) }}"
+                       data-modal-target="{{ $post->title }}">
                         <i class="fa fa-trash-o"></i>
                     </a>
                 </div>
-                @include('post.delete-modal',$post)
             @endcan
             <div class="center-block">
                 <h2>{{ $post->title }}</h2>

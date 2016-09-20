@@ -11,7 +11,7 @@
                     <table class="table table-hover table-bordered table-responsive">
                         <thead>
                         <tr>
-                            <th>名称</th>
+                            <th>用户</th>
                             <th>commentable_id</th>
                             <th>类型</th>
                             <th>内容</th>
@@ -21,14 +21,20 @@
                         <tbody>
                         @foreach($comments as $comment)
                             <tr>
-                                <td>{{ $comment->username }}</td>
+                                <td>
+                                    @if($comment->user_id)
+                                        <a href="{{ route('user.show',$comment->username) }}">{{ $comment->username }}</a>
+                                    @else
+                                        {{ $comment->username }}
+                                    @endif
+                                </td>
                                 <td>{{ $comment->commentable_id }}</td>
                                 <td>{{ $comment->commentable_type }}</td>
                                 <td>{!! $comment->html_content !!}</td>
                                 <td>
                                     <button type="submit"
                                             class="btn btn-danger"
-                                            data-modal-target="确定删除评论?"
+                                            data-modal-target="这条评论"
                                             data-url="{{ route('comment.destroy',$comment->id) }}"
                                             data-method="delete"
                                             data-toggle="tooltip"

@@ -6,7 +6,7 @@
  * Time: 18:02
  */
 
-namespace Lufficc;
+namespace Lufficc\ExceptionHandler;
 use Exception;
 use Illuminate\Session\TokenMismatchException;
 
