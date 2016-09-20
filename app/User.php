@@ -28,8 +28,13 @@ class User extends Authenticatable
 
     public function getMetaAttribute($meta)
     {
+        $a = json_decode($meta, true);
+        return $a ? $a : array();
+    }
 
-        return json_decode($meta, true);
+    public function setMetaAttribute($meta)
+    {
+        $this->attributes['meta'] = json_encode($meta);
     }
 
     public function posts()

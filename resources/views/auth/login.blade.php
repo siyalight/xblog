@@ -59,6 +59,9 @@
                             </div>
                         </div>
                     </form>
+                    <a class="pull-right"  style="text-decoration: none" href="{{ route('github.login') }}">
+                        使用<i class="fa fa-lg fa-github fa-fw"></i>注册
+                    </a>
                 </div>
             </div>
         </div>

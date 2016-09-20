@@ -12,8 +12,10 @@
 */
 
 Auth::routes();
-Route::get('auth/github', ['uses' => 'Auth\AuthController@redirectToGithub', 'as' => 'github.login']);
-Route::get('auth/github/callback', ['uses' => 'Auth\AuthController@handleGithubCallback', 'as' => 'github.callback']);
+Route::get('/auth/github', ['uses' => 'Auth\AuthController@redirectToGithub', 'as' => 'github.login']);
+Route::get('/auth/github/callback', ['uses' => 'Auth\AuthController@handleGithubCallback', 'as' => 'github.callback']);
+Route::get('/github/register',['uses' => 'Auth\AuthController@registerFromGithub', 'as' => 'github.register']);
+Route::post('/github/store',['uses' => 'Auth\AuthController@store', 'as' => 'github.store']);
 
 
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);

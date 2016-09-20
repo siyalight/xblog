@@ -42,7 +42,7 @@ class UserRepository extends Repository
         $user->real_name = $request->get('real_name');
 
         $meta = $request->except(['_method', '_token', 'description', 'website', 'real_name', 'name',]);
-        $user->meta = json_encode($meta);
+        $user->meta = $meta;
         $result = $user->save();
         if ($result)
             $this->clearCache();

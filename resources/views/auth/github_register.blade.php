@@ -1,13 +1,14 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="widget widget-default">
-                    <div class="widget-header">注册</div>
+                    <div class="widget-header">
+                        <h4><i class="fa fa-github fa-fw"></i>注册</h4>
+                    </div>
                     <div class="widget-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('github.store') }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -15,7 +16,7 @@
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control" name="name"
-                                           value="{{ old('name') }}" autofocus>
+                                           value="{{ $githubData['name'] or '' }}">
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -30,7 +31,7 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" name="email"
-                                           value="{{ old('email') }}">
+                                           value="{{ $githubData['email'] or '' }}" readonly>
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -72,14 +73,14 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        注册
+                                        <i class="fa fa-github fa-fw"></i>注册
                                     </button>
                                 </div>
                             </div>
                         </form>
-                        <a class="pull-right"  style="text-decoration: none" href="{{ route('github.login') }}">
-                            使用<i class="fa fa-lg fa-github fa-fw"></i>注册
-                        </a>
+                        {{--<a href="{{ route('github.login') }}" class="pull-right">
+                            <i class="fa fa-lg fa-github fa-fw"></i>
+                        </a>--}}
                     </div>
                 </div>
             </div>
