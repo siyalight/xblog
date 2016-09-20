@@ -9,9 +9,9 @@ use App\User;
  */
 
 if (!function_exists('isAdmin')) {
-    function isAdmin(User $user)
+    function isAdmin($user)
     {
-        return $user != null && $user->id == 1;
+        return $user != null && $user instanceof User && $user->id == 1;
     }
 }
 
