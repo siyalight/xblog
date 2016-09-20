@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="widget widget-default">
-                    <div class="widget-header">注册</div>
+                    <div class="widget-header"><h4>注册</h4></div>
                     <div class="widget-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                             {{ csrf_field() }}

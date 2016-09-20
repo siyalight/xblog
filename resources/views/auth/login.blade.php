@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="widget widget-default">
-                <div class="widget-header">登录</div>
+                <div class="widget-header"><h4>登录</h4></div>
                 <div class="widget-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
@@ -60,7 +60,7 @@
                         </div>
                     </form>
                     <a class="pull-right"  style="text-decoration: none" href="{{ route('github.login') }}">
-                        使用<i class="fa fa-lg fa-github fa-fw"></i>注册
+                        使用<i class="fa fa-lg fa-github fa-fw"></i>登录
                     </a>
                 </div>
             </div>
