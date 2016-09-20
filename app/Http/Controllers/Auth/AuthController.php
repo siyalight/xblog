@@ -108,7 +108,7 @@ class AuthController extends Controller
             else {
                 /*返回的Github账号已经被绑定了，返回错误信息*/
                 if ($user) {
-                    return redirect()->route('post.index')->withErrors('Sorry,this github account has been bind to another account,is it you?');
+                    return redirect()->route('post.index')->withErrors('Sorry,this github account has been bind to another account,is that you?');
                 } /*返回的Github账号没有被绑定，正常绑定*/
                 else {
                     if ($this->bindGithub($currentUser, $this->getDataFromGithubUser($githubUser))) {
