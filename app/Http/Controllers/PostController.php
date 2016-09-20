@@ -54,7 +54,6 @@ class PostController extends Controller
      */
     public function index()
     {
-        throw new TokenMismatchException('FSD');
         $page_size = 7;
         if ($map = $this->mapRepository->get('page_size')) {
             $page_size = $map->value;

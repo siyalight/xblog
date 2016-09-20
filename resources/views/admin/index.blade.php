@@ -45,7 +45,7 @@
         <div class="col-lg-3 col-md-4">
             <div class="widget widget-default center-block">
                 <div class="widget-header">
-                    <h3><i class="fa fa-sticky-note fa-fw"></i>Comment</h3>
+                    <h3><i class="fa fa-comments fa-fw"></i>Comment</h3>
                 </div>
                 <div class="widget-body">
                     <h3>
