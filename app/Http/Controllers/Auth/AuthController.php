@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Repositories\UserRepository;
 use App\Http\Requests;
 use App\User;
 use Illuminate\Http\Request;
@@ -10,6 +11,18 @@ use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
+
+    protected $userRepository;
+
+    /**
+     * UserController constructor.
+     * @param UserRepository $userRepository
+     */
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     public function redirectToGithub()
     {
         return Socialite::driver('github')->redirect();
@@ -25,6 +38,8 @@ class AuthController extends Controller
         $meta = $currentUser->meta;
         $meta['github'] = $githubData['url'];
         $currentUser->meta = $meta;
+
+        $this->userRepository->clearAllCache();
 
         return $currentUser->save();
     }
@@ -87,8 +102,9 @@ class AuthController extends Controller
             if ($currentUser->github_id && $currentUser->github_id == $githubUser->id) {
                 return redirect()->route('post.index');
             } else if ($currentUser->github_id == null) {
-                if ($this->bindGithub($currentUser, $this->getDataFromGithubUser($githubUser)))
+                if ($this->bindGithub($currentUser, $this->getDataFromGithubUser($githubUser))) {
                     return redirect()->route('post.index')->with('success', '绑定 Github 成功');
+                }
                 return redirect()->route('post.index')->withErrors('绑定 Github 失败');
             } else {
                 return redirect()->route('post.index')->withErrors('Sorry,you have bind a different github account!');
