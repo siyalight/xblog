@@ -9,7 +9,11 @@
     <title>lufficc @yield('title')</title>
     <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="https://static.lufficc.com/favicon.ico"/>
-    <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+    @if(isset($site_css) && $site_css)
+        <link href="{{ $site_css }}" rel="stylesheet">
+    @else
+        <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+    @endif
     @yield('css')
     <script>
         window.Laravel = <?php echo json_encode([
