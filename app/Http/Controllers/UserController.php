@@ -56,7 +56,7 @@ class UserController extends Controller
 
         $key = 'user/' . $user->name . "/profile/$milliseconds." . $request->file('image')->guessClientExtension();
 
-        if ($url = $this->uploadImage($user, $request, $key)) {
+        if ($url = $this->uploadImage($user, $request, $key, 2048)) {
             $user->profile_image = $url;
         }
         if ($user->save()) {
@@ -84,12 +84,12 @@ class UserController extends Controller
         return back()->with('success', '修改失败');
     }
 
-    private function uploadImage(User $user, Request $request, $key, $fileName = 'image')
+    private function uploadImage(User $user, Request $request, $key, $max = 1024, $fileName = 'image')
     {
         $this->checkPolicy('manager', $user);
 
         $this->validate($request, [
-            $fileName => 'required|image'
+            $fileName => 'required|image|mimes:jpeg,jpg,png|max:' . $max,
         ]);
         $image = $request->file($fileName);
         return $this->imageRepository->uploadImage($image, $key);
