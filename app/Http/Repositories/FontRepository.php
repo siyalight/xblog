@@ -23,7 +23,6 @@ class FontRepository extends FileRepository
 
     public function uploadFont(Request $request)
     {
-        $this->deleteAllByType();
         $file = $request->file('file');
         return $this->uploadFile($file, $file->getClientOriginalName());
     }
