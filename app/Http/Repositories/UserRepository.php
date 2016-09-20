@@ -41,11 +41,13 @@ class UserRepository extends Repository
         $user->website = $request->get('website');
         $user->real_name = $request->get('real_name');
 
+        $github_url = array_safe_get($user->meta, 'github');
+
         $exception = ['_method', '_token', 'description', 'website', 'real_name', 'name',];
-        /*if ($user->github_id) {
-            $exception = ['_method', '_token', 'github', 'description', 'website', 'real_name', 'name',];
-        }*/
         $meta = $request->except($exception);
+        if ($user->github_id) {
+            $meta['github'] = $github_url;
+        }
         $user->meta = $meta;
         $result = $user->save();
         if ($result)

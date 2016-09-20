@@ -52,7 +52,7 @@
         </div>
         <div class="form-group">
             <label>Github：</label>
-            <input {{--{{ $user->github_id ? "readonly=''" : '' }}--}} class="form-control" name="github" type="text"
+            <input {{ $user->github_id ? "readonly=''" : '' }} class="form-control" name="github" type="text"
                    value="{{ array_safe_get($user->meta,'github') }}">
         </div>
         <div class="form-group">
