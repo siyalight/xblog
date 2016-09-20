@@ -77,7 +77,7 @@ class FileController extends Controller
                 $result = $this->uploadJs($request);
                 break;
             case 'css':
-                $result = $this->uploadJs($request);
+                $result = $this->uploadCss($request);
                 break;
             case 'font':
                 $result = $this->uploadFont($request);
