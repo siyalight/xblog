@@ -55,15 +55,6 @@ class PostController extends Controller
      */
     public function index()
     {
-
-        /*$githubData['github_id'] = 1124124;
-        $githubData['email'] = 'luffy.lcc@gmail.com';
-        $githubData['avatar'] = 'https://avatars1.githubusercontent.com/u/20706332';
-        $githubData['name'] = 'lufficc';
-        $githubData['url'] = 'https://github.com/lufficc';
-        session()->put('githubData', $githubData);
-        return redirect()->route('github.register');*/
-
         //throw new TokenMismatchException('');
         $page_size = 7;
         if ($map = $this->mapRepository->get('page_size')) {

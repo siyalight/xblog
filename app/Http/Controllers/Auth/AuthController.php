@@ -91,31 +91,44 @@ class AuthController extends Controller
     {
         $githubUser = Socialite::driver('github')->user();
         $user = User::where('github_id', $githubUser->id)->first();
-        /*var_dump($githubUser);
-        echo '<br><br><br>';
-        var_dump($user);
-        echo '<br><br><br>';*/
 
+        /*用户已经登陆*/
         if (auth()->check()) {
             $currentUser = auth()->user();
-            if ($currentUser->github_id && $currentUser->github_id == $githubUser->id) {
-                return redirect()->route('post.index');
-            } else if ($currentUser->github_id == null) {
-                if ($this->bindGithub($currentUser, $this->getDataFromGithubUser($githubUser))) {
-                    return redirect()->route('post.index')->with('success', '绑定 Github 成功');
+            /*当前用户已经绑定了Github账号*/
+            if ($currentUser->github_id) {
+                /*绑定的Github账号和返回的Github账号一致，直接返回，不用理会*/
+                if ($currentUser->github_id == $githubUser->id) {
+                    return redirect()->route('post.index');
+                } /*绑定的Github账号和返回的Github账号不一致，返回错误信息*/
+                else {
+                    return redirect()->route('post.index')->withErrors('Sorry,you have bind a different github account!');
                 }
-                return redirect()->route('post.index')->withErrors('绑定 Github 失败');
-            } else {
-                return redirect()->route('post.index')->withErrors('Sorry,you have bind a different github account!');
+            } /*当前用户没有绑定Github账号，试图绑定*/
+            else {
+                /*返回的Github账号已经被绑定了，返回错误信息*/
+                if ($user) {
+                    return redirect()->route('post.index')->withErrors('Sorry,this github account has been bind to another account,is it you?');
+                } /*返回的Github账号没有被绑定，正常绑定*/
+                else {
+                    if ($this->bindGithub($currentUser, $this->getDataFromGithubUser($githubUser))) {
+                        return redirect()->route('post.index')->with('success', '绑定 Github 成功');
+                    }
+                    return redirect()->route('post.index')->withErrors('绑定 Github 失败');
+                }
             }
-        } else if ($user) {
-            auth()->loginUsingId($user->id);
-            return redirect()->route('post.index')->with('success', '登录成功');
-        } else {
-            $githubData = $this->getDataFromGithubUser($githubUser);
-
-            session()->put('githubData', $githubData);
-            return redirect()->route('github.register');
+        } /*用户没有登陆*/
+        else {
+            /*让绑定的用户直接登陆*/
+            if ($user) {
+                auth()->loginUsingId($user->id);
+                return redirect()->route('post.index')->with('success', '登录成功');
+            } /*一个全新的用户来了！！！尝试注册*/
+            else {
+                $githubData = $this->getDataFromGithubUser($githubUser);
+                session()->put('githubData', $githubData);
+                return redirect()->route('github.register');
+            }
         }
     }
 
