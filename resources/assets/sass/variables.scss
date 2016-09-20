@@ -18,15 +18,17 @@ $userAvatarRadius: 45px;
 
 $metaColor: #959595;
 
-
 /* bootstrap*/
 $brand-primary: $colorPrimary;
 $body-bg: #eee;
 
 
+$dropdown-link-color: white;
+$dropdown-bg: $colorPrimary;
+$dropdown-divider-bg: $colorPrimaryDark;
+$dropdown-link-hover-color: $colorAccent;
 
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
 
 /*boot strap*/
 

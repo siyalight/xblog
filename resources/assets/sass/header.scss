@@ -112,3 +112,9 @@ header .description {
   font-size: 1.4em;
   text-shadow: 5px 5px 5px $colorPrimaryDark;
 }
+/*dropdown-menu*/
+
+.dropdown-menu>li>a:hover{
+  border-radius: 20px !important;
+  background-color: $colorPrimaryDark !important;
+}

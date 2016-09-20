@@ -42,7 +42,8 @@
                                 <li><a href="{{ url('/logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                         退出登录
-                                    </a></li>
+                                    </a>
+                                </li>
                                 <form id="logout-form" action="{{ url('/logout') }}" method="POST"
                                       style="display: none;">
                                     {{ csrf_field() }}

@@ -2,6 +2,14 @@
 @import "variables";
 /* shadow*/
 
+.mt-15 {
+  margin-top: 15px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
 .shadow {
   box-shadow: 1px 1px $shadowBlur $shadowColor;
   -moz-box-shadow: 1px 1px $shadowBlur $shadowColor;
