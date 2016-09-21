@@ -51,7 +51,7 @@ class CategoryRepository extends Repository
     public function pagedPostsByCategory(Category $category, $page = 7)
     {
         $posts = $this->remember('category.posts.' . $category->name . $page . request()->get('page', 1), function () use ($category, $page) {
-            return $category->posts()->select(Post::selectArrayWithOutContent)->with(['tags', 'category'])->orderBy('published_at', 'desc')->paginate($page);
+            return $category->posts()->select(Post::selectArrayWithOutContent)->with(['tags', 'category'])->orderBy('created_at', 'desc')->paginate($page);
         });
         return $posts;
     }

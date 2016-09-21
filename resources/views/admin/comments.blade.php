@@ -20,7 +20,7 @@
                         </thead>
                         <tbody>
                         @foreach($comments as $comment)
-                            <tr>
+                            <tr class="{{ $comment->trashed() ? 'danger':'' }}">
                                 <td>
                                     @if($comment->user_id)
                                         <a href="{{ route('user.show',$comment->username) }}">{{ $comment->username }}</a>
@@ -30,7 +30,8 @@
                                 </td>
                                 <td>{{ $comment->commentable_id }}</td>
                                 <td>{{ $comment->commentable_type }}</td>
-                                <td>{!! $comment->html_content !!}</td>
+                                <td data-toggle="tooltip" data-placement="top"
+                                    title="{{ $comment->content }}">{!! $comment->html_content !!}</td>
                                 <td>
                                     <button type="submit"
                                             class="btn btn-danger"

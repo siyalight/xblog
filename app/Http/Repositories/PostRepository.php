@@ -55,7 +55,7 @@ class PostRepository extends Repository
     public function pagedPostsWithoutGlobalScopes($page = 20)
     {
         $posts = $this->remember('post.WithOutContent.' . $page . '' . request()->get('page', 1), function () use ($page) {
-            return Post::withoutGlobalScopes()->orderBy('published_at', 'desc')->select(['id', 'title', 'slug', 'deleted_at', 'published_at', 'status'])->paginate($page);
+            return Post::withoutGlobalScopes()->orderBy('created_at', 'desc')->select(['id', 'title', 'slug', 'deleted_at', 'published_at', 'status'])->paginate($page);
         });
         return $posts;
     }
