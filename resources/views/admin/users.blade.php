@@ -22,7 +22,7 @@
                         @foreach($users as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
-                                <td><a href="{{ route('user.show',$user->name) }}"></a></td>
+                                <td><a href="{{ route('user.show',$user->name) }}">{{ $user->name }}</a></td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->posts()->count() }}</td>
