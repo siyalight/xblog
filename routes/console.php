@@ -25,6 +25,7 @@ Artisan::command('avatar', function () {
 Artisan::command('parse', function () {
     $p = new Parsedown();
     foreach (\App\Post::all() as $post) {
-        $this->comment($post->html_content = $p->parse($post->content));
+        $post->html_content = $p->parse($post->content);
+        $this->comment($post->save());
     }
 });
