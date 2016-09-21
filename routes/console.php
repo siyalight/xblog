@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Inspiring;
+use Lufficc\MarkDownParser;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Artisan::command('avatar', function () {
 });
 
 Artisan::command('xssProtection', function () {
-    $mp = new \Lufficc\MarkDownParser();
+    $mp = new MarkDownParser();
     foreach (\App\Comment::all() as $comment) {
         $this->comment("----------------------------------------------------------------------------------------\n");
 

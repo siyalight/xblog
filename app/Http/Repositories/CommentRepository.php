@@ -89,7 +89,7 @@ class CommentRepository extends Repository
     public function update($content, $comment)
     {
         $comment->content = $this->mention->parse($content);
-        $comment->html_content = $this->parseDown->text($comment->content);
+        $comment->html_content = $this->markdownParser->parse($comment->content);
         $result = $comment->save();
         if ($result)
             $this->clearCache();
