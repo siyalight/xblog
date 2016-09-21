@@ -14,11 +14,6 @@ class CommentController extends Controller
     protected $commentRepository;
     protected $postRepository;
 
-    /**
-     * CommentController constructor.
-     * @param CommentRepository $commentRepository
-     * @param PostRepository $postRepository
-     */
     public function __construct(CommentRepository $commentRepository, PostRepository $postRepository)
     {
         $this->commentRepository = $commentRepository;
@@ -45,12 +40,7 @@ class CommentController extends Controller
     }
 
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response | mixed
-     */
+
     public function store(Request $request)
     {
         if (!$request->get('content')) {
@@ -66,13 +56,7 @@ class CommentController extends Controller
         return ['status' => 500, 'msg' => 'failed'];
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param Request $request
-     * @param $commentable_id
-     * @return \Illuminate\Http\Response|mixed
-     */
+
     public function show(Request $request, $commentable_id)
     {
         $commentable_type = $request->get('commentable_type');
@@ -81,12 +65,7 @@ class CommentController extends Controller
         return view('comment.show', compact('comments', 'commentable', 'redirect'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Comment $comment
-     * @return \Illuminate\Http\Response|mixed
-     */
+
     public function destroy(Comment $comment)
     {
         $this->checkPolicy('manager', $comment);

@@ -48,11 +48,7 @@ class PostController extends Controller
         $this->middleware(['auth', 'admin'], ['except' => ['show', 'index']]);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //throw new TokenMismatchException('');
@@ -64,11 +60,6 @@ class PostController extends Controller
         return view('post.index', compact('posts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('post.create',
@@ -79,12 +70,6 @@ class PostController extends Controller
         );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return mixed
-     */
     public function store(Request $request)
     {
         $this->validatePostForm($request);
@@ -133,14 +118,7 @@ class PostController extends Controller
         return back()->withErrors($post->title . '操作失败');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param $id
-     * @return \Illuminate\Http\Response
-     * @internal param Post $post
-     * @internal param int $id
-     */
+
     public function edit($id)
     {
         $post = Post::withoutGlobalScopes()->find($id);
@@ -154,15 +132,7 @@ class PostController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param $id
-     * @return mixed
-     * @internal param Post $post
-     * @internal param int $id
-     */
+
     public function update(Request $request, $id)
     {
         $post = Post::withoutGlobalScopes()->find($id);
@@ -186,12 +156,7 @@ class PostController extends Controller
         return redirect()->route('admin.posts')->withErrors('恢复失败');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return mixed
-     */
+
     public function destroy($id)
     {
 

@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
+use App\Http\Repositories\UserRepository;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
 use Validator;
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
+    protected $userRepository;
 
-    public function __construct()
+
+    public function __construct(UserRepository $userRepository)
     {
+        $this->userRepository = $userRepository;
         $this->middleware('guest');
     }
+
 
     public function showRegistrationForm()
     {
@@ -37,6 +40,8 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         auth()->login($this->create($request->all()));
+
+        $this->userRepository->clearCache();
 
         return redirect()->route('post.index');
     }

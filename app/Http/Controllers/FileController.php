@@ -35,9 +35,7 @@ class FileController extends Controller
         $this->middleware(['auth', 'admin']);
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+
     public function files()
     {
         $files = $this->imageRepository->getAllFiles();
@@ -50,10 +48,6 @@ class FileController extends Controller
         return ($this->cssRepository->uploadCss($request));
     }
 
-    /**
-     * @param Request $request
-     * @return mixed
-     */
 
     public function uploadJs(Request $request)
     {
@@ -89,10 +83,6 @@ class FileController extends Controller
     }
 
 
-    /**
-     * @param Request $request
-     * @return mixed
-     */
     public function deleteFile(Request $request)
     {
         $result = false;
