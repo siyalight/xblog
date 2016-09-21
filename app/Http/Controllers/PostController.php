@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Http\Repositories\CategoryRepository;
 use App\Http\Repositories\CommentRepository;
 use App\Http\Repositories\MapRepository;
@@ -10,12 +9,10 @@ use App\Http\Repositories\PostRepository;
 use App\Http\Repositories\TagRepository;
 use App\Http\Requests;
 use App\Post;
-use App\Tag;
-use App\User;
+use Carbon\Carbon;
 use Gate;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
-use Illuminate\Session\TokenMismatchException;
+use Purifier;
 
 class PostController extends Controller
 {
@@ -51,7 +48,17 @@ class PostController extends Controller
 
     public function index()
     {
-        //throw new TokenMismatchException('');
+        $parseDown = new \Parsedown();
+        $str = "我在上一个评论输入了js代码，然后就弹窗了，望尽快修复：  
+
+<script>alert('hello')</script>
+";
+        $convertedHmtl = $parseDown->setBreaksEnabled(true)->text($str);
+        $convertedHmtl = clean($convertedHmtl, 'user_comment_content');
+        /*$convertedHmtl = str_replace("<pre><code>", '<pre><code class=" language-php">', $convertedHmtl);*/
+
+        echo $convertedHmtl;
+
         $page_size = 7;
         if ($map = $this->mapRepository->get('page_size')) {
             $page_size = $map->value;

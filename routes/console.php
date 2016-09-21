@@ -21,3 +21,17 @@ Artisan::command('inspire', function () {
 Artisan::command('avatar', function () {
     $this->comment(\App\User::whereNull('avatar')->update(['avatar' => config('app.avatar')]));
 });
+
+Artisan::command('xssProtection', function () {
+    $mp = new \Lufficc\MarkDownParser();
+    foreach (\App\Comment::all() as $comment) {
+        $this->comment("----------------------------------------------------------------------------------------\n");
+
+        $this->comment($comment->content . "\n\n");
+        $this->comment($comment->html_content . "\n\n");
+        $this->comment($mp->parse($comment->content));
+
+        $this->comment("----------------------------------------------------------------------------------------");
+    }
+
+});

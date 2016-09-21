@@ -10,6 +10,7 @@ namespace App\Http\Repositories;
 use App\Comment;
 use App\Post;
 use Illuminate\Http\Request;
+use Lufficc\MarkDownParser;
 use Lufficc\Mention;
 use Parsedown;
 
@@ -20,17 +21,18 @@ use Parsedown;
 class CommentRepository extends Repository
 {
     static $tag = 'comment';
-    protected $parseDown;
+    protected $markdownParser;
     protected $mention;
 
     /**
      * PostRepository constructor.
      * @param Mention $mention
+     * @param MarkDownParser $markDownParser
      */
-    public function __construct(Mention $mention)
+    public function __construct(Mention $mention, MarkDownParser $markDownParser)
     {
         $this->mention = $mention;
-        $this->parseDown = new Parsedown();
+        $this->markdownParser = $markDownParser;
     }
 
     public function model()
@@ -69,7 +71,7 @@ class CommentRepository extends Repository
         $commentable = app($request->get('commentable_type'))->where('id', $commentable_id)->firstOrFail();
 
         $comment->content = $this->mention->parse($request->get('content'));
-        $comment->html_content = $this->parseDown->text($comment->content);
+        $comment->html_content = $this->markdownParser->parse($comment->content);
 
         if (auth()->check()) {
             $user = auth()->user();

@@ -180,6 +180,7 @@ return [
         App\Providers\ComposerServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Mews\Purifier\PurifierServiceProvider::class,
         //Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
