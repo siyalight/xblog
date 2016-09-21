@@ -6,6 +6,7 @@
 
 1. Markdown 编辑器，支持图片拖拽，粘贴板图片上传到七牛并返回链接。
 1. 完善的评论系统。
+1. Github账号登录。
 1. 采用 Repository 设计模式分离 Controller 和 Model 。
 1. 采用Redis缓存（Cache 采用数据库 `0` ， Session 采用数据库 `1`）.
 1. 图片，文件管理。

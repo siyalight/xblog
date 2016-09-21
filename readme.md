@@ -11,6 +11,7 @@ A fast and powerful blog system powed by laravel 5.3.
 
 1. Markdown editor,upload images to qiniu cloud by drag or from clipboard.
 1. Comment system. 
+1. Github login.
 1. Separate models from controllers with repository design pattern.
 1. Cache with redis database `0` and session with redis database `1`.
 1. Images and files management.
