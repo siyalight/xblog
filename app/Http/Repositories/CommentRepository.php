@@ -8,11 +8,9 @@
 namespace App\Http\Repositories;
 
 use App\Comment;
-use App\Post;
 use Illuminate\Http\Request;
 use Lufficc\MarkDownParser;
 use Lufficc\Mention;
-use Parsedown;
 
 /**
  * Class CommentRepository
