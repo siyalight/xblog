@@ -7,6 +7,13 @@
 
 A fast and powerful blog system powed by laravel 5.3. Click [here](https://lufficc.com/blog) to view.
 
+This blog is for my own use. I used to use hexo and github pages as my blog, but it's not flexible. Thus I write this
+blog. What I want to say is laravel is the best php framework I've ever seen.
+
+Later I will share some experience of writing this blog, welcome your watch.
+
+If you find bugs , glad you to issue.
+
 ## Features
 
 1. Markdown editor,upload images to qiniu cloud by drag or from clipboard.
