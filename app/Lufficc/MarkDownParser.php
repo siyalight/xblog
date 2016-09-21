@@ -25,7 +25,7 @@ class MarkDownParser
     public function parse($markdown)
     {
         $convertedHmtl = $this->parseDown->text($markdown);
-        /*$convertedHmtl = clean($convertedHmtl, 'user_comment_content');*/
+        $convertedHmtl = clean($convertedHmtl, 'user_comment_content');
         return $convertedHmtl;
     }
 }

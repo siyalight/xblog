@@ -30,7 +30,10 @@ Artisan::command('xssProtection', function () {
 
         $this->comment($comment->content . "\n\n");
         $this->comment($comment->html_content . "\n\n");
-        $this->comment($mp->parse($comment->content));
+        $parsed = $mp->parse($comment->content);
+        $this->comment($parsed);
+        $comment->html_content = $parsed;
+        $this->comment('save:'.$comment->save());
 
         $this->comment("----------------------------------------------------------------------------------------");
     }
