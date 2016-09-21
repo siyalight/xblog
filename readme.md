@@ -25,6 +25,7 @@ If you find bugs , glad you to issue.
 1. ~~Pjax support.~~
 1. Google analytics,admin management.
 1. Posts with category, tags,code highlight and different status. 
+1. XSS protection
 1. More customs...
  
 ## Requires
