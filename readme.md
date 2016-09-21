@@ -5,7 +5,7 @@
 
 [中文README](/README_zh.md)
 
-A fast and powerful blog system powed by laravel 5.3. Click (here)[https://lufficc.com/blog] to view.
+A fast and powerful blog system powed by laravel 5.3. Click [here](https://lufficc.com/blog) to view.
 
 ## Features
 
@@ -49,7 +49,7 @@ php artisan serve
 
 ### Thanks
 
-(laravel-china)[https://laravel-china.org/]
+[laravel-china](https://laravel-china.org/)
 
 ## License
 

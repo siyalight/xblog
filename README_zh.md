@@ -1,6 +1,6 @@
 ## Laravel Blog
 
-快速，优雅,  强大的博客系统，由Laravel5.3强力驱动。点击 (这里)[https://lufficc.com/blog] 查看.
+快速，优雅,  强大的博客系统，由Laravel5.3强力驱动。点击 [这里](https://lufficc.com/blog) 查看.
 
 ### 特点
 
@@ -45,7 +45,7 @@ php artisan serve
 
 ### 致谢
 
-(laravel-china)[https://laravel-china.org/]
+[laravel-china](https://laravel-china.org/)
 
 ### 协议
 
