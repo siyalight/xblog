@@ -28,6 +28,12 @@
                                                value="false">禁用谷歌分析
                                     </label>
                                 </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">跟踪ID</div>
+                                        <input class="form-control" type="text" name="google_trace_id" value="{{ $google_trace_id or ''}}">
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="form-group">
