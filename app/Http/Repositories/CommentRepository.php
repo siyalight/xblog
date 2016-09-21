@@ -94,9 +94,11 @@ class CommentRepository extends Repository
         return $result;
     }
 
-    public function delete(Comment $comment)
+    public function delete(Comment $comment, $force = false)
     {
         $this->clearCache();
+        if ($force)
+            return $comment->forceDelete();
         return $comment->delete();
     }
 

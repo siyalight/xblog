@@ -40,7 +40,6 @@ class CommentController extends Controller
     }
 
 
-
     public function store(Request $request)
     {
         if (!$request->get('content')) {
@@ -65,12 +64,29 @@ class CommentController extends Controller
         return view('comment.show', compact('comments', 'commentable', 'redirect'));
     }
 
-
-    public function destroy(Comment $comment)
+    public function restore($comment_id)
     {
+        $comment = Comment::withTrashed()->findOrFail($comment_id);
+        if ($comment->trashed()) {
+            $comment->restore();
+            $this->commentRepository->clearAllCache();
+            return redirect()->route('admin.comments')->with('success', '恢复成功');
+        }
+        return redirect()->route('admin.comments')->withErrors('恢复失败');
+    }
+
+
+    public function destroy($comment_id)
+    {
+        if (request('force') == 'true') {
+            $comment = Comment::withTrashed()->findOrFail($comment_id);
+        } else {
+            $comment = Comment::findOrFail($comment_id);
+        }
+
         $this->checkPolicy('manager', $comment);
 
-        if ($this->commentRepository->delete($comment)) {
+        if ($this->commentRepository->delete($comment, request('force') == 'true')) {
             return back()->with('success', '删除成功');
         }
         return back()->withErrors('删除失败');

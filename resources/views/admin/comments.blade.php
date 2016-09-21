@@ -12,7 +12,7 @@
                         <thead>
                         <tr>
                             <th>用户</th>
-                            <th>commentable_id</th>
+                            <th>信息</th>
                             <th>类型</th>
                             <th>内容</th>
                             <th>操作</th>
@@ -28,25 +28,46 @@
                                         {{ $comment->username }}
                                     @endif
                                 </td>
-                                <td>{{ $comment->commentable_id }}</td>
+                                <td>{{ $comment->id.' > '.$comment->commentable_id }}</td>
                                 <td>{{ $comment->commentable_type }}</td>
                                 <td data-toggle="tooltip" data-placement="top"
                                     title="{{ $comment->content }}">{!! $comment->html_content !!}</td>
                                 <td>
-                                    <button type="submit"
-                                            class="btn btn-danger"
-                                            data-modal-target="这条评论"
-                                            data-url="{{ route('comment.destroy',$comment->id) }}"
-                                            data-method="delete"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            title="删除">
-                                        <i class="fa fa-trash-o fa-fw"></i>
-                                    </button>
-                                    <a class="btn btn-info"
-                                       href="{{ route('comment.edit',[$comment->id,'redirect'=>request()->fullUrl()]) }}">
-                                        <i class="fa fa-pencil fa-fw"></i>
-                                    </a>
+                                    @if($comment->trashed())
+                                        <button type="submit"
+                                                class="btn btn-danger"
+                                                data-modal-target="这条评论(永久)"
+                                                data-url="{{ route('comment.destroy',[$comment->id,'force'=>'true']) }}"
+                                                data-method="delete"
+                                                data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="永久删除">
+                                            <i class="fa fa-trash-o fa-fw"></i>
+                                        </button>
+                                        <form style="display: inline-block" method="post" action="{{ route('comment.restore',$comment->id) }}">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-primary"
+                                                    data-toggle="tooltip" data-placement="top" title="恢复">
+                                                <i class="fa fa-repeat fa-fw"></i>
+                                            </button>
+                                        </form>
+
+                                    @else
+                                        <button type="submit"
+                                                class="btn btn-danger"
+                                                data-modal-target="这条评论"
+                                                data-url="{{ route('comment.destroy',$comment->id) }}"
+                                                data-method="delete"
+                                                data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="删除">
+                                            <i class="fa fa-trash-o fa-fw"></i>
+                                        </button>
+                                        <a class="btn btn-info"
+                                           href="{{ route('comment.edit',[$comment->id,'redirect'=>request()->fullUrl()]) }}">
+                                            <i class="fa fa-pencil fa-fw"></i>
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

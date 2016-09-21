@@ -52,6 +52,9 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
     Route::post('/upload/file', ['uses' => 'FileController@uploadFile', 'as' => 'upload.file']);
 
 
+    /**
+     * admin uri
+     */
     Route::get('/posts', ['uses' => 'AdminController@posts', 'as' => 'admin.posts']);
     Route::get('/comments', ['uses' => 'AdminController@comments', 'as' => 'admin.comments']);
     Route::get('/tags', ['uses' => 'AdminController@tags', 'as' => 'admin.tags']);
@@ -61,11 +64,22 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
     Route::get('/images', ['uses' => 'ImageController@images', 'as' => 'admin.images']);
     Route::get('/files', ['uses' => 'FileController@files', 'as' => 'admin.files']);
 
+    /**
+     * comment
+     */
+    Route::post('/comment/{comment}/restore', ['uses' => 'CommentController@restore', 'as' => 'comment.restore']);
+
+    /***
+     * post
+     */
 
     Route::post('/post/{post}/restore', ['uses' => 'PostController@restore', 'as' => 'post.restore']);
     Route::get('/post/{slug}/preview', ['uses' => 'PostController@preview', 'as' => 'post.preview']);
     Route::post('/post/{post}/publish', ['uses' => 'PostController@publish', 'as' => 'post.publish']);
 
+    /**
+     * tag
+     */
     Route::delete('/tag/{tag}', ['uses' => 'TagController@destroy', 'as' => 'tag.destroy']);
     Route::post('/tag', ['uses' => 'TagController@store', 'as' => 'tag.store']);
 
