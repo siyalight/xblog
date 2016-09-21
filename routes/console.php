@@ -25,7 +25,7 @@ Artisan::command('avatar', function () {
 
 Artisan::command('xssProtection', function () {
     $mp = new MarkDownParser();
-    foreach (\App\Comment::all() as $comment) {
+    foreach (\App\Comment::withoutGlobalScopes()->get() as $comment) {
         $this->comment("----------------------------------------------------------------------------------------\n");
         $this->comment($comment->content . "\n\n");
         $this->comment($comment->html_content . "\n\n");
