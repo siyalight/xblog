@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-addon">跟踪ID</div>
+                                        <label class="control-label">跟踪ID</label>
                                         <input class="form-control" type="text" name="google_trace_id" value="{{ $google_trace_id or ''}}">
                                     </div>
                                 </div>
