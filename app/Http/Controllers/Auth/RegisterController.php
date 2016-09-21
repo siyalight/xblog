@@ -31,7 +31,7 @@ class RegisterController extends Controller
         ]);
 
         if (mb_substr_count($request->get('name'), '_') > 1 || mb_substr_count($request->get('name'), '-') > 1) {
-            return back()->withErrors("name's '-' and '_' max count is 1.");
+            return back()->withInput()->withErrors("name's '-' and '_' max count is 1.");
         }
 
         $this->validator($request->all())->validate();
