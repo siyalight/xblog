@@ -21,6 +21,9 @@ class CreatePostTable extends Migration
             $table->string('description')->nullable(false);
             $table->string('slug')->unique();
             $table->longText('content')->nullable(false);
+            $table->longText('html_content')->nullable(false);
+            $table->tinyInteger('status')->default(0);
+            $table->integer('view_count')->unsigned()->default(0);
             $table->timestamps();
             $table->timestamp('published_at')->nullable()->index();
             $table->softDeletes();

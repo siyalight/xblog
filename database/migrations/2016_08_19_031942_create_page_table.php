@@ -19,6 +19,7 @@ class CreatePageTable extends Migration
             $table->string('name')->unique();
             $table->string('display_name');
             $table->longText('content');
+            $table->longText('html_content')->nullable(false);
         });
     }
 

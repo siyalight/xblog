@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddStatusColumnToPostsTable extends Migration
+class CreateMapsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddStatusColumnToPostsTable extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->tinyInteger('status')->default(0);
+        Schema::create('maps', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('key')->unique();
+            $table->string('tag')->index();
+            $table->text('value')->nullable(true);
+            $table->json('meta')->nullable(true);
         });
     }
 
@@ -25,8 +29,6 @@ class AddStatusColumnToPostsTable extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('status');
-        });
+        Schema::dropIfExists('maps');
     }
 }
