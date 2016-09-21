@@ -22,6 +22,6 @@ class PagePolicy
 
     public function update(User $user, Page $page)
     {
-        return $user->id == 1;
+        return isAdmin($user);
     }
 }

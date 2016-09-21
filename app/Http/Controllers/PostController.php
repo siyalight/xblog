@@ -80,7 +80,7 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = $this->postRepository->get($slug);
-        if (!(auth()->check() && auth()->id() == 1)) {
+        if (!isAdmin(auth()->user())) {
             $post->increment('view_count');
         }
         return view('post.show', compact('post'));
@@ -119,7 +119,7 @@ class PostController extends Controller
     {
         $post = Post::withoutGlobalScopes()->find($id);
 
-        $this->checkPolicy('update',$post);
+        $this->checkPolicy('update', $post);
 
         return view('post.edit', [
             'post' => $post,
@@ -132,7 +132,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::withoutGlobalScopes()->find($id);
-        $this->checkPolicy('update',$post);
+        $this->checkPolicy('update', $post);
         $this->validatePostForm($request, true);
 
         if ($this->postRepository->update($request, $post)) {
