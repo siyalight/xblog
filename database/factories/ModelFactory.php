@@ -24,6 +24,7 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->sentence(mt_rand(5, 10)),
         'content' => join("\n\n", $faker->paragraphs(mt_rand(7, 20))),
+        'html_content' => 'html_content',
         'slug' => $faker->slug(),
         'published_at' => $faker->dateTime,
         'description' => $faker->sentence(mt_rand(5, 15)),

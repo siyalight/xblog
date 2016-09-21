@@ -8,6 +8,9 @@
                     <h3><i class="fa fa-file fa-fw"></i>页面</h3>
                 </div>
                 <div class="widget-body">
+                    <a class="btn pull-right" href="{{ route('page.create') }}">
+                        <i class="fa fa-file"></i>
+                    </a>
                     <table class="table table-hover table-bordered table-responsive">
                         <thead>
                         <tr>
@@ -41,7 +44,6 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>

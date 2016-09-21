@@ -21,7 +21,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="{{ route('post.index') }}"
-                   class="navbar-brand">{{ $author or '' }}</a>
+                   class="navbar-brand">{{ $author or 'blog' }}</a>
             </div>
             <div class="collapse navbar-collapse fix-top" id="blog-navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -65,6 +65,6 @@
         {{--<a style="text-decoration: none" class="branding" href="{{ route('post.index') }}">
             <h2>{{ $author or ''}}</h2>
         </a>--}}
-        <div class="description">{{ $description or '' }}</div>
+        <div class="description">{{ $description or 'description' }}</div>
     </div>
 </header>

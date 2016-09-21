@@ -1,7 +1,7 @@
 <div class="widget widget-default">
     <div class="widget-header"><h4><i class="fa fa-folder fa-fw"></i>分类</h4></div>
     <ul class="widget-body list-group">
-        @foreach($categories as $category)
+        @forelse($categories as $category)
             @if(str_contains(urldecode(request()->getPathInfo()),'category/'.$category->name))
                 <li href="{{ route('category.show',$category->name) }}"
                     class="list-group-item active">
@@ -15,7 +15,8 @@
                     <span class="badge">{{ $category->posts_count }}</span>
                 </a>
             @endif
-
-        @endforeach
+        @empty
+            <p class="meta-item center-block">No categories.</p>
+        @endforelse
     </ul>
 </div>

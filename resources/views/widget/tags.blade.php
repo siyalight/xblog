@@ -2,7 +2,7 @@
     <div class="widget-header"><h4><i class="fa fa-tags fa-fw"></i>标签</h4></div>
     <ul class="widget-body">
         <div class="tag-list">
-            @foreach($tags as $tag)
+            @forelse($tags as $tag)
                 @if(str_contains(urldecode(request()->getPathInfo()),'tag/'.$tag->name))
                     <span class="tag tag-active">
                         {{ $tag->name }}
@@ -14,7 +14,8 @@
                         <span class="badge">{{ $tag->posts_count }}</span>
                     </a>
                 @endif
-            @endforeach
+            @empty <p class="meta-item center-block">No tags.</p>
+            @endforelse
         </div>
     </ul>
 </div>

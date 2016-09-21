@@ -1,6 +1,6 @@
 @extends('layouts.plain')
 @section('content')
-    <div class="title">{{ $description or 'lufficc' }}</div>
+    <div class="title">{{ $description or 'description' }}</div>
     <div class="urls">
         <a href="{{ route('post.index') }}">博客</a>
         <span>/</span>
