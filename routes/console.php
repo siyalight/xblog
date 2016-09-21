@@ -27,14 +27,12 @@ Artisan::command('xssProtection', function () {
     $mp = new MarkDownParser();
     foreach (\App\Comment::all() as $comment) {
         $this->comment("----------------------------------------------------------------------------------------\n");
-
         $this->comment($comment->content . "\n\n");
         $this->comment($comment->html_content . "\n\n");
         $parsed = $mp->parse($comment->content);
-        $this->comment($parsed);
+        $this->comment($parsed . "\n\n");
         $comment->html_content = $parsed;
-        $this->comment('save:'.$comment->save());
-
+        $this->comment('save:' . $comment->save());
         $this->comment("----------------------------------------------------------------------------------------");
     }
 
