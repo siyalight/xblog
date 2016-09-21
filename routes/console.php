@@ -21,3 +21,10 @@ Artisan::command('inspire', function () {
 Artisan::command('avatar', function () {
     $this->comment(\App\User::whereNull('avatar')->update(['avatar' => config('app.avatar')]));
 });
+
+Artisan::command('parse', function () {
+    $p = new Parsedown();
+    foreach (\App\Post::all() as $post) {
+        $this->comment($post->html_content = $p->parse($post->content));
+    }
+});
