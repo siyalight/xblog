@@ -47,7 +47,7 @@ php artisan serve
 
 ![screen shots](https://static.lufficc.com/image/e4aefe08305aed5cd79c0e109d3c2c07.jpeg)
 
-### Thanks
+## Thanks
 
 [laravel-china](https://laravel-china.org/)
 
