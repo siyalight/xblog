@@ -48,17 +48,6 @@ class PostController extends Controller
 
     public function index()
     {
-        $parseDown = new \Parsedown();
-        $str = "我在上一个评论输入了js代码，然后就弹窗了，望尽快修复：  
-
-<script>alert('hello')</script>
-";
-        $convertedHmtl = $parseDown->setBreaksEnabled(true)->text($str);
-        $convertedHmtl = clean($convertedHmtl, 'user_comment_content');
-        /*$convertedHmtl = str_replace("<pre><code>", '<pre><code class=" language-php">', $convertedHmtl);*/
-
-        echo $convertedHmtl;
-
         $page_size = 7;
         if ($map = $this->mapRepository->get('page_size')) {
             $page_size = $map->value;
