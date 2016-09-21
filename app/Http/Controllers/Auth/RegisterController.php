@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -35,7 +36,7 @@ class RegisterController extends Controller
     {
 
         return Validator::make($data, [
-            'name' => 'required|max:16|min:3|alpha_dash|unique:users',
+            'name' => 'required|alpha_dash|max:16|min:3|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
