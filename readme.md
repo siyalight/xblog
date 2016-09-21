@@ -5,7 +5,7 @@
 
 [中文README](/README_zh.md)
 
-A fast and powerful blog system powed by laravel 5.3.
+A fast and powerful blog system powed by laravel 5.3. Click (here)[https://lufficc.com/blog] to view.
 
 ## Features
 
