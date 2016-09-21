@@ -40,7 +40,7 @@ php artisan serve
 
 ### 截图
 
-![1](https://static.lufficc.com/image/e4aefe08305aed5cd79c0e109d3c2c07.jpeg)
+![截图](https://static.lufficc.com/image/e4aefe08305aed5cd79c0e109d3c2c07.jpeg)
 
 
 ### 致谢

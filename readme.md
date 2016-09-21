@@ -45,7 +45,7 @@ php artisan serve
 
 ## screen shots
 
-![1](https://static.lufficc.com/image/e4aefe08305aed5cd79c0e109d3c2c07.jpeg)
+![screen shots](https://static.lufficc.com/image/e4aefe08305aed5cd79c0e109d3c2c07.jpeg)
 
 ### Thanks
 
