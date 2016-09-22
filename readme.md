@@ -6,6 +6,7 @@
 [中文README](/README_zh.md)
 
 详细的安装教程在这里：[https://lufficc.com/blog/how-to-install-my-blog](https://lufficc.com/blog/how-to-install-my-blog)
+
 how-to-install-my-blog ：[https://lufficc.com/blog/how-to-install-my-blog](https://lufficc.com/blog/how-to-install-my-blog)
 
 A fast and powerful blog system powed by laravel 5.3. Click [here](https://lufficc.com/blog) to view.
