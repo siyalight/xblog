@@ -46,6 +46,30 @@ php artisan serve
 
 ```
 
+
+
+## 注意
+
+请配置好 .env 文件,你可以复制 `.env.example` 并完成它:
+```
+
+// 七牛云，文件上传
+QINIU_AK= 
+QINIU_SK=
+QINIU_BUCKET=
+
+
+// github 登陆
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+GITHUB_REDIRECT=
+
+// 默认用户头像
+AVATAR=
+
+```
+
+
 ### 截图
 
 <img src="https://static.lufficc.com/image/6e349fb9cbb7ec3813569724fee36e8a.jpeg" >

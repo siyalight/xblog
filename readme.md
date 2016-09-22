@@ -43,6 +43,8 @@ cd laravel-blog
 
 // compelete your .env file
 
+composer update
+
 php artisan migrate
 
 php artisan serve
@@ -50,6 +52,30 @@ php artisan serve
 // that's all
 
 ```
+
+## attention
+
+Please config your .env,you can copy `.env.example` and complete it:
+```
+
+// qiniu cloud for file upload
+QINIU_AK= 
+QINIU_SK=
+QINIU_BUCKET=
+
+
+// github oauth2 for github login
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+GITHUB_REDIRECT=
+
+// default user avatar 
+AVATAR=
+
+```
+
+
+
 
 ## screen shots
 
