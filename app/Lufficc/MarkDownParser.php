@@ -24,7 +24,7 @@ class MarkDownParser
 
     public function parse($markdown)
     {
-        $convertedHtml = $this->parseDown->text($markdown);
+        $convertedHtml = $this->parseDown->setBreaksEnabled(true)->text($markdown);
         $convertedHtml = clean($convertedHtml, 'user_comment_content');
         return $convertedHtml;
     }
