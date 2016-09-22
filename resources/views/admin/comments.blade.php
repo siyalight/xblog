@@ -12,7 +12,7 @@
                         <thead>
                         <tr>
                             <th>用户</th>
-                            <th>信息</th>
+                            <th>Email</th>
                             <th>类型</th>
                             <th>内容</th>
                             <th>操作</th>
@@ -28,7 +28,7 @@
                                         {{ $comment->username }}
                                     @endif
                                 </td>
-                                <td>{{ $comment->id.' > '.$comment->commentable_id }}</td>
+                                <td><a href="mailto:{{ $comment->email }}">{{ $comment->email }}</a></td>
                                 <td>{{ $comment->commentable_type }}</td>
                                 <td data-toggle="tooltip" data-placement="top"
                                     title="{{ $comment->content }}">{!! $comment->html_content !!}</td>

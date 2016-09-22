@@ -28,7 +28,7 @@
             </span>
             </div>
             <div style="font-size: 0.9em;color: #d0d0d0">
-                <span>{{ $comment->created_at->format('Y/m/d H:m') }}</span>
+                <span>{{ $comment->created_at->format('Y/m/d H:i') }}</span>
             </div>
 
             <div class="markdown-content">
