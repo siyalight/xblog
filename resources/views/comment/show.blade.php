@@ -4,7 +4,7 @@
             <?php
             $href = $comment->user ? route('user.show', $comment->username) : 'javascript:void(0);';
             ?>
-            <a name="{{$loop->index}}" href="{{ $href }}">
+            <a name="comment{{ $loop->index + 1 }}" href="{{ $href }}">
                 <img width="48px" height="48px" class="img-circle"
                      src="{{ $comment->user ? $comment->user->avatar :'https://static.lufficc.com/image/default_avatar.png' }}">
             </a>

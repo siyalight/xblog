@@ -90,8 +90,12 @@
 
         var username = form.find('input[name=username]');
         var email = form.find('input[name=email]');
-        console.log(username.length);
-        console.log(email.length);
+
+        if (window.localStorage) {
+            username.val(localStorage.getItem('comment_username'));
+            email.val(localStorage.getItem('comment_email'));
+        }
+
         form.on('submit', function () {
             if (username.length > 0) {
                 if ($.trim(username.val()) == '') {
@@ -109,6 +113,9 @@
                 return false;
             }
 
+            var usernameValue = username.val();
+            var emailValue = email.val();
+
             submitBtn.val('提交中...').addClass('disabled').prop('disabled', true);
             $.ajax({
                 method: 'post',
@@ -120,14 +127,16 @@
                     commentable_id: form.find('input[name=commentable_id]').val(),
                     commentable_type: form.find('input[name=commentable_type]').val(),
                     content: commentContent.val(),
-                    username: username.val(),
-                    email: email.val(),
+                    username: usernameValue,
+                    email: emailValue,
                 },
             }).done(function (data) {
                 if (data.status === 200) {
+                    if (window.localStorage) {
+                        localStorage.setItem('comment_username', usernameValue);
+                        localStorage.setItem('comment_email', emailValue);
+                    }
                     commentContent.val('');
-                    username.val('');
-                    email.val('');
                     loadComments(true);
                 } else {
                     console.log(data.msg);
