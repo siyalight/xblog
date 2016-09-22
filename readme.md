@@ -53,7 +53,13 @@ php artisan serve
 
 ## screen shots
 
-![screen shots](https://static.lufficc.com/image/e4aefe08305aed5cd79c0e109d3c2c07.jpeg)
+<img src="https://static.lufficc.com/image/6e349fb9cbb7ec3813569724fee36e8a.jpeg" width="300"><img src="https://static.lufficc.com/image/0ed12f108e87a8cb8ec5a3bd0d364baa.jpeg" width="300">
+<br>
+<img src="https://static.lufficc.com/image/76e6dc58db7b497e9a6e1adab447b2df.jpeg" width="300"><img src="https://static.lufficc.com/image/5da149dba4f57db2d6b45079f2911dcd.jpeg" width="300">
+<br>
+<img src="https://static.lufficc.com/image/85ac3814b42a1fe97ac0d97d88f28cb0.jpeg" width="300"><img src="https://static.lufficc.com/image/863db4bf6604dd1e6196799b130f1276.jpeg" width="300">
+<br>
+<img src="https://static.lufficc.com/image/e3b3d5e6a2ea2238000b7cbd809ad1e9.jpeg" width="300"><img src="https://static.lufficc.com/image/9d1a2c7a3c97a29440c7def9868c1f38.jpeg" width="300">
 
 ## Thanks
 
