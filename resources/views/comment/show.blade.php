@@ -32,7 +32,7 @@
             </div>
 
             <div class="markdown-content">
-                <p>{!! $comment->html_content !!}</p>
+                {!! $comment->html_content !!}
             </div>
         </div>
         <div class="alone-divider"></div>
