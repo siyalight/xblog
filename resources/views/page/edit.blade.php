@@ -10,7 +10,7 @@
                 <div class="widget-header">
                     <h3>修改页面</h3>
                 </div>
-                <div class="widget-body">
+                <div class="widget-body edit-form">
                     <form role="form" class="form-horizontal" action="{{ route('page.update',$page->id) }}" method="post">
 
                         @include('page.form-content')

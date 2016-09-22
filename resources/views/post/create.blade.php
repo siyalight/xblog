@@ -11,7 +11,7 @@
                 <div class="widget-header">
                     <h3><i class="fa fa-pencil  fa-fw"></i>写文章</h3>
                 </div>
-                <div class="widget-body" style="font-size: 1.1em;font-weight: normal;line-height: 1.5em">
+                <div class="widget-body edit-form">
                     <form role="form" class="form-horizontal" action="{{ route('post.store') }}" method="post">
                         @include('post.form-content')
                         <button type="submit" class="btn btn-primary">

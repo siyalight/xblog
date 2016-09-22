@@ -11,7 +11,8 @@
 @import "header";
 @import "tag";
 @import "widget";
-@import "nprogress";
+@import "form";
+
 
 html, body {
   color: #505050;
@@ -99,13 +100,17 @@ pre, .highlight {
   overflow: auto;
   margin: 20px 0;
   padding: 15px;
-  font-size: 0.9em;
-  color: rgb(77, 77, 76);
+  font-size: 0.95em;
+  color: rgb(33, 33, 33);
   border: none;
   border-radius: 4px;
   background: $codeBg !important;
   line-height: 1.6em;
   word-wrap: normal;
+}
+
+pre[class~=CodeMirror-line ]{
+  background-color: inherit !important;
 }
 
 .hljs {

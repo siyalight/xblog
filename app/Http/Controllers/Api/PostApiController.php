@@ -51,7 +51,6 @@ class PostApiController extends Controller
 
     public function show($slug)
     {
-        return request()->user();
         $post = $this->postRepository->get($slug);
         return $post;
     }

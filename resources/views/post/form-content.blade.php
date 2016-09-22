@@ -12,7 +12,8 @@
 <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
     <label for="description" class="control-label">文章描述*</label>
 
-    <textarea id="post-description-textarea" style="resize: vertical" rows="3" spellcheck="false" id="description" class="form-control autosize-target" placeholder="请使用 Markdown 格式书写"
+    <textarea id="post-description-textarea" style="resize: vertical;" rows="3" spellcheck="false"
+              id="description" class="form-control autosize-target" placeholder="请使用 Markdown 格式书写"
               name="description">{{ isset($post) ? $post->description : old('description') }}</textarea>
 
     @if ($errors->has('description'))
@@ -73,7 +74,7 @@
 <div class="form-group{{ $errors->has('content') ? ' has-error ' : ' ' }}">
     <label for="post-content-textarea" class="control-label">文章内容*</label>
     <textarea spellcheck="false" id="post-content-textarea" class="form-control" name="content"
-              rows="25"
+              rows="36"
               placeholder="请使用 Markdown 格式书写"
               style="resize: vertical">{{ isset($post) ? $post->content : old('content') }}</textarea>
     @if($errors->has('content'))

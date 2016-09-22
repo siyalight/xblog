@@ -37,8 +37,6 @@ class RegisterController extends Controller
             return back()->withInput()->withErrors("name's '-' and '_' max count is 1.");
         }
 
-        $this->validator($request->all())->validate();
-
         auth()->login($this->create($request->all()));
 
         $this->userRepository->clearCache();
@@ -46,16 +44,6 @@ class RegisterController extends Controller
         return redirect()->route('post.index');
     }
 
-
-    protected function validator(array $data)
-    {
-
-        return Validator::make($data, [
-            'name' => 'required|alpha_dash|max:16|min:3|unique:users',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
-    }
 
     protected function create(array $data)
     {
