@@ -53,13 +53,17 @@ class AuthController extends Controller
         $name = $request->get('name');
         $email = $request->get('email');
         $this->validate($request, [
-            'name' => 'required|max:16|min:3|unique:users',
+            'name' => 'required|alpha_dash|max:16|min:3|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ], [
             'name.unique' => "Username  '$name'  has been registered,if it is you,then you can login to bind your github account",
             'email.unique' => "Email  '$email'  has been registered,if it is you,then you can login to bind your github account",
         ]);
+
+        if (mb_substr_count($request->get('name'), '_') > 1 || mb_substr_count($request->get('name'), '-') > 1) {
+            return back()->withInput()->withErrors("name's '-' and '_' max count is 1.");
+        }
 
         $user = new User();
         $user->name = $name;
