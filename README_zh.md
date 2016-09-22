@@ -7,6 +7,7 @@
 
 how-to-install-my-blog ：[https://lufficc.com/blog/how-to-install-my-blog](https://lufficc.com/blog/how-to-install-my-blog)
 
+<br><br>
 
 快速，优雅,  强大的博客系统，由Laravel5.3强力驱动。点击 [这里](https://lufficc.com/blog) 查看.
 
