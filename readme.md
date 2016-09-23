@@ -4,7 +4,7 @@
   <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
   <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-<p align="center">A fast and powerful blog system powered by laravel 5.3. Click [here](https://lufficc.com/blog) to view.</p>
+<p align="center">Laravel blog is a fast and powerful blog system powered by laravel 5.3. Click https://lufficc.com/blog to view.</p>
 <p align="center"><img src="images/main1.png"  width="800"><p>
 <br>
 
