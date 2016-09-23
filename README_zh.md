@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-<img src="https://static.lufficc.com/image/6e349fb9cbb7ec3813569724fee36e8a.jpeg"  width="500"><img src="https://static.lufficc.com/image/0ed12f108e87a8cb8ec5a3bd0d364baa.jpeg"   width="500">
+<img src="https://static.lufficc.com/image/6e349fb9cbb7ec3813569724fee36e8a.jpeg"  width="400"><img src="https://static.lufficc.com/image/0ed12f108e87a8cb8ec5a3bd0d364baa.jpeg"   width="400">
 <p>
 
 <br>
