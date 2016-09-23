@@ -5,9 +5,9 @@
   <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-详细的安装教程在这里：[https://lufficc.com/blog/how-to-install-my-blog](https://lufficc.com/blog/how-to-install-my-blog)
-
-how-to-install-my-blog ：[https://lufficc.com/blog/how-to-install-my-blog](https://lufficc.com/blog/how-to-install-my-blog)
+<p align="center">
+<img src="https://static.lufficc.com/image/6e349fb9cbb7ec3813569724fee36e8a.jpeg"  width="500"><img src="https://static.lufficc.com/image/0ed12f108e87a8cb8ec5a3bd0d364baa.jpeg"   width="500">
+<p>
 
 <br>
 快速，优雅,  强大的博客系统，由Laravel5.3强力驱动。点击 [这里](https://lufficc.com/blog) 查看.
@@ -82,10 +82,7 @@ AVATAR=
 
 ### 截图
 
-<img src="https://static.lufficc.com/image/6e349fb9cbb7ec3813569724fee36e8a.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/0ed12f108e87a8cb8ec5a3bd0d364baa.jpeg" >
-<br><br>
+
 <img src="https://static.lufficc.com/image/76e6dc58db7b497e9a6e1adab447b2df.jpeg" >
 <br><br>
 <img src="https://static.lufficc.com/image/b3e71ec1f7a6ada81985540e5b7aed48.jpeg" >
