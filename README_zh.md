@@ -1,19 +1,16 @@
 <p align="center">
   <img src="images/logo.png" alt="Laravel blog: fast and powerful!" width="223">
   <br>
-   <p align="center">
-          laravel blog
-   </p>
-   <br>
   <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
   <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-
 <p align="center">
 <img src="https://static.lufficc.com/image/1f1ef7cd16a92549f112b2992654143f.jpeg"  width="800">
 <p>
-
 <br>
+
+# laravel blog
+
 快速，优雅,  强大的博客系统，由Laravel5.3强力驱动。点击 [这里](https://lufficc.com/blog) 查看.
 
 这是一个我个人使用的博客，也曾经使用Hexo 和 github pages 搭过网站，都是都不灵活。因此用Laravel写了这个博客。

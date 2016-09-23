@@ -1,19 +1,16 @@
 <p align="center">
   <img src="images/logo.png" alt="Laravel blog: fast and powerful!" width="223">
   <br>
-  <p align="center">
-        laravel blog
-  </p>
-  <br>
   <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
   <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-
 <p align="center">
 <img src="https://static.lufficc.com/image/1f1ef7cd16a92549f112b2992654143f.jpeg"  width="800">
 <p>
-
 <br>
+
+# laravel blog
+
 A fast and powerful blog system powered by laravel 5.3. Click [here](https://lufficc.com/blog) to view.
 
 This blog is for my own use. I used to use hexo and github pages as my blog, but it's not flexible. Thus I write this
