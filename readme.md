@@ -118,7 +118,6 @@ AVATAR=
 <p align="center"><img src="images/site-settings.png" alt="site-settings.png" width="85%"><p>
 <br>
 
-
 ## Thanks
 
 [laravel-china](https://laravel-china.org/)
