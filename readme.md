@@ -93,7 +93,7 @@ AVATAR=
 <p align="center"><img src="images/write-post.png" alt="write-post.png" width="85%"><p>
 <br>
 
-<p align="center">Writing post in fullscreen mode without interruptting.<p>
+<p align="center">Writing post in fullscreen(with preview) mode without interruptting.<p>
 <p align="center"><img src="images/write-post-fullscreen.png" alt="write-post-fullscreen.png" width="85%"><p>
 <br>
 

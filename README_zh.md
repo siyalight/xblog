@@ -4,7 +4,7 @@
   <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
   <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-<p align="center">快速，优雅,  强大的博客系统，由Laravel5.3强力驱动。点击 [这里](https://lufficc.com/blog) 查看.</p>
+<p align="center">快速，优雅, 强大的博客系统，由Laravel5.3强力驱动。点击 https://lufficc.com/blog 查看.</p>
 <p align="center"><img src="images/main1.png"  width="800"><p>
 <br>
 
@@ -83,20 +83,42 @@ AVATAR=
 ### 截图
 
 
-<img src="https://static.lufficc.com/image/1f1ef7cd16a92549f112b2992654143f.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/b3e71ec1f7a6ada81985540e5b7aed48.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/5da149dba4f57db2d6b45079f2911dcd.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/85ac3814b42a1fe97ac0d97d88f28cb0.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/863db4bf6604dd1e6196799b130f1276.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/773ac32bff0373f0028ec801e812c07e.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/9d1a2c7a3c97a29440c7def9868c1f38.jpeg" >
+<p align="center">文章代码高亮<p>
+<p align="center"><img src="images/post.png" alt="post.png" width="85%"><p>
+<br>
 
+<p align="center">评论支持Markdown<p>
+<p align="center"><img src="images/markdown-support-comment.png" alt="markdown-support-comment.png" width="85%"><p>
+<br>
+
+<p align="center">写文章时实时创建多个标签，选择分类，拖拽、粘贴上传图片，自动保存.<p>
+<p align="center"><img src="images/write-post.png" alt="write-post.png" width="85%"><p>
+<br>
+
+<p align="center">全屏写作，实时预览，不被打扰<p>
+<p align="center"><img src="images/write-post-fullscreen.png" alt="write-post-fullscreen.png" width="85%"><p>
+<br>
+
+<p align="center">文章管理(发布,撤回,软删除,永久删除,恢复,草稿)<p>
+<p align="center"><img src="images/full-state-post-management.png" alt="full-state-post-management.png" width="85%"><p>
+<br>
+
+<p align="center">后台管理<p>
+<p align="center"><img src="images/admin-index.png" alt="admin-index.png" width="85%"><p>
+<br>
+
+
+<p align="center">图片管理<p>
+<p align="center"><img src="images/image-management.png" alt="image-management.png" width="85%"><p>
+<br>
+
+<p align="center">评论管理<p>
+<p align="center"><img src="images/comment-management.png" alt="comment-management.png" width="85%"><p>
+<br>
+
+<p align="center">站点设置<p>
+<p align="center"><img src="images/site-settings.png" alt="site-settings.png" width="85%"><p>
+<br>
 
 
 ### 致谢
