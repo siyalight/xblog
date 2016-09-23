@@ -4,16 +4,13 @@
   <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
   <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-<p align="center">
-<img src="images/main.png"  width="800">
-<p>
+<p align="center">快速，优雅,  强大的博客系统，由Laravel5.3强力驱动。点击 [这里](https://lufficc.com/blog) 查看.</p>
+<p align="center"><img src="images/main1.png"  width="800"><p>
 <br>
 
 # laravel blog
 
 [English readme](https://github.com/lufficc/laravel-blog)|[安装教程](https://lufficc.com/blog/how-to-install-my-blog)
-
-快速，优雅,  强大的博客系统，由Laravel5.3强力驱动。点击 [这里](https://lufficc.com/blog) 查看.
 
 这是一个我个人使用的博客，也曾经使用Hexo 和 github pages 搭过网站，都是都不灵活。因此用Laravel写了这个博客。
 我想说的是Laravel是最好的php框架。

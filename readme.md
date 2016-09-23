@@ -4,16 +4,13 @@
   <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
   <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-<p align="center">
-<img src="images/main.png"  width="800">
-<p>
+<p align="center">A fast and powerful blog system powered by laravel 5.3. Click [here](https://lufficc.com/blog) to view.</p>
+<p align="center"><img src="images/main1.png"  width="800"><p>
 <br>
 
 # laravel blog
 
 [中文readme](README_zh.md)|[Install](https://lufficc.com/blog/how-to-install-my-blog)
-
-A fast and powerful blog system powered by laravel 5.3. Click [here](https://lufficc.com/blog) to view.
 
 This blog is for my own use. I used to use hexo and github pages as my blog, but it's not flexible. Thus I write this
 blog. What I want to say is laravel is the best php framework I've ever seen.
