@@ -1,7 +1,9 @@
-## Laravel Blog
-
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+<p align="center">
+  <img src="images/logo.png" alt="Laravel blog: fast and powerful!" width="366">
+  <br>
+  [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
+  [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+</p>
 
 详细的安装教程在这里：[https://lufficc.com/blog/how-to-install-my-blog](https://lufficc.com/blog/how-to-install-my-blog)
 

@@ -98,7 +98,7 @@
 
 .widget-user .widget-user-image > img {
   width: $userAvatarRadius * 2;
-  height: auto;
+  height: $userAvatarRadius * 2;
   border: 3px solid #fff;
 }
 

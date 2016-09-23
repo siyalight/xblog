@@ -22,6 +22,33 @@ html, body {
   font-family: NotoSansHans-Regular, AvenirNext-Regular, arial, Hiragino Sans GB, "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
 }
 
+
+h1 { font-size: $font-size-h1; }
+h2 { font-size: $font-size-h2; }
+h3 { font-size: $font-size-h3; }
+h4 { font-size: $font-size-h4; }
+h5 { font-size: $font-size-h5; }
+h6 { font-size: $font-size-h6; }
+
+h1,
+h2 {
+  font-weight: bolder;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+h3,
+h4 {
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h3,
+h4 {
+  font-weight: 400;
+}
+
 #content-wrap {
   min-height: 100%;
   margin-bottom: -$footerHeight;

@@ -1,7 +1,11 @@
-# Laravel Blog
+<p align="center">
+  <img src="images/logo.png" alt="Laravel blog: fast and powerful!" width="366">
+  <br>
+  [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
+  [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+</p>
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+
 
 [中文README](/README_zh.md)
 
@@ -10,7 +14,7 @@
 how-to-install-my-blog ：[https://lufficc.com/blog/how-to-install-my-blog](https://lufficc.com/blog/how-to-install-my-blog)
 
 <br>
-A fast and powerful blog system powed by laravel 5.3. Click [here](https://lufficc.com/blog) to view.
+A fast and powerful blog system powered by laravel 5.3. Click [here](https://lufficc.com/blog) to view.
 
 This blog is for my own use. I used to use hexo and github pages as my blog, but it's not flexible. Thus I write this
 blog. What I want to say is laravel is the best php framework I've ever seen.
@@ -46,7 +50,7 @@ git clone https://github.com/lufficc/laravel-blog.git
 
 cd laravel-blog
 
-// compelete your .env file
+// complete your .env file
 
 composer update
 
