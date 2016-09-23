@@ -4,7 +4,7 @@
   <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
   <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-<p align="center">Laravel blog is a fast and powerful blog system powered by laravel 5.3. Click https://lufficc.com/blog to view.</p>
+<p align="center">Fast and powerful blog system powered by laravel 5.3. Click https://lufficc.com/blog to view.</p>
 <p align="center"><img src="images/main1.png"  width="800"><p>
 <br>
 
@@ -82,12 +82,42 @@ AVATAR=
 
 ## More screen shots
 <p align="center">Code highlight post<p>
-<p align="center"><img src="images/post.png" alt="post.png" width="80%"><p>
+<p align="center"><img src="images/post.png" alt="post.png" width="85%"><p>
 <br>
 
 <p align="center">Markdown support comments<p>
-<p align="center"><img src="images/markdown-support-comment.png" alt="markdown-support-comment.png" width="80%"><p>
+<p align="center"><img src="images/markdown-support-comment.png" alt="markdown-support-comment.png" width="85%"><p>
 <br>
+
+<p align="center">Write post with creating multiple tags , selecting category , draging pictures to upload and auto saving.<p>
+<p align="center"><img src="images/write-post.png" alt="write-post.png" width="85%"><p>
+<br>
+
+<p align="center">Writing post in fullscreen mode without interruptting.<p>
+<p align="center"><img src="images/write-post-fullscreen.png" alt="write-post-fullscreen.png" width="85%"><p>
+<br>
+
+<p align="center">Full states post management(publish,revoke,softdelete,delete,restore,draft)<p>
+<p align="center"><img src="images/full-state-post-management.png" alt="full-state-post-management.png" width="85%"><p>
+<br>
+
+<p align="center">Admin dashboard<p>
+<p align="center"><img src="images/admin-index.png" alt="admin-index.png" width="85%"><p>
+<br>
+
+
+<p align="center">Image management<p>
+<p align="center"><img src="images/image-management.png" alt="image-management.png" width="85%"><p>
+<br>
+
+<p align="center">Comment management<p>
+<p align="center"><img src="images/comment-management.png" alt="comment-management.png" width="85%"><p>
+<br>
+
+<p align="center">Site settings<p>
+<p align="center"><img src="images/site-settings.png" alt="site-settings.png" width="85%"><p>
+<br>
+
 
 ## Thanks
 
