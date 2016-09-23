@@ -1,5 +1,6 @@
 <p align="center">
   <img src="images/logo.png" alt="Laravel blog: fast and powerful!" width="223">
+  laravel blog
   <br>
   <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
   <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
