@@ -1,10 +1,9 @@
 <p align="center">
-  <img src="images/logo.png" alt="Laravel blog: fast and powerful!" width="366">
+  <img src="images/logo.png" alt="Laravel blog: fast and powerful!" width="223">
   <br>
-  [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-  [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+  <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+  <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-
 
 
 [中文README](/README_zh.md)
