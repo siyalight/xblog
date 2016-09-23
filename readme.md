@@ -22,7 +22,7 @@ If you find bugs , glad you to issue.
 ## Features
 
 1. Markdown editor,upload images to qiniu cloud by drag or from clipboard.
-1. Comment system. 
+1. Improved comment system. 
 1. Github login.
 1. Separate models from controllers with repository design pattern.
 1. Cache with redis database `0` and session with redis database `1`.
@@ -39,7 +39,7 @@ If you find bugs , glad you to issue.
 1. "mysql": ">=5.7"
 1. Redis is must.
 
-## install
+## Install
 
 ```
 git clone https://github.com/lufficc/laravel-blog.git
@@ -58,7 +58,7 @@ php artisan serve
 
 ```
 
-## attention
+## Attention
 
 Please config your .env,you can copy `.env.example` and complete it:
 ```
@@ -80,27 +80,9 @@ AVATAR=
 ```
 
 
+## More screen shots
 
-
-## screen shots
-
-<img src="https://static.lufficc.com/image/1f1ef7cd16a92549f112b2992654143f.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/0ed12f108e87a8cb8ec5a3bd0d364baa.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/76e6dc58db7b497e9a6e1adab447b2df.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/b3e71ec1f7a6ada81985540e5b7aed48.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/5da149dba4f57db2d6b45079f2911dcd.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/85ac3814b42a1fe97ac0d97d88f28cb0.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/863db4bf6604dd1e6196799b130f1276.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/773ac32bff0373f0028ec801e812c07e.jpeg" >
-<br><br>
-<img src="https://static.lufficc.com/image/9d1a2c7a3c97a29440c7def9868c1f38.jpeg" >
+<img src="images/post.png" alt="post.png" width="50%">
 
 ## Thanks
 
