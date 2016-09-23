@@ -11,6 +11,8 @@
 
 # laravel blog
 
+[中文readme](README_zh.md)|[Install](https://lufficc.com/blog/how-to-install-my-blog)
+
 A fast and powerful blog system powered by laravel 5.3. Click [here](https://lufficc.com/blog) to view.
 
 This blog is for my own use. I used to use hexo and github pages as my blog, but it's not flexible. Thus I write this
