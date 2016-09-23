@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-<img src="https://static.lufficc.com/image/6e349fb9cbb7ec3813569724fee36e8a.jpeg"  width="400"><img src="https://static.lufficc.com/image/0ed12f108e87a8cb8ec5a3bd0d364baa.jpeg"   width="400">
+<img src="https://static.lufficc.com/image/1f1ef7cd16a92549f112b2992654143f.jpeg"  width="800">
 <p>
 
 <br>
@@ -83,7 +83,7 @@ AVATAR=
 ### 截图
 
 
-<img src="https://static.lufficc.com/image/76e6dc58db7b497e9a6e1adab447b2df.jpeg" >
+<img src="https://static.lufficc.com/image/1f1ef7cd16a92549f112b2992654143f.jpeg" >
 <br><br>
 <img src="https://static.lufficc.com/image/b3e71ec1f7a6ada81985540e5b7aed48.jpeg" >
 <br><br>

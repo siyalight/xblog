@@ -1,20 +1,14 @@
 <p align="center">
   <img src="images/logo.png" alt="Laravel blog: fast and powerful!" width="223">
+  <h2>laravel blog</h2>
   <br>
   <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
   <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
 <p align="center">
-<img src="https://static.lufficc.com/image/6e349fb9cbb7ec3813569724fee36e8a.jpeg"  width="400"><img src="https://static.lufficc.com/image/0ed12f108e87a8cb8ec5a3bd0d364baa.jpeg"   width="400">
+<img src="https://static.lufficc.com/image/1f1ef7cd16a92549f112b2992654143f.jpeg"  width="800">
 <p>
-
-
-[中文README](/README_zh.md)
-
-详细的安装教程在这里：[https://lufficc.com/blog/how-to-install-my-blog](https://lufficc.com/blog/how-to-install-my-blog)
-
-how-to-install-my-blog ：[https://lufficc.com/blog/how-to-install-my-blog](https://lufficc.com/blog/how-to-install-my-blog)
 
 <br>
 A fast and powerful blog system powered by laravel 5.3. Click [here](https://lufficc.com/blog) to view.
@@ -91,7 +85,7 @@ AVATAR=
 
 ## screen shots
 
-<img src="https://static.lufficc.com/image/6e349fb9cbb7ec3813569724fee36e8a.jpeg" >
+<img src="https://static.lufficc.com/image/1f1ef7cd16a92549f112b2992654143f.jpeg" >
 <br><br>
 <img src="https://static.lufficc.com/image/0ed12f108e87a8cb8ec5a3bd0d364baa.jpeg" >
 <br><br>
