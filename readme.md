@@ -81,8 +81,13 @@ AVATAR=
 
 
 ## More screen shots
+<p align="center">Code highlight post<p>
+<p align="center"><img src="images/post.png" alt="post.png" width="80%"><p>
+<br>
 
-<img src="images/post.png" alt="post.png" width="50%">
+<p align="center">Markdown support comments<p>
+<p align="center"><img src="images/markdown-support-comment.png" alt="markdown-support-comment.png" width="80%"><p>
+<br>
 
 ## Thanks
 
