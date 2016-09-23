@@ -1,17 +1,17 @@
 <p align="center">
-  <img src="images/logo.png" alt="Laravel blog: fast and powerful!" width="223">
+  <img src="images/logo.png" alt="Laravel blog: fast and powerful!" width="200">
   <br>
   <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
   <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 <p align="center">
-<img src="https://static.lufficc.com/image/1f1ef7cd16a92549f112b2992654143f.jpeg"  width="800">
+<img src="images/main.png"  width="800">
 <p>
 <br>
 
 # laravel blog
 
-[English readme](readme.md)|[安装教程](https://lufficc.com/blog/how-to-install-my-blog)
+[English readme](https://github.com/lufficc/laravel-blog)|[安装教程](https://lufficc.com/blog/how-to-install-my-blog)
 
 快速，优雅,  强大的博客系统，由Laravel5.3强力驱动。点击 [这里](https://lufficc.com/blog) 查看.
 
