@@ -61,6 +61,7 @@ class Handler extends ExceptionHandler
         if (!$this->blogExceptionHandler->handler($request, $exception)) {
             return parent::render($request, $exception);
         }
+        return $this->blogExceptionHandler->handler($request, $exception);
     }
 
     /**

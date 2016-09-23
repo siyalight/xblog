@@ -8,6 +8,7 @@ use App\Http\Repositories\PostRepository;
 use App\Http\Requests;
 use Gate;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CommentController extends Controller
 {
@@ -43,16 +44,27 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         if (!$request->get('content')) {
-            return ['status' => 500, 'msg' => 'empty content'];
+            return response()->json(
+                ['status' => 500, 'msg' => 'Comment content must not be empty !']
+            );
         }
         if (!auth()->check()) {
-            if (!($request->get('username') && $request->get('email')) || !str_contains($request->get('email'), '@')) {
-                return ['status' => 500, 'msg' => 'empty info'];
+            if (!($request->get('username') && $request->get('email'))) {
+                return response()->json(
+                    ['status' => 500, 'msg' => 'Username and email must not be empty !']
+                );
+            }
+            $pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
+            if (!preg_match( $pattern, request('email') )) {
+                return response()->json(
+                    ['status' => 500, 'msg' => 'An Invalidate Email !']
+                );
             }
         }
+
         if ($comment = $this->commentRepository->create($request))
-            return ['status' => 200, 'msg' => 'success', 'comment' => $comment];
-        return ['status' => 500, 'msg' => 'failed'];
+            return response()->json(['status' => 200, 'msg' => 'success']);
+        return response()->json(['status' => 500, 'msg' => 'failed']);
     }
 
 

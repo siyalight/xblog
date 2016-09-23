@@ -26,6 +26,9 @@
                 <label for="comment-content">评论内容<span class="required">*</span></label>
                 <textarea placeholder="支持Markdown" style="resize: vertical" id="comment-content" name="content"
                           rows="5" spellcheck="false" class="form-control markdown-content autosize-target"></textarea>
+                <span class="help-block required">
+                    <strong id="comment_error_msg"></strong>
+                </span>
             </div>
             <div class="form-group">
                 <input type="submit" id="comment-submit" class="btn btn-primary"

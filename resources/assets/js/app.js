@@ -136,10 +136,13 @@
                         localStorage.setItem('comment_username', usernameValue);
                         localStorage.setItem('comment_email', emailValue);
                     }
+                    username.val('');
+                    email.val('');
                     commentContent.val('');
+                    form.find('#comment_error_msg').text('');
                     loadComments(true);
                 } else {
-                    console.log(data.msg);
+                    form.find('#comment_error_msg').text(data.msg);
                 }
             }).always(function () {
                 submitBtn.val("回复").removeClass('disabled').prop('disabled', false);
