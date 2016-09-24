@@ -18,6 +18,15 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 });
 
+Artisan::command('parse', function () {
+    $parse = new Parsedown();
+    foreach (\App\Post::all() as $post)
+    {
+        $post->html_content = $parse->setBreaksEnabled(true)->text($post->content);
+        $this->comment($post->save());
+    }
+});
+
 
 Artisan::command('avatar', function () {
     $this->comment(\App\User::whereNull('avatar')->update(['avatar' => config('app.avatar')]));

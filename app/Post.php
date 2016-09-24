@@ -9,7 +9,7 @@ use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
-    use SoftDeletes/*, Searchable*/;
+    use SoftDeletes, Searchable;
 
     /**
      * The "booting" method of the model.
@@ -23,15 +23,23 @@ class Post extends Model
         static::addGlobalScope(new PublishedScope());
     }
 
-    /*public function toSearchableArray()
+    public function searchableAs()
+    {
+        return 'posts';
+    }
+
+    public function toSearchableArray()
     {
         return [
+            'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
             'content' => $this->content,
+            'slug' => $this->slug,
             'view_count' => $this->view_count,
+            'created_at' => $this->created_at,
         ];
-    }*/
+    }
 
     /**
      * The attributes that should be mutated to dates.

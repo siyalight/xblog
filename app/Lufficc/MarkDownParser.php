@@ -22,10 +22,12 @@ class MarkDownParser
         $this->parseDown = new Parsedown();
     }
 
-    public function parse($markdown)
+    public function parse($markdown, $clean = true)
     {
         $convertedHtml = $this->parseDown->setBreaksEnabled(true)->text($markdown);
-        $convertedHtml = clean($convertedHtml, 'user_comment_content');
+        if ($clean) {
+            $convertedHtml = clean($convertedHtml, 'user_comment_content');
+        }
         return $convertedHtml;
     }
 }

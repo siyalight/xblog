@@ -17,7 +17,7 @@ class WelcomeToLufficc extends Mailable
      */
     public function __construct()
     {
-        //
+
     }
 
     /**
