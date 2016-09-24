@@ -38,8 +38,7 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $query = $request->get('q');
-        $posts = Post::search($query)->get();
+        $posts = Post::search($request->get('q'))->get();
         return view('search', compact('posts'));
     }
 

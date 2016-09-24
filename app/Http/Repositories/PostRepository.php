@@ -11,6 +11,7 @@ use App\Post;
 use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Lufficc\MarkDownParser;
 use Parsedown;
 
 /**
@@ -23,16 +24,17 @@ use Parsedown;
 class PostRepository extends Repository
 {
 
-    protected $parseDown;
+    protected $markDownParser;
 
     static $tag = 'post';
 
     /**
      * PostRepository constructor.
+     * @param MarkDownParser $markDownParser
      */
-    public function __construct()
+    public function __construct(MarkDownParser $markDownParser)
     {
-        $this->parseDown = new Parsedown();
+        $this->markDownParser = $markDownParser;
     }
 
     public function model()
@@ -119,7 +121,7 @@ class PostRepository extends Repository
         $post = auth()->user()->posts()->create(
             array_merge(
                 $request->except('_token'),
-                ['html_content' => $this->parseDown->text($request->get('content'))]
+                ['html_content' => $this->markDownParser->parse($request->get('content'), false)]
             )
         );
         $post->tags()->sync($ids);
@@ -155,7 +157,7 @@ class PostRepository extends Repository
         return $post->update(
             array_merge(
                 $request->except('_token'),
-                ['html_content' => $this->parseDown->text($request->get('content'))]
+                ['html_content' => $this->markDownParser->parse($request->get('content'), false)]
             ));
     }
 

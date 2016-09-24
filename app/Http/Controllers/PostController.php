@@ -8,10 +8,12 @@ use App\Http\Repositories\MapRepository;
 use App\Http\Repositories\PostRepository;
 use App\Http\Repositories\TagRepository;
 use App\Http\Requests;
+use App\Mail\WelcomeToLufficc;
 use App\Post;
 use Carbon\Carbon;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Purifier;
 
 class PostController extends Controller
@@ -79,6 +81,8 @@ class PostController extends Controller
 
     public function show($slug)
     {
+
+
         $post = $this->postRepository->get($slug);
         if (!isAdmin(auth()->user())) {
             $post->increment('view_count');

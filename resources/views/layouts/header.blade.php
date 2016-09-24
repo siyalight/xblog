@@ -60,9 +60,9 @@
                         <li><a href="{{ url('register') }}">注册</a></li>
                     @endif
                 </ul>
-                {{--<form class="navbar-form navbar-right" role="search" method="get" action="{{ route('search') }}">
+                <form class="navbar-form navbar-right" role="search" method="get" action="{{ route('search') }}">
                     <input type="text" class="form-control" name="q" placeholder="搜索" required>
-                </form>--}}
+                </form>
             </div>
         </nav>
     </div>
