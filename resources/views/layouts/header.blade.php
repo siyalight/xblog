@@ -31,8 +31,13 @@
                 <ul class="nav navbar-nav navbar-right blog-navbar">
                     @if(Auth::check())
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ auth()->user()->name }}
-                                <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                @if(auth()->user()->github_id)
+                                    <i class="fa fa-github fa-fw"></i>
+                                @endif
+                                {{ auth()->user()->name }}
+                                <span class="caret"></span>
+                            </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ route('user.show',auth()->user()->name) }}">个人中心</a></li>
                                 @if(isAdmin(Auth::user()))
