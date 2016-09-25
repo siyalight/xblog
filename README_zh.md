@@ -50,7 +50,7 @@
     }
 
 ```
-
+2. 添加搜索功能。 powered by [algolia](https://www.algolia.com/)
 
 ### 安装
 

@@ -51,7 +51,7 @@ If you find bugs , glad you to issue.
 ```
 
 
-1. add search powered by [algolia](https://www.algolia.com/)
+2. add search powered by [algolia](https://www.algolia.com/)
 
 ## Install
 
