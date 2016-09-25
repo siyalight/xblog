@@ -37,7 +37,21 @@ If you find bugs , glad you to issue.
 
 1. "php": ">=5.6.4"
 1. "mysql": ">=5.7"
-1. Redis is must.
+
+## Change log
+
+1. Redis now is not a must, config your own cache drive.If you do not want to use cache,change `Repositories\Repository`'s`remember`method like below,it won't effect your logic:
+```
+     public function remember($key, Closure $entity, $tag = null)
+    {
+        return $entity();
+        //return cache()->tags($tag == null ? $this->tag() : $tag)->remember($key, $this->time, $entity);
+    }
+
+```
+
+
+1. add search powered by [algolia](https://www.algolia.com/)
 
 ## Install
 

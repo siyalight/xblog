@@ -37,7 +37,20 @@
 
 1. "php": ">=5.6.4"
 1. "mysql": ">=5.7"
-1. 必须安装 Redis.
+
+
+## 更新日志
+
+1. Redis 现在不是必须的了,你可以配置你自己的缓存驱动，如果你不想要缓存，将 `Repositories\Repository`中的`remember`方法 改为下面所示,这不会影响你的逻辑:
+```
+     public function remember($key, Closure $entity, $tag = null)
+    {
+        return $entity();
+        //return cache()->tags($tag == null ? $this->tag() : $tag)->remember($key, $this->time, $entity);
+    }
+
+```
+
 
 ### 安装
 
