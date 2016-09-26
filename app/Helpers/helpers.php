@@ -35,7 +35,7 @@ if (!function_exists('array_safe_get')) {
 if (!function_exists('getUrlByFileName')) {
     function getUrlByFileName($fileName)
     {
-        return 'https://static.lufficc.com/' . $fileName;
+        return config('filesystems.disks.qiniu.domains.https') . $fileName;
     }
 }
 

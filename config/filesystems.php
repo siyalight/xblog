@@ -64,9 +64,9 @@ return [
         'qiniu' => [
             'driver'  => 'qiniu',
             'domains' => [
-                'default'   => 'obba2pep8.bkt.clouddn.com', //你的七牛域名
-                'https'     => '',         //你的HTTPS域名
-                'custom'    => 'static.lufficc.com',                //你的自定义域名
+                'default'   => env('QINIU_DEFAULT_DOMAIN'), //你的七牛域名
+                'https'     => env('QINIU_HTTPS_DOMAIN'),         //你的HTTPS域名
+                'custom'    => env('QINIU_CUSTOM_DOMAIN'),                //你的自定义域名
             ],
             'access_key'=> env('QINIU_AK'),  //AccessKey
             'secret_key'=> env('QINIU_SK'),  //SecretKey
