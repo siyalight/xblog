@@ -38,15 +38,13 @@
     };
 
     function initPostNavigation() {
-        var hs = $('.post-detail').find('h1,h2,h3,h4,h5,h6');
+        var postDetail = $('.post-detail');
+        var hs = postDetail.find('h1,h2,h3,h4,h5,h6');
         if (hs.length < 2)
             return;
-
-        console.log('initPostNavigation')
         var s = '';
         s += '<div style="clear:both"></div>';
-       /* s += '<div class="cnblogs_toc">';*/
-        s += '<p style="text-align:right;margin:0;"><span style="float:left;">文章目录</span></p><br>';
+        s += '<p class="post-navigation-title">文章目录</p>';
         s += '<ol style="margin-left:14px;padding-left:14px;line-height:160%;">';
         var old_h = 0, ol_cnt = 0;
         for (var i = 0; i < hs.length; i++) {
@@ -73,7 +71,8 @@
 
             if (tit.length < 100) {
                 s += '<li><a href="#title' + i + '">' + tit + '</a></li>';
-                hs.eq(i).html('<a name="title' + i + '"></a>' + hs.eq(i).html());
+                /*hs.eq(i).html('<a id="title' + i + '"></a>' + hs.eq(i).html());*/
+                hs.eq(i).attr('id', 'title' + i);
             }
         }
         while (ol_cnt > 0) {
@@ -82,7 +81,12 @@
         }
         s += '</ol>';
         s += '<div style="clear:both"><br></div>';
-        $('#post-navigation').html(s);
+        var navigation = $('#post-navigation');
+        navigation.html(s);
+        navigation.scrollspy("refresh");
+        navigation.scrollspy();
+        /*postDetail.scrollspy({ target: '#post-navigation' });
+        postDetail.scrollspy("refresh");*/
     }
 
     function initDeleteTarget() {

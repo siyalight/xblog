@@ -5904,6 +5904,17 @@ $panel-default-heading-bg: #fff;*/
   max-width: 100%;
   height: auto; }
 
+.post-navigation-title {
+  font-size: 1.2em;
+  font-weight: 500; }
+
+#post-navigation {
+  margin-top: 35px;
+  position: fixed; }
+
+#post-navigation li.active {
+  background-color: red; }
+
 /* Base16 Atelier Lakeside Light - Theme */
 /* by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/lakeside) */
 /* Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16) */
