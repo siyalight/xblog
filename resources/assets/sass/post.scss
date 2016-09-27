@@ -61,19 +61,25 @@
 
 /* post detail*/
 .post-detail {
-  @extend .shadow-block;
+  /*@extend .shadow-block;*/
   padding: 35px 25px;
   margin-bottom: 20px;
   background: white;
 }
 
-.post-detail .post-content {
+.post-detail-title {
+  font-size: 2rem;
+  font-weight: bolder;
+  padding: 5px;
+
+}
+
+.post-detail-content {
   @extend .markdown-content;
 }
 
 
 .post-detail img {
-
   box-sizing: border-box;
   margin: 20px auto 40px auto;
   border: 1px solid #ddd;
