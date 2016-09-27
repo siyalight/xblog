@@ -7,7 +7,8 @@
                     <h3>修改分类</h3>
                 </div>
                 <div class="widget-body">
-                    <form role="form" class="form-horizontal" action="{{ route('category.update',$category->id) }}" method="post">
+                    <form role="form" class="form-horizontal" action="{{ route('category.update',$category->id) }}"
+                          method="post">
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">分类名称</label>
                             <div class="col-md-6">

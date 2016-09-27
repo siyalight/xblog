@@ -32,11 +32,9 @@
 <body id="lufficc-pjax-container">
 @include('layouts.header')
 <div id="content-wrap">
-    <div class="container">
-        @include('partials.errors')
-        @include('partials.success')
-        @yield('content')
-    </div>
+    @include('partials.errors')
+    @include('partials.success')
+    @yield('content')
 </div>
 @include('layouts.footer')
 @if(isset($site_js) && $site_js)

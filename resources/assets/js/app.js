@@ -23,6 +23,7 @@
         },
         bootUp: function () {
             console.log('bootUp');
+            initPostNavigation();
             /*NProgress.configure({showSpinner: false});*/
             loadComments(false);
             initComment();
@@ -33,19 +34,22 @@
             initDeleteTarget();
             highLightCode();
             initUploadAvatar();
-            initPostNavigation();
         },
     };
 
     function initPostNavigation() {
         var postDetail = $('.post-detail');
         var hs = postDetail.find('h1,h2,h3,h4,h5,h6');
-        if (hs.length < 2)
+        if (hs.length < 2) {
+            $('#post-detail-wrap').attr('class','col-md-12 col-sm-12');
+            $('#comment-wrap').attr('class','col-md-12 col-sm-12');
+            $('#post-navigation-wrap').remove();
             return;
+        }
         var s = '';
         s += '<div style="clear:both"></div>';
-        s += '<p class="post-navigation-title">文章目录</p>';
-        s += '<ol style="margin-left:14px;padding-left:14px;line-height:160%;">';
+        /*s += '<p class="post-navigation-title">文章目录</p>';*/
+        s += '<ol style="line-height:160%;">';
         var old_h = 0, ol_cnt = 0;
         for (var i = 0; i < hs.length; i++) {
             var h = parseInt(hs[i].tagName.substr(1), 10);
@@ -82,11 +86,16 @@
         s += '</ol>';
         s += '<div style="clear:both"><br></div>';
         var navigation = $('#post-navigation');
-        navigation.html(s);
-        navigation.scrollspy("refresh");
-        navigation.scrollspy();
+        var navigationContent = navigation.find('#navigation-body');
+        navigationContent.html(s);
+        /*navigation.scrollspy("refresh");
+         navigation.scrollspy();*/
+        navigation.scrollToFixed({
+            limit: $('#post-end').offsetHeight - $(this).outerHeight(true),
+            zIndex: 999
+        });
         /*postDetail.scrollspy({ target: '#post-navigation' });
-        postDetail.scrollspy("refresh");*/
+         postDetail.scrollspy("refresh");*/
     }
 
     function initDeleteTarget() {

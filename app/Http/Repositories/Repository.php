@@ -12,7 +12,7 @@ use Closure;
 
 abstract class Repository
 {
-    public $time = 720;
+    public $time = 60;
 
     /**
      * @return string
