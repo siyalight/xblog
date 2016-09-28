@@ -106,3 +106,32 @@
 .widget-user .widget-user-footer {
   padding: $userAvatarRadius 30px 10px 30px;
 }
+
+/***admin**/
+.info-box {
+  @extend .shadow;
+  margin-bottom: 35px;
+  color: $colorPrimary;
+  position: relative;
+  padding: 10px;
+  background-color: $widgetHeaderBgColor;
+  border-radius: 0.25em;
+  text-align: center;
+  transition: all .3s ease;
+  .info-icon {
+    font-size: 3em;
+    text-align: center
+  }
+  .info-title {
+    font-weight: bolder;
+    font-size: 2em
+  }
+}
+
+.info-box:hover {
+  box-shadow: 0 26px 40px -24px  $shadowColor;
+  -moz-box-shadow: 0 26px 40px -24px $shadowColor;
+  -webkit-box-shadow: 0 26px 40px -24px $shadowColor;
+ /* color: $colorAccent;*/
+
+}

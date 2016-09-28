@@ -5818,7 +5818,7 @@ $panel-default-heading-bg: #fff;*/
 .mt-30 {
   margin-top: 30px; }
 
-.shadow, .shadow-block, .post, .post-detail, .widget {
+.shadow, .shadow-block, .post, .post-detail, .widget, .info-box {
   box-shadow: 1px 1px 3px #666666;
   -moz-box-shadow: 1px 1px 3px #666666;
   -webkit-box-shadow: 1px 1px 3px #666666; }
@@ -5826,6 +5826,47 @@ $panel-default-heading-bg: #fff;*/
 .shadow-block, .post, .post-detail, .widget {
   border-radius: 5px; }
 
+/*.bg-yellow {
+  background-color: $yellow;
+}
+
+.bg-red {
+  background-color: $red;
+}
+
+.bg-navy {
+  background-color: $navy;
+}
+.bg-maroon {
+  background-color: $maroon;
+}
+
+.bg-purple {
+  background-color: $purple;
+}
+.bg-fuchsia {
+  background-color: $fuchsia;
+}
+
+.bg-orange {
+  background-color: $orange;
+}
+
+.bg-lime {
+  background-color: $lime;
+}
+
+.bg-olive {
+  background-color: $olive;
+}
+
+.bg-teal {
+  background-color: $teal;
+}
+
+.bg-green {
+  background-color: $green;
+}*/
 .markdown-content, .post-detail-content {
   line-height: 1.7em;
   font-size: 1.15em;
@@ -11776,7 +11817,7 @@ $panel-default-heading-bg: #fff;*/
 .mt-30 {
   margin-top: 30px; }
 
-.shadow, .shadow-block, .post, .post-detail, .widget {
+.shadow, .shadow-block, .post, .post-detail, .widget, .info-box {
   box-shadow: 1px 1px 3px #666666;
   -moz-box-shadow: 1px 1px 3px #666666;
   -webkit-box-shadow: 1px 1px 3px #666666; }
@@ -11784,6 +11825,47 @@ $panel-default-heading-bg: #fff;*/
 .shadow-block, .post, .post-detail, .widget {
   border-radius: 5px; }
 
+/*.bg-yellow {
+  background-color: $yellow;
+}
+
+.bg-red {
+  background-color: $red;
+}
+
+.bg-navy {
+  background-color: $navy;
+}
+.bg-maroon {
+  background-color: $maroon;
+}
+
+.bg-purple {
+  background-color: $purple;
+}
+.bg-fuchsia {
+  background-color: $fuchsia;
+}
+
+.bg-orange {
+  background-color: $orange;
+}
+
+.bg-lime {
+  background-color: $lime;
+}
+
+.bg-olive {
+  background-color: $olive;
+}
+
+.bg-teal {
+  background-color: $teal;
+}
+
+.bg-green {
+  background-color: $green;
+}*/
 .markdown-content, .post-detail-content {
   line-height: 1.7em;
   font-size: 1.15em;
@@ -17707,7 +17789,7 @@ $panel-default-heading-bg: #fff;*/
 .mt-30 {
   margin-top: 30px; }
 
-.shadow, .shadow-block, .post, .post-detail, .widget {
+.shadow, .shadow-block, .post, .post-detail, .widget, .info-box {
   box-shadow: 1px 1px 3px #666666;
   -moz-box-shadow: 1px 1px 3px #666666;
   -webkit-box-shadow: 1px 1px 3px #666666; }
@@ -17715,6 +17797,47 @@ $panel-default-heading-bg: #fff;*/
 .shadow-block, .post, .post-detail, .widget {
   border-radius: 5px; }
 
+/*.bg-yellow {
+  background-color: $yellow;
+}
+
+.bg-red {
+  background-color: $red;
+}
+
+.bg-navy {
+  background-color: $navy;
+}
+.bg-maroon {
+  background-color: $maroon;
+}
+
+.bg-purple {
+  background-color: $purple;
+}
+.bg-fuchsia {
+  background-color: $fuchsia;
+}
+
+.bg-orange {
+  background-color: $orange;
+}
+
+.bg-lime {
+  background-color: $lime;
+}
+
+.bg-olive {
+  background-color: $olive;
+}
+
+.bg-teal {
+  background-color: $teal;
+}
+
+.bg-green {
+  background-color: $green;
+}*/
 .markdown-content, .post-detail-content {
   line-height: 1.7em;
   font-size: 1.15em;
@@ -23572,7 +23695,7 @@ $panel-default-heading-bg: #fff;*/
 .mt-30 {
   margin-top: 30px; }
 
-.shadow, .shadow-block, .post, .post-detail, .widget {
+.shadow, .shadow-block, .post, .post-detail, .widget, .info-box {
   box-shadow: 1px 1px 3px #666666;
   -moz-box-shadow: 1px 1px 3px #666666;
   -webkit-box-shadow: 1px 1px 3px #666666; }
@@ -23580,6 +23703,47 @@ $panel-default-heading-bg: #fff;*/
 .shadow-block, .post, .post-detail, .widget {
   border-radius: 5px; }
 
+/*.bg-yellow {
+  background-color: $yellow;
+}
+
+.bg-red {
+  background-color: $red;
+}
+
+.bg-navy {
+  background-color: $navy;
+}
+.bg-maroon {
+  background-color: $maroon;
+}
+
+.bg-purple {
+  background-color: $purple;
+}
+.bg-fuchsia {
+  background-color: $fuchsia;
+}
+
+.bg-orange {
+  background-color: $orange;
+}
+
+.bg-lime {
+  background-color: $lime;
+}
+
+.bg-olive {
+  background-color: $olive;
+}
+
+.bg-teal {
+  background-color: $teal;
+}
+
+.bg-green {
+  background-color: $green;
+}*/
 .markdown-content, .post-detail-content {
   line-height: 1.7em;
   font-size: 1.15em;
@@ -23669,6 +23833,30 @@ $panel-default-heading-bg: #fff;*/
 
 .widget-user .widget-user-footer {
   padding: 45px 30px 10px 30px; }
+
+/***admin**/
+.info-box {
+  margin-bottom: 35px;
+  color: #607D8B;
+  position: relative;
+  padding: 10px;
+  background-color: #F5F8FA;
+  border-radius: 0.25em;
+  text-align: center;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease; }
+  .info-box .info-icon {
+    font-size: 3em;
+    text-align: center; }
+  .info-box .info-title {
+    font-weight: bolder;
+    font-size: 2em; }
+
+.info-box:hover {
+  box-shadow: 0 26px 40px -24px #666666;
+  -moz-box-shadow: 0 26px 40px -24px #666666;
+  -webkit-box-shadow: 0 26px 40px -24px #666666;
+  /* color: $colorAccent;*/ }
 
 .edit-form {
   font-size: 1.2em;
