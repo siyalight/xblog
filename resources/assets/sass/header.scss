@@ -76,6 +76,9 @@ a:active, a:focus, a img {
   font-size: 1em;
   line-height: 1.1em;
   text-shadow: $shadowColor 1px 1px 2px;
+
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
 }
 
 .navbar-nav > li > a:hover {
@@ -96,6 +99,9 @@ a:active, a:focus, a img {
   font-size: 1.9em;
   color: white;
   text-shadow: 5px 5px 5px $colorPrimaryDark;
+
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
 }
 
 .navbar-header a :hover {

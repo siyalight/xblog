@@ -117,7 +117,9 @@
   background-color: $widgetHeaderBgColor;
   border-radius: 0.25em;
   text-align: center;
-  transition: all .3s ease;
+
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
   .info-icon {
     font-size: 3em;
     text-align: center

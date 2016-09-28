@@ -5896,7 +5896,9 @@ $panel-default-heading-bg: #fff;*/
 
 .post .post-header .post-title a {
   color: #303030;
-  text-decoration: none; }
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out; }
 
 .post .post-header .post-title a:hover {
   color: #FF6E40; }
@@ -11941,7 +11943,9 @@ a:active, a:focus, a img {
   color: white;
   font-size: 1em;
   line-height: 1.1em;
-  text-shadow: #666666 1px 1px 2px; }
+  text-shadow: #666666 1px 1px 2px;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out; }
 
 .navbar-nav > li > a:hover {
   color: #FF6E40;
@@ -11958,7 +11962,9 @@ a:active, a:focus, a img {
   text-decoration: none;
   font-size: 1.9em;
   color: white;
-  text-shadow: 5px 5px 5px #546E7A; }
+  text-shadow: 5px 5px 5px #546E7A;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out; }
 
 .navbar-header a :hover {
   color: #FF6E40;
@@ -17861,12 +17867,16 @@ $panel-default-heading-bg: #fff;*/
   border: 1px solid #607D8B;
   border-radius: 20px;
   text-align: center;
-  vertical-align: center; }
+  vertical-align: center;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out; }
 
 .tag-active {
   color: #FF6E40;
   text-decoration: none;
-  border: 1px solid #FF6E40; }
+  border: 1px solid #FF6E40;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out; }
 
 .tag-active .badge-active {
   background-color: #FF6E40; }
@@ -17874,9 +17884,7 @@ $panel-default-heading-bg: #fff;*/
 .tag:hover {
   color: #FF6E40;
   border: 1px solid #FF6E40;
-  text-decoration: none;
-  transition: all 0.15s ease-in-out;
-  -webkit-transition: all 0.15s ease-in-out; }
+  text-decoration: none; }
 
 .tag .badge:hover {
   background-color: #FF6E40;
@@ -23843,8 +23851,8 @@ $panel-default-heading-bg: #fff;*/
   background-color: #F5F8FA;
   border-radius: 0.25em;
   text-align: center;
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease; }
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out; }
   .info-box .info-icon {
     font-size: 3em;
     text-align: center; }
