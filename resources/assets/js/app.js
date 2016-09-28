@@ -23,7 +23,7 @@
         },
         bootUp: function () {
             console.log('bootUp');
-            initPostNavigation();
+            /*initPostNavigation();*/
             /*NProgress.configure({showSpinner: false});*/
             loadComments(false);
             initComment();
@@ -49,23 +49,23 @@
         var s = '';
         s += '<div style="clear:both"></div>';
         /*s += '<p class="post-navigation-title">文章目录</p>';*/
-        s += '<ol style="line-height:160%;">';
+        s += '<ul class="nav" style="line-height:160%;">';
         var old_h = 0, ol_cnt = 0;
         for (var i = 0; i < hs.length; i++) {
             var h = parseInt(hs[i].tagName.substr(1), 10);
             if (!old_h)
                 old_h = h;
             if (h > old_h) {
-                s += '<ol>';
+                s += '<ul>';
                 ol_cnt++;
             }
             else if (h < old_h && ol_cnt > 0) {
-                s += '</ol>';
+                s += '</ul>';
                 ol_cnt--;
             }
             if (h == 1) {
                 while (ol_cnt > 0) {
-                    s += '</ol>';
+                    s += '</ul>';
                     ol_cnt--;
                 }
             }
@@ -80,10 +80,10 @@
             }
         }
         while (ol_cnt > 0) {
-            s += '</ol>';
+            s += '</ul>';
             ol_cnt--;
         }
-        s += '</ol>';
+        s += '</ul>';
         s += '<div style="clear:both"><br></div>';
         var navigation = $('#post-navigation');
         var navigationContent = navigation.find('#navigation-body');
@@ -94,8 +94,7 @@
             limit: $('#post-end').offsetHeight - $(this).outerHeight(true),
             zIndex: 999
         });
-        /*postDetail.scrollspy({ target: '#post-navigation' });
-         postDetail.scrollspy("refresh");*/
+        $('body').scrollspy({ target: '#post-navigation' });
     }
 
     function initDeleteTarget() {

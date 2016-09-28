@@ -5885,6 +5885,7 @@ $panel-default-heading-bg: #fff;*/
 
 /* post detail*/
 .post-detail {
+  position: relative;
   padding: 35px 25px;
   margin-bottom: 20px;
   background: white; }
@@ -5903,24 +5904,22 @@ $panel-default-heading-bg: #fff;*/
   max-width: 100%;
   height: auto; }
 
-#post-navigation {
-  font-size: 1.1em; }
-  #post-navigation .post-navigation-title {
-    font-size: 1.2em;
-    font-weight: bolder;
-    padding: 5px;
-    margin: 0; }
-  #post-navigation ol ol > li {
-    font-size: 0.9em; }
-  #post-navigation ol > ol {
-    padding-left: 30px; }
-  #post-navigation ol {
-    padding-left: 20px; }
-  #post-navigation li a {
-    text-decoration: none;
-    font-weight: 500; }
-  #post-navigation li a:hover {
-    color: #FF6E40; }
+#post-navigation .post-navigation-title {
+  font-size: 1.2em;
+  font-weight: bolder;
+  padding: 5px;
+  margin: 0; }
+
+#navigation-body .nav > li > a {
+  display: block;
+  padding: 4px 20px;
+  font-size: 13px; }
+
+#navigation-body .nav > .active > a, #navigation-body .nav > .active:hover > a, #navigation-body .nav > .active:focus > a {
+  padding-left: 18px;
+  color: #FF6E40;
+  background-color: transparent;
+  border-left: 2px solid #607D8B; }
 
 /* Base16 Atelier Lakeside Light - Theme */
 /* by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/lakeside) */
@@ -23696,6 +23695,7 @@ html, body {
   color: #505050;
   font-size: 14px;
   height: 100%;
+  position: relative;
   background: #eee;
   font-family: NotoSansHans-Regular, AvenirNext-Regular, arial, Hiragino Sans GB, "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif; }
 
