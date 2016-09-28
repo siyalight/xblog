@@ -18,8 +18,8 @@ var js = [
     'resources/assets/js/hightlight.js',
     'resources/assets/js/marked.js',
     /*'resources/assets/js/nprogress.js',
-    'resources/assets/js/pjax.js',*/
-    'jquery-scrolltofixed-min.js',
+    'resources/assets/js/pjax.js',
+    'jquery-scrolltofixed-min.js',*/
     'autosize.min.js',
     'codemirror-4.inline-attachment.js',
     'resources/assets/js/app.js',

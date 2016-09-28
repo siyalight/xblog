@@ -23,7 +23,6 @@
         },
         bootUp: function () {
             console.log('bootUp');
-            /*initPostNavigation();*/
             /*NProgress.configure({showSpinner: false});*/
             loadComments(false);
             initComment();
@@ -36,66 +35,6 @@
             initUploadAvatar();
         },
     };
-
-    function initPostNavigation() {
-        var postDetail = $('.post-detail');
-        var hs = postDetail.find('h1,h2,h3,h4,h5,h6');
-        if (hs.length < 2) {
-            $('#post-detail-wrap').attr('class','col-md-12 col-sm-12');
-            $('#comment-wrap').attr('class','col-md-12 col-sm-12');
-            $('#post-navigation-wrap').remove();
-            return;
-        }
-        var s = '';
-        s += '<div style="clear:both"></div>';
-        /*s += '<p class="post-navigation-title">文章目录</p>';*/
-        s += '<ul class="nav" style="line-height:160%;">';
-        var old_h = 0, ol_cnt = 0;
-        for (var i = 0; i < hs.length; i++) {
-            var h = parseInt(hs[i].tagName.substr(1), 10);
-            if (!old_h)
-                old_h = h;
-            if (h > old_h) {
-                s += '<ul>';
-                ol_cnt++;
-            }
-            else if (h < old_h && ol_cnt > 0) {
-                s += '</ul>';
-                ol_cnt--;
-            }
-            if (h == 1) {
-                while (ol_cnt > 0) {
-                    s += '</ul>';
-                    ol_cnt--;
-                }
-            }
-            old_h = h;
-            var tit = hs.eq(i).text().replace(/^\d+[.、\s]+/g, '');
-            tit = tit.replace(/[^a-zA-Z0-9_\-\s\u4e00-\u9fa5]+/g, '');
-
-            if (tit.length < 100) {
-                s += '<li><a href="#title' + i + '">' + tit + '</a></li>';
-                /*hs.eq(i).html('<a id="title' + i + '"></a>' + hs.eq(i).html());*/
-                hs.eq(i).attr('id', 'title' + i);
-            }
-        }
-        while (ol_cnt > 0) {
-            s += '</ul>';
-            ol_cnt--;
-        }
-        s += '</ul>';
-        s += '<div style="clear:both"><br></div>';
-        var navigation = $('#post-navigation');
-        var navigationContent = navigation.find('#navigation-body');
-        navigationContent.html(s);
-        /*navigation.scrollspy("refresh");
-         navigation.scrollspy();*/
-        navigation.scrollToFixed({
-            limit: $('#post-end').offsetHeight - $(this).outerHeight(true),
-            zIndex: 999
-        });
-        $('body').scrollspy({ target: '#post-navigation' });
-    }
 
     function initDeleteTarget() {
         $('[data-modal-target]').append(function () {
