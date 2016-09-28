@@ -3,8 +3,8 @@
 .widget {
   @extend .shadow-block;
   background: white;
-  overflow: auto;
   margin-bottom: 35px;
+  width: 100%;
 }
 
 .widget-default {
@@ -13,6 +13,7 @@
 
 .widget .widget-body {
   padding: 30px $widgetPaddingLeftRight;
+  overflow-x: auto;
 }
 
 .widget .widget-footer {

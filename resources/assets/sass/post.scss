@@ -87,23 +87,3 @@
   max-width: 100%;
   height: auto;
 }
-
-#post-navigation .post-navigation-title {
-  font-size: 1.2em;
-  font-weight: bolder;
-  padding: 5px;
-  margin: 0;
-}
-
-#navigation-body .nav > li > a {
-  display: block;
-  padding: 4px 20px;
-  font-size: 13px;
-}
-
-#navigation-body .nav > .active > a, #navigation-body .nav > .active:hover > a, #navigation-body .nav > .active:focus > a {
-  padding-left: 18px;
-  color: $colorAccent;
-  background-color: transparent;
-  border-left: 2px solid $colorPrimary;
-}

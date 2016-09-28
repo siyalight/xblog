@@ -536,7 +536,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
         },
         bootUp: function () {
             console.log('bootUp');
-            initPostNavigation();
+            /*initPostNavigation();*/
             /*NProgress.configure({showSpinner: false});*/
             loadComments(false);
             initComment();

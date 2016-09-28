@@ -5904,23 +5904,6 @@ $panel-default-heading-bg: #fff;*/
   max-width: 100%;
   height: auto; }
 
-#post-navigation .post-navigation-title {
-  font-size: 1.2em;
-  font-weight: bolder;
-  padding: 5px;
-  margin: 0; }
-
-#navigation-body .nav > li > a {
-  display: block;
-  padding: 4px 20px;
-  font-size: 13px; }
-
-#navigation-body .nav > .active > a, #navigation-body .nav > .active:hover > a, #navigation-body .nav > .active:focus > a {
-  padding-left: 18px;
-  color: #FF6E40;
-  background-color: transparent;
-  border-left: 2px solid #607D8B; }
-
 /* Base16 Atelier Lakeside Light - Theme */
 /* by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/lakeside) */
 /* Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16) */
@@ -23609,11 +23592,12 @@ $panel-default-heading-bg: #fff;*/
 
 .widget {
   background: white;
-  overflow: auto;
-  margin-bottom: 35px; }
+  margin-bottom: 35px;
+  width: 100%; }
 
 .widget .widget-body, .widget .widget-user-body {
-  padding: 30px 20px; }
+  padding: 30px 20px;
+  overflow-x: auto; }
 
 .widget .widget-footer {
   padding: 0 20px 10px 20px;
