@@ -10,18 +10,22 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
+// User Auth
 Auth::routes();
 Route::get('/auth/github', ['uses' => 'Auth\AuthController@redirectToGithub', 'as' => 'github.login']);
 Route::get('/auth/github/callback', ['uses' => 'Auth\AuthController@handleGithubCallback', 'as' => 'github.callback']);
 Route::get('/github/register',['uses' => 'Auth\AuthController@registerFromGithub', 'as' => 'github.register']);
 Route::post('/github/store',['uses' => 'Auth\AuthController@store', 'as' => 'github.store']);
 
-
+// Site route
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
 Route::get('/about', ['uses' => 'PageController@about', 'as' => 'page.about']);
 Route::get('/projects', ['uses' => 'HomeController@projects', 'as' => 'projects']);
 Route::get('/search', ['uses' => 'HomeController@search', 'as' => 'search']);
+Route::get('/achieve', ['uses' => 'HomeController@achieve', 'as' => 'achieve']);
+
+
+
 
 Route::get('/blog', ['uses' => 'PostController@index', 'as' => 'post.index']);
 Route::get('/blog/{slug}', ['uses' => 'PostController@show', 'as' => 'post.show']);
@@ -33,7 +37,6 @@ Route::get('/user/{name}', ['uses' => 'UserController@show', 'as' => 'user.show'
 Route::patch('/user/upload/avatar', ['uses' => 'UserController@uploadAvatar', 'as' => 'user.upload.avatar']);
 Route::patch('/user/upload/profile', ['uses' => 'UserController@uploadProfile', 'as' => 'user.upload.profile']);
 Route::patch('/user/upload/info', ['uses' => 'UserController@update', 'as' => 'user.update.info']);
-
 
 Route::get('/commentable/{commentable_id}/comments', ['uses' => 'CommentController@show', 'as' => 'comment.show']);
 Route::resource('comment', 'CommentController', ['only' => ['store', 'destroy', 'edit', 'update']]);

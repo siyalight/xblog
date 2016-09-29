@@ -8,7 +8,7 @@
         <div class="col-md-12">
             <div id="data" class="widget widget-default" data-id="{{ $page->id }}">
                 <div class="widget-header">
-                    <h3>修改页面</h3>
+                    <h6><i class="fa fa-pencil fa-fw"></i>修改页面</h6>
                 </div>
                 <div class="widget-body edit-form">
                     <form role="form" class="form-horizontal" action="{{ route('page.update',$page->id) }}" method="post">

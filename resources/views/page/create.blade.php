@@ -8,7 +8,7 @@
         <div class="col-md-12">
             <div class="widget widget-default">
                 <div class="widget-header">
-                    <h3>新建页面</h3>
+                    <h6><i class="fa fa-file fa-fw"></i>创建页面</h6>
                 </div>
                 <div class="widget-body edit-form">
                     <form role="form" class="form-horizontal" action="{{ route('page.store') }}" method="post">

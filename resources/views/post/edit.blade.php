@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div id="data" class="widget widget-default" data-id="{{ $post->id }}">
                 <div class="widget-header">
-                    <h3>编辑文章</h3>
+                    <h6><i class="fa fa-pencil  fa-fw"></i>编辑文章</h6>
                 </div>
                 <div class="widget-body edit-form">
                     <form role="form" class="form-horizontal" action="{{ route('post.update',$post->id) }}" method="post">

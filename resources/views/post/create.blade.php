@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div class="widget widget-default">
                 <div class="widget-header">
-                    <h3><i class="fa fa-pencil  fa-fw"></i>写文章</h3>
+                    <h6><i class="fa fa-pencil  fa-fw"></i>写文章</h6>
                 </div>
                 <div class="widget-body edit-form">
                     <form role="form" class="form-horizontal" action="{{ route('post.store') }}" method="post">

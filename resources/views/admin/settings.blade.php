@@ -6,7 +6,9 @@
               method="post">
             <div class="widget widget-default">
                 <div class="widget-header">
-                    <h3><i class="fa fa-cog fa-fw"></i>设置</h3>
+                    <h6>
+                        <i class="fa fa-cog fa-fw"></i>设置
+                    </h6>
                 </div>
                 <div class="widget-body">
                     <div class="form-group">
