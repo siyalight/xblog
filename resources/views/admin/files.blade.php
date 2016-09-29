@@ -50,9 +50,6 @@
                             </div>
                         </div>
                     </form>
-
-
-
                     <form role="form" class="form-horizontal" action="{{ route('upload.file') }}"
                           datatype="image"
                           enctype="multipart/form-data" method="post">
@@ -74,34 +71,36 @@
                         </div>
                     </form>
 
+                    <div class="col-sm-10 col-sm-offset-1 mt-30">
+                        <table class="table table-hover table-bordered table-responsive">
+                            <tbody>
+                            @forelse($files as $file)
+                                <tr>
+                                    <td>{{ $file->type }}</td>
+                                    <td>{{ getUrlByFileName($file->key) }}</td>
+                                    <td>
+                                        <button id="clipboard-btn" class="btn btn-default"
+                                                type="button"
+                                                data-clipboard-text="{{ getUrlByFileName($file->key) }}"
+                                                data-toggle="tooltip"
+                                                data-placement="left"
+                                                title="Copied">
+                                            <i class="fa fa-copy fa-fw"></i>
+                                        </button>
+                                        <button class="btn btn-danger"
+                                                data-method="delete"
+                                                data-modal-target="{{ $file->key }}"
+                                                data-url="{{ route('delete.file').'?key='.$file->key."&type=".$file->type }}">
+                                            <i class="fa fa-trash-o fa-fw"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @empty
+                            @endforelse
+                            </tbody>
+                        </table>
+                    </div>
 
-                    <table class="table table-hover table-bordered table-responsive">
-                        <tbody>
-                        @forelse($files as $file)
-                            <tr>
-                                <td>{{ $file->type }}</td>
-                                <td>{{ getUrlByFileName($file->key) }}</td>
-                                <td>
-                                    <button id="clipboard-btn" class="btn btn-default"
-                                            type="button"
-                                            data-clipboard-text="{{ getUrlByFileName($file->key) }}"
-                                            data-toggle="tooltip"
-                                            data-placement="left"
-                                            title="Copied">
-                                        <i class="fa fa-copy fa-fw"></i>
-                                    </button>
-                                    <button class="btn btn-danger"
-                                            data-method="delete"
-                                            data-modal-target="{{ $file->key }}"
-                                            data-url="{{ route('delete.file').'?key='.$file->key."&type=".$file->type }}">
-                                        <i class="fa fa-trash-o fa-fw"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        @empty
-                        @endforelse
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>

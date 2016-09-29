@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group">
                         <label for="google_trace_id" class="col-sm-2 control-label">跟踪ID</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input type="text" name="google_trace_id" class="form-control" id="google_trace_id" placeholder="谷歌跟踪ID"
                                    value="{{ $google_trace_id or ''}}">
                         </div>
@@ -39,7 +39,7 @@
 
                     <div class="form-group">
                         <label for="author" class="col-sm-2 control-label">作者</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input type="text" name="author" class="form-control" id="author"
                                    value="{{ $author or ''}}">
                         </div>
@@ -47,7 +47,7 @@
 
                     <div class="form-group">
                         <label for="description" class="col-sm-2 control-label">描述</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input type="text" name="description" class="form-control" id="description"
                                    value="{{ $description or ''}}">
                         </div>
@@ -55,14 +55,14 @@
 
                     <div class="form-group">
                         <label for="avatar" class="col-sm-2 control-label">头像</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input type="text" name="avatar" class="form-control" id="avatar"
                                    value="{{ $avatar or ''}}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Js</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input class="form-control" type="text" name="site_js"
                                    value="{{ $site_js or ''}}">
                         </div>
@@ -70,7 +70,7 @@
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Css</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input class="form-control" type="text" name="site_css"
                                    value="{{ $site_css or ''}}">
                         </div>
@@ -78,7 +78,7 @@
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">标题</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input class="form-control" type="text" name="site_title"
                                    value="{{ $site_title or ''}}">
                         </div>
@@ -86,7 +86,7 @@
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">关键字</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input placeholder="网站关键字" class="form-control" type="text" name="site_keywords"
                                    value="{{ $site_keywords or ''}}">
                         </div>
@@ -94,28 +94,28 @@
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">网站描述</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input class="form-control" type="text" name="site_description"
                                    value="{{ $site_description or '' }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">每页数量</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input class="form-control" type="number" name="page_size"
                                    value="{{ $page_size or 7 }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">简介图片</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input class="form-control" type="text" name="profile_image"
                                    value="{{ $profile_image or ''}}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">背景图片</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input class="form-control" type="text" name="background_image"
                                    value="{{ $background_image or ''}}">
                         </div>
@@ -123,7 +123,7 @@
 
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <div class="col-sm-10 col-sm-offset-2">
+                        <div class="col-sm-8 col-sm-offset-2">
                             <button type="submit" class="btn bg-primary">
                                 保存
                             </button>
