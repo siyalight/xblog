@@ -20,7 +20,6 @@
             </a>
         </div>
 
-
         <div class="col-md-3 col-sm-4 col-xs-6">
             <a href="{{ route('admin.pages') }}">
                 <div class="info-box">

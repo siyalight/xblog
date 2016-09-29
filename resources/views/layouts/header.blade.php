@@ -25,7 +25,6 @@
             </div>
             <div class="collapse navbar-collapse fix-top" id="blog-navbar-collapse">
                 <ul class="nav navbar-nav">
-                    {{--<li><a class="menu-item" href="{{ route('achieve') }}">归档</a></li>--}}
                     <li><a class="menu-item" href="{{ route('projects') }}">项目</a></li>
                     <li><a class="menu-item" href="{{ route('page.about') }}">关于</a></li>
                 </ul>
@@ -68,9 +67,6 @@
         </nav>
     </div>
     <div class="container-fluid">
-        {{--<a style="text-decoration: none" class="branding" href="{{ route('post.index') }}">
-            <h2>{{ $author or ''}}</h2>
-        </a>--}}
         <div class="description">{{ $description or 'description' }}</div>
     </div>
 </header>
