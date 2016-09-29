@@ -6,7 +6,6 @@ use App\Http\Repositories\MapRepository;
 use App\Http\Repositories\PostRepository;
 use App\Post;
 use Illuminate\Http\Request;
-use Lufficc\FileUploadManager;
 
 class HomeController extends Controller
 {
