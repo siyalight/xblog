@@ -5,28 +5,31 @@
         .timeline-item {
             position: relative;
             margin-bottom: 15px;
-            padding: 10px;
+            padding: 5px;
+            list-style: none;
             border-bottom: 1px dashed #ccc;
-            border-left: 2px solid #ccc;
         }
+
         .timeline-item-title {
             position: relative;
-            margin-left: 60px;
+            font-size: 1.35em;
             margin-bottom: 15px;
-            padding: 10px;
         }
     </style>
     <div class="container">
-        <div class="timeline">
-            @foreach($posts as $post)
-                <div class="timeline-item">
-                    <i class="" style="width: 48px;height: 48px;background-color: #2b542c;border-radius: 50%">
-                    </i>
-                    <div class="timeline-item-title">
-                        <a href="{{ route('post.show',$post->slug) }}">{{ $post->title }}</a>
-                    </div>
-                </div>
-            @endforeach
+        <div class="widget widget-default">
+            <div class="widget-body">
+                <ul class="timeline">
+                    @foreach($posts as $post)
+                        <li class="timeline-item">
+                            <div class="timeline-item-title">
+                                <a href="{{ route('post.show',$post->slug) }}">{{ $post->title }}</a>
+                            </div>
+                        </li>
+                    @endforeach
+                    {{ $posts->links() }}
+                </ul>
+            </div>
         </div>
     </div>
 @endsection
