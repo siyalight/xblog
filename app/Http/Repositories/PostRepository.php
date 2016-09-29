@@ -86,6 +86,19 @@ class PostRepository extends Repository
         return $post;
     }
 
+    public function achieve($page = 20)
+    {
+        $posts = $this->remember('post.achieve.page.' . $page . '' . request()->get('page', 1), function () use ($page) {
+            return Post::select([
+                'id',
+                'title',
+                'slug',
+                'created_at',
+            ])->orderBy('created_at', 'desc')->paginate($page);
+        });
+        return $posts;
+    }
+
     public function getWithoutContent($post_id)
     {
         $post = $this->remember('post.one.wc.' . $post_id, function () use ($post_id) {

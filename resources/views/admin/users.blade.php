@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="widget widget-default">
                 <div class="widget-header">
-                    <h3><i class="fa fa-user fa-fw"></i>Users</h3>
+                    <h6><i class="fa fa-user fa-fw"></i>用户</h6>
                 </div>
                 <div class="widget-body">
                     <table class="table table-hover table-bordered table-responsive">

@@ -2,35 +2,31 @@
 @section('title','Admin')
 @section('content')
     <div class="row">
-        <div class="col-md-12">
-            <div class="widget widget-default">
-                <div class="widget-header">
-                    <h3><i class="fa fa-file-image-o fa-fw"></i>图片({{ $image_count }})</h3>
-                </div>
-                <div class="widget-body">
-                    <div class="col-md-12">
-                        <form role="form" class="form-horizontal" action="{{ route('upload.image') }}"
-                              datatype="image"
-                              required=""
-                              enctype="multipart/form-data" method="post">
-                            {{ csrf_field() }}
-                            <div class="row">
-                                <div class="form-group col-md-10">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-file-image-o  fa-fw"></i></span>
-                                        <input class="form-control" accept="image/*" type="file" name="image">
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <button type="submit" class="btn btn-primary" style="margin-left: 5px">
-                                        上传
-                                    </button>
-                                </div>
-                            </div>
+        <div class="widget widget-default">
+            <div class="widget-header">
+                <h6><i class="fa fa-file-image-o fa-fw"></i>图片({{ $image_count }})</h6>
+            </div>
+            <div class="widget-body">
+                <form role="form" class="form-horizontal" action="{{ route('upload.image') }}"
+                      datatype="image"
+                      required=""
+                      enctype="multipart/form-data" method="post">
+                    {{ csrf_field() }}
 
-                        </form>
+                    <div class="form-group">
+                        <label for="image" class="col-xs-2 col-xs-offset-1 control-label">
+                            <i class="fa fa-file-image-o fa-lg fa-fw"></i>
+                        </label>
+                        <div class="col-xs-6">
+                            <input id="image" class="form-control" accept="image/*" type="file" name="image">
+                        </div>
+                        <div class="col-xs-2">
+                            <button type="submit" class="btn btn-primary">
+                                上传
+                            </button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="widget widget-default">
                 <div class="widget-header">
-                    <h3><i class="fa fa-file fa-fw"></i>页面</h3>
+                    <h6><i class="fa fa-file fa-fw"></i>页面</h6>
                 </div>
                 <div class="widget-body">
                     <a class="btn pull-right" href="{{ route('page.create') }}">
