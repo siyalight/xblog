@@ -22,8 +22,6 @@ Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
 Route::get('/about', ['uses' => 'PageController@about', 'as' => 'page.about']);
 Route::get('/projects', ['uses' => 'HomeController@projects', 'as' => 'projects']);
 Route::get('/search', ['uses' => 'HomeController@search', 'as' => 'search']);
-Route::get('/achieve', ['uses' => 'HomeController@achieve', 'as' => 'achieve']);
-
 
 
 

@@ -43,9 +43,4 @@ class HomeController extends Controller
         return view('projects');
     }
 
-    public function achieve()
-    {
-        $posts = $this->postRepository->achieve();
-        return view('achieve', compact('posts'));
-    }
 }
