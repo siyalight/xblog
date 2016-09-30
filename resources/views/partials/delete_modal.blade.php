@@ -8,7 +8,7 @@
                 <h3 class="modal-title">删除</h3>
             </div>
             <div class="modal-body">
-                <h4>确定删除<label class="required" id="delete-modal-title"></label>吗?</h4>
+                <p>确定删除<label class="required" id="delete-modal-title"></label>吗?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>

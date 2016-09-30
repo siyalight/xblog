@@ -34,7 +34,7 @@
         @forelse($images as $image)
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="widget widget-default">
-                    <img src="{{ getUrlByFileName($image->key) }}" style="width: 100% ;height: 200px">
+                    <img src="{{ getImageViewUrl($image->key,null,200) }}" style="width: 100% ;height: 200px;">
                     <div class="widget-footer">
                         <div class="widget-meta">
                             <button id="clipboard-btn" class="btn btn-default"
