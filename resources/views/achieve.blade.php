@@ -8,7 +8,7 @@
                     <div class="cd-timeline-img cd-picture">
                     </div>
                     <div class="cd-timeline-content">
-                        <a href="{{ route('post.show',$post->slug) }}" target="_blank">
+                        <a href="{{ route('post.show',$post->slug) }}">
                             <div class="title">{{ $post->title }}</div>
                         </a>
                         <span class="cd-date">{{ $post->created_at->format('Y-m-d') }}</span>
