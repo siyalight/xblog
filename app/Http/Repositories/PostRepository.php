@@ -86,15 +86,15 @@ class PostRepository extends Repository
         return $post;
     }
 
-    public function achieve($page = 20)
+    public function achieve()
     {
-        $posts = $this->remember('post.achieve.page.' . $page . '' . request()->get('page', 1), function () use ($page) {
+        $posts = $this->remember('post.achieve', function () {
             return Post::select([
                 'id',
                 'title',
                 'slug',
                 'created_at',
-            ])->orderBy('created_at', 'desc')->paginate($page);
+            ])->orderBy('created_at', 'desc')->get();
         });
         return $posts;
     }
