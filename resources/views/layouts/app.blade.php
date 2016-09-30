@@ -32,8 +32,10 @@
 <body id="lufficc-pjax-container">
 @include('layouts.header')
 <div id="content-wrap">
-    @include('partials.errors')
-    @include('partials.success')
+    <div class="container">
+        @include('partials.errors')
+        @include('partials.success')
+    </div>
     @yield('content')
 </div>
 @include('layouts.footer')
