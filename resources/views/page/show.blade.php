@@ -2,6 +2,7 @@
 @section('title',$page->display_name)
 @section('description',$page->display_name)
 @section('content')
+    <style>@media (max-width: 768px) {.col-sm-12 {padding-left: 0;padding-right: 0;}}</style>
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1 col-sm-12">

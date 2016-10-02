@@ -21,14 +21,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
+    $html_content = join("\n\n", $faker->paragraphs(mt_rand(7, 20)));
     return [
         'title' => $faker->sentence(mt_rand(5, 10)),
-        'content' => join("\n\n", $faker->paragraphs(mt_rand(7, 20))),
-        'html_content' => 'html_content',
+        'content' => $html_content,
+        'html_content' => $html_content,
         'slug' => $faker->slug(),
         'published_at' => $faker->dateTime,
         'description' => $faker->sentence(mt_rand(5, 15)),
-        'status'=> 1,
+        'status' => 1,
         /*'category_id' => function () {
             return factory(App\Category::class)->create()->id;
         },*/
