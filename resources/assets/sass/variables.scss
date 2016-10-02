@@ -9,7 +9,7 @@ $font-size-h6: 1.2em !default;
 
 
 $colorPrimary: #52768e;
-$colorPrimaryDark: #546E7A;
+$colorPrimaryDark:  darken($colorPrimary,10%);
 $colorPrimaryDarkTransparent: rgba($colorPrimary, 0.25);
 $colorAccent: #FF6E40;
 $widgetHeaderBgColor: #F5F8FA;

@@ -12,7 +12,7 @@
     <meta property="og:title" content="{{ $site_title or '' }}">
     <meta property="og:site_name" content="{{ $site_title or '' }}">
     <meta property="og:description" content="{{ $site_description or '' }}">
-    <meta name="theme-color" content="#607D8B">
+    <meta name="theme-color" content="#52768e">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="https://static.lufficc.com/favicon.ico"/>
