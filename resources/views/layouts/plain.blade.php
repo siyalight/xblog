@@ -13,48 +13,9 @@
     <meta property="og:site_name" content="{{ $site_title or '' }}">
     <meta property="og:description" content="{{ $site_description or '' }}">
     <meta name="theme-color" content="#607D8B">
+    <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ elixir('css/home.css') }}" rel="stylesheet">
     @include('widget.google_analytics')
-    <style>
-        html, body {
-            height: 100%;
-            background: #F5F8FA;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            color: #607D8B;
-            display: table;
-            font-weight: 300;
-            font-family: 'Lato', sans-serif;
-        }
-
-        .container {
-            text-align: center;
-            display: table-cell;
-            vertical-align: middle;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        .content {
-            text-align: center;
-            display: inline-block;
-        }
-
-        .title {
-            font-size: 36px;
-            padding: 0 10px;
-            margin-top: -100px;
-        }
-
-        .urls {
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
 <div class="container">
