@@ -18,20 +18,11 @@
                            {{ $post->category->name }}
                            </a>
                            </span>
-
-            {{--<span class="post-comments-count">
+            <span class="post-comments-count">
                            &nbsp;|&nbsp;
                            <i class="fa fa-comment-o" aria-hidden="true"></i>
-                           <span>7条评论</span>
+                           <span>{{ $post->comments_count }}</span>
                            </span>
-            <span>
-                           &nbsp;|&nbsp;
-                           <span class="post-meta-item-icon">
-                           <i class="fa fa-eye"></i>
-                           </span>
-                           <span class="post-meta-item-text">热度</span>
-                           <span class="leancloud-visitors-count">872</span>
-                           </span>--}}
         </div>
     </div>
     <!-- post content -->

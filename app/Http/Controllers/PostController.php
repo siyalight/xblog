@@ -94,7 +94,8 @@ class PostController extends Controller
         $post = Post::withoutGlobalScopes()->where('slug', $slug)->with('tags')->first();
         if (!$post)
             abort(404);
-        return view('post.show', compact('post'));
+        $preview = true;
+        return view('post.show', compact('post', 'preview'));
     }
 
     public function publish($id)
@@ -160,7 +161,7 @@ class PostController extends Controller
     {
 
         $post = Post::withoutGlobalScopes()->findOrFail($id);
-        $redirect = '/admin/posts';
+        $redirect = route('admin.posts');
         if (request()->has('redirect'))
             $redirect = request()->input('redirect');
 

@@ -29,7 +29,7 @@
     </script>
     @include('widget.google_analytics')
 </head>
-<body id="lufficc-pjax-container">
+<body id="body">
 @include('layouts.header')
 <div id="content-wrap">
     <div class="container">
