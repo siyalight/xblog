@@ -8,14 +8,14 @@
                 <img class="img-circle" src="{{ $avatar or '' }}" alt="{{ $author or 'author' }}">
             </a>
         </h2>
-        <h3 title="{{ $site_description or 'description' }}" aria-hidden="true" style="margin: 0">
+        <h3 title="{{ $description or 'description' }}" aria-hidden="true" style="margin: 0">
             {{ $description or 'description' }}
         </h3>
         <p class="links">
             <font aria-hidden="true">»</font>
             <a href="{{ route('post.index') }}" aria-label="点击查看博客文章列表">博客</a><font aria-hidden="true">/</font>
             <a href="{{ route('projects') }}" aria-label="点击查看项目列表">项目</a><font aria-hidden="true">/</font>
-            <a href="{{ route('page.about') }}" aria-label="查看聪聪的个人信息">关于</a>
+            <a href="{{ route('page.about') }}" aria-label="查看{{ $author or 'author' }}的关于">关于</a>
         </p>
         <p class="links">
             <font aria-hidden="true">»</font>

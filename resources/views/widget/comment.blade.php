@@ -1,6 +1,6 @@
 <div class="widget widget-default">
     <div class="widget-header">
-        <h6 id="comments_count">评论</h6>
+        <h6 id="comments_count"><i class="fa fa-comments fa-fw"></i>评论</h6>
     </div>
     <div class="widget-body">
         <div id="comments-container"

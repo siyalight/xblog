@@ -73,7 +73,7 @@ $icon-top: 24px;
   position: absolute;
   top: $icon-top;
   background-color: $colorPrimary;
-  left: 0;
+  left: 2px;
   width: $icon-width;
   height: $icon-width;
   border-radius: 50%;
@@ -206,5 +206,28 @@ $icon-top: 24px;
     -webkit-animation: cd-bounce-2-inverse 0.6s;
     -moz-animation: cd-bounce-2-inverse 0.6s;
     animation: cd-bounce-2-inverse 0.6s;
+  }
+}
+
+.posts-count{
+  font-size: 1.6em;
+  margin: 5px auto;
+  text-align: center;
+}
+.dot{
+  background-color: $colorPrimary;
+  width: $icon-width * 2;
+  height: $icon-width * 2;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 0 2px white, inset 0 1px 0 rgba(0, 0, 0, 0.08), 0 2px 0 2px rgba(0, 0, 0, 0.05);
+}
+
+@media only screen and (max-width: 1170px) {
+  .posts-count{
+    text-align: left;
+  }
+  .dot{
+    margin-left: -3px;
   }
 }

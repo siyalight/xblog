@@ -45,7 +45,8 @@ class HomeController extends Controller
     public function achieve()
     {
         $posts = $this->postRepository->achieve();
-        return view('achieve', compact('posts'));
+        $posts_count = Post::count();
+        return view('achieve', compact('posts','posts_count'));
     }
 
 }
