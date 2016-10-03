@@ -77,16 +77,14 @@ a:active, a:focus, a img {
   line-height: 1.1em;
   text-shadow: $shadowColor 1px 1px 2px;
 
-  transition: all 0.25s ease-in-out;
-  -webkit-transition: all 0.25s ease-in-out;
+  @extend .transition;
 }
 
 .navbar-nav > li > a:hover {
   color: $colorAccent;
   border: $colorAccent solid 1px !important;
   background: $colorPrimaryDark;
-  transition: all 0.25s ease-in-out;
-  -webkit-transition: all 0.25s ease-in-out;
+  @extend .transition;
 }
 
 .navbar-nav > li > a:active {
@@ -100,8 +98,7 @@ a:active, a:focus, a img {
   color: white;
   text-shadow: 5px 5px 5px $colorPrimaryDark;
 
-  transition: all 0.25s ease-in-out;
-  -webkit-transition: all 0.25s ease-in-out;
+  @extend .transition;
 }
 
 .navbar-header a :hover {

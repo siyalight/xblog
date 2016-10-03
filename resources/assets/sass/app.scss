@@ -93,6 +93,7 @@ blockquote {
 }
 
 .btn-more {
+  @extend .transition;
   border: 1px solid $colorPrimary;
   background: $colorPrimary;
   color: white;
@@ -100,8 +101,6 @@ blockquote {
 
 .btn-more:hover{
   color: $colorAccent;
-  transition: all 0.15s ease-in-out;
-  -webkit-transition: all 0.15s ease-in-out;
 }
 
 /*footer*/
