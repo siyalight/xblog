@@ -12,9 +12,15 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'avatar'    => env('AVATAR'),
+    'avatar' => env('AVATAR'),
 
-    'name' => env('SITE_NAME','My blog'),
+    'name'   => env('SITE_NAME','My blog'),
+
+    /*
+     | It is an override email of admin user.If admin user's
+     | email is not often used,you can fill it with your daily used email.
+     */
+    'email'  => env('EMAIL'),
 
     /*
     |--------------------------------------------------------------------------

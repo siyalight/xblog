@@ -3,20 +3,23 @@
 namespace App\Notifications;
 
 use App\Comment;
+use App\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
-class ReceivedComment extends Notification implements ShouldQueue
+class MentionedInComment extends Notification implements ShouldQueue
 {
     use Queueable;
 
     protected $comment;
+    protected $username;
 
-    public function __construct(Comment $comment)
+    public function __construct(Comment $comment, $username)
     {
         $this->comment = $comment;
+        $this->username = $username;
     }
 
     /**
@@ -27,8 +30,7 @@ class ReceivedComment extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return [/*'database', */
-            'mail'];
+        return ['mail'];
     }
 
     /**
@@ -40,15 +42,12 @@ class ReceivedComment extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         $data = $this->comment->getCommentableData();
-        $email = config('app.email');
-        if (!$email)
-            $email = $notifiable->email;
         return (new MailMessage)
             ->success()
             ->greeting('亲爱的' . $notifiable->name)
-            ->to($email)
-            ->subject('您收到了一条新的评论')
-            ->line('您的' . $data['type'] . ':' . $data['title'] . ', 收到了一条来自' . $this->comment->username . '的评论：')
+            ->to($notifiable->email)
+            ->subject('有一条评论提到了您')
+            ->line($this->username . '在' . $data['type'] . ':' . $data['title'] . ' 的评论中提到了您')
             ->line($this->comment->content)
             ->action('查看', $data['url']);
     }

@@ -9,7 +9,10 @@
 namespace Lufficc;
 
 
+use App\Comment;
+use App\Notifications\MentionedInComment;
 use App\User;
+use Laravel\Socialite\Two\InvalidStateException;
 
 class Mention
 {
@@ -18,6 +21,11 @@ class Mention
     public $usernames;
     public $body_original;
 
+    public $comment;
+
+    /**
+     * @return array
+     */
     public function getMentionedUsername()
     {
         preg_match_all("/(\S*)\@([^\r\n\s]*)/i", $this->body_original, $atlist_tmp);
@@ -39,11 +47,20 @@ class Mention
             $search = '@' . $user->name;
             $place = '[' . $search . '](' . route('user.show', $user->name) . ')';
             $this->body_parsed = str_replace($search, $place, $this->body_parsed);
+            /*$this->notify($user);*/
         }
     }
 
-    public function parse($content)
+    public function notify($user)
     {
+        if ($this->comment) {
+            $user->notify(new MentionedInComment($this->comment, $this->comment->username));
+        }
+    }
+
+    public function parse(Comment $comment, $content)
+    {
+        $this->comment = $comment;
         $this->body_original = $content;
 
         $this->usernames = $this->getMentionedUsername();

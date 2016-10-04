@@ -68,9 +68,6 @@ class CommentRepository extends Repository
         $commentable_id = $request->get('commentable_id');
         $commentable = app($request->get('commentable_type'))->where('id', $commentable_id)->firstOrFail();
 
-        $comment->content = $this->mention->parse($request->get('content'));
-        $comment->html_content = $this->markdownParser->parse($comment->content);
-
         if (auth()->check()) {
             $user = auth()->user();
             $comment->user_id = $user->id;
@@ -81,12 +78,16 @@ class CommentRepository extends Repository
             $comment->email = $request->get('email');
         }
 
+        $comment->content = $this->mention->parse($comment, $request->get('content'));
+        $comment->html_content = $this->markdownParser->parse($comment->content);
+
+
         return $commentable->comments()->save($comment);
     }
 
     public function update($content, $comment)
     {
-        $comment->content = $this->mention->parse($content);
+        $comment->content = $this->mention->parse(null, $content);
         $comment->html_content = $this->markdownParser->parse($comment->content);
         $result = $comment->save();
         if ($result)
