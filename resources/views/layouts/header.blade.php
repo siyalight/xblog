@@ -33,9 +33,10 @@
                     @if(Auth::check())
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                @if(auth()->user()->github_id)
-                                    <i class="fa fa-github fa-fw"></i>
-                                @endif
+                                <?php /*$unreadNotificationsCount = auth()->user()->unreadNotifications()->count();*/?>
+                                {{--@if($unreadNotificationsCount)
+                                    <span class="badge required">{{ $unreadNotificationsCount }}</span>
+                                @endif--}}
                                 {{ auth()->user()->name }}
                                 <span class="caret"></span>
                             </a>

@@ -25,8 +25,33 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     public function commentable()
     {
         return $this->morphTo();
+    }
+
+
+    protected $commentableData = [];
+    public function getCommentableData()
+    {
+        if(empty($this->commentableData)){
+            switch ($this->commentable_type) {
+                case 'App\Post':
+                    $post = app('App\Post')->where('id', $this->commentable_id)->select('title', 'slug')->firstOrFail();
+                    $this->commentableData['type'] = '文章';
+                    $this->commentableData['title'] = $post->title;
+                    $this->commentableData['url'] = route('post.show', $post->slug);
+                    break;
+                case 'App\Page':
+                    $page = app('App\Page')->where('id', $this->commentable_id)->select('name', 'display_name')->firstOrFail();
+                    $this->commentableData['type'] = '页面';
+                    $this->commentableData['title'] = $page->display_name;
+                    $this->commentableData['url'] = route('page.' . $page->name);
+                    break;
+            }
+        }
+
+        return $this->commentableData;
     }
 }

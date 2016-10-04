@@ -13,13 +13,16 @@
                         <tr>
                             <th>用户</th>
                             <th>Email</th>
-                            <th>类型</th>
+                            <th>地址</th>
                             <th>内容</th>
                             <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($comments as $comment)
+
+                            <?php $commentableData = $comment->getCommentableData();?>
+
                             <tr class="{{ $comment->trashed() ? 'danger':'' }}">
                                 <td>
                                     @if($comment->user_id)
@@ -29,7 +32,15 @@
                                     @endif
                                 </td>
                                 <td><a href="mailto:{{ $comment->email }}">{{ $comment->email }}</a></td>
-                                <td>{{ $comment->commentable_type }}</td>
+                                <td>
+                                    @if($comment->trashed())
+                                        {{ $commentableData['title'] }}
+                                    @else
+                                        <a target="_blank"
+                                           href="{{ $commentableData['url'] }}">{{$commentableData['title'] }}
+                                        </a>
+                                    @endif
+                                </td>
                                 <td data-toggle="tooltip" data-placement="top"
                                     title="{{ $comment->content }}">{!! $comment->html_content !!}</td>
                                 <td>
@@ -44,7 +55,8 @@
                                                 title="永久删除">
                                             <i class="fa fa-trash-o fa-fw"></i>
                                         </button>
-                                        <form style="display: inline-block" method="post" action="{{ route('comment.restore',$comment->id) }}">
+                                        <form style="display: inline-block" method="post"
+                                              action="{{ route('comment.restore',$comment->id) }}">
                                             {{ csrf_field() }}
                                             <button type="submit" class="btn btn-primary"
                                                     data-toggle="tooltip" data-placement="top" title="恢复">

@@ -15,6 +15,13 @@ if (!function_exists('isAdmin')) {
     }
 }
 
+if (!function_exists('getAdminUser')) {
+    function getAdminUser()
+    {
+        return User::findOrFail(1);
+    }
+}
+
 if (!function_exists('getMilliseconds')) {
     function getMilliseconds()
     {
@@ -32,10 +39,29 @@ if (!function_exists('array_safe_get')) {
     }
 }
 
+if (!function_exists('getUrlEndWithSlash')) {
+    function getUrlEndWithSlash($url)
+    {
+        if (!ends_with($url, '/')) {
+            return $url . '/';
+        }
+        return $url;
+    }
+}
+
 if (!function_exists('getUrlByFileName')) {
     function getUrlByFileName($fileName)
     {
-        return config('filesystems.disks.qiniu.domains.https') . $fileName;
+        /**
+         * https domain first
+         */
+        $qiniu_domain = config('filesystems.disks.qiniu.domains.https');
+        if ($qiniu_domain) {
+            $qiniu_domain = getUrlEndWithSlash($qiniu_domain);
+        } else {
+            $qiniu_domain = getUrlEndWithSlash($qiniu_domain = config('filesystems.disks.qiniu.domains.default'));
+        }
+        return $qiniu_domain . $fileName;
     }
 }
 
