@@ -45,6 +45,11 @@
                                     title="Copied">
                                 <i class="fa fa-copy fa-fw"></i>
                             </button>
+                            <a  class="btn btn-primary"
+                                    href="{{ getUrlByFileName($image->key) }}"
+                                    target="_blank">
+                                <i class="fa fa-eye fa-fw"></i>
+                            </a>
                             <button class="btn btn-danger"
                                     data-method="delete"
                                     data-modal-target="{{ $image->key }}"
@@ -54,7 +59,7 @@
                             </button>
                             {{ formatBytes($image->size) }}
                             <i class="fa fa-clock-o fa-fw"></i>
-                            {{ $image->created_at->format('Y-m-d H:m') }}
+                            {{ $image->created_at->format('Y-m-d') }}
                         </div>
                     </div>
                 </div>
