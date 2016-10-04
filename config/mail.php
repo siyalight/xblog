@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => '13402809589@163.com',
-        'name' => 'lufficc',
+        'address' => env('MAIL_USERNAME'),
+        'name' => env('SITE_NAME'),
     ],
 
     /*
