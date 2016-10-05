@@ -14,7 +14,6 @@
 @import "form";
 @import "timeline";
 
-
 html, body {
   color: #505050;
   font-size: 14px;
@@ -24,13 +23,29 @@ html, body {
   font-family: NotoSansHans-Regular, AvenirNext-Regular, arial, Hiragino Sans GB, "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
 }
 
+h1 {
+  font-size: $font-size-h1;
+}
 
-h1 { font-size: $font-size-h1; }
-h2 { font-size: $font-size-h2; }
-h3 { font-size: $font-size-h3; }
-h4 { font-size: $font-size-h4; }
-h5 { font-size: $font-size-h5; }
-h6 { font-size: $font-size-h6; }
+h2 {
+  font-size: $font-size-h2;
+}
+
+h3 {
+  font-size: $font-size-h3;
+}
+
+h4 {
+  font-size: $font-size-h4;
+}
+
+h5 {
+  font-size: $font-size-h5;
+}
+
+h6 {
+  font-size: $font-size-h6;
+}
 
 h1,
 h2 {
@@ -99,7 +114,7 @@ blockquote {
   color: white;
 }
 
-.btn-more:hover{
+.btn-more:hover {
   color: $colorAccent;
 }
 
@@ -137,7 +152,7 @@ pre, .highlight {
   word-wrap: normal;
 }
 
-pre[class~=CodeMirror-line ]{
+pre[class~=CodeMirror-line ] {
   background-color: inherit !important;
 }
 
@@ -155,6 +170,14 @@ pre code {
   white-space: pre;
 }
 
+/* creative-commons */
 
-/* table */
+.creative-commons {
+  margin-top: 30px;
+  color: #868e96;
+  font-size: 1.05em;
+  a {
+    color: #adb5bd
+  }
+}
 
