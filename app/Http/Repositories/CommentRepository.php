@@ -78,7 +78,7 @@ class CommentRepository extends Repository
             $comment->email = $request->get('email');
         }
 
-        $comment->content = $this->mention->parse($comment, $request->get('content'));
+        $comment->content = $this->mention->parse($request->get('content'));
         $comment->html_content = $this->markdownParser->parse($comment->content);
 
 
@@ -87,7 +87,7 @@ class CommentRepository extends Repository
 
     public function update($content, $comment)
     {
-        $comment->content = $this->mention->parse(null, $content);
+        $comment->content = $this->mention->parse($content);
         $comment->html_content = $this->markdownParser->parse($comment->content);
         $result = $comment->save();
         if ($result)

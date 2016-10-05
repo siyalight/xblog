@@ -21,8 +21,6 @@ class Mention
     public $usernames;
     public $body_original;
 
-    public $comment;
-
     /**
      * @return array
      */
@@ -53,14 +51,11 @@ class Mention
 
     public function notify($user)
     {
-        if ($this->comment) {
-            $user->notify(new MentionedInComment($this->comment, $this->comment->username));
-        }
+
     }
 
-    public function parse(Comment $comment, $content)
+    public function parse($content)
     {
-        $this->comment = $comment;
         $this->body_original = $content;
 
         $this->usernames = $this->getMentionedUsername();
