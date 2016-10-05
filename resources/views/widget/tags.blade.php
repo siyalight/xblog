@@ -1,5 +1,5 @@
 <div class="widget widget-default">
-    <div class="widget-header"><h4><i class="fa fa-tags fa-fw"></i>标签</h4></div>
+    <div class="widget-header"><h6><i class="fa fa-tags fa-fw"></i>标签</h6></div>
     <ul class="widget-body">
         <div class="tag-list">
             @forelse($tags as $tag)

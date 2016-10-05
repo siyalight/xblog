@@ -9,13 +9,13 @@
     </div>
     <div class="form-group">
         <label>个人网站：</label>
-        <span>{{ $user->website }}</span>
+        <a href="{{ $user->website }}">{{ $user->website }}</a>
     </div>
     @if($user->meta)
         @foreach($user->meta as $key=>$value)
             <div class="form-group">
                 <label>{{ ucfirst($key) }}：</label>
-                <span>{{ $value }}</span>
+                <a href="{{ $value }}">{{ $value }}</a>
             </div>
         @endforeach
     @endif

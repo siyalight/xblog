@@ -54,6 +54,22 @@ class PageController extends Controller
         return back()->withInput()->with('error', '页面' . $request['name'] . '创建失败');
     }
 
+    public function pageShowing($page)
+    {
+        if (auth()->check()) {
+            $user = auth()->user();
+            if (isAdmin($user)) {
+                $unreadNotifications = $user->unreadNotifications;
+                foreach ($unreadNotifications as $notifications) {
+                    $comment = $notifications->data;
+                    if ($comment['commentable_type'] == 'App\Page' && $comment['commentable_id'] == $page->id) {
+                        $notifications->markAsRead();
+                    }
+                }
+            }
+        }
+    }
+
     /**
      * Display the specified resource.
      *
@@ -62,6 +78,7 @@ class PageController extends Controller
     public function about()
     {
         $page = $this->pageRepository->get('about');
+        $this->pageShowing($page);
         return view('page.show', compact('page'));
     }
 

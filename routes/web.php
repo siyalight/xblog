@@ -24,18 +24,26 @@ Route::get('/projects', ['uses' => 'HomeController@projects', 'as' => 'projects'
 Route::get('/search', ['uses' => 'HomeController@search', 'as' => 'search']);
 Route::get('/achieve', ['uses' => 'HomeController@achieve', 'as' => 'achieve']);
 
-
+// Post
 Route::get('/blog', ['uses' => 'PostController@index', 'as' => 'post.index']);
 Route::get('/blog/{slug}', ['uses' => 'PostController@show', 'as' => 'post.show']);
+
+// Category
 Route::get('/category/{name}', ['uses' => 'CategoryController@show', 'as' => 'category.show']);
 Route::get('/category', ['uses' => 'CategoryController@index', 'as' => 'category.index']);
+
+// Tag
 Route::get('/tag/{name}', ['uses' => 'TagController@show', 'as' => 'tag.show']);
 Route::get('/tag', ['uses' => 'TagController@index', 'as' => 'tag.index']);
+
+// User
 Route::get('/user/{name}', ['uses' => 'UserController@show', 'as' => 'user.show']);
+Route::get('/notifications', ['uses' => 'UserController@notifications', 'as' => 'user.notifications']);
 Route::patch('/user/upload/avatar', ['uses' => 'UserController@uploadAvatar', 'as' => 'user.upload.avatar']);
 Route::patch('/user/upload/profile', ['uses' => 'UserController@uploadProfile', 'as' => 'user.upload.profile']);
 Route::patch('/user/upload/info', ['uses' => 'UserController@update', 'as' => 'user.update.info']);
 
+// Comment
 Route::get('/commentable/{commentable_id}/comments', ['uses' => 'CommentController@show', 'as' => 'comment.show']);
 Route::resource('comment', 'CommentController', ['only' => ['store', 'destroy', 'edit', 'update']]);
 

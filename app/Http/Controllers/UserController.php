@@ -33,6 +33,12 @@ class UserController extends Controller
         return view('user.show', compact('user'));
     }
 
+    public function notifications()
+    {
+        $notifications = auth()->user()->notifications;
+        return view('user.notifications',compact('notifications'));
+    }
+
     public function update(Request $request)
     {
         $user = auth()->user();
