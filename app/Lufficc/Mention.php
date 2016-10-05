@@ -8,11 +8,7 @@
 
 namespace Lufficc;
 
-
-use App\Comment;
-use App\Notifications\MentionedInComment;
 use App\User;
-use Laravel\Socialite\Two\InvalidStateException;
 
 class Mention
 {
@@ -45,13 +41,7 @@ class Mention
             $search = '@' . $user->name;
             $place = '[' . $search . '](' . route('user.show', $user->name) . ')';
             $this->body_parsed = str_replace($search, $place, $this->body_parsed);
-            /*$this->notify($user);*/
         }
-    }
-
-    public function notify($user)
-    {
-
     }
 
     public function parse($content)

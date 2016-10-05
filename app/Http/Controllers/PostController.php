@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
 use App\Http\Repositories\CategoryRepository;
 use App\Http\Repositories\CommentRepository;
 use App\Http\Repositories\MapRepository;
 use App\Http\Repositories\PostRepository;
 use App\Http\Repositories\TagRepository;
 use App\Http\Requests;
-use App\Notifications\MentionedInComment;
-use App\Notifications\ReceivedComment;
 use App\Notifications\UserRegistered;
 use App\Post;
 use Carbon\Carbon;
