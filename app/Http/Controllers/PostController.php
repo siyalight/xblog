@@ -84,11 +84,12 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = $this->postRepository->get($slug);
+        $user = auth()->user();
+        if (!isAdmin($user)) {
+            $post->increment('view_count');
+        }
         if (auth()->check()) {
-            $user = auth()->user();
-            if (!isAdmin($user)) {
-                $post->increment('view_count');
-            } else {
+            if (isAdmin($user)) {
                 $unreadNotifications = $user->unreadNotifications;
                 foreach ($unreadNotifications as $notifications) {
                     $comment = $notifications->data;
