@@ -10,7 +10,6 @@ use Lufficc\Cache\Cacheable;
 class SiteMapController extends Controller
 {
     use Cacheable;
-    public $time = 60 * 24 * 30;
     const key = 'sitemap.index';
     const tag = 'sitemap';
 
@@ -32,5 +31,10 @@ class SiteMapController extends Controller
     public function tag()
     {
         return SiteMapController::tag;
+    }
+
+    public function cacheTime()
+    {
+        return 60 * 24 * 30;
     }
 }
