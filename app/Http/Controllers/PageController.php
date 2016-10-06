@@ -58,13 +58,11 @@ class PageController extends Controller
     {
         if (auth()->check()) {
             $user = auth()->user();
-            if (isAdmin($user)) {
-                $unreadNotifications = $user->unreadNotifications;
-                foreach ($unreadNotifications as $notifications) {
-                    $comment = $notifications->data;
-                    if ($comment['commentable_type'] == 'App\Page' && $comment['commentable_id'] == $page->id) {
-                        $notifications->markAsRead();
-                    }
+            $unreadNotifications = $user->unreadNotifications;
+            foreach ($unreadNotifications as $notifications) {
+                $comment = $notifications->data;
+                if ($comment['commentable_type'] == 'App\Page' && $comment['commentable_id'] == $page->id) {
+                    $notifications->markAsRead();
                 }
             }
         }

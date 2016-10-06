@@ -79,6 +79,9 @@ class CommentController extends Controller
     public function restore($comment_id)
     {
         $comment = Comment::withTrashed()->findOrFail($comment_id);
+
+        $this->checkPolicy('restore', $comment);
+
         if ($comment->trashed()) {
             $comment->restore();
             $this->commentRepository->clearAllCache();

@@ -8,50 +8,37 @@
 
 namespace Lufficc;
 
-use App\User;
+use App\Comment;
+use App\Notifications\MentionedInComment;
 
 class Mention
 {
-    public $body_parsed;
-    public $users = [];
-    public $usernames;
-    public $body_original;
-
-    /**
-     * @return array
-     */
-    public function getMentionedUsername()
-    {
-        preg_match_all("/(\S*)\@([^\r\n\s]*)/i", $this->body_original, $atlist_tmp);
-        $usernames = [];
-        foreach ($atlist_tmp[2] as $k => $v) {
-            if ($atlist_tmp[1][$k] || strlen($v) > 25) {
-                continue;
-            }
-            $usernames[] = $v;
-        }
-        return array_unique($usernames);
-    }
+    public $content_original;
+    public $content_parsed;
 
     public function replace()
     {
-        $this->body_parsed = $this->body_original;
-
-        foreach ($this->users as $user) {
+        $this->content_parsed = $this->content_original;
+        foreach (getMentionedUsers($this->content_original) as $user) {
             $search = '@' . $user->name;
             $place = '[' . $search . '](' . route('user.show', $user->name) . ')';
-            $this->body_parsed = str_replace($search, $place, $this->body_parsed);
+            $this->content_parsed = str_replace($search, $place, $this->content_parsed);
         }
     }
 
     public function parse($content)
     {
-        $this->body_original = $content;
-
-        $this->usernames = $this->getMentionedUsername();
-        count($this->usernames) > 0 && $this->users = User::whereIn('name', $this->usernames)->get();
-
+        $this->content_original = $content;
         $this->replace();
-        return $this->body_parsed;
+        return $this->content_parsed;
+    }
+
+    public function mentionUsers(Comment $comment, $users, $raw_content)
+    {
+        foreach ($users as $user) {
+            if (!isAdmin($users)) {
+                $user->notify(new MentionedInComment($comment, $raw_content));
+            }
+        }
     }
 }

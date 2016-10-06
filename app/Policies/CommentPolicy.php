@@ -24,4 +24,9 @@ class CommentPolicy
     {
         return isAdmin($user) || $user->id == $comment->user_id;
     }
+
+    public function restore(User $user, Comment $comment)
+    {
+        return isAdmin($user);
+    }
 }

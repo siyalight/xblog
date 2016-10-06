@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Http\Repositories\CategoryRepository;
 use App\Http\Repositories\CommentRepository;
 use App\Http\Repositories\MapRepository;
 use App\Http\Repositories\PostRepository;
 use App\Http\Repositories\TagRepository;
 use App\Http\Requests;
+use App\Notifications\MentionedInComment;
 use App\Notifications\UserRegistered;
 use App\Post;
 use Carbon\Carbon;
 use Gate;
 use Illuminate\Http\Request;
+use Lufficc\Mention;
 use Purifier;
 
 class PostController extends Controller
@@ -86,13 +89,11 @@ class PostController extends Controller
             $post->increment('view_count');
         }
         if (auth()->check()) {
-            if (isAdmin($user)) {
-                $unreadNotifications = $user->unreadNotifications;
-                foreach ($unreadNotifications as $notifications) {
-                    $comment = $notifications->data;
-                    if ($comment['commentable_type'] == 'App\Post' && $comment['commentable_id'] == $post->id) {
-                        $notifications->markAsRead();
-                    }
+            $unreadNotifications = $user->unreadNotifications;
+            foreach ($unreadNotifications as $notifications) {
+                $comment = $notifications->data;
+                if ($comment['commentable_type'] == 'App\Post' && $comment['commentable_id'] == $post->id) {
+                    $notifications->markAsRead();
                 }
             }
         }

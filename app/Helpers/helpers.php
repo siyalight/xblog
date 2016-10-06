@@ -100,3 +100,18 @@ if (!function_exists('formatBytes')) {
     }
 }
 
+if (!function_exists('getMentionedUsers')) {
+    function getMentionedUsers($content)
+    {
+        preg_match_all("/(\S*)\@([^\r\n\s]*)/i", $content, $atlist_tmp);
+        $usernames = [];
+        foreach ($atlist_tmp[2] as $k => $v) {
+            if ($atlist_tmp[1][$k] || strlen($v) > 25) {
+                continue;
+            }
+            $usernames[] = $v;
+        }
+        $users = User:: whereIn('name', array_unique($usernames))->get();
+        return $users;
+    }
+}

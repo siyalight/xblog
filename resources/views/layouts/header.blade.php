@@ -33,11 +33,14 @@
                     @if(Auth::check())
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <?php $unreadNotificationsCount = auth()->user()->unreadNotifications()->count();?>
+                                <?php
+                                $user = auth()->user();
+                                $unreadNotificationsCount = $user->unreadNotifications()->count();
+                                ?>
                                 @if($unreadNotificationsCount)
                                     <span class="badge required">{{ $unreadNotificationsCount }}</span>
                                 @endif
-                                {{ auth()->user()->name }}
+                                {{ $user->name }}
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">

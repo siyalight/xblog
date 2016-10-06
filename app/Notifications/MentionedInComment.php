@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use App\Comment;
-use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -14,12 +13,12 @@ class MentionedInComment extends Notification implements ShouldQueue
     use Queueable;
 
     protected $comment;
-    protected $username;
+    protected $raw_content;
 
-    public function __construct(Comment $comment, $username)
+    public function __construct(Comment $comment, $raw_content)
     {
         $this->comment = $comment;
-        $this->username = $username;
+        $this->raw_content = $raw_content;
     }
 
     /**
@@ -30,7 +29,7 @@ class MentionedInComment extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database', 'mail'];
     }
 
     /**
@@ -47,8 +46,8 @@ class MentionedInComment extends Notification implements ShouldQueue
             ->greeting('亲爱的' . $notifiable->name)
             ->to($notifiable->email)
             ->subject('有一条评论提到了您')
-            ->line($this->username . '在' . $data['type'] . ':' . $data['title'] . ' 的评论中提到了您')
-            ->line($this->comment->content)
+            ->line($this->comment->username . '在' . $data['type'] . ':' . $data['title'] . ' 的评论中提到了您:')
+            ->line($this->raw_content)
             ->action('查看', $data['url']);
     }
 

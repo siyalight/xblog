@@ -78,11 +78,18 @@ class CommentRepository extends Repository
             $comment->email = $request->get('email');
         }
 
-        $comment->content = $this->mention->parse($request->get('content'));
+        $content = $request->get('content');
+
+        $comment->content = $this->mention->parse($content);
         $comment->html_content = $this->markdownParser->parse($comment->content);
+        $result = $commentable->comments()->save($comment);
 
+        /**
+         * mention user after comment saved
+         */
+        $this->mention->mentionUsers($comment, getMentionedUsers($content), $content);
 
-        return $commentable->comments()->save($comment);
+        return $result;
     }
 
     public function update($content, $comment)
