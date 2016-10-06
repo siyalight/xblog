@@ -52,6 +52,8 @@
 ```
 2. 添加搜索功能。 powered by [algolia](https://www.algolia.com/)
 
+3. 重新命名为 Xblog ,运行 `git remote set-url origin https://github.com/lufficc/Xblog.git`更新你的url 如果你已经从laravel-blog克隆了旧的版本.
+
 ### 安装
 
 ```

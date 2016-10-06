@@ -49,9 +49,9 @@ If you find bugs , glad you to issue.
     }
 
 ```
-
-
 2. add search powered by [algolia](https://www.algolia.com/)
+
+3. rename from laravel-blog to Xblog ,RUN `git remote set-url origin https://github.com/lufficc/Xblog.git` to refresh your url if you have clone from laravel-blog.
 
 ## Install
 
