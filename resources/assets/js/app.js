@@ -32,7 +32,7 @@
             initProjects();
             initDeleteTarget();
             highLightCode();
-            initUploadAvatar();
+            imageLiquid();
         },
     };
 
@@ -72,11 +72,6 @@
         }
     }
 
-    function initUploadAvatar() {
-        $('#upload-avatar').on('click', function () {
-
-        });
-    }
 
     function initComment() {
         var form = $('#comment-form');
@@ -198,6 +193,14 @@
          $(dus).html(el);
          }
          }*/
+    }
+    
+    function imageLiquid() {
+        $(".js-imgLiquid").imgLiquid({
+            fill: true,
+            horizontalAlign: "center",
+            verticalAlign: "top"
+        });
     }
 
     function initProjects() {
