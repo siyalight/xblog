@@ -13,6 +13,7 @@
 @import "widget";
 @import "form";
 @import "timeline";
+@import "comment";
 
 html, body {
   color: #505050;
@@ -178,6 +179,13 @@ pre code {
   font-size: 1.05em;
   a {
     color: #adb5bd
+  }
+}
+
+@media (max-width: 768px) {
+  .col-sm-12 {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 

@@ -3,15 +3,9 @@
 @section('keywords',$post->category->name)
 @section('title',$post->title)
 @section('content')
-    <style>@media (max-width: 768px) {
-            .col-sm-12 {
-                padding-left: 0;
-                padding-right: 0;
-            }
-        }</style>
     <div class="container">
         <div id="post-detail-wrap" class="row">
-            <div class="col-md-10 col-md-offset-1 col-sm-12">
+            <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-12-no-padding">
                 <div class="post-detail">
                     @can('update',$post)
                         <div class="btn-group pull-right" style="margin-top: -25px">
@@ -70,7 +64,7 @@
         </div>
         @if(!(isset($preview) && $preview))
             <div class="row mt-30">
-                <div id="comment-wrap" class="col-md-10 col-md-offset-1 col-sm-12">
+                <div id="comment-wrap" class="col-md-10 col-md-offset-1 col-sm-12 col-sm-12-no-padding">
                     @include('widget.comment',['commentable'=>$post,
                 'redirect'=>request()->fullUrl(),
                 'commentable_type'=>'App\Post'])

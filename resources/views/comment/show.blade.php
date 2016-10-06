@@ -1,5 +1,5 @@
 @forelse($comments as $comment)
-    <div class="" style="margin: 5px 0 25px 0">
+    <div class="comment">
         <div class="pull-left">
             <?php
             $href = $comment->user ? route('user.show', $comment->username) : 'javascript:void(0);';
@@ -9,10 +9,10 @@
                      src="{{ $comment->user ? $comment->user->avatar :'https://static.lufficc.com/image/default_avatar.png' }}">
             </a>
         </div>
-        <div class="comment-info" style="margin-left: 66px">
-            <div style="font-size: 1.2em">
+        <div class="comment-info">
+            <div class="comment-head">
                 <a href="{{ $href }}">{{ $comment->username }}</a>
-                <span class="pull-right" style="color: #d0d0d0">
+                <span class="comment-operation pull-right">
                     @can('manager',$comment)
                         <a href="javascript:void (0)" data-method="delete" data-modal-target="这条评论"
                            data-url="{{ route('comment.destroy',$comment->id) }}">
@@ -27,10 +27,9 @@
                     </a>
             </span>
             </div>
-            <div style="font-size: 0.9em;color: #d0d0d0">
+            <div class="comment-time">
                 <span>{{ $comment->created_at->format('Y/m/d H:i') }}</span>
             </div>
-
             <div class="markdown-content">
                 {!! $comment->html_content !!}
             </div>

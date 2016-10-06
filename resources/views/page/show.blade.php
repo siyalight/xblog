@@ -3,10 +3,9 @@
 @section('keywords',$page->display_name)
 @section('description',$page->display_name)
 @section('content')
-    <style>@media (max-width: 768px) {.col-sm-12 {padding-left: 0;padding-right: 0;}}</style>
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-sm-12">
+            <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-12-no-padding">
                 <ol class="breadcrumb">
                     <li><a href="{{ route('post.index') }}">博客</a></li>
                     <li class="active">{{ ucfirst($page->name) }}</li>
