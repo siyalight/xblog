@@ -16,11 +16,16 @@ use Illuminate\Http\Request;
  */
 class MapRepository extends Repository
 {
+
+    static $tag = 'map';
+
     /*
      * cache for one week
      */
-    public $time = 60 * 24 * 7;
-    static $tag = 'map';
+    public function cacheTime()
+    {
+        return 60 * 24 * 7;
+    }
 
     public function model()
     {

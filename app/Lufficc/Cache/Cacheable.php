@@ -12,18 +12,18 @@ use Closure;
 trait Cacheable
 {
     /**
-     * @var int in minutes
+     * @return int  in minutes
      */
-    public $time = 60;
+    public function cacheTime()
+    {
+        return 60;
+    }
 
-    /**
-     * @return string
-     */
     public abstract function tag();
 
     public function remember($key, Closure $entity, $tag = null)
     {
-        return cache()->tags($tag == null ? $this->tag() : $tag)->remember($key, $this->time, $entity);
+        return cache()->tags($tag == null ? $this->tag() : $tag)->remember($key, $this->cacheTime(), $entity);
     }
 
     public function get($key)
@@ -33,7 +33,7 @@ trait Cacheable
 
     public function put($key, $value)
     {
-        return cache()->tags($this->tag())->put($key, $value, $this->time);
+        return cache()->tags($this->tag())->put($key, $value, $this->cacheTime());
     }
 
     public function has($key)
