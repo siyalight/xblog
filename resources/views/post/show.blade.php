@@ -29,8 +29,8 @@
                         <div class="post-meta">
                            <span class="post-time">
                            <i class="fa fa-calendar-o"></i>
-                           <time datetime="2016-08-05T00:10:14+08:00" content="2016-08-05">
-                           {{ $post->published_at==null?'Un Published':$post->published_at->format('Y-m-d H:i') }}
+                           <time datetime="{{ $post->created_at->tz('UTC')->toAtomString() }}">
+                           {{ $post->published_at==null?'Un Published':$post->created_at->format('Y-m-d H:i') }}
                            </time>
                            </span>
                             <span class="post-category">
@@ -62,7 +62,6 @@
                             <a class="tag" href="{{ route('tag.show',$tag->name) }}">{{ $tag->name }}</a>
                         @endforeach
                     </div>
-
                     <div class="creative-commons">
                         <i class="fa fa-fw fa-creative-commons"></i>自由转载-非商用-非衍生-保持署名（<a href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
                     </div>
@@ -79,5 +78,4 @@
             </div>
         @endif
     </div>
-
 @endsection

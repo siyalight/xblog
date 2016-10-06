@@ -1,4 +1,3 @@
-{{-- modal --}}
 <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="delete-modal"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -8,12 +7,12 @@
                 <h3 class="modal-title">删除</h3>
             </div>
             <div class="modal-body">
-                <p>确定删除<label class="required" id="delete-modal-title"></label>吗?</p>
+                <div>确定删除<strong class="required" id="delete-modal-title"></strong>吗?</div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 <button id="delete-modal-submit" class="btn btn-danger">确定</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
