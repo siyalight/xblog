@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('description',$post->description)
+@section('keywords',$post->category->name)
 @section('title',$post->title)
 @section('content')
     <style>@media (max-width: 768px) {

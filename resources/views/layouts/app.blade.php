@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="{{ $author or '' }}">
     <title>@yield('title') {{ $site_title or '' }} </title>
-    <meta name="keywords" content="{{ $site_keywords or '' }}">
+    <meta name="keywords" content="@yield('keywords') {{ $site_keywords or '' }}">
     <meta name="description" content="@yield('description') {{ $site_description or '' }}">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ $site_title or '' }}">
