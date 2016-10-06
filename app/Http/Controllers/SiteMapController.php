@@ -35,6 +35,6 @@ class SiteMapController extends Controller
 
     public function cacheTime()
     {
-        return 60 * 24 * 30;
+        return 60 * 24;
     }
 }
