@@ -53,10 +53,11 @@ class AuthController extends Controller
         $name = $request->get('name');
         $email = $request->get('email');
         $this->validate($request, [
-            'name' => 'required|alpha_dash|max:16|min:3|unique:users',
+            'name' => 'required|regex:/^[a-zA-Z-_]+$/u|max:16|min:3|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ], [
+            'name.regex' => "Username can only contains letter,number or -,_",
             'name.unique' => "Username  '$name'  has been registered,if it is you,then you can login to bind your github account",
             'email.unique' => "Email  '$email'  has been registered,if it is you,then you can login to bind your github account",
         ]);

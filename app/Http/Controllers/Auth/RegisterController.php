@@ -28,9 +28,11 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|alpha_dash|max:16|min:3|unique:users',
+            'name' => 'required|regex:/^[a-zA-Z-_]+$/u|max:16|min:3|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+        ],[
+            'name.regex' => "Username can only contains letter,number or -,_",
         ]);
 
         if (mb_substr_count($request->get('name'), '_') > 1 || mb_substr_count($request->get('name'), '-') > 1) {
