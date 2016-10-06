@@ -8,32 +8,15 @@
 
 namespace App\Http\Repositories;
 
-use Closure;
+use Lufficc\Cache\Cacheable;
 
 abstract class Repository
 {
-    public $time = 60;
 
-    /**
-     * @return string
-     */
-    public abstract function tag();
+    use Cacheable;
 
     public abstract function model();
 
-    public function remember($key, Closure $entity, $tag = null)
-    {
-        return cache()->tags($tag == null ? $this->tag() : $tag)->remember($key, $this->time, $entity);
-    }
-
-    /**
-     * clear all cache whit tag post
-     * @param null $tag
-     */
-    public function clearCache($tag = null)
-    {
-        cache()->tags($tag == null ? $this->tag() : $tag)->flush();
-    }
 
     public function count()
     {
@@ -51,13 +34,4 @@ abstract class Repository
         return $all;
     }
 
-    public function forget($key, $tag = null)
-    {
-        cache()->tags($tag == null ? $this->tag() : $tag)->forget($key);
-    }
-
-    public function clearAllCache()
-    {
-        cache()->flush();
-    }
 }

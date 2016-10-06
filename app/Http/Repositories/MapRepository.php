@@ -16,6 +16,10 @@ use Illuminate\Http\Request;
  */
 class MapRepository extends Repository
 {
+    /*
+     * cache for one week
+     */
+    public $time = 60 * 24 * 7;
     static $tag = 'map';
 
     public function model()

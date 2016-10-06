@@ -48,6 +48,10 @@ Route::get('/commentable/{commentable_id}/comments', ['uses' => 'CommentControll
 Route::resource('comment', 'CommentController', ['only' => ['store', 'destroy', 'edit', 'update']]);
 
 
+// SiteMap
+Route::get('sitemap','SiteMapController@index');
+Route::get('sitemap.xml','SiteMapController@index');
+
 Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], function () {
 
     /**
