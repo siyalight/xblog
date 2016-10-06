@@ -8,7 +8,7 @@
 <p align="center"><img src="images/main1.png"  width="800"><p>
 <br>
 
-# laravel blog
+# Xblog
 
 [中文readme](README_zh.md)|[Install](https://lufficc.com/blog/how-to-install-my-blog)
 
