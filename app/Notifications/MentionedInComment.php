@@ -4,19 +4,17 @@ namespace App\Notifications;
 
 use App\Comment;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
-class MentionedInComment extends Notification implements ShouldQueue
+class MentionedInComment extends BaseNotification
 {
     use Queueable;
-
     protected $comment;
     protected $raw_content;
 
     public function __construct(Comment $comment, $raw_content)
     {
+        parent::__construct();
         $this->comment = $comment;
         $this->raw_content = $raw_content;
     }
@@ -29,7 +27,10 @@ class MentionedInComment extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['database', 'mail'];
+        if ($this->enableMail()) {
+            return ['database', 'mail'];
+        }
+        return ['database'];
     }
 
     /**

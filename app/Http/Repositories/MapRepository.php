@@ -76,6 +76,14 @@ class MapRepository extends Repository
         return $map;
     }
 
+    public function getValue($key, $default = null)
+    {
+        $map = $this->get($key);
+        if ($map)
+            return $map->value;
+        return $default;
+    }
+
     public function delete($key)
     {
         $this->clearCache();

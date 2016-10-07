@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Repositories\MapRepository;
 use App\Http\Repositories\PostRepository;
 use App\Post;
 use Illuminate\Http\Request;
@@ -11,20 +10,15 @@ class HomeController extends Controller
 {
     protected $postRepository;
 
-    protected $mapRepository;
-
     /**
      * Create a new controller instance.
      *
      * @param PostRepository $postRepository
-     * @param MapRepository $mapRepository
      */
-    public function __construct(PostRepository $postRepository, MapRepository $mapRepository)
+    public function __construct(PostRepository $postRepository)
     {
         $this->postRepository = $postRepository;
-        $this->mapRepository = $mapRepository;
     }
-
 
     public function index()
     {

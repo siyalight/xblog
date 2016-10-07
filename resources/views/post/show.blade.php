@@ -57,7 +57,8 @@
                         @endforeach
                     </div>
                     <div class="creative-commons">
-                        <i class="fa fa-fw fa-creative-commons"></i>自由转载-非商用-非衍生-保持署名（<a href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+                        <i class="fa fa-fw fa-creative-commons"></i>自由转载-非商用-非衍生-保持署名（<a
+                                href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
                     </div>
                 </div>
             </div>
@@ -65,9 +66,13 @@
         @if(!(isset($preview) && $preview))
             <div class="row mt-30">
                 <div id="comment-wrap" class="col-md-10 col-md-offset-1 col-sm-12 col-sm-12-no-padding">
-                    @include('widget.comment',['commentable'=>$post,
-                'redirect'=>request()->fullUrl(),
-                'commentable_type'=>'App\Post'])
+                    @include('widget.comment',[
+                    'comment_key'=>$post->slug,
+                    'comment_title'=>$post->title,
+                    'comment_url'=>route('post.show',$post->slug),
+                    'commentable'=>$post,
+                    'redirect'=>request()->fullUrl(),
+                     'commentable_type'=>'App\Post'])
                 </div>
             </div>
         @endif

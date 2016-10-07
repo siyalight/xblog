@@ -8,7 +8,7 @@
                     <div class="widget-header">
                         <a href="[repo.html_url]" target="_blank" class="collection-card-image geopattern"
                            data-pattern-id="[repo.name]">
-                            <h3 class="collection-card-title">[repo.name]</h3>
+                            <h3 class="collection-card-title" style="white-space: nowrap;text-overflow: ellipsis;">[repo.name]</h3>
                         </a>
                     </div>
                     <div class="widget-body"

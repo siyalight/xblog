@@ -4,26 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Repositories\CategoryRepository;
-use App\Http\Repositories\MapRepository;
-use App\Post;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
+use Illuminate\Http\Request;
+use XblogConfig;
 class CategoryController extends Controller
 {
     protected $categoryRepository;
-    protected $mapRepository;
 
     /**
      * CategoryController constructor.
      * @param CategoryRepository $categoryRepository
-     * @param MapRepository $mapRepository
      */
-    public function __construct(CategoryRepository $categoryRepository, MapRepository $mapRepository)
+    public function __construct(CategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
-        $this->mapRepository = $mapRepository;
         $this->middleware(['auth', 'admin'], ['except' => ['show','index']]);
     }
     public function index()
@@ -70,10 +64,7 @@ class CategoryController extends Controller
     public function show($name)
     {
         $category = $this->categoryRepository->get($name);
-        $page_size = 7;
-        if ($map = $this->mapRepository->get('page_size')) {
-            $page_size = $map->value;
-        }
+        $page_size = $page_size = XblogConfig::getValue('page_size', 7);
         $posts = $this->categoryRepository->pagedPostsByCategory($category, $page_size);
         return view('category.show', compact('posts', 'name'));
     }

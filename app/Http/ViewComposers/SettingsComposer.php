@@ -7,27 +7,11 @@
  */
 namespace App\Http\ViewComposers;
 
-use App\Category;
-use App\Http\Repositories\CategoryRepository;
-use App\Http\Repositories\MapRepository;
 use Illuminate\View\View;
+use XblogConfig;
 
 class SettingsComposer
 {
-
-    protected $mapRepository;
-
-    /**
-     * Create a new profile composer.
-     *
-     * @internal param UserRepository $users
-     * @param MapRepository $mapRepository
-     */
-    public function __construct(MapRepository $mapRepository)
-    {
-        $this->mapRepository = $mapRepository;
-    }
-
     /**
      * Bind data to the view.
      *
@@ -36,6 +20,6 @@ class SettingsComposer
      */
     public function compose(View $view)
     {
-        $view->with($this->mapRepository->getArrayByTag('settings'));
+        $view->with(XblogConfig::getArrayByTag('settings'));
     }
 }

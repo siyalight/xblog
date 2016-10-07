@@ -24,7 +24,6 @@ class AdminController extends Controller
     protected $tagRepository;
     protected $categoryRepository;
     protected $pageRepository;
-    protected $mapRepository;
     protected $imageRepository;
 
     /**
@@ -35,7 +34,6 @@ class AdminController extends Controller
      * @param CategoryRepository $categoryRepository
      * @param TagRepository $tagRepository
      * @param PageRepository $pageRepository
-     * @param MapRepository $mapRepository
      * @param ImageRepository $imageRepository
      * @internal param MapRepository $mapRepository
      */
@@ -45,7 +43,6 @@ class AdminController extends Controller
                                 CategoryRepository $categoryRepository,
                                 TagRepository $tagRepository,
                                 PageRepository $pageRepository,
-                                MapRepository $mapRepository,
                                 ImageRepository $imageRepository)
     {
         $this->postRepository = $postRepository;
@@ -54,7 +51,6 @@ class AdminController extends Controller
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
         $this->pageRepository = $pageRepository;
-        $this->mapRepository = $mapRepository;
         $this->imageRepository = $imageRepository;
         $this->middleware(['auth', 'admin']);
     }
@@ -75,8 +71,7 @@ class AdminController extends Controller
 
     public function settings()
     {
-        $settings = $this->mapRepository->getArrayByTag('settings');
-        return view('admin.settings', $settings);
+        return view('admin.settings');
     }
 
     public function saveSettings(Request $request)
@@ -90,7 +85,7 @@ class AdminController extends Controller
             $map->value = $value;
             $map->save();
         }
-        $this->mapRepository->clearCache();
+        cache()->tags(MapRepository::$tag)->flush();
         return back()->with('success', '保存成功');
     }
 

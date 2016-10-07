@@ -29,10 +29,58 @@
                             </label>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="radio">
+                            <label class="col-sm-offset-2">
+                                <input type="radio"
+                                       {{ isset($enable_mail_notification) && $enable_mail_notification == 'true' ? ' checked ':'' }}
+                                       name="enable_mail_notification"
+                                       value="true">启用邮件通知
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label class="col-sm-offset-2">
+                                <input type="radio"
+                                       {{ isset($enable_mail_notification) && $enable_mail_notification == 'true' ? '':' checked ' }}
+                                       name="enable_mail_notification"
+                                       value="false">禁用邮件通知
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="radio">
+                            <label class="col-sm-offset-2">
+                                <input type="radio"
+                                       {{ (!isset($comment_type) || $comment_type == 'raw') ? ' checked ':'' }}
+                                       name="comment_type"
+                                       value="raw">自带评论
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label class="col-sm-offset-2">
+                                <input type="radio"
+                                       {{ isset($comment_type) && $comment_type == 'disqus' ? ' checked':'' }}
+                                       name="comment_type"
+                                       value="disqus">Disqus
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label class="col-sm-offset-2">
+                                <input type="radio"
+                                       {{ isset($comment_type) && $comment_type == 'duoshuo' ? ' checked':'' }}
+                                       name="comment_type"
+                                       value="duoshuo">多说
+                            </label>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="google_trace_id" class="col-sm-2 control-label">跟踪ID</label>
                         <div class="col-sm-8">
-                            <input type="text" name="google_trace_id" class="form-control" id="google_trace_id" placeholder="谷歌跟踪ID"
+                            <input type="text" name="google_trace_id" class="form-control" id="google_trace_id"
+                                   placeholder="谷歌跟踪ID"
                                    value="{{ $google_trace_id or ''}}">
                         </div>
                     </div>
@@ -60,6 +108,31 @@
                                    value="{{ $avatar or ''}}">
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="avatar" class="col-sm-2 control-label">Disqus ID</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="disqus_shortname" class="form-control" id="avatar"
+                                   value="{{ $disqus_shortname or ''}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="avatar" class="col-sm-2 control-label">多说 ID</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="duoshuo_shortname" class="form-control" id="avatar"
+                                   value="{{ $duoshuo_shortname or ''}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="avatar" class="col-sm-2 control-label">Github用户名</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="github_username" class="form-control" id="avatar"
+                                   value="{{ $github_username or ''}}">
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Js</label>
                         <div class="col-sm-8">

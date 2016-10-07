@@ -23,8 +23,11 @@
     @endif
     @yield('css')
     <script>
-        window.Laravel = <?php echo json_encode([
+        window.XblogConfig = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
+                'duoshuo_shortname'=>XblogConfig::getValue('duoshuo_shortname'),
+                'disqus_shortname'=>XblogConfig::getValue('disqus_shortname'),
+                'github_username'=>XblogConfig::getValue('github_username'),
         ]); ?>
     </script>
     @include('widget.google_analytics')

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Comment;
+use App\Http\Repositories\MapRepository;
 use App\Observers\CommentObserver;
 use App\Observers\PostObserver;
 use App\Post;
@@ -28,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('XblogConfig', function ($app) {
+            return new MapRepository();
+        });
     }
 }

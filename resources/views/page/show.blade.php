@@ -24,9 +24,13 @@
                     </div>
                 </div>
                 <div class="mt-30">
-                    @include('widget.comment',['commentable'=>$page,
-                'redirect'=>request()->fullUrl(),
-                'commentable_type'=>'App\Page'])
+                    @include('widget.comment',[
+                    'comment_key'=>'page.'.$page->name,
+                    'comment_title'=>$page->display_name,
+                    'comment_url'=>request()->fullUrl(),
+                    'commentable'=>$page,
+                    'redirect'=>request()->fullUrl(),
+                    'commentable_type'=>'App\Page'])
                 </div>
             </div>
         </div>

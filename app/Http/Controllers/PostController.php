@@ -2,28 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
 use App\Http\Repositories\CategoryRepository;
 use App\Http\Repositories\CommentRepository;
-use App\Http\Repositories\MapRepository;
 use App\Http\Repositories\PostRepository;
 use App\Http\Repositories\TagRepository;
 use App\Http\Requests;
-use App\Notifications\MentionedInComment;
 use App\Notifications\UserRegistered;
 use App\Post;
 use Carbon\Carbon;
 use Gate;
 use Illuminate\Http\Request;
-use Lufficc\Mention;
-use Purifier;
+use XblogConfig;
 
 class PostController extends Controller
 {
     protected $postRepository;
     protected $tagRepository;
     protected $categoryRepository;
-    protected $mapRepository;
     protected $commentRepository;
 
     /**
@@ -31,19 +26,16 @@ class PostController extends Controller
      * @param PostRepository $postRepository
      * @param CategoryRepository $categoryRepository
      * @param TagRepository $tagRepository
-     * @param MapRepository $mapRepository
      * @param CommentRepository $commentRepository
      */
     public function __construct(PostRepository $postRepository,
                                 CategoryRepository $categoryRepository,
                                 TagRepository $tagRepository,
-                                MapRepository $mapRepository,
                                 CommentRepository $commentRepository)
     {
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
-        $this->mapRepository = $mapRepository;
         $this->commentRepository = $commentRepository;
 
         $this->middleware(['auth', 'admin'], ['except' => ['show', 'index']]);
@@ -52,10 +44,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $page_size = 7;
-        if ($map = $this->mapRepository->get('page_size')) {
-            $page_size = $map->value;
-        }
+        $page_size = XblogConfig::getValue('page_size', 7);
         $posts = $this->postRepository->pagedPosts($page_size);
         return view('post.index', compact('posts'));
     }

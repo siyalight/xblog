@@ -2,28 +2,12 @@
  * @author lufficc
  */
 (function ($) {
-    var LufficcBlog = {
+    var Xblog = {
         init: function () {
-            var self = this;
-            /*var pjaxContainer = $('#lufficc-pjax-container');
-             if (pjaxContainer.length > 0) {
-             $(document).pjax('a:not(a[target="_blank"])', pjaxContainer, {
-             timeout: 2000,
-             maxCacheLength: 500,
-             });
-             $(document).on('pjax:start', function () {
-             NProgress.start();
-             });
-             $(document).on('pjax:complete', function () {
-             NProgress.done();
-             self.bootUp();
-             });
-             }*/
-            self.bootUp();
+            this.bootUp();
         },
         bootUp: function () {
             console.log('bootUp');
-            /*NProgress.configure({showSpinner: false});*/
             loadComments(false);
             initComment();
             initMarkdownTarget();
@@ -41,7 +25,7 @@
             return "\n" +
                 "<form action='" + $(this).attr('data-url') + "' method='post' style='display:none'>\n" +
                 "   <input type='hidden' name='_method' value='" + $(this).data('method') + "'>\n" +
-                "   <input type='hidden' name='_token' value='" + Laravel.csrfToken + "'>\n" +
+                "   <input type='hidden' name='_token' value='" + XblogConfig.csrfToken + "'>\n" +
                 "</form>\n"
         }).attr('style', 'cursor:pointer;text-decoration: none;')
             .click(function () {
@@ -71,7 +55,6 @@
             });
         }
     }
-
 
     function initComment() {
         var form = $('#comment-form');
@@ -169,7 +152,6 @@
         });
     }
 
-
     function initTables() {
         $('table').addClass('table table-bordered table-responsive');
     }
@@ -178,23 +160,6 @@
         autosize($('.autosize-target'));
     }
 
-    function initDuoshuo() {
-        /*if (Laravel.duoshuo_enable) {
-         var dr = $(".ds-thread");
-         var dus = $("#ds-thread");
-         console.log('dus:' + $(dus).length);
-         console.log('dr:' + $(dr).length);
-         if ($(dus).length <= 1 && $(dr).length == 0) {
-         var el = document.createElement('div');//该div不需要设置class="ds-thread"
-         el.setAttribute('data-thread-key', $(dus).data('thread-key'));//必选参数
-         el.setAttribute('data-url', $(dus).data('url'));//必选参数
-         el.setAttribute('data-title', $(dus).data('title'));//必选参数
-         DUOSHUO.EmbedThread(el);
-         $(dus).html(el);
-         }
-         }*/
-    }
-    
     function imageLiquid() {
         $(".js-imgLiquid").imgLiquid({
             fill: true,
@@ -206,7 +171,7 @@
     function initProjects() {
         var projects = $('.projects');
         if (projects.length > 0) {
-            $.get('https://api.github.com/users/lufficc/repos?type=owner',
+            $.get('https://api.github.com/users/' + XblogConfig.github_username + '/repos?type=owner',
                 function (repositories) {
                     if (!repositories) {
                         projects.html('<div><h3>加载失败</h3><p>请刷新或稍后再试...</p></div>');
@@ -230,10 +195,10 @@
         }
     }
 
-    window.LufficcBlog = LufficcBlog;
+    window.Xblog = Xblog;
 })(jQuery);
 $(document).ready(function () {
-    LufficcBlog.init();
+    Xblog.init();
 });
 function replySomeone(username) {
     var commentContent = $("#comment-content");
@@ -262,4 +227,4 @@ var moveEnd = function (obj) {
     } else if (typeof obj.selectionStart == 'number' && typeof obj.selectionEnd == 'number') {
         obj.selectionStart = obj.selectionEnd = len;
     }
-}
+};
