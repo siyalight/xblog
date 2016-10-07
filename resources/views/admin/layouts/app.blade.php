@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#52768e">
-    <title>lufficc @yield('title')</title>
+    <title>@yield('title') Admin {{ $site_title or '' }}</title>
     <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="https://static.lufficc.com/favicon.ico"/>
     @if(isset($site_css) && $site_css)
@@ -16,9 +16,12 @@
     @endif
     @yield('css')
     <script>
-        window.Laravel = <?php echo json_encode([
+        window.XblogConfig = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
-        ]); ?>
+                'duoshuo_shortname' => XblogConfig::getValue('duoshuo_shortname'),
+                'disqus_shortname' => XblogConfig::getValue('disqus_shortname'),
+                'github_username' => XblogConfig::getValue('github_username'),
+        ]);?>
     </script>
 </head>
 <body>
