@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        @if(!(isset($preview) && $preview))
+        @if(!(isset($preview) && $preview) && XblogConfig::getValue('comment_type') != 'none')
             <div class="row mt-30">
                 <div id="comment-wrap" class="col-md-10 col-md-offset-1 col-sm-12 col-sm-12-no-padding">
                     @include('widget.comment',[

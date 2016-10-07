@@ -53,6 +53,14 @@
                         <div class="radio">
                             <label class="col-sm-offset-2">
                                 <input type="radio"
+                                       {{ (isset($comment_type) && $comment_type == 'none') ? ' checked ':'' }}
+                                       name="comment_type"
+                                       value="none">关闭评论
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label class="col-sm-offset-2">
+                                <input type="radio"
                                        {{ (!isset($comment_type) || $comment_type == 'raw') ? ' checked ':'' }}
                                        name="comment_type"
                                        value="raw">自带评论

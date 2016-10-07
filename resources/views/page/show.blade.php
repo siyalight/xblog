@@ -23,15 +23,17 @@
                         {!! $page->html_content !!}
                     </div>
                 </div>
-                <div class="mt-30">
-                    @include('widget.comment',[
-                    'comment_key'=>'page.'.$page->name,
-                    'comment_title'=>$page->display_name,
-                    'comment_url'=>request()->fullUrl(),
-                    'commentable'=>$page,
-                    'redirect'=>request()->fullUrl(),
-                    'commentable_type'=>'App\Page'])
-                </div>
+                @if(XblogConfig::getValue('comment_type') != 'none')
+                    <div class="mt-30">
+                        @include('widget.comment',[
+                        'comment_key'=>'page.'.$page->name,
+                        'comment_title'=>$page->display_name,
+                        'comment_url'=>request()->fullUrl(),
+                        'commentable'=>$page,
+                        'redirect'=>request()->fullUrl(),
+                        'commentable_type'=>'App\Page'])
+                    </div>
+                @endif
             </div>
         </div>
     </div>
