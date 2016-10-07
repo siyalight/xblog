@@ -14,7 +14,6 @@ class MentionedInComment extends BaseNotification
 
     public function __construct(Comment $comment, $raw_content)
     {
-        parent::__construct();
         $this->comment = $comment;
         $this->raw_content = $raw_content;
     }

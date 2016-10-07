@@ -14,7 +14,6 @@ class ReceivedComment extends BaseNotification
 
     public function __construct(Comment $comment)
     {
-        parent::__construct();
         $this->comment = $comment;
     }
 
