@@ -9,6 +9,9 @@ use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
+    /**
+     * Attention please!! If you don't config ALGOLIA_APP_ID, annotate Searchable:
+     */
     use SoftDeletes, Searchable;
 
     /**

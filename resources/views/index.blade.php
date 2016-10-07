@@ -19,19 +19,11 @@
         </p>
         <p class="links">
             <font aria-hidden="true">»</font>
-            <a href="{{ config('social.github') }}" target="_blank" aria-label="{{ $author or 'author' }} 的 Github 地址">
-                <i class="fa fa-github fa-fw" title="Github"></i>
-            </a>
-            <a href="{{ config('social.facebook') }}" target="_blank"
-               aria-label="{{ $author or 'author' }} 的 Github 地址">
-                <i class="fa fa-facebook fa-fw" title="facebook"></i>
-            </a>
-            <a href="{{ config('social.twitter') }}" target="_blank" aria-label="{{ $author or 'author' }} 的 Github 地址">
-                <i class="fa fa-twitter fa-fw" title="twitter"></i>
-            </a>
-            <a href="{{ config('social.weibo') }}" target="_blank" aria-label="{{ $author or 'author' }} 的 Github 地址">
-                <i class="fa fa-weibo fa-fw" title="weibo"></i>
-            </a>
+            @foreach(config('social') as $key => $value)
+                <a href="{{ $value['url'] }}" target="_blank" aria-label="{{ $author or 'author' }} 的 {{ ucfirst($key) }} 地址">
+                    <i class="{{ $value['fa'] }}" title="{{ ucfirst($key) }}"></i>
+                </a>
+            @endforeach
         </p>
     </div>
 @endsection

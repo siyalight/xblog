@@ -14,31 +14,16 @@
     </div>
     <div class="widget-user-footer">
         <div class="row">
-            <div class="col-sm-3 border-right">
-                <div class="description-block">
-                    <a href="{{ config('social.weibo') }}" class="description-header"><i class="fa fa-weibo fa-lg"
-                                                                                         aria-hidden="true"></i></a>
+            <?php $count = count(config('social'))?>
+            @foreach(config('social') as $key => $value)
+                <div class="col-xs-{{ intval(12 / $count) }} border-right center-block">
+                    <div class="description-block">
+                        <a href="{{ $value['url'] }}" title="{{ ucfirst($key) }}" class="description-header"><i
+                                    class="{{ $value['fa'].' fa-lg' }}"
+                                    aria-hidden="true"></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-3 border-right">
-                <div class="description-block">
-                    <a href="{{ config('social.github') }}" class="description-header fa-lg"><i
-                                class="fa fa-github fa-lg" aria-hidden="true"></i></a>
-                </div>
-            </div>
-            <div class="col-sm-3 border-right">
-                <div class="description-block">
-                    <a href="{{ config('social.facebook') }}" class="description-header"><i
-                                class="fa fa-facebook-official fa-lg"
-                                aria-hidden="true"></i></a>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="description-block">
-                    <a href="{{ config('social.twitter') }}" class="description-header"><i class="fa fa-twitter fa-lg"
-                                                                                           aria-hidden="true"></i></a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
