@@ -187,6 +187,7 @@ return [
         Laravel\Scout\ScoutServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
+        App\Providers\CacheServiceProvider::class,
         //Barryvdh\Debugbar\ServiceProvider::class,
     ],
 

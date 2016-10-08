@@ -11,6 +11,3 @@
 |
 */
 
-/*Route::get('/categories', 'CategoryApiController@index');
-Route::get('/posts', 'PostApiController@index');
-Route::get('/post/{slug}', 'PostApiController@show')->middleware('auth:api');*/

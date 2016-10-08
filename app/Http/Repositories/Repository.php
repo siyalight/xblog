@@ -8,9 +8,7 @@
 
 namespace App\Http\Repositories;
 
-use App\Lufficc\Cache\NoCache;
 use Closure;
-use Lufficc\Cache\Cacheable;
 
 abstract class Repository
 {
@@ -19,12 +17,8 @@ abstract class Repository
     private function getXblogCache()
     {
         if ($this->xblogCache == null) {
-            if (config('cache.enable') == 'true') {
-                $this->xblogCache = new Cacheable();
-                $this->xblogCache->setTag($this->tag());
-            } else {
-                $this->xblogCache = new NoCache();
-            }
+            $this->xblogCache = app('XblogCache');
+            $this->xblogCache->setTag($this->tag());
         }
         return $this->xblogCache;
     }

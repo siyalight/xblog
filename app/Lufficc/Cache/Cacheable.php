@@ -12,39 +12,26 @@ use Closure;
 
 class Cacheable implements XblogCache
 {
-    /**
-     * @return int  in minutes
-     */
-    public function cacheTime()
-    {
-        return 60;
-    }
-
     public $tag;
+
+    public $cacheTime;
 
     public function setTag($tag)
     {
         $this->tag = $tag;
     }
 
-
     public function remember($key, Closure $entity, $tag = null)
     {
-        return cache()->tags($tag == null ? $this->tag : $tag)->remember($key, $this->cacheTime(), $entity);
+        return cache()->tags($tag == null ? $this->tag : $tag)->remember($key, $this->cacheTime, $entity);
     }
 
-    /*
-     * clear cache
-     */
+
     public function forget($key, $tag = null)
     {
         cache()->tags($tag == null ? $this->tag : $tag)->forget($key);
     }
 
-    /**
-     * clear all cache whit tag post
-     * @param null $tag
-     */
     public function clearCache($tag = null)
     {
         cache()->tags($tag == null ? $this->tag : $tag)->flush();
@@ -55,5 +42,8 @@ class Cacheable implements XblogCache
         cache()->flush();
     }
 
-
+    public function setTime($time_in_minute)
+    {
+        $this->cacheTime = $time_in_minute;
+    }
 }

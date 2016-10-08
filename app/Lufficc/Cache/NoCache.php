@@ -19,8 +19,16 @@ class NoCache implements XblogCache
         // Do Nothing
     }
 
+    public function setTime($time_in_minute)
+    {
+        // Do Nothing
+    }
+
     public function remember($key, Closure $entity, $tag = null)
     {
+        /**
+         * directly return
+         */
         return $entity();
     }
 
@@ -38,6 +46,6 @@ class NoCache implements XblogCache
 
     public function clearAllCache()
     {
-
+        // Do Nothing
     }
 }
