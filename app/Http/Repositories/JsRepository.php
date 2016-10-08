@@ -7,10 +7,7 @@
  */
 namespace App\Http\Repositories;
 
-use App\File;
 use Illuminate\Http\Request;
-use Lufficc\FileUploadManager;
-use Storage;
 
 
 /**

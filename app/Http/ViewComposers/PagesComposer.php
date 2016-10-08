@@ -7,7 +7,6 @@
  */
 namespace App\Http\ViewComposers;
 
-use App\Http\Repositories\CategoryRepository;
 use App\Http\Repositories\PageRepository;
 use Illuminate\View\View;
 

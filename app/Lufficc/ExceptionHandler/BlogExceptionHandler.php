@@ -27,12 +27,6 @@ class BlogExceptionHandler
                 ['status' => $exception->getCode(), 'msg' => $exception->getMessage()]
             );
         }
-
-        if ($exception instanceof TokenMismatchException) {
-            abort(403);
-        } else if ($exception instanceof InvalidStateException) {
-            abort(403);
-        }
         return false;
     }
 }

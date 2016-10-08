@@ -13,7 +13,6 @@ use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Lufficc\MarkDownParser;
-use Parsedown;
 
 /**
  * design for cache

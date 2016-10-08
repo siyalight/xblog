@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Repositories\UserRepository;
 use App\User;
 use Illuminate\Http\Request;
-use Validator;
 
 class RegisterController extends Controller
 {

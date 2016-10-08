@@ -8,7 +8,6 @@ use App\Http\Repositories\PostRepository;
 use App\Http\Requests;
 use Gate;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CommentController extends Controller
 {

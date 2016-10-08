@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Repositories\CssRepository;
-use App\Http\Repositories\FileRepository;
 use App\Http\Repositories\FontRepository;
 use App\Http\Repositories\ImageRepository;
 use App\Http\Repositories\JsRepository;

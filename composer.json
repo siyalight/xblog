@@ -1,6 +1,6 @@
 {
     "name": "lufficc/xblog",
-    "description": "A powerful and fast blog system powered by laravel.",
+    "description": "A powerful and responsive blog system powered by laravel.",
     "keywords": ["blog", "laravel"],
     "license": "MIT",
     "type": "project",
