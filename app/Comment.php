@@ -33,9 +33,10 @@ class Comment extends Model
 
 
     protected $commentableData = [];
+
     public function getCommentableData()
     {
-        if(empty($this->commentableData)){
+        if (empty($this->commentableData)) {
             switch ($this->commentable_type) {
                 case 'App\Post':
                     $post = app('App\Post')->where('id', $this->commentable_id)->select('title', 'slug')->firstOrFail();
@@ -47,7 +48,7 @@ class Comment extends Model
                     $page = app('App\Page')->where('id', $this->commentable_id)->select('name', 'display_name')->firstOrFail();
                     $this->commentableData['type'] = '页面';
                     $this->commentableData['title'] = $page->display_name;
-                    $this->commentableData['url'] = route('page.' . $page->name);
+                    $this->commentableData['url'] = route('page.show', $page->name);
                     break;
             }
         }
