@@ -20,7 +20,7 @@ class PageController extends Controller
     public function __construct(PageRepository $pageRepository)
     {
         $this->pageRepository = $pageRepository;
-        $this->middleware(['auth', 'admin'], ['except' => 'about']);
+        $this->middleware(['auth', 'admin'], ['except' => 'show']);
     }
 
 
