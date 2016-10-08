@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
 @section('css')
-    <link href="//cdn.bootcss.com/highlight.js/9.6.0/styles/atelier-dune-dark.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/simplemde/1.11.2/simplemde.min.css" rel="stylesheet">
 @endsection
 @section('content')
+    <div id="upload-img-url" data-upload-img-url="{{ route('upload.image') }}" style="display: none"></div>
     <div class="row">
         <div class="col-md-12">
             <div id="data" class="widget widget-default" data-id="{{ $page->id }}">
@@ -32,16 +32,23 @@
 @endsection
 
 @section('script')
-    <script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
     <script src="//cdn.bootcss.com/simplemde/1.11.2/simplemde.min.js"></script>
     <script>
-        new SimpleMDE({
+        var simplemde = new SimpleMDE({
             autoDownloadFontAwesome:true,
             renderingConfig:{
                 codeSyntaxHighlighting:true,
             },
             spellChecker:false,
             toolbar: ["bold", "italic", "heading", "|", "quote",'code','ordered-list','unordered-list','link','image','table','|','preview','side-by-side','fullscreen'],
+        });
+        inlineAttachment.editors.codemirror4.attach(simplemde.codemirror, {
+            uploadUrl: $("#upload-img-url").data('upload-img-url'),
+            uploadFieldName: 'image',
+            extraParams: {
+                '_token': XblogConfig.csrfToken,
+                'type': 'xrt'
+            },
         });
     </script>
 @endsection

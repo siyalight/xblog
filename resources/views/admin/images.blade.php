@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','Admin')
+@section('title','图片')
 @section('content')
     <div class="row">
         <div class="widget widget-default">

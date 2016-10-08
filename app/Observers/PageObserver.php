@@ -11,13 +11,14 @@ namespace App\Observers;
 
 use App\Contracts\XblogCache;
 use App\Http\Controllers\SiteMapController;
+use App\Page;
 use App\Post;
 
-class PostObserver
+class PageObserver
 {
     protected $xblogCache;
 
-    public function saved(Post $post)
+    public function saved(Page $page)
     {
         $this->getXblogCache()->clearCache();
     }

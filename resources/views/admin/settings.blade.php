@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title','文章')
+@section('title','设置')
 @section('content')
     <div class="row">
         <form role="form" id="setting-form" class="form-horizontal" action="{{ route('admin.save-settings') }}"
