@@ -7,6 +7,7 @@
  */
 namespace App\Http\Repositories;
 
+use App\Configuration;
 use App\Post;
 use App\Tag;
 use Carbon\Carbon;
@@ -81,7 +82,7 @@ class PostRepository extends Repository
     public function get($slug)
     {
         $post = $this->remember('post.one.' . $slug, function () use ($slug) {
-            return Post::where('slug', $slug)->with(['tags', 'category'])->withCount('comments')->firstOrFail();
+            return Post::where('slug', $slug)->with(['tags', 'category', 'configuration'])->withCount('comments')->firstOrFail();
         });
         return $post;
     }
@@ -139,6 +140,14 @@ class PostRepository extends Repository
         );
         $post->tags()->sync($ids);
 
+        $configuration = new Configuration();
+        $configuration->config = [
+            'comment_type' => $request['comment_type'],
+            'comment_info' => $request['comment_info'],
+        ];
+
+        $post->configuration()->save($configuration);
+
         return $post;
     }
 
@@ -165,6 +174,23 @@ class PostRepository extends Repository
         $status = $request->get('status', 0);
         if ($status == 1) {
             $request['published_at'] = Carbon::now();
+        }
+        $configuration = $post->configuration;
+        if (!$configuration)
+        {
+            $configuration = new Configuration();
+            $configuration->config = [
+                'comment_type' => $request['comment_type'],
+                'comment_info' => $request['comment_info'],
+            ];
+            $post->configuration()->save($configuration);
+        }
+        else{
+            $configuration->config = [
+                'comment_type' => $request['comment_type'],
+                'comment_info' => $request['comment_info'],
+            ];
+            $configuration->save();
         }
 
         return $post->update(

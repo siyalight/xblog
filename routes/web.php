@@ -19,7 +19,6 @@ Route::post('/github/store',['uses' => 'Auth\AuthController@store', 'as' => 'git
 
 // Site route
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'index']);
-Route::get('/about', ['uses' => 'PageController@about', 'as' => 'page.about']);
 Route::get('/projects', ['uses' => 'HomeController@projects', 'as' => 'projects']);
 Route::get('/search', ['uses' => 'HomeController@search', 'as' => 'search']);
 Route::get('/achieve', ['uses' => 'HomeController@achieve', 'as' => 'achieve']);
@@ -104,3 +103,8 @@ Route::group(['prefix' => 'admin', ['middleware' => ['auth', 'admin']]], functio
     Route::resource('page', 'PageController', ['except' => ['show', 'index']]);
 
 });
+
+/*
+ * must last
+ */
+Route::get('/{name}', ['uses' => 'PageController@show', 'as' => 'page.show']);

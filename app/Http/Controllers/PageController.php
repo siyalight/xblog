@@ -71,11 +71,12 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param $name
      * @return \Illuminate\Http\Response
      */
-    public function about()
+    public function show($name)
     {
-        $page = $this->pageRepository->get('about');
+        $page = $this->pageRepository->get($name);
         $this->pageShowing($page);
         return view('page.show', compact('page'));
     }

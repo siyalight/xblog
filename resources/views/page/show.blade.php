@@ -23,13 +23,23 @@
                         {!! $page->html_content !!}
                     </div>
                 </div>
-                @if(XblogConfig::getValue('comment_type') != 'none')
+
+                <?php
+                $configuration = $page->configuration ? $page->configuration->config : null;
+                if (!$configuration) {
+                    $configuration = [];
+                    $configuration['comment_info'] = 'default';
+                    $configuration['comment_type'] = 'default';
+                }
+                ?>
+                @if($configuration['comment_info'] != 'force_disable' && ($configuration['comment_info'] == 'force_enable' || $comment_type != 'none'))
                     <div class="mt-30">
                         @include('widget.comment',[
                         'comment_key'=>'page.'.$page->name,
                         'comment_title'=>$page->display_name,
-                        'comment_url'=>request()->fullUrl(),
+                        'comment_url'=>route('page.show',$page->name),
                         'commentable'=>$page,
+                        'commentable_config'=>$configuration['comment_type'],
                         'redirect'=>request()->fullUrl(),
                         'commentable_type'=>'App\Page'])
                     </div>

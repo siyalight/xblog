@@ -84,6 +84,11 @@ class Post extends Model
         return $this->morphMany(Comment::class, 'commentable');
     }
 
+    public function configuration()
+    {
+        return $this->morphOne(Configuration::class, 'configurable');
+    }
+
     public function isPublished()
     {
         return $this->status == 1;

@@ -63,18 +63,30 @@
                 </div>
             </div>
         </div>
-        @if(!(isset($preview) && $preview) && XblogConfig::getValue('comment_type') != 'none')
-            <div class="row mt-30">
-                <div id="comment-wrap" class="col-md-10 col-md-offset-1 col-sm-12 col-sm-12-no-padding">
-                    @include('widget.comment',[
-                    'comment_key'=>$post->slug,
-                    'comment_title'=>$post->title,
-                    'comment_url'=>route('post.show',$post->slug),
-                    'commentable'=>$post,
-                    'redirect'=>request()->fullUrl(),
-                     'commentable_type'=>'App\Post'])
+
+        @if(!(isset($preview) && $preview))
+            <?php
+            $configuration = $post->configuration ? $post->configuration->config : null;
+            if (!$configuration) {
+                $configuration = [];
+                $configuration['comment_info'] = 'default';
+                $configuration['comment_type'] = 'default';
+            }
+            ?>
+            @if($configuration['comment_info'] != 'force_disable' && ($configuration['comment_info'] == 'force_enable' || $comment_type != 'none'))
+                <div class="row mt-30">
+                    <div id="comment-wrap" class="col-md-10 col-md-offset-1 col-sm-12 col-sm-12-no-padding">
+                        @include('widget.comment',[
+                        'comment_key'=>$post->slug,
+                        'comment_title'=>$post->title,
+                        'comment_url'=>route('post.show',$post->slug),
+                        'commentable'=>$post,
+                        'commentable_config'=>$configuration['comment_type'],
+                        'redirect'=>request()->fullUrl(),
+                         'commentable_type'=>'App\Post'])
+                    </div>
                 </div>
-            </div>
+            @endif
         @endif
     </div>
 @endsection

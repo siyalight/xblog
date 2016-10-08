@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('website')->nullable(true);
             $table->string('real_name')->nullable(true);
             $table->string('description')->nullable(true);
-            $table->json('meta')->nullable(true);
+            $table->text('meta')->nullable(true);
             $table->string('avatar')->nullable(true);
             $table->string('profile_image')->nullable(true);
             $table->rememberToken();

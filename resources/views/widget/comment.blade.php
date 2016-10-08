@@ -1,7 +1,8 @@
-@if(XblogConfig::getValue('comment_type','raw') == 'raw')
+<?php $final_comment_type = ($commentable_config == 'default' ? $comment_type : $commentable_config); ?>
+@if($final_comment_type == 'raw')
     @include('widget.raw_comment')
-@elseif(XblogConfig::getValue('comment_type') == 'duoshuo')
+@elseif($final_comment_type == 'duoshuo')
     @include('widget.duoshuo_comment')
-@elseif(XblogConfig::getValue('comment_type') == 'disqus')
+@elseif($final_comment_type == 'disqus')
     @include('widget.disqus_comment')
 @endif

@@ -13,4 +13,9 @@ class Page extends Model
         return $this->morphMany(Comment::class, 'commentable');
     }
 
+    public function configuration()
+    {
+        return $this->morphOne(Configuration::class, 'configurable');
+    }
+
 }

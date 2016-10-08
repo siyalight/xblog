@@ -7,7 +7,7 @@
             <div id="disqus_thread"></div>
         </section>
         <script type="text/javascript">
-            var disqus_shortname = XblogConfig.disqus_shortname;
+            var disqus_shortname = '{{ $disqus_shortname }}';
             var disqus_url = '{{ $comment_url }}';
             var disqus_title = '{{ $comment_title }}';
             (function(){

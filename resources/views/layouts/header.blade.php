@@ -29,7 +29,7 @@
                     @if(XblogConfig::getValue('github_username'))
                         <li><a class="menu-item" href="{{ route('projects') }}">项目</a></li>
                     @endif
-                    <li><a class="menu-item" href="{{ route('page.about') }}">关于</a></li>
+                    <li><a class="menu-item" href="{{ route('page.show','about') }}">关于</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right blog-navbar">
                     @if(Auth::check())

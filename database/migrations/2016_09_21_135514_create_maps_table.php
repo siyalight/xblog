@@ -18,7 +18,7 @@ class CreateMapsTable extends Migration
             $table->string('key')->unique();
             $table->string('tag')->index();
             $table->text('value')->nullable(true);
-            $table->json('meta')->nullable(true);
+            $table->text('meta')->nullable(true);
         });
     }
 

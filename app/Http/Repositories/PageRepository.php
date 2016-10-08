@@ -7,6 +7,7 @@
  */
 namespace App\Http\Repositories;
 
+use App\Configuration;
 use App\Page;
 use Illuminate\Http\Request;
 use Parsedown;
@@ -37,7 +38,7 @@ class PageRepository extends Repository
     public function get($name)
     {
         $page = $this->remember('page.one.' . $name, function () use ($name) {
-            return Page::where('name', $name)->withCount(['comments'])->first();
+            return Page::where('name', $name)->with('configuration')->withCount(['comments'])->first();
         });
 
         if (!$page)
@@ -52,15 +53,38 @@ class PageRepository extends Repository
     public function create(Request $request)
     {
         $this->clearCache();
-        return Page::create(array_merge(
+        $page = Page::create(array_merge(
             $request->except('_token'),
             ['html_content' => $this->parseDown->text($request->get('content'))]
         ));
+
+        $configuration = new Configuration();
+        $configuration->config = [
+            'comment_type' => $request['comment_type'],
+            'comment_info' => $request['comment_info'],
+        ];
+        $page->configuration()->save($configuration);
+        return $page;
     }
 
     public function update(Request $request, Page $page)
     {
         $this->clearCache();
+        $configuration = $page->configuration;
+        if (!$configuration) {
+            $configuration = new Configuration();
+            $configuration->config = [
+                'comment_type' => $request['comment_type'],
+                'comment_info' => $request['comment_info'],
+            ];
+            $page->configuration()->save($configuration);
+        } else {
+            $configuration->config = [
+                'comment_type' => $request['comment_type'],
+                'comment_info' => $request['comment_info'],
+            ];
+            $configuration->save();
+        }
         return $page->update(array_merge(
             $request->except('_token'),
             ['html_content' => $this->parseDown->text($request->get('content'))]

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Configuration;
 use App\Http\Repositories\CategoryRepository;
 use App\Http\Repositories\CommentRepository;
 use App\Http\Repositories\ImageRepository;
@@ -13,6 +14,7 @@ use App\Http\Repositories\UserRepository;
 use App\Http\Requests;
 use App\Map;
 use App\Page;
+use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 
