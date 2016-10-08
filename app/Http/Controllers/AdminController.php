@@ -25,6 +25,7 @@ class AdminController extends Controller
     protected $categoryRepository;
     protected $pageRepository;
     protected $imageRepository;
+    protected $mapRepository;
 
     /**
      * AdminController constructor.
@@ -35,6 +36,7 @@ class AdminController extends Controller
      * @param TagRepository $tagRepository
      * @param PageRepository $pageRepository
      * @param ImageRepository $imageRepository
+     * @param MapRepository $mapRepository
      * @internal param MapRepository $mapRepository
      */
     public function __construct(PostRepository $postRepository,
@@ -43,7 +45,8 @@ class AdminController extends Controller
                                 CategoryRepository $categoryRepository,
                                 TagRepository $tagRepository,
                                 PageRepository $pageRepository,
-                                ImageRepository $imageRepository)
+                                ImageRepository $imageRepository,
+                                MapRepository $mapRepository)
     {
         $this->postRepository = $postRepository;
         $this->commentRepository = $commentRepository;
@@ -52,6 +55,7 @@ class AdminController extends Controller
         $this->tagRepository = $tagRepository;
         $this->pageRepository = $pageRepository;
         $this->imageRepository = $imageRepository;
+        $this->mapRepository = $mapRepository;
         $this->middleware(['auth', 'admin']);
     }
 
@@ -77,15 +81,7 @@ class AdminController extends Controller
     public function saveSettings(Request $request)
     {
         $inputs = $request->except('_token');
-        foreach ($inputs as $key => $value) {
-            $map = Map::firstOrNew([
-                'key' => $key,
-            ]);
-            $map->tag = 'settings';
-            $map->value = $value;
-            $map->save();
-        }
-        cache()->tags(MapRepository::$tag)->flush();
+        $this->mapRepository->saveSettings($inputs);
         return back()->with('success', '保存成功');
     }
 
