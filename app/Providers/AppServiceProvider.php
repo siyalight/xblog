@@ -8,6 +8,7 @@ use App\Observers\CommentObserver;
 use App\Observers\PostObserver;
 use App\Post;
 use Illuminate\Support\ServiceProvider;
+use Lufficc\Cache\Cacheable;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('XblogConfig', function ($app) {
-            return new MapRepository();
+            return new MapRepository(new Cacheable());
         });
     }
 }

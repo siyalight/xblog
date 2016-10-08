@@ -7,9 +7,10 @@ namespace Lufficc\Cache;
  * Date: 2016/10/6
  * Time: 16:58
  */
+use App\Contracts\XblogCache;
 use Closure;
 
-trait Cacheable
+class Cacheable implements XblogCache
 {
     /**
      * @return int  in minutes
@@ -19,26 +20,17 @@ trait Cacheable
         return 60;
     }
 
-    public abstract function tag();
+    public $tag;
+
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+    }
+
 
     public function remember($key, Closure $entity, $tag = null)
     {
-        return cache()->tags($tag == null ? $this->tag() : $tag)->remember($key, $this->cacheTime(), $entity);
-    }
-
-    public function get($key)
-    {
-        return cache()->tags($this->tag())->get($key);
-    }
-
-    public function put($key, $value)
-    {
-        return cache()->tags($this->tag())->put($key, $value, $this->cacheTime());
-    }
-
-    public function has($key)
-    {
-        return cache()->tags($this->tag())->has($key);
+        return cache()->tags($tag == null ? $this->tag : $tag)->remember($key, $this->cacheTime(), $entity);
     }
 
     /*
@@ -46,7 +38,7 @@ trait Cacheable
      */
     public function forget($key, $tag = null)
     {
-        cache()->tags($tag == null ? $this->tag() : $tag)->forget($key);
+        cache()->tags($tag == null ? $this->tag : $tag)->forget($key);
     }
 
     /**
@@ -55,11 +47,13 @@ trait Cacheable
      */
     public function clearCache($tag = null)
     {
-        cache()->tags($tag == null ? $this->tag() : $tag)->flush();
+        cache()->tags($tag == null ? $this->tag : $tag)->flush();
     }
 
     public function clearAllCache()
     {
         cache()->flush();
     }
+
+
 }

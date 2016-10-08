@@ -18,7 +18,6 @@
     <script>
         window.XblogConfig = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
-                'github_username' => XblogConfig::getValue('github_username'),
         ]);?>
     </script>
 </head>

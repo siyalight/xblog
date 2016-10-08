@@ -68,15 +68,16 @@ class PageController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param $name
-     * @return \Illuminate\Http\Response
-     */
     public function show($name)
     {
         $page = $this->pageRepository->get($name);
+        if ($page->configuration && $page->configuration->config['display'] == 'false') {
+            if (isAdmin(auth()->user())) {
+                return view('page.show', compact('page'));
+            } else {
+                abort(404);
+            }
+        }
         $this->pageShowing($page);
         return view('page.show', compact('page'));
     }
