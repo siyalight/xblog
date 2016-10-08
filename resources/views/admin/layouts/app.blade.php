@@ -18,6 +18,7 @@
     <script>
         window.XblogConfig = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
+                'github_username' => isset($github_username) ? $github_username :  '',
         ]);?>
     </script>
 </head>
