@@ -48,7 +48,7 @@
                 uploadUrl: $("#upload-img-url").data('upload-img-url'),
                 uploadFieldName: 'image',
                 extraParams: {
-                    '_token': Laravel.csrfToken,
+                    '_token': XblogConfig.csrfToken,
                     'type': 'xrt'
                 },
             });
