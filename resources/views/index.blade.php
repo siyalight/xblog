@@ -14,8 +14,10 @@
         <p class="links">
             <font aria-hidden="true">»</font>
             <a href="{{ route('post.index') }}" aria-label="点击查看博客文章列表">博客</a><font aria-hidden="true">/</font>
-            <a href="{{ route('projects') }}" aria-label="点击查看项目列表">项目</a><font aria-hidden="true">/</font>
-            <a href="{{ route('page.show','about') }}" aria-label="查看{{ $author or 'author' }}的关于">关于</a>
+            <a href="{{ route('projects') }}" aria-label="点击查看项目列表">项目</a><font aria-hidden="true">
+            @if($pages->contains('name','about'))
+                    /</font><a href="{{ route('page.show','about') }}" aria-label="查看{{ $author or 'author' }}的关于">关于</a>
+            @endif
         </p>
         <p class="links">
             <font aria-hidden="true">»</font>

@@ -46,6 +46,17 @@ class PageRepository extends Repository
         return $page;
     }
 
+    public function getAll()
+    {
+        $page = $this->remember('page.all.', function () {
+            return Page::select(['id', 'name', 'display_name'])->with('configuration')->get();
+        });
+
+        if (!$page)
+            abort(404);
+        return $page;
+    }
+
     /**
      * @param Request $request
      * @return Page
@@ -62,6 +73,8 @@ class PageRepository extends Repository
         $configuration->config = [
             'comment_type' => $request['comment_type'],
             'comment_info' => $request['comment_info'],
+            'display' => $request['display'],
+            'sort_order' => $request['sort_order'],
         ];
         $page->configuration()->save($configuration);
         return $page;
@@ -76,12 +89,16 @@ class PageRepository extends Repository
             $configuration->config = [
                 'comment_type' => $request['comment_type'],
                 'comment_info' => $request['comment_info'],
+                'display' => $request['display'],
+                'sort_order' => $request['sort_order'],
             ];
             $page->configuration()->save($configuration);
         } else {
             $configuration->config = [
                 'comment_type' => $request['comment_type'],
                 'comment_info' => $request['comment_info'],
+                'display' => $request['display'],
+                'sort_order' => $request['sort_order'],
             ];
             $configuration->save();
         }

@@ -58,3 +58,30 @@
         <option value="duoshuo" {{ $comment_type=='duoshuo'?' selected' : '' }}>多说</option>
     </select>
 </div>
+
+<div class="form-group">
+    <?php $display = isset($page) && $page->configuration ? $page->configuration->config['display'] : 'false'?>
+    <div class="radio radio-inline">
+        <label>
+            <input type="radio"
+                   {{ (isset($page)) && $display == 'true' ? ' checked ':'' }}
+                   name="display"
+                   value="true">显示在主页
+        </label>
+    </div>
+    <div class="radio radio-inline">
+        <label>
+            <input type="radio"
+                   {{ (!isset($page)) || $display == 'false' ? ' checked ':'' }}
+                   name="display"
+                   value="false">不显示在主页
+        </label>
+    </div>
+</div>
+
+<div class="form-group">
+    <?php $sort_order = isset($page) && $page->configuration ? $page->configuration->config['sort_order'] : '1'?>
+    <label for="sort_order" class="control-label">顺序</label>
+    <input id="sort_order" type="number" class="form-control" name="sort_order"
+           value="{{ $sort_order }}">
+</div>
