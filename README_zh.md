@@ -5,7 +5,6 @@
   [![Latest Stable Version](https://poser.pugx.org/lufficc/xblog/v/stable)](https://packagist.org/packages/lufficc/xblog)
   [![Total Downloads](https://poser.pugx.org/lufficc/xblog/downloads)](https://packagist.org/packages/lufficc/xblog)
   [![License](https://poser.pugx.org/lufficc/xblog/license)](https://packagist.org/packages/lufficc/xblog)
-  
 </p>
 <p align="center">强大，响应式的博客系统，由Laravel5.3强力驱动。点击 https://lufficc.com 查看实时Demo.</p>
 <p align="center"><img src="images/main1.png"  width="800"><p>
