@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/logo.png" alt="Laravel blog: fast and powerful!" width="200">
+  <img src="images/logo.png" alt="Xblog: fast and powerful!" width="200">
   <br>
   
   [![Latest Stable Version](https://poser.pugx.org/lufficc/xblog/v/stable)](https://packagist.org/packages/lufficc/xblog)
@@ -24,17 +24,15 @@
 
 ### 特点
 
-1. Markdown 编辑器，支持图片拖拽，粘贴板图片上传到七牛并返回链接。
-1. 完善的评论系统。
-1. Github账号登录。
-1. 采用 Repository 设计模式分离 Controller 和 Model 。
-1. 采用Redis缓存（Cache 采用数据库 `0` ， Session 采用数据库 `1`）.
-1. 图片，文件管理。
-1. ~~Pjax 局部加载~~。
-1. 谷歌分析，后台管理。
-1. 文章可以分类，贴标签，代码高亮。 
-1. XSS 保护
-1. 更多自定义...
+1. 支持Markdown, 粘贴板、拖拽上传图片到图传(七牛云)并返回markdown链接。
+1. 全屏写作模式, 实时预览, 快捷键, 自动保存, 代码高亮。
+1. 文章的多状态管理(发布,撤回,软删除,永久删除,恢复,草稿)。
+1. 完善的评论系统, 自带评论支持markdown。可选多说, Disqus。
+1. 支持全站关闭评论, 文章(或者页面)关闭评论, 为某一篇文章(或者页面)关闭评论,强制开启评论, 自定义评论系统(多说,Disqus)。
+1. 提醒功能, 有回复邮件提醒, 不错过读者回馈。
+1. 分类, 多标签, 预览功能, 版权, SEO优化。
+1. 图片管理, 文件管理, 后台自定义设置。
+1. ............更多.............
  
 ### 环境要求
 

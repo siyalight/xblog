@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/logo.png" alt="Laravel blog: fast and powerful!" width="200">
+  <img src="images/logo.png" alt="Xblog: fast and powerful!" width="200">
   <br>
   
   [![Latest Stable Version](https://poser.pugx.org/lufficc/xblog/v/stable)](https://packagist.org/packages/lufficc/xblog)
@@ -25,16 +25,14 @@ If you find bugs , glad you to issue.
 ## Features
 
 1. Markdown editor,upload images to qiniu cloud by drag or from clipboard.
-1. Improved comment system. 
-1. Github login.
-1. Separate models from controllers with repository design pattern.
-1. Cache with redis database `0` and session with redis database `1`.
-1. Images and files management.
-1. ~~Pjax support.~~
-1. Google analytics,admin management.
+1. Write in fullscreen mode, real time preview, hot keys, auto saving, code highlight. 
+1. Manage your post!!(publish, undo, soft delete, delete, restore, draft).
+1. Improved comment system ,support markdown. Optional for duoshuo, disqus comment,
+1. Support close comment. You can also use different comment system(duoshuo,disqus) for special post or force open or close special comment.
+1. Notification with email when someone reply your post.
 1. Posts with category, tags,code highlight and different status. 
-1. XSS protection
-1. More customs...
+1. Images and files management, admin settings.
+1. ..............More..............
  
 ## Requires
 
