@@ -1,7 +1,6 @@
 <p align="center">
   <img src="images/logo.png" alt="Xblog: responsive and powerful!" width="200">
   <br>
-  
   [![Latest Stable Version](https://poser.pugx.org/lufficc/xblog/v/stable)](https://packagist.org/packages/lufficc/xblog)
   [![Total Downloads](https://poser.pugx.org/lufficc/xblog/downloads)](https://packagist.org/packages/lufficc/xblog)
   [![License](https://poser.pugx.org/lufficc/xblog/license)](https://packagist.org/packages/lufficc/xblog)
@@ -12,7 +11,7 @@
 
 # Xblog
 
-[中文readme](README_zh.md)|[Install](https://lufficc.com/blog/how-to-install-my-blog)
+[中文Readme](README_zh.md)|[Project Home Page](https://lufficc.github.io/Xblog/)
 
 This blog is for my own use. I used to use hexo and github pages as my blog, but it's not flexible. Thus I write this
 blog. What I want to say is laravel is the best php framework I've ever seen.
