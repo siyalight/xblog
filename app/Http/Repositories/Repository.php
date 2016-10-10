@@ -8,24 +8,34 @@
 
 namespace App\Http\Repositories;
 
+use App\Contracts\XblogCache;
 use Closure;
 
 abstract class Repository
 {
+    /**
+     * @var XblogCache
+     */
     private $xblogCache;
+
+    public abstract function model();
+
+    public abstract function tag();
 
     private function getXblogCache()
     {
         if ($this->xblogCache == null) {
             $this->xblogCache = app('XblogCache');
             $this->xblogCache->setTag($this->tag());
+            $this->xblogCache->setTime($this->cacheTime());
         }
         return $this->xblogCache;
     }
 
-    public abstract function model();
-
-    public abstract function tag();
+    public function cacheTime()
+    {
+        return 60;
+    }
 
     public function count()
     {

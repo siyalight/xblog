@@ -32,7 +32,7 @@
                     $configuration['comment_type'] = 'default';
                 }
                 ?>
-                @if($configuration['comment_info'] != 'force_disable' && ($configuration['comment_info'] == 'force_enable' || $comment_type != 'none'))
+                @if($configuration['comment_info'] != 'force_disable' && ($configuration['comment_info'] == 'force_enable' || !isset($comment_type) || $comment_type != 'none'))
                     <div class="mt-30">
                         @include('widget.comment',[
                         'comment_key'=>'page.'.$page->name,
