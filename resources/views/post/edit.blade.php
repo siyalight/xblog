@@ -37,6 +37,11 @@
         $(document).ready(function () {
             var simplemde = new SimpleMDE({
                 autoDownloadFontAwesome: true,
+                autosave: {
+                    enabled: true,
+                    uniqueId: "post.edit."+$('#data').data('id'),
+                    delay: 1000,
+                },
                 element: document.getElementById("post-content-textarea"),
                 renderingConfig: {
                     codeSyntaxHighlighting: true,

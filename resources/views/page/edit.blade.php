@@ -36,6 +36,11 @@
     <script>
         var simplemde = new SimpleMDE({
             autoDownloadFontAwesome:true,
+            autosave: {
+                enabled: true,
+                uniqueId: "page.edit."+$('#data').data('id'),
+                delay: 1000,
+            },
             renderingConfig:{
                 codeSyntaxHighlighting:true,
             },
