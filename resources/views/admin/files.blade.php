@@ -9,7 +9,6 @@
                 </div>
                 <div class="widget-body">
                     <form role="form" class="form-horizontal" action="{{ route('upload.file') }}"
-                          datatype="image"
                           enctype="multipart/form-data" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="type" value="js">
@@ -31,7 +30,6 @@
 
 
                     <form role="form" class="form-horizontal" action="{{ route('upload.file') }}"
-                          datatype="image"
                           enctype="multipart/form-data" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="type" value="css">
@@ -51,7 +49,6 @@
                         </div>
                     </form>
                     <form role="form" class="form-horizontal" action="{{ route('upload.file') }}"
-                          datatype="image"
                           enctype="multipart/form-data" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="type" value="font">
@@ -59,6 +56,24 @@
                         <div class="form-group">
                             <label class="col-xs-2 col-xs-offset-1 control-label">
                                 Font
+                            </label>
+                            <div class="col-xs-6">
+                                <input class="form-control" type="file" name="file">
+                            </div>
+                            <div class="col-xs-2">
+                                <button type="submit" class="btn btn-primary">
+                                    上传
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <form role="form" class="form-horizontal" action="{{ route('upload.file') }}"
+                          enctype="multipart/form-data" method="post">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label class="col-xs-2 col-xs-offset-1 control-label">
+                                其他文件（如文章附件）
                             </label>
                             <div class="col-xs-6">
                                 <input class="form-control" type="file" name="file">
