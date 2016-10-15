@@ -23,10 +23,12 @@ class UnknownFileRepository extends FileRepository
         $this->tag = $tag;
     }
 
-    public function upload(Request $request)
+    public function upload(Request $request, $delete = false, $fileName = 'file')
     {
-        $this->deleteAllByType();
-        $file = $request->file('file');
+        if ($delete) {
+            $this->deleteAllByType();
+        }
+        $file = $request->file($fileName);
         return $this->uploadFile($file, $file->getClientOriginalName());
     }
 
