@@ -92,7 +92,7 @@
                             @forelse($files as $file)
                                 <tr>
                                     <td>{{ $file->type }}</td>
-                                    <td>{{ getUrlByFileName($file->key) }}</td>
+                                    <td>{{ $file->name }}</td>
                                     <td>
                                         <button id="clipboard-btn" class="btn btn-default"
                                                 type="button"
@@ -102,6 +102,11 @@
                                                 title="Copied">
                                             <i class="fa fa-copy fa-fw"></i>
                                         </button>
+                                        <a class="btn btn-info"
+                                           href="{{ getUrlByFileName($file->key) }}"
+                                                data-method="delete">
+                                            <i class="fa fa-cloud-download fa-fw"></i>
+                                        </a>
                                         <button class="btn btn-danger"
                                                 data-method="delete"
                                                 data-modal-target="{{ $file->key }}"
