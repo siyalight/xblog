@@ -22,7 +22,7 @@ class SiteMapController extends Controller
             $posts = Post::select([
                 'slug',
                 'updated_at',
-            ])->orderBy('view_count', 'desc')->get();
+            ])->orderBy('created_at', 'desc')->get();
 
             $pages = Page::select(['id', 'name', 'display_name', 'updated_at'])->with('configuration')->get()->reject(function ($page) {
                 $result = $page->configuration ? $page->configuration->config['display'] : 'false';
