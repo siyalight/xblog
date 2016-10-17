@@ -1,6 +1,5 @@
 <?php
-$comment_type = isset($comment_type) ? $comment_type : 'raw';
-$final_comment_type = ($commentable_config == 'default' ? $comment_type : $commentable_config);
+$final_comment_type = $commentable->getCommentType();
 ?>
 @if($final_comment_type == 'raw')
     @include('widget.raw_comment')
