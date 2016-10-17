@@ -6,13 +6,14 @@ use App\Scopes\PublishedScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
+use Lufficc\Comment\CommentHelper;
 
 class Post extends Model
 {
     /**
      * Attention please!! If you don't config ALGOLIA_APP_ID, annotate Searchable:
      */
-    use SoftDeletes, Searchable;
+    use SoftDeletes, Searchable, CommentHelper;
 
     /**
      * The "booting" method of the model.
