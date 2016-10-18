@@ -7,13 +7,12 @@
     <div id="upload-img-url" data-upload-img-url="{{ route('upload.image') }}" style="display: none"></div>
     <div class="row">
         <div class="col-md-12">
-            <div id="data" class="widget widget-default" data-id="{{ $post->id }}">
+            <div id="data" class="widget widget-default" data-id="{{ $post->id . '.by@' . request()->ip() }}">
                 <div class="widget-header">
                     <h6><i class="fa fa-pencil  fa-fw"></i>编辑文章</h6>
                 </div>
                 <div class="widget-body edit-form">
                     <form role="form" class="form-horizontal" action="{{ route('post.update',$post->id) }}" method="post">
-
                         @include('post.form-content')
                         <input type="hidden" name="_method" value="put">
                         <button type="submit" class="btn btn-primary">
