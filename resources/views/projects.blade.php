@@ -42,33 +42,3 @@
         </div>
     </div>
 @endsection
-{{--
-@section('script')
-    <script>
-        $(document).ready(function () {
-            var projects = $('.projects');
-
-            $.get('https://api.github.com/users/lufficc/repos?type=owner',
-                    function (repositories) {
-                        if (!repositories) {
-                            projects.html('<div><h3>加载失败</h3><p>请刷新或稍后再试...</p></div>');
-                            return;
-                        }
-                        projects.html('');
-                        repositories = repositories.sort(function (repo1, repo2) {
-                            return repo2.stargazers_count - repo1.stargazers_count;
-                        });
-                        repositories = repositories.filter(function (repo) {
-                            return repo.description != null;
-                        });
-                        repositories.forEach(function (repo) {
-                            var repoTemplate = $('#repo-template').html();
-                            var item = repoTemplate.replace(/\[(.*?)\]/g, function () {
-                                return eval(arguments[1]);
-                            });
-                            projects.append(item)
-                        })
-                    });
-        });
-    </script>
-@endsection--}}

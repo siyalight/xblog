@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','文章')
+@section('title','搜索')
 @section('content')
     <div class="container">
         <div class="row">

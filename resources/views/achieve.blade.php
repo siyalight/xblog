@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','项目')
+@section('title','归档')
 @section('content')
     <div class="container">
         <div class="posts-count">共{{ $posts_count }}篇文章</div>
