@@ -85,6 +85,25 @@
                     </div>
 
                     <div class="form-group">
+                        <div class="radio">
+                            <label class="col-sm-offset-2">
+                                <input type="radio"
+                                       {{ isset($enable_hot_posts) && $enable_hot_posts == 'true' ? ' checked ':'' }}
+                                       name="enable_hot_posts"
+                                       value="true">启用热门文章
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label class="col-sm-offset-2">
+                                <input type="radio"
+                                       {{ isset($enable_hot_posts) && $enable_hot_posts == 'true' ? '':' checked ' }}
+                                       name="enable_hot_posts"
+                                       value="false">禁用热门文章
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label for="google_trace_id" class="col-sm-2 control-label">跟踪ID</label>
                         <div class="col-sm-8">
                             <input type="text" name="google_trace_id" class="form-control" id="google_trace_id"
@@ -187,6 +206,16 @@
                                    value="{{ $page_size or 7 }}">
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">热门文章数量</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="number" name="hot_posts_count"
+                                   value="{{ $hot_posts_count or 5 }}">
+                        </div>
+                    </div>
+
+
                     <div class="form-group">
                         <label class="col-sm-2 control-label">简介图片</label>
                         <div class="col-sm-8">

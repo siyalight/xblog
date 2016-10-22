@@ -14,6 +14,7 @@
 @import "form";
 @import "timeline";
 @import "comment";
+@import "hot-post";
 
 html, body {
   color: #505050;
@@ -174,7 +175,7 @@ pre code {
 /* creative-commons */
 
 .creative-commons {
-  margin-top: 30px;
+  margin-top: 10px;
   color: #868e96;
   font-size: 1.05em;
   a {
