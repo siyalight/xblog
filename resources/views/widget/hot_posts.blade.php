@@ -3,7 +3,7 @@
     <ul class="widget-body hot-posts">
         @foreach($hotPosts as $post)
             <a class="list-group-item" title="{{ $post->title }}" href="{{ route('post.show',$post->slug) }}">
-                <span class="badge">{{ $post->view_count }}</span>
+                <span class="badge">{{ $post->view_count.'+'.$post->comments_count }}</span>
                 {{ str_limit($post->title,32) }}
                 <span class="clearfix"></span>
             </a>
