@@ -11,12 +11,12 @@
         </div>
         <div class="comment-info">
             <div class="comment-head">
-                <div class="name">
+                <span class="name">
                     <a href="{{ $href }}">{{ $comment->username }}</a>
                     @if(isAdminById($comment->user_id))
                         <label class="role-label">站长</label>
                     @endif
-                </div>
+                </span>
                 <span class="comment-operation pull-right">
                     @can('manager',$comment)
                         <a href="javascript:void (0)" data-method="delete" data-modal-target="这条评论"
