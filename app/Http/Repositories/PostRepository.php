@@ -86,6 +86,18 @@ class PostRepository extends Repository
         return $post;
     }
 
+    public function hotPosts($count = 5)
+    {
+        $posts = $this->remember('post.achieve.' . $count, function () use ($count) {
+            return Post::select([
+                'title',
+                'slug',
+                'view_count',
+            ])->withCount('comments')->orderBy('view_count', 'desc')->limit($count)->get();
+        });
+        return $posts;
+    }
+
     public function achieve()
     {
         $posts = $this->remember('post.achieve', function () {
@@ -175,16 +187,14 @@ class PostRepository extends Repository
             $request['published_at'] = Carbon::now();
         }
         $configuration = $post->configuration;
-        if (!$configuration)
-        {
+        if (!$configuration) {
             $configuration = new Configuration();
             $configuration->config = [
                 'comment_type' => $request['comment_type'],
                 'comment_info' => $request['comment_info'],
             ];
             $post->configuration()->save($configuration);
-        }
-        else{
+        } else {
             $configuration->config = [
                 'comment_type' => $request['comment_type'],
                 'comment_info' => $request['comment_info'],

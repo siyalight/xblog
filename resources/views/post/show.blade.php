@@ -36,7 +36,7 @@
                            </span>
                             <span class="post-comments-count">
                            &nbsp;|&nbsp;
-                           <i class="fa fa-comment-o" aria-hidden="true"></i>
+                           <i class="fa fa-comments-o fa-fw" aria-hidden="true"></i>
                            <span>{{ $post->comments_count }}</span>
                            </span>
                             <span>
@@ -56,6 +56,7 @@
                             <a class="tag" href="{{ route('tag.show',$tag->name) }}">{{ $tag->name }}</a>
                         @endforeach
                     </div>
+                    <div class="alone-divider"></div>
                     <div class="creative-commons">
                         <i class="fa fa-fw fa-creative-commons"></i>自由转载-非商用-非衍生-保持署名（<a
                                 href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）

@@ -15,6 +15,13 @@ if (!function_exists('isAdmin')) {
     }
 }
 
+if (!function_exists('isAdminById')) {
+    function isAdminById($user_id)
+    {
+        return $user_id === 1;
+    }
+}
+
 if (!function_exists('getAdminUser')) {
     function getAdminUser()
     {

@@ -2,7 +2,7 @@
     <!-- post header -->
     <div class="post-header">
         <h1 class="post-title">
-            <a href="{{ route('post.show',$post->slug) }}">{{ $post->title }}</a>
+            <a title="{{ $post->title }}" href="{{ route('post.show',$post->slug) }}">{{ $post->title }}</a>
         </h1>
         <div class="post-meta">
                            <span class="post-time">
@@ -20,7 +20,7 @@
                            </span>
             <span class="post-comments-count">
                            &nbsp;|&nbsp;
-                           <i class="fa fa-comment-o" aria-hidden="true"></i>
+                           <i class="fa fa-comments-o fa-fw" aria-hidden="true"></i>
                            <span>{{ $post->comments_count }}</span>
                            </span>
         </div>
@@ -32,7 +32,7 @@
     </div>
     <!-- read more -->
     <div class="post-permalink">
-        <a href="{{ route('post.show',$post->slug) }}" class="btn btn-more">阅读全文</a>
+        <a title="阅读全文" href="{{ route('post.show',$post->slug) }}" class="btn btn-more">阅读全文</a>
     </div>
     <!-- post footer -->
     <div class="post-footer clearfix">

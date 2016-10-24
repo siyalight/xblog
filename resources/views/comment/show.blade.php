@@ -2,23 +2,29 @@
     <div class="comment">
         <div class="pull-left">
             <?php
-            $href = $comment->user ? route('user.show', $comment->username) : 'javascript:void(0);';
+            $href = $comment->user_id ? route('user.show', $comment->username) : 'javascript:void(0);';
             ?>
             <a name="comment{{ $loop->index + 1 }}" href="{{ $href }}">
-                <img width="48px" height="48px" class="img-circle"
+                <img width="40px" height="40px" class="img-circle"
                      src="{{ $comment->user ? $comment->user->avatar :'https://static.lufficc.com/image/default_avatar.png' }}">
             </a>
         </div>
         <div class="comment-info">
             <div class="comment-head">
-                <a href="{{ $href }}">{{ $comment->username }}</a>
+                <div class="name">
+                    <a href="{{ $href }}">{{ $comment->username }}</a>
+                    @if(isAdminById($comment->user_id))
+                        <label class="role-label">站长</label>
+                    @endif
+                </div>
                 <span class="comment-operation pull-right">
                     @can('manager',$comment)
                         <a href="javascript:void (0)" data-method="delete" data-modal-target="这条评论"
                            data-url="{{ route('comment.destroy',$comment->id) }}">
                             <i class="fa fa-trash-o fa-fw"></i>
                         </a>
-                        <a style="text-decoration: none" href="{{ route('comment.edit',[$comment->id,'redirect'=>(isset($redirect) && $redirect.'#'.$loop->index ? $redirect : '')]) }}">
+                        <a style="text-decoration: none"
+                           href="{{ route('comment.edit',[$comment->id,'redirect'=>(isset($redirect) && $redirect.'#'.$loop->index ? $redirect : '')]) }}">
                             <i class="fa fa-pencil fa-fw"></i>
                         </a>
                     @endcan

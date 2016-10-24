@@ -3,13 +3,13 @@
     <ul class="widget-body list-group">
         @forelse($categories as $category)
             @if(str_contains(urldecode(request()->getPathInfo()),'category/'.$category->name))
-                <li href="{{ route('category.show',$category->name) }}"
+                <li title="{{ $category->name }}" href="{{ route('category.show',$category->name) }}"
                     class="list-group-item active">
                     {{ $category->name }}
                     <span class="badge">{{ $category->posts_count }}</span>
                 </li>
             @else
-                <a href="{{ route('category.show',$category->name) }}"
+                <a title="{{ $category->name }}" href="{{ route('category.show',$category->name) }}"
                    class="list-group-item">
                     {{ $category->name }}
                     <span class="badge">{{ $category->posts_count }}</span>

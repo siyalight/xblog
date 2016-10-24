@@ -84,3 +84,18 @@
   -o-transition: all 0.25s ease-in-out;
 }
 
+.role-label {
+  display: inline;
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+  background-color: #495057;
+  position: inherit;
+  font-size: 75%;
+  padding: 2px 4px;
+  margin: 1px 4px;
+}
+
