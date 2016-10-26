@@ -8,7 +8,6 @@
     <meta name="theme-color" content="#52768e">
     <title>@yield('title') Admin {{ $site_title or '' }}</title>
     <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="https://static.lufficc.com/favicon.ico"/>
     @if(isset($site_css) && $site_css)
         <link href="{{ $site_css }}" rel="stylesheet">
     @else
