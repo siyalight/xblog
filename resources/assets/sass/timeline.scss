@@ -3,7 +3,6 @@
 $icon-width: 10px;
 $icon-top: 24px;
 
-
 .cd-container::after {
   content: '';
   display: table;
@@ -80,7 +79,6 @@ $icon-top: 24px;
   box-shadow: 0 0 0 2px white, inset 0 1px 0 rgba(0, 0, 0, 0.08), 0 2px 0 2px rgba(0, 0, 0, 0.05);
 }
 
-
 @media only screen and (min-width: 1170px) {
   .cd-timeline-img {
     width: $icon-width;
@@ -118,14 +116,14 @@ $icon-top: 24px;
   clear: both;
 }
 
-.cd-timeline-content a{
+.cd-timeline-content a {
   transition: all 0.25s ease-in-out;
   -webkit-transition: all 0.25s ease-in-out;
 
   text-decoration: none;
 }
 
-.cd-timeline-content a :hover{
+.cd-timeline-content a :hover {
   color: $colorAccent;
 }
 
@@ -142,7 +140,6 @@ $icon-top: 24px;
   color: #888;
 }
 
-
 .cd-timeline-content::before {
   content: '';
   position: absolute;
@@ -151,7 +148,7 @@ $icon-top: 24px;
   height: 0;
   width: 0;
   border: 7px solid transparent;
-  border-right: 7px solid white;
+  border-right: 7px solid #eee;
 }
 
 @media only screen and (min-width: 768px) {
@@ -174,7 +171,7 @@ $icon-top: 24px;
     top: $icon-top;
     left: 100%;
     border-color: transparent;
-    border-left-color: white;
+    border-left-color: #eee;
   }
 
   .cd-timeline-content .cd-date {
@@ -192,12 +189,16 @@ $icon-top: 24px;
     left: auto;
     right: 100%;
     border-color: transparent;
-    border-right-color: white;
+    border-right-color: #eee;
   }
 
   .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
     left: auto;
     right: 108%;
+    text-align: right;
+  }
+
+  .cd-timeline-block:nth-child(odd) .cd-timeline-content .title {
     text-align: right;
   }
 }
@@ -210,12 +211,13 @@ $icon-top: 24px;
   }
 }
 
-.posts-count{
+.posts-count {
   font-size: 1.6em;
   margin: 5px auto;
   text-align: center;
 }
-.dot{
+
+.dot {
   background-color: $colorPrimary;
   width: $icon-width * 2;
   height: $icon-width * 2;
@@ -225,10 +227,10 @@ $icon-top: 24px;
 }
 
 @media only screen and (max-width: 1170px) {
-  .posts-count{
+  .posts-count {
     text-align: left;
   }
-  .dot{
+  .dot {
     margin-left: -3px;
   }
 }
