@@ -109,13 +109,15 @@
 
 /***admin**/
 .info-box {
-  @extend .shadow;
+  box-shadow: 1px 1px $shadowBlur $shadowColor;
+  -moz-box-shadow: 1px 1px $shadowBlur $shadowColor;
+  -webkit-box-shadow: 1px 1px $shadowBlur $shadowColor;
+
   margin-bottom: 35px;
   color: $colorPrimary;
   position: relative;
   padding: 10px;
   background-color: $widgetHeaderBgColor;
-  border-radius: 0.25em;
   text-align: center;
 
   @extend .transition;

@@ -1,8 +1,8 @@
-<div class="widget widget-default">
-    <div class="widget-header">
+<div class="comment">
+    <div class="comment-header">
         <h6 id="comments_count"><i class="fa fa-comments fa-fw"></i>评论</h6>
     </div>
-    <div class="widget-body">
+    <div class="comment-body">
         <div id="comments-container"
              data-api-url="{{ route('comment.show',[$commentable->id,
              'commentable_type'=>$commentable_type,

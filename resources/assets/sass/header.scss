@@ -9,9 +9,9 @@
   padding-top: 30px;
   padding-bottom: 30px;
 
-  box-shadow: 1px 1px $shadowBlur $shadowColor;
-  -moz-box-shadow: 1px 1px $shadowBlur $shadowColor;
-  -webkit-box-shadow: 1px 1px $shadowBlur $shadowColor;
+  box-shadow: 1px 1px 1px $shadowColor;
+  -moz-box-shadow: 1px 1px 1px $shadowColor;
+  -webkit-box-shadow: 1px 1px 1px $shadowColor;
 }
 
 .main-header h2 {

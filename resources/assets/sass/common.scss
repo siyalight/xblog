@@ -11,16 +11,17 @@
 }
 
 .shadow {
-  box-shadow: 1px 1px $shadowBlur $shadowColor;
+  /*box-shadow: 1px 1px $shadowBlur $shadowColor;
   -moz-box-shadow: 1px 1px $shadowBlur $shadowColor;
-  -webkit-box-shadow: 1px 1px $shadowBlur $shadowColor;
+  -webkit-box-shadow: 1px 1px $shadowBlur $shadowColor;*/
 }
 
 .shadow-block {
   @extend .shadow;
-  -moz-border-radius: 5px;
+  /*-moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  border-radius: 5px;
+  border-radius: 5px;*/
+  border: 1.5px solid #eee;
 }
 
 /*.bg-yellow {

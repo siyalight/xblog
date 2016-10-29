@@ -5,19 +5,19 @@
 @section('content')
     <div class="container">
         <div id="post-detail-wrap" class="row">
-            <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-12-no-padding">
+            <div class="col-md-8 col-md-offset-2 col-sm-12 phone-no-padding">
+                @can('update',$post)
+                    <div class="btn-group">
+                        <a class="btn" href="{{ route('post.edit',$post->id) }}"><i class="fa fa-pencil"></i></a>
+                        <a class="btn" role="button"
+                           data-method="delete"
+                           data-url="{{ route('post.destroy',$post->id) }}"
+                           data-modal-target="{{ $post->title }}">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </div>
+                @endcan
                 <div class="post-detail">
-                    @can('update',$post)
-                        <div class="btn-group pull-right" style="margin-top: -25px">
-                            <a class="btn" href="{{ route('post.edit',$post->id) }}"><i class="fa fa-pencil"></i></a>
-                            <a class="btn" role="button"
-                               data-method="delete"
-                               data-url="{{ route('post.destroy',$post->id) }}"
-                               data-modal-target="{{ $post->title }}">
-                                <i class="fa fa-trash-o"></i>
-                            </a>
-                        </div>
-                    @endcan
                     <div class="center-block">
                         <div class="post-detail-title">{{ $post->title }}</div>
                         <div class="post-meta">
@@ -67,7 +67,7 @@
 
         @if(!(isset($preview) && $preview) && $post->isShownComment())
             <div class="row mt-30">
-                <div id="comment-wrap" class="col-md-10 col-md-offset-1 col-sm-12 col-sm-12-no-padding">
+                <div id="comment-wrap" class="col-md-8 col-md-offset-2 col-sm-12 phone-no-padding">
                     @include('widget.comment',[
                     'comment_key'=>$post->slug,
                     'comment_title'=>$post->title,
