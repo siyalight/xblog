@@ -104,6 +104,7 @@ $icon-top: 24px;
 
 .cd-timeline-content {
   @extend .shadow;
+  border: 1.5px solid #eee;
   position: relative;
   margin-left: 25px;
   background: white;

@@ -30,12 +30,19 @@
         }).attr('style', 'cursor:pointer;text-decoration: none;')
             .click(function () {
                 var deleteForm = $(this).find("form");
-                var $modal = $('#delete-modal');
-                $modal.find('[id=delete-modal-title]').text($(this).data('modal-target'));
-                $modal.find('[id=delete-modal-submit]').on('click', function () {
-                    deleteForm.submit();
-                });
-                $modal.modal('show');
+                swal({
+                        title: "你确定?",
+                        text: "你将会删除" + $(this).data('modal-target'),
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        cancelButtonText: "再考虑考虑",
+                        confirmButtonText: "确定删除!",
+                        closeOnConfirm: true
+                    },
+                    function () {
+                        deleteForm.submit();
+                    });
             });
     }
 
