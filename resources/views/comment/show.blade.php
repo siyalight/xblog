@@ -40,7 +40,6 @@
                 {!! $comment->html_content !!}
             </div>
         </div>
-        <div class="alone-divider"></div>
     </div>
 @empty
     <p class="meta-item center-block">暂无评论~~</p>
