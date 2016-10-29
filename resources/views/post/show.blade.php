@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div id="post-detail-wrap" class="row">
-            <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-12-no-padding">
+            <div class="col-md-8 col-md-offset-2 col-sm-12 phone-no-padding">
                 <div class="post-detail">
                     @can('update',$post)
                         <div class="btn-group pull-right" style="margin-top: -25px">
@@ -67,7 +67,7 @@
 
         @if(!(isset($preview) && $preview) && $post->isShownComment())
             <div class="row mt-30">
-                <div id="comment-wrap" class="col-md-10 col-md-offset-1 col-sm-12 col-sm-12-no-padding">
+                <div id="comment-wrap" class="col-md-8 col-md-offset-2 col-sm-12 phone-no-padding">
                     @include('widget.comment',[
                     'comment_key'=>$post->slug,
                     'comment_title'=>$post->title,

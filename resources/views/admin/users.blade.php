@@ -15,7 +15,6 @@
                             <th>名称</th>
                             <th>日期</th>
                             <th>邮箱</th>
-                            <th>文章</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -25,7 +24,6 @@
                                 <td><a href="{{ route('user.show',$user->name) }}">{{ $user->name }}</a></td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->posts()->count() }}</td>
                             </tr>
                         @endforeach
                         </tbody>

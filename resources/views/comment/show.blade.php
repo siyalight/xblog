@@ -1,5 +1,5 @@
 @forelse($comments as $comment)
-    <div class="comment">
+    <div class="comment-wrap">
         <div class="pull-left">
             <?php
             $href = $comment->user_id ? route('user.show', $comment->username) : 'javascript:void(0);';

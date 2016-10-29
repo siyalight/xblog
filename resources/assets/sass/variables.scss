@@ -1,6 +1,6 @@
 //font size
 
-$font-size-h1: 2.6em !default;
+$font-size-h1: 2.4em !default;
 $font-size-h2: 2em !default;
 $font-size-h3: 1.8em !default;
 $font-size-h4: 1.6em !default;
@@ -30,7 +30,8 @@ $metaColor: #959595;
 
 /* bootstrap*/
 $brand-primary: $colorPrimary;
-$body-bg: #eee;
+//$body-bg: #eee;
+$body-bg: #fff;
 
 $dropdown-link-color: white;
 $dropdown-bg: $colorPrimary;

@@ -162,10 +162,6 @@ pre[class~=CodeMirror-line ] {
   background: $codeBg !important;
 }
 
-/*pre {
-  border-left: 2px solid $colorPrimary;
-}*/
-
 pre code {
   overflow: auto;
   word-wrap: normal;
@@ -184,7 +180,7 @@ pre code {
 }
 
 @media (max-width: 768px) {
-  .col-sm-12 {
+  .phone-no-padding {
     padding-left: 0;
     padding-right: 0;
   }

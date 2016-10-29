@@ -111,6 +111,14 @@ class PostRepository extends Repository
         return $posts;
     }
 
+    public function postCount()
+    {
+        $count = $this->remember('post-count', function () {
+            return Post::count();
+        });
+        return $count;
+    }
+
     public function getWithoutContent($post_id)
     {
         $post = $this->remember('post.one.wc.' . $post_id, function () use ($post_id) {
