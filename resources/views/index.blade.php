@@ -13,7 +13,7 @@
         </h3>
         <p class="links">
             <font aria-hidden="true">»</font>
-            <a href="{{ route('post.index') }}" aria-label="点击查看博客文章列表">博客
+            <a href="{{ route('post.index') }}" aria-label="点击查看博客文章列表">博客</a>
             @if(isset($github_username) && $github_username)
                 <font aria-hidden="true">/</font><a href="{{ route('projects') }}" aria-label="点击查看项目列表">项目</a>
             @endif

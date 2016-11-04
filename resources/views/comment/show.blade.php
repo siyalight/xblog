@@ -3,10 +3,12 @@
         <div class="pull-left">
             <?php
             $href = $comment->user_id ? route('user.show', $comment->username) : 'javascript:void(0);';
+            $imgSrc = $comment->user ? $comment->user->avatar : config('app.avatar');
+            $imgSrc = processImageViewUrl($imgSrc, 40, 40);
             ?>
             <a name="comment{{ $loop->index + 1 }}" href="{{ $href }}">
                 <img width="40px" height="40px" class="img-circle"
-                     src="{{ $comment->user ? $comment->user->avatar :'https://static.lufficc.com/image/default_avatar.png' }}">
+                     src="{{ $imgSrc }}">
             </a>
         </div>
         <div class="comment-info">

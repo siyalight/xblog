@@ -72,6 +72,19 @@ if (!function_exists('getUrlByFileName')) {
     }
 }
 
+if (!function_exists('processImageViewUrl')) {
+
+    function processImageViewUrl($rawImageUrl, $width = null, $height = null, $mode = 1)
+    {
+        $para = '?imageView2/' . $mode;
+        if ($width)
+            $para = $para . '/w/' . $width;
+        if ($height)
+            $para = $para . '/h/' . $height;
+        return $rawImageUrl . $para;
+    }
+}
+
 if (!function_exists('getImageViewUrl')) {
     /**
      * @see http://developer.qiniu.com/code/v6/api/kodo-api/image/imageview2.html
@@ -83,14 +96,10 @@ if (!function_exists('getImageViewUrl')) {
      */
     function getImageViewUrl($key, $width = null, $height = null, $mode = 1)
     {
-        $para = '?imageView2/' . $mode;
-        if ($width)
-            $para = $para . '/w/' . $width;
-        if ($height)
-            $para = $para . '/h/' . $height;
-        return getUrlByFileName($key) . $para;
+        return processImageViewUrl(getUrlByFileName($key), $width, $height, $mode);
     }
 }
+
 
 if (!function_exists('formatBytes')) {
     function formatBytes($size, $precision = 2)
