@@ -16,7 +16,7 @@
                 <span class="name">
                     <a href="{{ $href }}">{{ $comment->username }}</a>
                     @if(isAdminById($comment->user_id))
-                        <label class="role-label">站长</label>
+                        <label class="role-label">博主</label>
                     @endif
                 </span>
                 <span class="comment-operation pull-right">
