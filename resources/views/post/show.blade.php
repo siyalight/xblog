@@ -62,9 +62,11 @@
                         <p class="info">
                             <label class="info-title">发表日期:</label>{{ $post->created_at->format('Y年m月d日') }}
                         </p>
-                        <p class="info">
-                            <label class="info-title">修改日期:</label>{{ $post->updated_at->format('Y年m月d日') }}
-                        </p>
+                        @if(isset($post->published_at) && $post->published_at)
+                            <p class="info">
+                                <label class="info-title">修改日期:</label>{{ $post->published_at->format('Y年m月d日') }}
+                            </p>
+                        @endif
                         <p class="info">
                             <label class="info-title">文章标签:</label>
                             @foreach($post->tags as $tag)
