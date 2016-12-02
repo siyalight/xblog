@@ -10,10 +10,7 @@ use Lufficc\Comment\CommentHelper;
 
 class Post extends Model
 {
-    /**
-     * Attention please!! If you don't config ALGOLIA_APP_ID, annotate Searchable:
-     */
-    use SoftDeletes, Searchable, CommentHelper;
+    use SoftDeletes, CommentHelper;
 
     /**
      * The "booting" method of the model.

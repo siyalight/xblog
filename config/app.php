@@ -184,7 +184,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
-        Laravel\Scout\ScoutServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
         App\Providers\CacheServiceProvider::class,

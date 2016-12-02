@@ -70,11 +70,9 @@
                         <li><a href="{{ url('register') }}">注册</a></li>
                     @endif
                 </ul>
-                @if(config('scout.algolia.id'))
-                    <form class="navbar-form navbar-right" role="search" method="get" action="{{ route('search') }}">
-                        <input type="text" class="form-control" name="q" placeholder="搜索" required>
-                    </form>
-                @endif
+                <form class="navbar-form navbar-right" role="search" method="get" action="{{ route('search') }}">
+                    <input type="text" class="form-control" name="q" placeholder="搜索" required>
+                </form>
             </div>
         </nav>
     </div>

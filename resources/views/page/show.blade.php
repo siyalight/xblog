@@ -25,7 +25,7 @@
                 </div>
 
                 @if($page->isShownComment())
-                    <div class="mt-30">
+                    <div>
                         @include('widget.comment',[
                         'comment_key'=>'page.'.$page->name,
                         'comment_title'=>$page->display_name,

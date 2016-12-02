@@ -1,7 +1,4 @@
 <div class="comment">
-    <div class="comment-header">
-        <h6 id="comments_count"><i class="fa fa-comments fa-fw"></i>评论</h6>
-    </div>
     <div class="comment-body">
         <div class="ds-thread" data-thread-key="{{ $comment_key }}" data-title="请替换成文章的标题" data-url="{{ $comment_url }}"></div>
         <script type="text/javascript">

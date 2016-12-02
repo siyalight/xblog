@@ -2,25 +2,6 @@
 @section('description',$post->description)
 @section('keywords',$post->category->name)
 @section('title',$post->title)
-@section('css')
-    <style>
-        .post-info-panel {
-            background: #f8f9fa;
-            border-top: 1px solid #e9ecef;
-            border-bottom: 1px solid #e9ecef;
-            padding: 15px 20px;
-            margin: 10px -10px 10px;
-            color: #495057;
-            font-size: 16px;
-        }
-        .post-info-panel .info{
-
-        }
-        .post-info-panel .info-title{
-            margin-right: 10px;
-        }
-    </style>
-@endsection
 @section('content')
     <div class="container">
         <div id="post-detail-wrap" class="row">
@@ -96,7 +77,7 @@
         </div>
 
         @if(!(isset($preview) && $preview) && $post->isShownComment())
-            <div class="row mt-30">
+            <div class="row">
                 <div id="comment-wrap" class="col-md-8 col-md-offset-2 col-sm-12 phone-no-padding">
                     @include('widget.comment',[
                     'comment_key'=>$post->slug,

@@ -27,7 +27,8 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $posts = Post::search($request->get('q'))->get();
+        $key = $request->get('q');
+        $posts = Post::where('title', 'like', "%$key%")->get();
         return view('search', compact('posts'));
     }
 

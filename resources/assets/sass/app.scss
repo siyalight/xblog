@@ -52,11 +52,11 @@ h6 {
 
 h1,
 h2 {
-  font-weight: bolder;
-  margin-top: 50px;
+  font-weight: bold;
+  margin-top: 30px;
   margin-bottom: 20px;
 }
-
+/*
 h3,
 h4 {
   font-weight: 500;
@@ -67,7 +67,7 @@ h4 {
 h3,
 h4 {
   font-weight: 400;
-}
+}*/
 
 #content-wrap {
   min-height: 100%;
@@ -169,16 +169,24 @@ pre code {
   white-space: pre;
 }
 
-/* creative-commons */
+/* post-info-panel */
 
-.creative-commons {
+.post-info-panel {
   background: #f8f9fa;
-  border-top: 1px solid #f1f3f5;
-  border-bottom: 1px solid #f1f3f5;
-  padding: 6px 30px;
-  margin: 20px -10px;
-  color: #868e96;
-  font-size: 15px;
+  border-top: 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
+  padding: 15px 20px;
+  margin: 10px -10px 10px;
+  color: #495057;
+  font-size: 14px;
+
+  .info-title {
+    margin-right: 10px;
+  }
+
+  .info {
+
+  }
 }
 
 @media (max-width: 768px) {
