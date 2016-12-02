@@ -27,8 +27,6 @@
                         </div>
                     </form>
 
-
-
                     <form role="form" class="form-horizontal" action="{{ route('upload.file') }}"
                           enctype="multipart/form-data" method="post">
                         {{ csrf_field() }}

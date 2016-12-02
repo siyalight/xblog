@@ -13,7 +13,6 @@
                         <tr>
                             <th>标题</th>
                             <th>状态</th>
-                            {{--<th>slug</th>--}}
                             <th>action</th>
                         </tr>
                         </thead>
@@ -21,19 +20,18 @@
                         @foreach($posts as $post)
                             <?php
                             $class = '';
-                            $status = 'Un published';
+                            $status = '未发表';
                             if ($post->trashed()) {
                                 $class = 'danger';
                                 $status = 'Deleted';
                             } else if ($post->isPublished()) {
                                 $class = 'success';
-                                $status = 'Published';
+                                $status = '已发表';
                             }
                             ?>
                             <tr class="{{ $class }}">
                                 <td>{{ $post->title }}</td>
                                 <td>{{ $status }}</td>
-                                {{--<td>{{ $post->slug }}</td>--}}
                                 <td>
                                     <div>
                                         <a {{ $post->trashed()?'disabled':'' }} href="{{ $post->trashed()?'javascript:void(0)':route('post.edit',$post->id) }}"
