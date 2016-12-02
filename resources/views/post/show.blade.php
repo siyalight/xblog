@@ -2,6 +2,25 @@
 @section('description',$post->description)
 @section('keywords',$post->category->name)
 @section('title',$post->title)
+@section('css')
+    <style>
+        .post-info-panel {
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            border-bottom: 1px solid #e9ecef;
+            padding: 15px 20px;
+            margin: 10px -10px 10px;
+            color: #495057;
+            font-size: 16px;
+        }
+        .post-info-panel .info{
+
+        }
+        .post-info-panel .info-title{
+            margin-right: 10px;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="container">
         <div id="post-detail-wrap" class="row">
@@ -49,17 +68,28 @@
                     <br>
                     <div class="post-detail-content">
                         {!! $post->html_content !!}
+                        <br>
+                        <p>
+                            -- END
+                        </p>
                     </div>
-                    <div class="tag-list">
-                        <i class="fa fa-tags"></i>
-                        @foreach($post->tags as $tag)
-                            <a class="tag" href="{{ route('tag.show',$tag->name) }}">{{ $tag->name }}</a>
-                        @endforeach
-                    </div>
-                    <div class="alone-divider"></div>
-                    <div class="creative-commons">
-                        <i class="fa fa-fw fa-creative-commons"></i>自由转载-非商用-非衍生-保持署名（<a
-                                href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+                    <div class="post-info-panel">
+                        <p class="info">
+                            <label class="info-title">版权声明:</label><i class="fa fa-fw fa-creative-commons"></i>自由转载-非商用-非衍生-保持署名（<a
+                                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+                        </p>
+                        <p class="info">
+                            <label class="info-title">发表日期:</label>{{ $post->created_at->format('Y年m月d日') }}
+                        </p>
+                        <p class="info">
+                            <label class="info-title">修改日期:</label>{{ $post->updated_at->format('Y年m月d日') }}
+                        </p>
+                        <p class="info">
+                            <label class="info-title">文章标签:</label>
+                            @foreach($post->tags as $tag)
+                                <a class="tag" href="{{ route('tag.show',$tag->name) }}">{{ $tag->name }}</a>
+                            @endforeach
+                        </p>
                     </div>
                 </div>
             </div>

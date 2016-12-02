@@ -34,6 +34,9 @@
         @forelse($images as $image)
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="widget widget-default">
+                    <p>
+                        {{ $image->name }}
+                    </p>
                     <div class="js-imgLiquid" style="width: 100% ;height: 250px;">
                         <img src="{{ getImageViewUrl($image->key,null,250) }}">
                     </div>

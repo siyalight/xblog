@@ -172,12 +172,13 @@ pre code {
 /* creative-commons */
 
 .creative-commons {
-  margin-top: 10px;
+  background: #f8f9fa;
+  border-top: 1px solid #f1f3f5;
+  border-bottom: 1px solid #f1f3f5;
+  padding: 6px 30px;
+  margin: 20px -10px;
   color: #868e96;
-  font-size: 1.05em;
-  a {
-    color: #adb5bd
-  }
+  font-size: 15px;
 }
 
 @media (max-width: 768px) {
