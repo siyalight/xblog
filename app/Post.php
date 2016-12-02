@@ -29,19 +29,6 @@ class Post extends Model
         return 'posts';
     }
 
-    public function toSearchableArray()
-    {
-        return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'description' => $this->description,
-            'content' => $this->content,
-            'slug' => $this->slug,
-            'view_count' => $this->view_count,
-            'created_at' => $this->created_at,
-        ];
-    }
-
     /**
      * The attributes that should be mutated to dates.
      *
