@@ -9,10 +9,9 @@
             <div class="widget-body">
                 <form role="form" class="form-horizontal" action="{{ route('upload.image') }}"
                       datatype="image"
-                      required=""
+                      required="required"
                       enctype="multipart/form-data" method="post">
                     {{ csrf_field() }}
-
                     <div class="form-group">
                         <label for="image" class="col-xs-2 col-xs-offset-1 control-label">
                             <i class="fa fa-file-image-o fa-lg fa-fw"></i>
@@ -34,6 +33,9 @@
         @forelse($images as $image)
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="widget widget-default">
+                    <label style="padding: 5px 10px;width: 100%;margin: 0">
+                        {{ $image->name }}
+                    </label>
                     <div class="js-imgLiquid" style="width: 100% ;height: 250px;">
                         <img src="{{ getImageViewUrl($image->key,null,250) }}">
                     </div>
@@ -54,7 +56,7 @@
                             </a>
                             <button class="btn btn-danger"
                                     data-method="delete"
-                                    data-modal-target="{{ $image->key }}"
+                                    data-modal-target="{{ $image->name }}"
                                     data-url="{{ route('delete.file').'?key='.$image->key.'&type=image' }}"
                                     data-key="{{ $image->key }}">
                                 <i class="fa fa-trash-o fa-fw"></i>

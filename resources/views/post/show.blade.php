@@ -49,24 +49,37 @@
                     <br>
                     <div class="post-detail-content">
                         {!! $post->html_content !!}
+                        <br>
+                        <p>
+                            -- END
+                        </p>
                     </div>
-                    <div class="tag-list">
-                        <i class="fa fa-tags"></i>
-                        @foreach($post->tags as $tag)
-                            <a class="tag" href="{{ route('tag.show',$tag->name) }}">{{ $tag->name }}</a>
-                        @endforeach
-                    </div>
-                    <div class="alone-divider"></div>
-                    <div class="creative-commons">
-                        <i class="fa fa-fw fa-creative-commons"></i>自由转载-非商用-非衍生-保持署名（<a
-                                href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+                    <div class="post-info-panel">
+                        <p class="info">
+                            <label class="info-title">版权声明:</label><i class="fa fa-fw fa-creative-commons"></i>自由转载-非商用-非衍生-保持署名（<a
+                                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+                        </p>
+                        <p class="info">
+                            <label class="info-title">发表日期:</label>{{ $post->created_at->format('Y年m月d日') }}
+                        </p>
+                        @if(isset($post->published_at) && $post->published_at)
+                            <p class="info">
+                                <label class="info-title">修改日期:</label>{{ $post->published_at->format('Y年m月d日') }}
+                            </p>
+                        @endif
+                        <p class="info">
+                            <label class="info-title">文章标签:</label>
+                            @foreach($post->tags as $tag)
+                                <a class="tag" href="{{ route('tag.show',$tag->name) }}">{{ $tag->name }}</a>
+                            @endforeach
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
         @if(!(isset($preview) && $preview) && $post->isShownComment())
-            <div class="row mt-30">
+            <div class="row">
                 <div id="comment-wrap" class="col-md-8 col-md-offset-2 col-sm-12 phone-no-padding">
                     @include('widget.comment',[
                     'comment_key'=>$post->slug,

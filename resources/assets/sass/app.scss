@@ -52,11 +52,12 @@ h6 {
 
 h1,
 h2 {
-  font-weight: bolder;
-  margin-top: 50px;
+  font-weight: bold;
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 
+/*
 h3,
 h4 {
   font-weight: 500;
@@ -67,7 +68,7 @@ h4 {
 h3,
 h4 {
   font-weight: 400;
-}
+}*/
 
 #content-wrap {
   min-height: 100%;
@@ -139,17 +140,17 @@ blockquote {
 }
 
 /*code*/
-$codeBg: rgb(247, 249, 247)/*#20201d*/
-;
+$codeBg: rgb(247, 249, 247)/*#20201d*/;
+$codeColor: #383a42;
 
 pre, .highlight {
   overflow: auto;
   margin: 20px 0;
   padding: 15px;
   font-size: 0.95em;
-  color: rgb(33, 33, 33);
+  color: $codeColor;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   background: $codeBg !important;
   line-height: 1.6em;
   word-wrap: normal;
@@ -169,14 +170,27 @@ pre code {
   white-space: pre;
 }
 
-/* creative-commons */
+/* post-info-panel */
 
-.creative-commons {
-  margin-top: 10px;
-  color: #868e96;
-  font-size: 1.05em;
-  a {
-    color: #adb5bd
+.post-info-panel {
+  background: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
+  padding: 15px 20px;
+  margin: 10px -10px 10px;
+  color: #495057;
+  font-size: 14px;
+
+  .info-title {
+    margin-right: 10px;
+  }
+  p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .info {
+
   }
 }
 

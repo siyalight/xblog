@@ -10,10 +10,7 @@ use Lufficc\Comment\CommentHelper;
 
 class Post extends Model
 {
-    /**
-     * Attention please!! If you don't config ALGOLIA_APP_ID, annotate Searchable:
-     */
-    use SoftDeletes, Searchable, CommentHelper;
+    use SoftDeletes, CommentHelper;
 
     /**
      * The "booting" method of the model.
@@ -30,19 +27,6 @@ class Post extends Model
     public function searchableAs()
     {
         return 'posts';
-    }
-
-    public function toSearchableArray()
-    {
-        return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'description' => $this->description,
-            'content' => $this->content,
-            'slug' => $this->slug,
-            'view_count' => $this->view_count,
-            'created_at' => $this->created_at,
-        ];
     }
 
     /**

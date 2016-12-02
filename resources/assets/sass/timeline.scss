@@ -102,11 +102,9 @@ $icon-top: 24px;
 
 .cd-timeline-content {
   @extend .shadow;
-  border: 1.5px solid #eee;
   position: relative;
   margin-left: 25px;
   background: white;
-  border-radius: 0.25em;
   padding: 1em;
 }
 
@@ -119,7 +117,6 @@ $icon-top: 24px;
 .cd-timeline-content a {
   transition: all 0.25s ease-in-out;
   -webkit-transition: all 0.25s ease-in-out;
-
   text-decoration: none;
 }
 

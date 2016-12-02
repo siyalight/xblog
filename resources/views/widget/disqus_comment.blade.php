@@ -1,7 +1,4 @@
 <div class="comment">
-    <div class="comment-header">
-        <h6 id="comments_count"><i class="fa fa-comments fa-fw"></i>评论</h6>
-    </div>
     <div class="comment-body">
         <section id="comments">
             <div id="disqus_thread"></div>
