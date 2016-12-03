@@ -36,7 +36,7 @@
             </span>
             </div>
             <div class="comment-time">
-                <span>{{ $comment->created_at->format('Y/m/d H:i') }}</span>
+                <span>{{ $comment->created_at->format('Y-m-d H:i') }}</span>
             </div>
             <div class="markdown-content">
                 {!! $comment->html_content !!}
