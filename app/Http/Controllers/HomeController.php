@@ -28,7 +28,9 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $key = $request->get('q');
-        $posts = Post::where('title', 'like', "%$key%")->get();
+        $title_posts = Post::where('title', 'like', "%$key%")->get();
+        $desc_posts = Post::where('description', 'like', "%$key%")->get();
+        $posts = $title_posts->merge($desc_posts);
         return view('search', compact('posts'));
     }
 
