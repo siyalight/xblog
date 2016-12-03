@@ -40,7 +40,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <?php
                                 $user = auth()->user();
-                                $unreadNotificationsCount = $user->unreadNotifications()->count();
+                                $unreadNotificationsCount = $user->unreadNotifications->count();
                                 ?>
                                 @if($unreadNotificationsCount)
                                     <span class="badge required">{{ $unreadNotificationsCount }}</span>
