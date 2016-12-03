@@ -18,6 +18,10 @@
                     <label for="email">邮箱<span class="required">*</span></label>
                     <input class="form-control" id="email" type="email" name="email" placeholder="邮箱不会公开">
                 </div>
+                <div class="form-group">
+                    <label for="site">个人网站</label>
+                    <input class="form-control" id="site" type="text" name="site" placeholder="可选，填写后点击头像可以直接进入">
+                </div>
             @endif
             <div class="form-group">
                 <label for="comment-content">评论内容<span class="required">*</span></label>

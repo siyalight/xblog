@@ -2,7 +2,11 @@
     <div class="comment-wrap">
         <div class="pull-left">
             <?php
-            $href = $comment->user_id ? route('user.show', $comment->username) : 'javascript:void(0);';
+            if ($comment->user_id) {
+                $href = route('user.show', $comment->username);
+            } else {
+                $href = $comment->site ? $comment->site : 'javascript:void(0);';
+            }
             $imgSrc = $comment->user ? $comment->user->avatar : config('app.avatar');
             $imgSrc = processImageViewUrl($imgSrc, 40, 40);
             ?>
