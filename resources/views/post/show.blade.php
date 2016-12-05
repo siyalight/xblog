@@ -21,14 +21,7 @@
                     <div class="center-block">
                         <div class="post-detail-title">{{ $post->title }}</div>
                         <div class="post-meta">
-                           <span class="post-time">
-                           <i class="fa fa-calendar-o"></i>
-                           <time datetime="{{ $post->created_at->tz('UTC')->toAtomString() }}">
-                           {{ $post->published_at==null?'Un Published':$post->created_at->format('Y-m-d H:i') }}
-                           </time>
-                           </span>
                             <span class="post-category">
-                           &nbsp;|&nbsp;
                            <i class="fa fa-folder-o"></i>
                            <a href="{{ route('category.show',$post->category->name) }}">
                            {{ $post->category->name }}
@@ -60,7 +53,7 @@
                                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
                         </p>
                         <p class="info">
-                            <label class="info-title">发表日期:</label>{{ $post->created_at->format('Y年m月d日') }}
+                            <label class="info-title">创建日期:</label>{{ $post->created_at->format('Y年m月d日') }}
                         </p>
                         @if(isset($post->published_at) && $post->published_at)
                             <p class="info">

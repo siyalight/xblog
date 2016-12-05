@@ -36,8 +36,8 @@
                         type: "warning",
                         showCancelButton: true,
                         confirmButtonColor: "#DD6B55",
-                        cancelButtonText: "再考虑考虑",
-                        confirmButtonText: "确定删除!",
+                        cancelButtonText: "取消",
+                        confirmButtonText: "确定",
                         closeOnConfirm: true
                     },
                     function () {
@@ -70,10 +70,12 @@
 
         var username = form.find('input[name=username]');
         var email = form.find('input[name=email]');
+        var site = form.find('input[name=site]');
 
         if (window.localStorage) {
             username.val(localStorage.getItem('comment_username'));
             email.val(localStorage.getItem('comment_email'));
+            site.val(localStorage.getItem('comment_site'));
         }
 
         form.on('submit', function () {
@@ -95,6 +97,7 @@
 
             var usernameValue = username.val();
             var emailValue = email.val();
+            var siteValue = site.val();
 
             submitBtn.val('提交中...').addClass('disabled').prop('disabled', true);
             $.ajax({
@@ -109,15 +112,18 @@
                     content: commentContent.val(),
                     username: usernameValue,
                     email: emailValue,
+                    site: siteValue,
                 },
             }).done(function (data) {
                 if (data.status === 200) {
                     if (window.localStorage) {
                         localStorage.setItem('comment_username', usernameValue);
                         localStorage.setItem('comment_email', emailValue);
+                        localStorage.setItem('comment_site', siteValue);
                     }
                     username.val('');
                     email.val('');
+                    site.val('');
                     commentContent.val('');
                     form.find('#comment_error_msg').text('');
                     loadComments(true);

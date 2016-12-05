@@ -76,6 +76,7 @@ class CommentRepository extends Repository
         } else {
             $comment->username = $request->get('username');
             $comment->email = $request->get('email');
+            $comment->site = $request->get('site');
         }
 
         $content = $request->get('content');
