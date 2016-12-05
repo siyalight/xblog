@@ -29,9 +29,12 @@ class HomeController extends Controller
     {
         $key = trim($request->get('q'));
         $key = "%$key%";
-        $title_posts = Post::where('title', 'like', $key)->get();
-        $desc_posts = Post::where('description', 'like', $key)->get();
-        $posts = $title_posts->merge($desc_posts);
+        $posts = Post::where('title', 'like', $key)
+            ->orWhere('description', 'like', $key)
+            ->with(['tags', 'category'])
+            ->withCount('comments')
+            ->orderBy('view_count', 'desc')
+            ->get();
         return view('search', compact('posts'));
     }
 
