@@ -88,6 +88,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::post('/post/{post}/restore', ['uses' => 'PostController@restore', 'as' => 'post.restore']);
     Route::get('/post/{slug}/preview', ['uses' => 'PostController@preview', 'as' => 'post.preview']);
     Route::post('/post/{post}/publish', ['uses' => 'PostController@publish', 'as' => 'post.publish']);
+    Route::get('/post/{post}/download', ['uses' => 'PostController@download', 'as' => 'post.download']);
 
     /**
      * tag

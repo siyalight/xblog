@@ -78,6 +78,9 @@
                                                 data-target="#delete-post-modal">
                                             <i class="fa fa-trash-o  fa-fw"></i>
                                         </button>
+                                        <a class="btn btn-default" href="{{ route('post.download',$post->id) }}">
+                                            <i class="fa fa-cloud-download fa-fw"></i>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
