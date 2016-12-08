@@ -6,17 +6,6 @@
     <div class="container">
         <div id="post-detail-wrap" class="row">
             <div class="col-md-8 col-md-offset-2 col-sm-12 phone-no-padding">
-                @can('update',$post)
-                    <div class="btn-group">
-                        <a class="btn" href="{{ route('post.edit',$post->id) }}"><i class="fa fa-pencil"></i></a>
-                        <a class="btn" role="button"
-                           data-method="delete"
-                           data-url="{{ route('post.destroy',$post->id) }}"
-                           data-modal-target="{{ $post->title }}">
-                            <i class="fa fa-trash-o"></i>
-                        </a>
-                    </div>
-                @endcan
                 <div class="post-detail">
                     <div class="center-block">
                         <div class="post-detail-title">{{ $post->title }}</div>
@@ -37,6 +26,23 @@
                            <i class="fa fa-eye"></i>
                            <span>{{ $post->view_count }}</span>
                            </span>
+                            @can('update',$post)
+                                <span>
+                                    &nbsp;|&nbsp;
+                                    <a class="btn" href="{{ route('post.edit',$post->id) }}">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </span>
+                                <span>
+                                    &nbsp;|&nbsp;
+                                    <a role="button"
+                                       data-method="delete"
+                                       data-url="{{ route('post.destroy',$post->id) }}"
+                                       data-modal-target="{{ $post->title }}">
+                                    <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </span>
+                            @endcan
                         </div>
                     </div>
                     <br>
