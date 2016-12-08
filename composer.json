@@ -11,7 +11,8 @@
         "erusev/parsedown": "^1.6",
         "qiniu/php-sdk": "^7.0",
         "laravel/socialite": "^2.0",
-        "mews/purifier": "^2.0"
+        "mews/purifier": "^2.0",
+        "laravel/scout": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
