@@ -51,7 +51,7 @@ Route::resource('comment', 'CommentController', ['only' => ['store', 'destroy', 
 Route::get('sitemap', 'SiteMapController@index');
 Route::get('sitemap.xml', 'SiteMapController@index');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
+Route::group(['prefix' => 'admin', /*'middleware' => ['auth', 'admin']*/], function () {
 
     /**
      * admin url
