@@ -12,6 +12,7 @@ use App\Post;
 use Carbon\Carbon;
 use Gate;
 use Illuminate\Http\Request;
+use League\HTMLToMarkdown\HtmlConverter;
 use XblogConfig;
 
 class PostController extends Controller
@@ -124,6 +125,8 @@ class PostController extends Controller
         $post = Post::withoutGlobalScopes()->find($id);
 
         $this->checkPolicy('update', $post);
+
+        $post->description = (new HtmlConverter(['header_style' => 'atx']))->convert($post->description);
 
         return view('post.edit', [
             'post' => $post,

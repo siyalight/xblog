@@ -153,8 +153,11 @@ class PostRepository extends Repository
 
         $post = auth()->user()->posts()->create(
             array_merge(
-                $request->except('_token'),
-                ['html_content' => $this->markDownParser->parse($request->get('content'), false)]
+                $request->except(['_token', 'description']),
+                [
+                    'html_content' => $this->markDownParser->parse($request->get('content'), false),
+                    'description' => $this->markDownParser->parse($request->get('description'), false),
+                ]
             )
         );
         $post->tags()->sync($ids);
@@ -212,8 +215,11 @@ class PostRepository extends Repository
 
         return $post->update(
             array_merge(
-                $request->except('_token'),
-                ['html_content' => $this->markDownParser->parse($request->get('content'), false)]
+                $request->except(['_token', 'description']),
+                [
+                    'html_content' => $this->markDownParser->parse($request->get('content'), false),
+                    'description' => $this->markDownParser->parse($request->get('description'), false),
+                ]
             ));
     }
 
