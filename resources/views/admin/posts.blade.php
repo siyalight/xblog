@@ -121,7 +121,6 @@
 @section('script')
     <script>
         $('#delete-post-modal').on('show.bs.modal', function (e) {
-            console.log($(e.relatedTarget).data());
             var url = $(e.relatedTarget).data('url');
             var title = $(e.relatedTarget).data('title');
             var force = $(e.relatedTarget).data('force');
