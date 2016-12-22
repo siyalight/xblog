@@ -121,14 +121,14 @@
 @section('script')
     <script>
         $('#delete-post-modal').on('show.bs.modal', function (e) {
+            console.log($(e.relatedTarget).data());
             var url = $(e.relatedTarget).data('url');
             var title = $(e.relatedTarget).data('title');
             var force = $(e.relatedTarget).data('force');
-            if (force == '1')
-            {
-                $('#confirm-btn').text('确定(这将永久刪除)');
-                $('#confirm-btn').attr('class','btn btn-danger');
-            }
+            var confirm_btn_text = force == '1' ? '确定(这将永久刪除)' : '删除';
+            var confirm_btn_type = force == '1' ? 'btn btn-danger' : 'btn btn-primary';
+            $('#confirm-btn').text(confirm_btn_text);
+            $('#confirm-btn').attr('class', confirm_btn_type);
             $('#span-title').text(title);
             $('#delete-form').attr('action', url);
         });
