@@ -12,6 +12,7 @@ use App\Post;
 use Carbon\Carbon;
 use Gate;
 use Illuminate\Http\Request;
+use League\HTMLToMarkdown\HtmlConverter;
 use XblogConfig;
 
 class PostController extends Controller
@@ -125,6 +126,8 @@ class PostController extends Controller
 
         $this->checkPolicy('update', $post);
 
+        $post->description = (new HtmlConverter(['header_style' => 'atx']))->convert($post->description);
+
         return view('post.edit', [
             'post' => $post,
             'categories' => $this->categoryRepository->getAll(),
@@ -143,6 +146,27 @@ class PostController extends Controller
             return redirect('admin/posts')->with('success', '文章' . $request['name'] . '修改成功');
         } else
             return redirect('admin/posts')->withErrors('文章' . $request['name'] . '修改失败');
+    }
+
+    public function download($id)
+    {
+        $post = Post::withoutGlobalScopes()->where('id', $id)->with(['tags', 'category'])->first();
+
+        $info = "title: " . $post->title;
+        $info = $info . "\ndate: " . $post->created_at->format('Y-m-d H:i');
+        $info = $info . "\npermalink: " . $post->slug;
+        $info = $info . "\ncategory: " . $post->category->name;
+        $info = $info . "\ntags:\n";
+        foreach ($post->tags as $tag) {
+            $info = $info . "- $tag->name\n";
+        }
+        $info = $info . "---\n\n" . $post->content;
+        return response($info, 200,
+            [
+                "Content-Type" => 'application/force-download',
+                'Content-Disposition' => "attachment; filename=\"" . $post->title . ".md\""
+            ]
+        );
     }
 
     public function restore($id)

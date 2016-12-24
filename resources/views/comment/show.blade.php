@@ -5,7 +5,7 @@
             if ($comment->user_id) {
                 $href = route('user.show', $comment->username);
             } else {
-                $href = $comment->site ? $comment->site : 'javascript:void(0);';
+                $href = $comment->site ? httpUrl($comment->site) : 'javascript:void(0);';
             }
             $imgSrc = $comment->user ? $comment->user->avatar : config('app.avatar');
             $imgSrc = processImageViewUrl($imgSrc, 40, 40);

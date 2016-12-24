@@ -25,16 +25,17 @@
                            </span>
         </div>
     </div>
-    <!-- post content -->
+    {{--post content--}}
     <div class="post-description">
-        <p class="markdown-target" data-markdown="{{ $post->description }}">
-        </p>
+        {{--<p class="markdown-target" data-markdown="{{ $post->description }}">
+        </p>--}}
+        {!! $post->description !!}
     </div>
-    <!-- read more -->
+    {{--read more--}}
     <div class="post-permalink">
         <a title="阅读全文" href="{{ route('post.show',$post->slug) }}" class="btn btn-more">阅读全文</a>
     </div>
-    <!-- post footer -->
+    {{--post footer--}}
     <div class="post-footer clearfix">
         <div class="pull-left tag-list">
             <i class="fa fa-tags"></i>

@@ -131,3 +131,15 @@ if (!function_exists('getMentionedUsers')) {
         return $users;
     }
 }
+
+
+if (!function_exists('httpUrl')) {
+    function httpUrl($url)
+    {
+        if ($url == null || $url == '')
+            return '';
+        if (!starts_with($url, 'http'))
+            return 'http://' . $url;
+        return $url;
+    }
+}

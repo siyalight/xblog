@@ -16,21 +16,33 @@ use Lufficc\MarkDownParser;
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
-});
+})->describe('inspire');;
 
-Artisan::command('parse', function () {
-    $parse = new Parsedown();
-    foreach (\App\Post::all() as $post)
-    {
-        $post->html_content = $parse->setBreaksEnabled(true)->text($post->content);
-        $this->comment($post->save());
+
+Artisan::command('post {action}', function ($action) {
+    $markdownParser = new MarkDownParser();
+    switch ($action) {
+        case 'des2html':
+            foreach (\App\Post::all() as $post) {
+                $post->description = $markdownParser->parse($post->description, false);
+                $this->comment($post->save());
+            }
+            break;
+        case 'content2html':
+            foreach (\App\Post::all() as $post) {
+                $post->html_content = $markdownParser->parse($post->content, false);
+                $this->comment($post->save());
+            }
+            break;
     }
-});
+
+})->describe('post { des2html | content2html }');;
 
 
 Artisan::command('avatar', function () {
     $this->comment(\App\User::whereNull('avatar')->update(['avatar' => config('app.avatar')]));
-});
+})->describe("set users's null avatar to default avatar");
+
 
 Artisan::command('xssProtection', function () {
     $mp = new MarkDownParser();
@@ -45,4 +57,4 @@ Artisan::command('xssProtection', function () {
         $this->comment("----------------------------------------------------------------------------------------");
     }
 
-});
+})->describe("protect user comments from xss");;

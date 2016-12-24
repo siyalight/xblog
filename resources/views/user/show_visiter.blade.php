@@ -9,7 +9,7 @@
     </div>
     <div class="form-group">
         <label>个人网站：</label>
-        <a href="{{ $user->website }}">{{ $user->website }}</a>
+        <a href="{{ httpUrl($user->website) }}">{{ httpUrl($user->website) }}</a>
     </div>
     @if($user->meta)
         @foreach($user->meta as $key=>$value)
