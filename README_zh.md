@@ -12,7 +12,7 @@
 
 # Xblog
 
-[English readme](https://github.com/lufficc/laravel-blog)|[项目主页](https://lufficc.github.io/Xblog/)|[截图](https://lufficc.github.io/Xblog/news/)
+[English README](https://github.com/lufficc/laravel-blog)|[ 项目主页 ](https://lufficc.github.io/Xblog/)|[ 截图 ](https://lufficc.github.io/Xblog/news/)
 
 这是一个我个人使用的博客，也曾经使用Hexo 和 github pages 搭过网站，都是都不灵活。因此用Laravel写了这个博客。
 我想说的是Laravel是最好的php框架。
