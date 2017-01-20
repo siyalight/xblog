@@ -20,6 +20,9 @@
                         </div>
                     </div>
                     @each('post.item',$posts,'post')
+                    @if($posts->lastPage() > 1)
+                        {{ $posts->links() }}
+                    @endif
                 @endif
             </div>
             <div class="col-md-4">

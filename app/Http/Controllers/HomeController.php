@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Repositories\PostRepository;
 use App\Post;
 use Illuminate\Http\Request;
+use XblogConfig;
 
 class HomeController extends Controller
 {
@@ -30,14 +31,15 @@ class HomeController extends Controller
         $key = trim($request->get('q'));
         if ($key == '')
             return back()->withErrors("请输入关键字");
-
+        $page_size = XblogConfig::getValue('page_size', 7);
         $key = "%$key%";
         $posts = Post::where('title', 'like', $key)
             ->orWhere('description', 'like', $key)
             ->with(['tags', 'category'])
             ->withCount('comments')
             ->orderBy('view_count', 'desc')
-            ->get();
+            ->paginate($page_size);
+        $posts->appends($request->except('page'));
         return view('search', compact('posts'));
     }
 
