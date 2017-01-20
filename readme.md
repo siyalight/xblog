@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/logo.png" alt="Xblog: responsive and powerful!" width="200">
+  <img src="https://github.com/lufficc/images/blob/master/Xblog/logo.png" alt="Xblog: responsive and powerful!" width="200">
   <br>
   <a href="https://packagist.org/packages/lufficc/xblog"><img src="https://poser.pugx.org/lufficc/xblog/v/stable.svg" alt="Latest Stable Version"></a>
   <a href="https://packagist.org/packages/lufficc/xblog"><img src="https://poser.pugx.org/lufficc/xblog/downloads.svg" alt="Total Downloads"></a>
@@ -7,7 +7,7 @@
 
 </p>
 <p align="center">Powerful and responsive blog system powered by laravel 5.3. Click https://lufficc.com to view live demo.</p>
-<p align="center"><img src="https://github.com/lufficc/images/blob/master/Xblog/logo.png"  width="800"><p>
+<p align="center"><img src="https://github.com/lufficc/images/blob/master/Xblog/main1.png"  width="800"><p>
 <br>
 
 # Xblog
