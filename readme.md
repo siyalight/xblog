@@ -7,7 +7,7 @@
 
 </p>
 <p align="center">Powerful and responsive blog system powered by laravel 5.3. Click https://lufficc.com to view live demo.</p>
-<p align="center"><img src="images/main1.png"  width="800"><p>
+<p align="center"><img src="https://github.com/lufficc/images/blob/master/Xblog/logo.png"  width="800"><p>
 <br>
 
 # Xblog
