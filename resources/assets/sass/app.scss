@@ -170,29 +170,6 @@ pre code {
   white-space: pre;
 }
 
-/* post-info-panel */
-
-.post-info-panel {
-  background: #f8f9fa;
-  border-top: 1px solid #e9ecef;
-  border-bottom: 1px solid #e9ecef;
-  padding: 15px 20px;
-  margin: 10px -10px 10px;
-  color: #495057;
-  font-size: 14px;
-
-  .info-title {
-    margin-right: 10px;
-  }
-  p {
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-
-  .info {
-
-  }
-}
 
 @media (max-width: 768px) {
   .phone-no-padding {
@@ -200,4 +177,3 @@ pre code {
     padding-right: 0;
   }
 }
-

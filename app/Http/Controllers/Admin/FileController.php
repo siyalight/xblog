@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\File;
+use App\Http\Controllers\Controller;
 use App\Http\Repositories\ImageRepository;
 use App\Http\Repositories\UnknownFileRepository;
 use Illuminate\Http\Request;
@@ -22,7 +23,6 @@ class FileController extends Controller
     {
         $this->imageRepository = $imageRepository;
         $this->unknownFileRepository = $unknownFileRepository;
-        $this->middleware(['auth', 'admin']);
     }
 
     public function files()

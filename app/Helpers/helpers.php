@@ -11,7 +11,7 @@ use App\User;
 if (!function_exists('isAdmin')) {
     function isAdmin($user)
     {
-        return $user != null && $user instanceof User && $user->id == 1;
+        return $user != null && $user instanceof User && $user->id === 1;
     }
 }
 

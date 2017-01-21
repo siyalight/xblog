@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Repositories\ImageRepository;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,6 @@ class ImageController extends Controller
     public function __construct(ImageRepository $imageRepository)
     {
         $this->imageRepository = $imageRepository;
-        $this->middleware(['auth', 'admin']);
     }
 
     /**
