@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8">
                 @if($posts->count()==0)
-                    <h3 class="meta-item center-block">No posts</h3>
+                    <h3 class="meta-item center-block">NO POSTS.</h3>
                 @else
                     @each('post.item',$posts,'post')
                     @if($posts->lastPage() > 1)
