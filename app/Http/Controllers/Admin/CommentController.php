@@ -22,11 +22,6 @@ class CommentController extends Controller
         $this->postRepository = $postRepository;
     }
 
-    public function edit(Comment $comment)
-    {
-        return view('comment.edit', compact('comment'));
-    }
-
     public function update(Request $request, Comment $comment)
     {
         $this->checkPolicy('manager', $comment);

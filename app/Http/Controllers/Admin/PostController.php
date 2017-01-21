@@ -45,7 +45,7 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('post.create',
+        return view('admin.post.create',
             [
                 'categories' => $this->categoryRepository->getAll(),
                 'tags' => $this->tagRepository->getAll(),
@@ -101,7 +101,7 @@ class PostController extends Controller
 
         $post->description = (new HtmlConverter(['header_style' => 'atx']))->convert($post->description);
 
-        return view('post.edit', [
+        return view('admin.post.edit', [
             'post' => $post,
             'categories' => $this->categoryRepository->getAll(),
             'tags' => $this->tagRepository->getAll(),

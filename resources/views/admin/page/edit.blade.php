@@ -13,7 +13,7 @@
                 <div class="widget-body edit-form">
                     <form role="form" class="form-horizontal" action="{{ route('page.update',$page->id) }}" method="post">
 
-                        @include('page.form-content')
+                        @include('admin.page.form-content')
                         <input type="hidden" name="_method" value="put">
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">

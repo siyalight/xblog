@@ -18,6 +18,11 @@ class CommentController extends Controller
         $this->commentRepository = $commentRepository;
     }
 
+    public function edit(Comment $comment)
+    {
+        return view('comment.edit', compact('comment'));
+    }
+
     public function store(Request $request)
     {
         if (!$request->get('content')) {

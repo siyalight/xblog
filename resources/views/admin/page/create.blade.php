@@ -13,7 +13,7 @@
                 <div class="widget-body edit-form">
                     <form role="form" class="form-horizontal" action="{{ route('page.store') }}" method="post">
 
-                        @include('page.form-content')
+                        @include('admin.page.form-content')
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">

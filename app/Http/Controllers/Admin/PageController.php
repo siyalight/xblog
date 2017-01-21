@@ -32,7 +32,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('page.create');
+        return view('admin.page.create');
     }
 
     /**
@@ -78,7 +78,7 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        return view('page.edit', compact('page'));
+        return view('admin.page.edit', compact('page'));
     }
 
     /**

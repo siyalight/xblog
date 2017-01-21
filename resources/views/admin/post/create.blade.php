@@ -7,16 +7,15 @@
     <div id="upload-img-url" data-upload-img-url="{{ route('upload.image') }}" style="display: none"></div>
     <div class="row">
         <div class="col-md-12">
-            <div id="data" class="widget widget-default" data-id="{{ $post->id . '.by@' . request()->ip() }}">
+            <div class="widget widget-default">
                 <div class="widget-header">
-                    <h6><i class="fa fa-pencil  fa-fw"></i>编辑文章</h6>
+                    <h6><i class="fa fa-pencil  fa-fw"></i>写文章</h6>
                 </div>
                 <div class="widget-body edit-form">
-                    <form role="form" class="form-horizontal" action="{{ route('post.update',$post->id) }}" method="post">
-                        @include('post.form-content')
-                        <input type="hidden" name="_method" value="put">
+                    <form role="form" class="form-horizontal" action="{{ route('post.store') }}" method="post">
+                        @include('admin.post.form-content')
                         <button type="submit" class="btn btn-primary">
-                            修改
+                            创建
                         </button>
                     </form>
                 </div>
@@ -35,12 +34,12 @@
         $(document).ready(function () {
             var simplemde = new SimpleMDE({
                 autoDownloadFontAwesome: true,
+                element: document.getElementById("post-content-textarea"),
                 autosave: {
                     enabled: true,
-                    uniqueId: "post.edit."+$('#data').data('id'),
+                    uniqueId: "post.create",
                     delay: 1000,
                 },
-                element: document.getElementById("post-content-textarea"),
                 renderingConfig: {
                     codeSyntaxHighlighting: true,
                 },
