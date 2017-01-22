@@ -45,7 +45,6 @@
                             @endcan
                         </div>
                     </div>
-                    <br>
                     <div class="post-detail-content">
                         {!! $post->html_content !!}
                         <br>

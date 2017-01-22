@@ -3,6 +3,8 @@
 $icon-width: 10px;
 $icon-top: 24px;
 
+$arrowColor: $colorPrimaryDarkTransparent;
+
 .cd-container::after {
   content: '';
   display: table;
@@ -170,7 +172,7 @@ $icon-top: 24px;
     top: $icon-top;
     left: 100%;
     border-color: transparent;
-    border-left-color: #eee;
+    border-left-color: $arrowColor;
   }
 
   .cd-timeline-content .cd-date {
@@ -188,7 +190,7 @@ $icon-top: 24px;
     left: auto;
     right: 100%;
     border-color: transparent;
-    border-right-color: #eee;
+    border-right-color: $arrowColor;
   }
 
   .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {

@@ -2,12 +2,17 @@
 
 .widget {
   @extend .shadow-block;
+  @extend .transition;
   background: white;
   margin-bottom: 35px;
   width: 100%;
 }
 
 .widget-default {
+}
+
+.widget-default:hover {
+  @extend .shadow-block-hover;
 }
 
 .widget .widget-body {
@@ -63,6 +68,11 @@
 
 .widget-user {
   position: relative;
+  @extend .widget-default;
+}
+
+.widget-user:hover {
+  @extend .widget-default:hover;
 }
 
 .widget-user .widget-user-header {

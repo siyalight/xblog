@@ -3,13 +3,13 @@
     <div id="particles" class="home-color-bg"></div>
     <div class="home-box">
         <h2 title="{{ $site_title or 'title' }}" style="margin: 0;">
-            {{ $site_title or 'title' }}
+            {{ $site_title or '我的个人博客' }}
             <a aria-hidden="true" href="{{ route('post.index') }}">
-                <img class="img-circle" src="{{ $avatar or '' }}" alt="{{ $author or 'author' }}">
+                <img class="img-circle" src="{{ $avatar or 'https://raw.githubusercontent.com/lufficc/images/master/Xblog/logo.png' }}" alt="{{ $author or 'Author' }}">
             </a>
         </h2>
         <h3 title="{{ $description or 'description' }}" aria-hidden="true" style="margin: 0">
-            {{ $description or 'description' }}
+            {{ $description or 'Stay Hungry. Stay Foolish.' }}
         </h3>
         <p class="links">
             <font aria-hidden="true">»</font>

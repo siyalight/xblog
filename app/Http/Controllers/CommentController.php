@@ -12,13 +12,10 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     protected $commentRepository;
-    protected $postRepository;
 
-    public function __construct(CommentRepository $commentRepository, PostRepository $postRepository)
+    public function __construct(CommentRepository $commentRepository)
     {
         $this->commentRepository = $commentRepository;
-        $this->postRepository = $postRepository;
-        $this->middleware('auth', ['except' => ['show', 'store']]);
     }
 
     public function edit(Comment $comment)
@@ -39,7 +36,6 @@ class CommentController extends Controller
         return back()->withErrors('修改失败');
     }
 
-
     public function store(Request $request)
     {
         if (!$request->get('content')) {
@@ -54,7 +50,7 @@ class CommentController extends Controller
                 );
             }
             $pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
-            if (!preg_match( $pattern, request('email') )) {
+            if (!preg_match($pattern, request('email'))) {
                 return response()->json(
                     ['status' => 500, 'msg' => 'An Invalidate Email !']
                 );
@@ -74,21 +70,6 @@ class CommentController extends Controller
         $redirect = $request->get('redirect');
         return view('comment.show', compact('comments', 'commentable', 'redirect'));
     }
-
-    public function restore($comment_id)
-    {
-        $comment = Comment::withTrashed()->findOrFail($comment_id);
-
-        $this->checkPolicy('restore', $comment);
-
-        if ($comment->trashed()) {
-            $comment->restore();
-            $this->commentRepository->clearAllCache();
-            return redirect()->route('admin.comments')->with('success', '恢复成功');
-        }
-        return redirect()->route('admin.comments')->withErrors('恢复失败');
-    }
-
 
     public function destroy($comment_id)
     {

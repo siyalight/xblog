@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 
 use App\Http\Repositories\MapRepository;
 use Illuminate\Http\Request;
@@ -17,7 +19,6 @@ class MapController extends Controller
     public function __construct(MapRepository $mapRepository)
     {
         $this->mapRepository = $mapRepository;
-        $this->middleware(['auth', 'admin']);
     }
 
     public function store(Request $request)
