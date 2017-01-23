@@ -16,7 +16,7 @@
                 <link>{{ route('post.show',$post->slug) }}</link>
                 <description>{{ $post->description }}</description>
                 <pubDate>{{ $post->created_at->format('D, d M Y H:i:s T') }}</pubDate>
-                <author>{{ $post->user->email }}</author>
+                <author>{{ $post->user->email }} ({{$post->user->name}})</author>
                 <guid>{{ route('post.show',$post->slug) }}</guid>
                 <category>{{ $post->category->name }}</category>
             </item>
