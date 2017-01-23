@@ -4,6 +4,9 @@
              data-api-url="{{ route('comment.show',[$commentable->id,
              'commentable_type'=>$commentable_type,
              'redirect'=>(isset($redirect) && $redirect ? $redirect:'')]) }}">
+            @if(isset($comments) && !empty($comments))
+                @include('comment.show',$comments)
+            @endif
         </div>
         <form id="comment-form" method="post" action="{{ route('comment.store') }}">
             {{ csrf_field() }}

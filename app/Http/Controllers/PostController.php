@@ -18,14 +18,17 @@ use XblogConfig;
 class PostController extends Controller
 {
     protected $postRepository;
+    protected $commentRepository;
 
     /**
      * PostController constructor.
      * @param PostRepository $postRepository
+     * @param CommentRepository $commentRepository
      */
-    public function __construct(PostRepository $postRepository)
+    public function __construct(PostRepository $postRepository, CommentRepository $commentRepository)
     {
         $this->postRepository = $postRepository;
+        $this->commentRepository = $commentRepository;
     }
 
 
@@ -39,6 +42,19 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = $this->postRepository->get($slug);
+        $comments = $this->commentRepository->getByCommentable('App\Post', $post->id);
+        $this->onPostShowing($post);
+        return view('post.show', compact('post', 'comments'));
+    }
+
+    /**
+     * onPostShowing, clear this post's unread notifications.
+     *
+     * @param Post $post
+     */
+
+    private function onPostShowing(Post $post)
+    {
         $user = auth()->user();
         if (!isAdmin($user)) {
             $post->increment('view_count');
@@ -52,6 +68,5 @@ class PostController extends Controller
                 }
             }
         }
-        return view('post.show', compact('post'));
     }
 }

@@ -84,6 +84,7 @@
                     'comment_title'=>$post->title,
                     'comment_url'=>route('post.show',$post->slug),
                     'commentable'=>$post,
+                    'comments'=>isset($comments) ? $comments:[],
                     'redirect'=>request()->fullUrl(),
                      'commentable_type'=>'App\Post'])
                 </div>

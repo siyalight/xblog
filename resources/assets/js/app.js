@@ -8,7 +8,7 @@
         },
         bootUp: function () {
             console.log('bootUp');
-            loadComments(false);
+            loadComments(false, false);
             initComment();
             initMarkdownTarget();
             initTables();
@@ -46,9 +46,10 @@
             });
     }
 
-    function loadComments(shouldMoveEnd) {
+    function loadComments(shouldMoveEnd, force) {
         var container = $('#comments-container');
-        if (container.length > 0) {
+        if (force || container.children().length <= 0) {
+            console.log("loading comments");
             $.ajax({
                 method: 'get',
                 url: container.data('api-url'),
@@ -126,7 +127,7 @@
                     site.val('');
                     commentContent.val('');
                     form.find('#comment_error_msg').text('');
-                    loadComments(true);
+                    loadComments(true, true);
                 } else {
                     form.find('#comment_error_msg').text(data.msg);
                 }
