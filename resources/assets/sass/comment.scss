@@ -2,7 +2,7 @@
 
 .comment-wrap {
   margin: 5px 0 25px 0;
-  border-bottom: 2px rgba(0,0,0,.02) solid
+  border-bottom: 1px rgba(0, 0, 0, .02) solid
 }
 
 .comment {
@@ -43,4 +43,9 @@
   display: block;
   max-width: 95%;
   border: solid 1px #EEEEEE;
+}
+
+.comment .comment-content {
+  @extend .markdown-content;
+  padding-top: 10px;
 }

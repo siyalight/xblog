@@ -42,7 +42,7 @@
             <div class="comment-time">
                 <span>{{ $comment->created_at->format('Y-m-d H:i') }}</span>
             </div>
-            <div class="markdown-content">
+            <div class="comment-content">
                 {!! $comment->html_content !!}
             </div>
         </div>

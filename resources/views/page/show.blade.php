@@ -31,6 +31,7 @@
                         'comment_title'=>$page->display_name,
                         'comment_url'=>route('page.show',$page->name),
                         'commentable'=>$page,
+                        'comments'=>isset($comments) ? $comments:[],
                         'redirect'=>request()->fullUrl(),
                         'commentable_type'=>'App\Page'])
                     </div>

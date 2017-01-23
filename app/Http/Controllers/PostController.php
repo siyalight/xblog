@@ -13,19 +13,24 @@ use Carbon\Carbon;
 use Gate;
 use Illuminate\Http\Request;
 use League\HTMLToMarkdown\HtmlConverter;
+use Lufficc\Post\PostHelper;
 use XblogConfig;
 
 class PostController extends Controller
 {
+    use PostHelper;
     protected $postRepository;
+    protected $commentRepository;
 
     /**
      * PostController constructor.
      * @param PostRepository $postRepository
+     * @param CommentRepository $commentRepository
      */
-    public function __construct(PostRepository $postRepository)
+    public function __construct(PostRepository $postRepository, CommentRepository $commentRepository)
     {
         $this->postRepository = $postRepository;
+        $this->commentRepository = $commentRepository;
     }
 
 
@@ -39,19 +44,8 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = $this->postRepository->get($slug);
-        $user = auth()->user();
-        if (!isAdmin($user)) {
-            $post->increment('view_count');
-        }
-        if (auth()->check()) {
-            $unreadNotifications = $user->unreadNotifications;
-            foreach ($unreadNotifications as $notifications) {
-                $comment = $notifications->data;
-                if ($comment['commentable_type'] == 'App\Post' && $comment['commentable_id'] == $post->id) {
-                    $notifications->markAsRead();
-                }
-            }
-        }
-        return view('post.show', compact('post'));
+        $comments = $this->commentRepository->getByCommentable('App\Post', $post->id);
+        $this->onPostShowing($post);
+        return view('post.show', compact('post', 'comments'));
     }
 }
