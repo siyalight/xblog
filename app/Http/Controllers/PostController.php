@@ -13,10 +13,12 @@ use Carbon\Carbon;
 use Gate;
 use Illuminate\Http\Request;
 use League\HTMLToMarkdown\HtmlConverter;
+use Lufficc\Post\PostHelper;
 use XblogConfig;
 
 class PostController extends Controller
 {
+    use PostHelper;
     protected $postRepository;
     protected $commentRepository;
 
@@ -45,28 +47,5 @@ class PostController extends Controller
         $comments = $this->commentRepository->getByCommentable('App\Post', $post->id);
         $this->onPostShowing($post);
         return view('post.show', compact('post', 'comments'));
-    }
-
-    /**
-     * onPostShowing, clear this post's unread notifications.
-     *
-     * @param Post $post
-     */
-
-    private function onPostShowing(Post $post)
-    {
-        $user = auth()->user();
-        if (!isAdmin($user)) {
-            $post->increment('view_count');
-        }
-        if (auth()->check()) {
-            $unreadNotifications = $user->unreadNotifications;
-            foreach ($unreadNotifications as $notifications) {
-                $comment = $notifications->data;
-                if ($comment['commentable_type'] == 'App\Post' && $comment['commentable_id'] == $post->id) {
-                    $notifications->markAsRead();
-                }
-            }
-        }
     }
 }
