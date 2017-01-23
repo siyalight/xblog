@@ -35,7 +35,7 @@ class GeneratedController extends Controller
     public function feed()
     {
         $view = $this->getXblogCache()->remember('generated.feed', function () {
-            $posts = Post::select(Post::selectArrayWithOutContent)->orderBy('created_at', 'desc')->with('category')->get();
+            $posts = Post::select(Post::selectArrayWithOutContent)->orderBy('created_at', 'desc')->with('category', 'user')->get();
             return view('generated.feed', compact('posts'))->render();
         });
         return response($view)->header('Content-Type', 'text/xml');

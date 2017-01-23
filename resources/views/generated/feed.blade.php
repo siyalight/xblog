@@ -5,7 +5,7 @@
         <link>{{ url('/') }}</link>
         <atom:link href="{{ url('/feed.xml') }}" rel="self" type="application/rss+xml"/>
         <?php
-        $date = !empty($posts) ? $posts[0]->updated_at->format('D, d M Y H:i:s T') : date("D, d M Y H:i:s T", time())
+        $date = !empty($posts) ? $posts[0]->updated_at->format('D, d M Y H:i:s O') : date("D, d M Y H:i:s O", time())
         ?>
         <pubDate>{{ $date }}</pubDate>
         <lastBuildDate>{{ $date }}</lastBuildDate>
@@ -16,7 +16,7 @@
                 <link>{{ route('post.show',$post->slug) }}</link>
                 <description>{{ $post->description }}</description>
                 <pubDate>{{ $post->created_at->format('D, d M Y H:i:s T') }}</pubDate>
-                <author>{{ $author or 'Author' }}</author>
+                <author>{{ $post->user->email }}</author>
                 <guid>{{ route('post.show',$post->slug) }}</guid>
                 <category>{{ $post->category->name }}</category>
             </item>
