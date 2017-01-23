@@ -43,6 +43,7 @@ class Post extends Model
         'title',
         'slug',
         'description',
+        'updated_at',
         'created_at',
         'status'
     ];
