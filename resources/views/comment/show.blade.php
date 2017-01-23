@@ -37,6 +37,8 @@
                     <a title="回复" href="javascript:void (0);" onclick="replySomeone('{{ $comment->username }}')">
                         <i class="fa fa-reply fa-fw"></i>
                     </a>
+                        <a href="#comment{{ $loop->index + 1 }}"
+                           style="color: #ccc;font-size: 12px">#{{ $loop->index	+ 1 }}</a>
             </span>
             </div>
             <div class="comment-time">
