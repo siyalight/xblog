@@ -55,6 +55,7 @@
 
 .comment .comment-content {
   @extend .markdown-content;
+  font-size: 1.2em;
   padding-top: 10px;
 }
 
@@ -65,6 +66,7 @@
 .comment .comment-operation {
   padding-bottom: 10px;
   color: #eee;
+  font-size: .95em;
   .comment-operation-item {
     margin-right: 10px;
     color: #ccc;
