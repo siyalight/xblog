@@ -47,7 +47,7 @@ class CommentRepository extends Repository
     {
         $comments = $this->remember($this->getCacheKey($commentable_type, $commentable_id), function () use ($commentable_type, $commentable_id) {
             $commentable = app($commentable_type)->where('id', $commentable_id)->select(['id'])->firstOrFail();
-            return $commentable->comments()->with(['user'])->get();
+            return $commentable->comments()->with(['user'])->orderBy('id', 'asc')->get();
         });
         return $comments;
     }

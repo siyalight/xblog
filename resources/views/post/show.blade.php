@@ -73,22 +73,17 @@
                         </p>
                     </div>
                 </div>
+                @if(!(isset($preview) && $preview) && $post->isShownComment())
+                    @include('widget.comment',[
+                            'comment_key'=>$post->slug,
+                            'comment_title'=>$post->title,
+                            'comment_url'=>route('post.show',$post->slug),
+                            'commentable'=>$post,
+                            'comments'=>isset($comments) ? $comments:[],
+                            'redirect'=>request()->fullUrl(),
+                             'commentable_type'=>'App\Post'])
+                @endif
             </div>
         </div>
-
-        @if(!(isset($preview) && $preview) && $post->isShownComment())
-            <div class="row">
-                <div id="comment-wrap" class="col-md-8 col-md-offset-2 col-sm-12 phone-no-padding">
-                    @include('widget.comment',[
-                    'comment_key'=>$post->slug,
-                    'comment_title'=>$post->title,
-                    'comment_url'=>route('post.show',$post->slug),
-                    'commentable'=>$post,
-                    'comments'=>isset($comments) ? $comments:[],
-                    'redirect'=>request()->fullUrl(),
-                     'commentable_type'=>'App\Post'])
-                </div>
-            </div>
-        @endif
     </div>
 @endsection

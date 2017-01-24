@@ -1,26 +1,34 @@
 @import "common";
 
-.comment-wrap {
-  margin: 5px 0 25px 0;
-  border-bottom: 1px rgba(0, 0, 0, .02) solid
-}
-
-.comment {
+.comments {
   background: white;
   margin: 5px 0 35px;
   width: 100%;
 }
 
-.comment .comment-body {
+.comments .comments-body {
   padding: 20px $widgetPaddingLeftRight;
   overflow-x: auto;
+}
+
+.comment {
+  transition: all 0.15s ease-in-out;
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  padding: 15px 35px 0;
+  margin: 0 -20px;
+  border-bottom: 1px rgba(0, 0, 0, .02) solid
+}
+
+.comment:hover {
+  background-color: #f8f9fa;
 }
 
 .comment .comment-header {
   padding: 10px $widgetPaddingLeftRight;
   color: #333;
   border-bottom: 1px solid #ddd;
-  /*background-color: $widgetHeaderBgColor;*/
 }
 
 .comment .comment-info {
@@ -48,4 +56,20 @@
 .comment .comment-content {
   @extend .markdown-content;
   padding-top: 10px;
+}
+
+#comment-form {
+  margin-top: 20px;
+}
+
+.comment .comment-operation {
+  padding-bottom: 10px;
+  color: #eee;
+  .comment-operation-item {
+    margin-right: 10px;
+    color: #ccc;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 }

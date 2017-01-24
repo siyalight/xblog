@@ -27,23 +27,22 @@
                 "   <input type='hidden' name='_method' value='" + $(this).data('method') + "'>\n" +
                 "   <input type='hidden' name='_token' value='" + XblogConfig.csrfToken + "'>\n" +
                 "</form>\n"
-        }).attr('style', 'cursor:pointer;text-decoration: none;')
-            .click(function () {
-                var deleteForm = $(this).find("form");
-                swal({
-                        title: "你确定?",
-                        text: "你将会删除" + $(this).data('modal-target'),
-                        type: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#DD6B55",
-                        cancelButtonText: "取消",
-                        confirmButtonText: "确定",
-                        closeOnConfirm: true
-                    },
-                    function () {
-                        deleteForm.submit();
-                    });
-            });
+        }).click(function () {
+            var deleteForm = $(this).find("form");
+            swal({
+                    title: "你确定?",
+                    text: "你将会删除" + $(this).data('modal-target'),
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    cancelButtonText: "取消",
+                    confirmButtonText: "确定",
+                    closeOnConfirm: true
+                },
+                function () {
+                    deleteForm.submit();
+                });
+        });
     }
 
     function loadComments(shouldMoveEnd, force) {

@@ -23,10 +23,8 @@
                         {!! $page->html_content !!}
                     </div>
                 </div>
-
                 @if($page->isShownComment())
-                    <div>
-                        @include('widget.comment',[
+                    @include('widget.comment',[
                         'comment_key'=>'page.'.$page->name,
                         'comment_title'=>$page->display_name,
                         'comment_url'=>route('page.show',$page->name),
@@ -34,7 +32,6 @@
                         'comments'=>isset($comments) ? $comments:[],
                         'redirect'=>request()->fullUrl(),
                         'commentable_type'=>'App\Page'])
-                    </div>
                 @endif
             </div>
         </div>

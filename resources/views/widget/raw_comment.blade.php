@@ -1,5 +1,5 @@
-<div class="comment">
-    <div class="comment-body">
+<div class="comments">
+    <div class="comments-body">
         <div id="comments-container"
              data-api-url="{{ route('comment.show',[$commentable->id,
              'commentable_type'=>$commentable_type,
