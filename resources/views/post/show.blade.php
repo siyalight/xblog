@@ -4,7 +4,7 @@
 @section('title',$post->title)
 @section('content')
     <div class="container">
-        <div id="post-detail-wrap" class="row">
+        <div class="row">
             <div class="col-md-8 col-md-offset-2 col-sm-12 phone-no-padding">
                 <div class="post-detail">
                     <div class="center-block">
