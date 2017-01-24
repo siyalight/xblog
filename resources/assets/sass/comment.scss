@@ -2,21 +2,17 @@
 
 .comments {
   background: white;
-  margin: 5px 0 35px;
+  margin: 10px 0 35px;
   width: 100%;
 }
 
 .comments .comments-body {
-  padding: 20px $widgetPaddingLeftRight;
+  padding: 0 $widgetPaddingLeftRight 20px;
   overflow-x: auto;
 }
 
 .comment {
-  transition: all 0.15s ease-in-out;
-  -webkit-transition: all 0.15s ease-in-out;
-  -moz-transition: all 0.15s ease-in-out;
-  -o-transition: all 0.15s ease-in-out;
-  padding: 15px 35px 0;
+  padding: 15px 30px 0;
   margin: 0 -20px;
   border-bottom: 1px rgba(0, 0, 0, .02) solid
 }
@@ -54,7 +50,9 @@
 }
 
 .comment .comment-content {
-  @extend .markdown-content;
+  line-height: 1.8;
+  font-weight: normal;
+  word-wrap: break-word;
   font-size: 1.2em;
   padding-top: 10px;
 }
@@ -66,7 +64,7 @@
 .comment .comment-operation {
   padding-bottom: 10px;
   color: #eee;
-  font-size: .95em;
+  font-size: .9em;
   .comment-operation-item {
     margin-right: 10px;
     color: #ccc;
