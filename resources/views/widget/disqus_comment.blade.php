@@ -1,5 +1,5 @@
-<div class="comment">
-    <div class="comment-body">
+<div class="comments">
+    <div class="comments-body">
         <section id="comments">
             <div id="disqus_thread"></div>
         </section>
