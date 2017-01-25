@@ -43,18 +43,17 @@
   }
 }
 
-.comment .markdown-content img {
-  display: block;
-  max-width: 95%;
-  border: solid 1px #EEEEEE;
-}
-
 .comment .comment-content {
   line-height: 1.8;
   font-weight: normal;
   word-wrap: break-word;
   font-size: 1.2em;
   padding-top: 10px;
+}
+
+.comment .comment-content img {
+  display: block;
+  max-width: 95%;
 }
 
 #comment-form {
