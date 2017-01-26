@@ -1,26 +1,30 @@
 @import "common";
 
-.comment-wrap {
-  margin: 5px 0 25px 0;
-  border-bottom: 1px rgba(0, 0, 0, .02) solid
-}
-
-.comment {
+.comments {
   background: white;
-  margin: 5px 0 35px;
+  margin: 10px 0 35px;
   width: 100%;
 }
 
-.comment .comment-body {
-  padding: 20px $widgetPaddingLeftRight;
+.comments .comments-body {
+  padding: 0 $widgetPaddingLeftRight 20px;
   overflow-x: auto;
+}
+
+.comment {
+  padding: 15px 30px 0;
+  margin: 0 -20px;
+  border-bottom: 1px rgba(0, 0, 0, .02) solid
+}
+
+.comment:hover {
+  background-color: #f8f9fa;
 }
 
 .comment .comment-header {
   padding: 10px $widgetPaddingLeftRight;
   color: #333;
   border-bottom: 1px solid #ddd;
-  /*background-color: $widgetHeaderBgColor;*/
 }
 
 .comment .comment-info {
@@ -39,13 +43,32 @@
   }
 }
 
-.comment .markdown-content img {
-  display: block;
-  max-width: 95%;
-  border: solid 1px #EEEEEE;
+.comment .comment-content {
+  line-height: 1.8;
+  font-weight: normal;
+  word-wrap: break-word;
+  font-size: 1.2em;
+  padding-top: 10px;
 }
 
-.comment .comment-content {
-  @extend .markdown-content;
-  padding-top: 10px;
+.comment .comment-content img {
+  display: block;
+  max-width: 95%;
+}
+
+#comment-form {
+  margin-top: 20px;
+}
+
+.comment .comment-operation {
+  padding-bottom: 10px;
+  color: #eee;
+  font-size: .9em;
+  .comment-operation-item {
+    margin-right: 10px;
+    color: #ccc;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 }

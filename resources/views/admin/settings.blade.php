@@ -104,6 +104,25 @@
                     </div>
 
                     <div class="form-group">
+                        <div class="radio">
+                            <label class="col-sm-offset-2">
+                                <input type="radio"
+                                       {{ isset($open_pay) && $open_pay == 'true' ? ' checked ':'' }}
+                                       name="open_pay"
+                                       value="true">开启赞赏
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label class="col-sm-offset-2">
+                                <input type="radio"
+                                       {{ isset($open_pay) && $open_pay == 'true' ? '':' checked ' }}
+                                       name="open_pay"
+                                       value="false">关闭赞赏
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label for="google_trace_id" class="col-sm-2 control-label">跟踪ID</label>
                         <div class="col-sm-8">
                             <input type="text" name="google_trace_id" class="form-control" id="google_trace_id"
@@ -228,6 +247,30 @@
                         <div class="col-sm-8">
                             <input class="form-control" type="text" name="background_image"
                                    value="{{ $background_image or ''}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">赞赏描述</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="text" name="pay_description"
+                                   value="{{ $pay_description or '写的不错，赞助一下主机费'}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">支付宝支付二维码</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="text" name="zhifubao_pay_image_url"
+                                   value="{{ $zhifubao_pay_image_url or ''}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">微信支付二维码</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="text" name="wechat_pay_image_url"
+                                   value="{{ $wechat_pay_image_url or ''}}">
                         </div>
                     </div>
 

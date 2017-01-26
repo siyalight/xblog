@@ -7,10 +7,9 @@ use App\Http\Requests;
 use App\Page;
 use App\Post;
 
-class SiteMapController extends Controller
+class GeneratedController extends Controller
 {
-    const key = 'sitemap.index';
-    const tag = 'sitemap';
+    const tag = 'generated';
     /**
      * @var XblogCache
      */
@@ -18,7 +17,7 @@ class SiteMapController extends Controller
 
     public function index()
     {
-        $view = $this->getXblogCache()->remember(SiteMapController::key, function () {
+        $view = $this->getXblogCache()->remember('generated.sitemap', function () {
             $posts = Post::select([
                 'slug',
                 'updated_at',
@@ -28,7 +27,16 @@ class SiteMapController extends Controller
                 $result = $page->configuration ? $page->configuration->config['display'] : 'false';
                 return $result == 'false';
             });
-            return view('sitemap.index', compact('posts', 'pages'))->render();
+            return view('generated.sitemap', compact('posts', 'pages'))->render();
+        });
+        return response($view)->header('Content-Type', 'text/xml');
+    }
+
+    public function feed()
+    {
+        $view = $this->getXblogCache()->remember('generated.feed', function () {
+            $posts = Post::select(Post::selectArrayWithOutContent)->orderBy('created_at', 'desc')->with('category', 'user')->get();
+            return view('generated.feed', compact('posts'))->render();
         });
         return response($view)->header('Content-Type', 'text/xml');
     }
@@ -40,7 +48,7 @@ class SiteMapController extends Controller
     {
         if ($this->xblogCache == null) {
             $this->xblogCache = app('XblogCache');
-            $this->xblogCache->setTag(SiteMapController::tag);
+            $this->xblogCache->setTag(GeneratedController::tag);
             $this->xblogCache->setTime(60 * 24);
         }
         return $this->xblogCache;

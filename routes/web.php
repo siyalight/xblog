@@ -48,8 +48,11 @@ Route::resource('comment', 'CommentController', ['only' => ['store', 'destroy', 
 
 
 // SiteMap
-Route::get('sitemap', 'SiteMapController@index');
-Route::get('sitemap.xml', 'SiteMapController@index');
+Route::get('sitemap', 'GeneratedController@index');
+Route::get('sitemap.xml', 'GeneratedController@index');
+
+// Feed
+Route::get('feed.xml', 'GeneratedController@feed');
 
 /*
  * must last

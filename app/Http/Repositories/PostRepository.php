@@ -111,6 +111,26 @@ class PostRepository extends Repository
         return $posts;
     }
 
+    public function recommendedPosts(Post $post)
+    {
+        $recommendedPosts = $this->remember('post.recommend.' . $post->slug, function () use ($post) {
+            $category = $post->category;
+            $tags = [];
+            foreach ($post->tags as $tag) {
+                array_push($tags, $tag->name);
+            }
+            $recommendedPosts = Post
+                ::where('category_id', $category->id)
+                ->Where('id', '<>', $post->id)
+                ->orderBy('view_count', 'desc')
+                ->select(Post::selectArrayWithOutContent)
+                ->limit(5)
+                ->get();
+            return $recommendedPosts;
+        });
+        return $recommendedPosts;
+    }
+
     public function postCount()
     {
         $count = $this->remember('post-count', function () {
@@ -222,7 +242,6 @@ class PostRepository extends Repository
                 ]
             ));
     }
-
 
     public function tag()
     {

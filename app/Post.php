@@ -42,7 +42,9 @@ class Post extends Model
         'category_id',
         'title',
         'slug',
+        'view_count',
         'description',
+        'updated_at',
         'created_at',
         'status'
     ];
