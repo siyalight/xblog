@@ -60,5 +60,5 @@
         </div>
     </div>
 @empty
-    <p class="meta-item center-block">暂无评论~~</p>
+    <p class="meta-item center-block" style="padding:10px">暂无评论~~</p>
 @endforelse

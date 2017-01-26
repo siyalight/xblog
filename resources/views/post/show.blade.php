@@ -47,10 +47,8 @@
                     </div>
                     <div class="post-detail-content">
                         {!! $post->html_content !!}
-                        <br>
-                        <p>
-                            -- END
-                        </p>
+                        <p>-- END</p>
+                        @include('widget.pay')
                     </div>
                     <div class="post-info-panel">
                         <p class="info">
@@ -73,6 +71,7 @@
                         </p>
                     </div>
                 </div>
+                @include('widget.recommended_posts',['recommendedPosts'=>$recommendedPosts])
                 @if(!(isset($preview) && $preview) && $post->isShownComment())
                     @include('widget.comment',[
                             'comment_key'=>$post->slug,

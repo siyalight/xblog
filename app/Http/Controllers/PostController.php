@@ -44,8 +44,9 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = $this->postRepository->get($slug);
+        $recommendedPosts = $this->postRepository->recommendedPosts($post);
         $comments = $this->commentRepository->getByCommentable('App\Post', $post->id);
         $this->onPostShowing($post);
-        return view('post.show', compact('post', 'comments'));
+        return view('post.show', compact('post', 'comments', 'recommendedPosts'));
     }
 }

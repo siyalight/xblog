@@ -1,4 +1,4 @@
-<div class="comments">
+<div class="comments" id="comments">
     <div class="comments-body">
         <div class="ds-thread" data-thread-key="{{ $comment_key }}" data-title="请替换成文章的标题" data-url="{{ $comment_url }}"></div>
         <script type="text/javascript">
