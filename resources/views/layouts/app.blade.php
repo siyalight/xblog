@@ -18,7 +18,7 @@
     @if(isset($site_css) && $site_css)
         <link href="{{ $site_css }}" rel="stylesheet">
     @else
-        <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @endif
     @yield('css')
     <script>
@@ -42,7 +42,7 @@
 @if(isset($site_js) && $site_js)
     <script src="{{ $site_js }}"></script>
 @else
-    <script src="{{ elixir('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 @endif
 @yield('script')
 </body>
