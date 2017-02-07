@@ -14,13 +14,13 @@ return [
 
     'avatar' => env('AVATAR'),
 
-    'name'   => env('SITE_NAME','My blog'),
+    'name' => env('SITE_NAME', 'My blog'),
 
     /*
      | It is an override email of admin user.If admin user's
      | email is not often used,you can fill it with your daily used email.
      */
-    'email'  => env('EMAIL'),
+    'email' => env('EMAIL'),
 
     /*
     |--------------------------------------------------------------------------
@@ -187,6 +187,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
         App\Providers\CacheServiceProvider::class,
+        Laravel\Tinker\TinkerServiceProvider::class,
         //Barryvdh\Debugbar\ServiceProvider::class,
     ],
 

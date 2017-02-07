@@ -6,7 +6,7 @@
   <a href="https://packagist.org/packages/lufficc/xblog"><img src="https://poser.pugx.org/lufficc/xblog/license.svg" alt="License"></a>
   
 </p>
-<p align="center">强大，响应式的博客系统，由Laravel5.3强力驱动。点击 https://lufficc.com 查看实时Demo.</p>
+<p align="center">强大，响应式的博客系统，由Laravel5.4强力驱动。点击 https://lufficc.com 查看实时Demo.</p>
 <p align="center"><img src="https://github.com/lufficc/images/blob/master/Xblog/main1.png"  width="800"><p>
 <br>
 

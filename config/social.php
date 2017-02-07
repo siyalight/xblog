@@ -8,7 +8,7 @@ return [
  * Time: 22:47
  */
     'facebook' => [
-        'url'  => 'https://www.facebook.com/profile.php?id=100011357444248',
+        'url'  => 'https://www.facebook.com/lufficc',
         'fa'   => 'fa fa-facebook fa-fw',
     ],
     'twitter'  => [
