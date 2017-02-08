@@ -71,7 +71,9 @@
                         </p>
                     </div>
                 </div>
-                @include('widget.recommended_posts',['recommendedPosts'=>$recommendedPosts])
+                @if(isset($recommendedPosts))
+                    @include('widget.recommended_posts',['recommendedPosts'=>$recommendedPosts])
+                @endif
                 @if(!(isset($preview) && $preview) && $post->isShownComment())
                     @include('widget.comment',[
                             'comment_key'=>$post->slug,
