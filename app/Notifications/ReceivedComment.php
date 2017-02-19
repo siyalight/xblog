@@ -4,6 +4,7 @@ namespace App\Notifications;
 
 use App\Comment;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Mail\Mailable;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class ReceivedComment extends BaseNotification
@@ -46,7 +47,7 @@ class ReceivedComment extends BaseNotification
         return (new MailMessage)
             ->success()
             ->greeting('亲爱的' . $notifiable->name)
-            ->to($email)
+            ->replyTo($email)
             ->subject('您收到了一条新的评论')
             ->line('您的' . $data['type'] . ':' . $data['title'] . ', 收到了一条来自' . $this->comment->username . '的评论：')
             ->line($this->comment->content)
