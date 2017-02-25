@@ -17,6 +17,7 @@
                                 <th>ID</th>
                                 <th>Connection</th>
                                 <th>Date</th>
+                                <th>Exception</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -25,6 +26,7 @@
                                     <td>{{ $failed_job->id }}</td>
                                     <td>{{ $failed_job->connection }}</td>
                                     <td>{{ $failed_job->failed_at }}</td>
+                                    <td title="{{ $failed_job->exception }}">Hover Me</td>
                                 </tr>
                             @endforeach
                             </tbody>
