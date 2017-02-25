@@ -26,6 +26,7 @@ Route::post('/upload/file', ['uses' => 'FileController@uploadFile', 'as' => 'upl
  * admin uri
  */
 Route::get('/posts', ['uses' => 'AdminController@posts', 'as' => 'admin.posts']);
+Route::get('/failed-jobs', ['uses' => 'AdminController@failedJobs', 'as' => 'admin.failed-jobs']);
 Route::get('/comments', ['uses' => 'AdminController@comments', 'as' => 'admin.comments']);
 Route::get('/tags', ['uses' => 'AdminController@tags', 'as' => 'admin.tags']);
 Route::get('/users', ['uses' => 'AdminController@users', 'as' => 'admin.users']);
