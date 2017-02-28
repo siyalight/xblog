@@ -61,3 +61,5 @@ Route::post('/tag', ['uses' => 'TagController@store', 'as' => 'tag.store']);
 Route::resource('post', 'PostController', ['except' => ['show', 'index']]);
 Route::resource('category', 'CategoryController', ['except' => ['index', 'show', 'create']]);
 Route::resource('page', 'PageController', ['except' => ['show', 'index']]);
+
+Route::delete('/ip/{ip}', ['uses' => 'IpController@block', 'as' => 'ip.block']);

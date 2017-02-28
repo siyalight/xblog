@@ -18,6 +18,7 @@
                                 <th>Email</th>
                                 <th>地址</th>
                                 <th>内容</th>
+                                <th>IP</th>
                                 <th>操作</th>
                             </tr>
                             </thead>
@@ -46,6 +47,7 @@
                                     </td>
                                     <td data-toggle="tooltip" data-placement="top"
                                         title="{{ $comment->content }}">{!! $comment->html_content !!}</td>
+                                    <td>{{ $comment->ip_id }}</td>
                                     <td>
                                         @if($comment->trashed())
                                             <button type="submit"
@@ -82,6 +84,24 @@
                                                href="{{ route('comment.edit',[$comment->id,'redirect'=>request()->fullUrl()]) }}">
                                                 <i class="fa fa-pencil fa-fw"></i>
                                             </a>
+                                        @endif
+                                        <?php $ip = $comment->ip?>
+                                        @if($ip == null)
+                                            <button
+                                                    disabled
+                                                    class="btn btn-default"
+                                                    title="NO IP">
+                                                <i class="fa fa-close fa-fw"></i>
+                                            </button>
+                                        @else
+                                            <button type="submit"
+                                                    class="btn btn-default"
+                                                    data-modal-target="此{{ $comment->ip_id }}"
+                                                    data-url="{{ route('ip.block',$comment->ip_id) }}"
+                                                    data-method="delete"
+                                                    title="{{ $ip->blocked?'Un Block':'Block' }}">
+                                                <i class="fa {{ $ip->blocked?'fa-check':'fa-close' }} fa-fw"></i>
+                                            </button>
                                         @endif
                                     </td>
                                 </tr>

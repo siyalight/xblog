@@ -26,6 +26,11 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function ip()
+    {
+        return $this->belongsTo(Ip::class);
+    }
+
     public function commentable()
     {
         return $this->morphTo();
