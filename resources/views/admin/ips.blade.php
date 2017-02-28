@@ -43,6 +43,11 @@
                                                 title="{{ $ip->blocked?'Un Block':'Block' }}">
                                             <i class="fa {{ $ip->blocked?'fa-check':'fa-close' }} fa-fw"></i>
                                         </button>
+                                        <button class="btn btn-info swal-dialog-target"
+                                                data-url="{{ route('ip.delete',$ip->id) }}"
+                                                data-dialog-msg="确定删除IP{{ $ip->id }}?">
+                                            <i class="fa fa-trash-o fa-fw"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach

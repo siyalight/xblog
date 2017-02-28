@@ -66,7 +66,8 @@ Route::resource('page', 'PageController', ['except' => ['show', 'index']]);
 /**
  * IPS
  */
-Route::delete('/ip/{ip}', ['uses' => 'IpController@block', 'as' => 'ip.block']);
+Route::delete('/ip/{ip}/toggle', ['uses' => 'IpController@block', 'as' => 'ip.block']);
+Route::delete('/ip/{ip}', ['uses' => 'IpController@destroy', 'as' => 'ip.delete']);
 
 /**
  * failed jobs

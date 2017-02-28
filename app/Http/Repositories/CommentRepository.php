@@ -80,7 +80,7 @@ class CommentRepository extends Repository
         }
 
         $content = $request->get('content');
-
+        $comment->ip_id = $request->ip();
         $comment->content = $this->mention->parse($content);
         $comment->html_content = $this->markdownParser->parse($comment->content);
         $result = $commentable->comments()->save($comment);
