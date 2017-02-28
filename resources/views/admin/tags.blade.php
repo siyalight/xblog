@@ -11,7 +11,7 @@
                     <a class="btn pull-right" role="button" data-toggle="modal" data-target="#add-tag-modal">
                         <i class="fa fa-tag"></i>
                     </a>
-                    <table class="table table-hover table-bordered table-responsive" style="overflow: auto">
+                    <table class="table table-striped table-hover table-bordered table-responsive" style="overflow: auto">
                         <thead>
                         <tr>
                             <th>名称</th>
@@ -26,12 +26,9 @@
                                 <td>{{ $tag->posts_count }}</td>
                                 <td>
                                     <button type="submit"
-                                            class="btn btn-danger"
-                                            data-modal-target="{{ $tag->name }}"
+                                            class="btn btn-danger swal-dialog-target"
+                                            data-dialog-msg="确定删除{{ $tag->name }}？"
                                             data-url="{{ route('tag.destroy',$tag->id) }}"
-                                            data-method="delete"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
                                             title="删除">
                                         <i class="fa fa-trash-o fa-fw"></i>
                                     </button>

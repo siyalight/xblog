@@ -21,7 +21,7 @@ class IpRepository extends Repository
 
     public function toggleBlock($ip_address)
     {
-        $ip = Ip::find($ip_address);
+        $ip = Ip::findOrFail($ip_address);
         $ip->blocked = !$ip->blocked;
         return $ip->save();
     }
@@ -29,13 +29,13 @@ class IpRepository extends Repository
 
     public function isBlocked($ip_address)
     {
-        $ip = Ip::find($ip_address);
+        $ip = Ip::findOrFail($ip_address);
         return $ip != null && $ip->blocked;
     }
 
     public function getOne($ip_address)
     {
-        return Ip::find($ip_address);
+        return Ip::findOrFail($ip_address);
     }
 
     public function model()

@@ -21,22 +21,29 @@
     };
 
     function initDeleteTarget() {
-        $('[data-modal-target]').append(function () {
+        $('.swal-dialog-target').append(function () {
             return "\n" +
                 "<form action='" + $(this).attr('data-url') + "' method='post' style='display:none'>\n" +
-                "   <input type='hidden' name='_method' value='" + $(this).data('method') + "'>\n" +
+                "   <input type='hidden' name='_method' value='" + ($(this).data('method') ? $(this).data('method') : 'delete') + "'>\n" +
                 "   <input type='hidden' name='_token' value='" + XblogConfig.csrfToken + "'>\n" +
                 "</form>\n"
         }).click(function () {
             var deleteForm = $(this).find("form");
+            var title = $(this).data('dialog-title') ? $(this).data('dialog-title') : '删除';
+            var message = $(this).data('dialog-msg');
+            var type = $(this).data('dialog-type') ? $(this).data('dialog-type') : 'warning';
+            var cancel_text = $(this).data('dialog-cancel-text') ? $(this).data('dialog-cancel-text') : '取消';
+            var confirm_text = $(this).data('dialog-confirm-text') ? $(this).data('dialog-confirm-text') : '确定';
+            var enable_html = $(this).data('dialog-enable-html') == '1';
             swal({
-                    title: "你确定?",
-                    text: "你将会删除" + $(this).data('modal-target'),
-                    type: "warning",
+                    title: title,
+                    text: message,
+                    type: type,
+                    html: enable_html,
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
-                    cancelButtonText: "取消",
-                    confirmButtonText: "确定",
+                    cancelButtonText: cancel_text,
+                    confirmButtonText: confirm_text,
                     closeOnConfirm: true
                 },
                 function () {

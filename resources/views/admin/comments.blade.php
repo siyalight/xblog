@@ -11,7 +11,7 @@
                     @if($comments->isEmpty())
                         <h3 class="center-block meta-item">No Comments</h3>
                     @else
-                        <table class="table table-hover table-bordered table-responsive">
+                        <table class="table table-striped table-hover table-bordered table-responsive">
                             <thead>
                             <tr>
                                 <th>用户</th>
@@ -37,25 +37,28 @@
                                     </td>
                                     <td><a href="mailto:{{ $comment->email }}">{{ $comment->email }}</a></td>
                                     <td>
-                                        @if($comment->trashed())
-                                            {{ $commentableData['title'] }}
+                                        @if($commentableData['deleted'])
+                                            {{ $commentableData['type'] }} Deleted
                                         @else
-                                            <a target="_blank"
-                                               href="{{ $commentableData['url'] }}">{{$commentableData['title'] }}
-                                            </a>
+                                            @if($comment->trashed())
+                                                {{ $commentableData['title'] }}
+                                            @else
+                                                <a target="_blank"
+                                                   href="{{ $commentableData['url'] }}">{{$commentableData['title'] }}
+                                                </a>
+                                            @endif
                                         @endif
                                     </td>
                                     <td data-toggle="tooltip" data-placement="top"
                                         title="{{ $comment->content }}">{!! $comment->html_content !!}</td>
-                                    <td>{{ $comment->ip_id }}</td>
+                                    <td>{{ $comment->ip_id?$comment->ip_id:'NONE' }}</td>
                                     <td>
                                         @if($comment->trashed())
                                             <button type="submit"
-                                                    class="btn btn-danger"
-                                                    data-modal-target="这条评论(永久)"
+                                                    class="btn btn-danger swal-dialog-target"
+                                                    data-dialog-msg="永久删除这条评论？"
                                                     data-url="{{ route('comment.destroy',[$comment->id,'force'=>'true']) }}"
                                                     data-method="delete"
-                                                    data-toggle="tooltip"
                                                     data-placement="top"
                                                     title="永久删除">
                                                 <i class="fa fa-trash-o fa-fw"></i>
@@ -71,12 +74,9 @@
 
                                         @else
                                             <button type="submit"
-                                                    class="btn btn-danger"
-                                                    data-modal-target="这条评论"
+                                                    class="btn btn-danger swal-dialog-target"
+                                                    data-dialog-msg="确定删除此评论？"
                                                     data-url="{{ route('comment.destroy',$comment->id) }}"
-                                                    data-method="delete"
-                                                    data-toggle="tooltip"
-                                                    data-placement="top"
                                                     title="删除">
                                                 <i class="fa fa-trash-o fa-fw"></i>
                                             </button>
@@ -87,18 +87,15 @@
                                         @endif
                                         <?php $ip = $comment->ip?>
                                         @if($ip == null)
-                                            <button
-                                                    disabled
+                                            <button disabled
                                                     class="btn btn-default"
                                                     title="NO IP">
                                                 <i class="fa fa-close fa-fw"></i>
                                             </button>
                                         @else
-                                            <button type="submit"
-                                                    class="btn btn-default"
-                                                    data-modal-target="此{{ $comment->ip_id }}"
-                                                    data-url="{{ route('ip.block',$comment->ip_id) }}"
-                                                    data-method="delete"
+                                            <button class="btn btn-default swal-dialog-target"
+                                                    data-dialog-msg="{{ $ip->blocked?'取消阻塞':'阻塞' }} IP {{ $ip->id }}？阻塞后此IP将不能访问你的网站。"
+                                                    data-url="{{ route('ip.block',$ip->id) }}"
                                                     title="{{ $ip->blocked?'Un Block':'Block' }}">
                                                 <i class="fa {{ $ip->blocked?'fa-check':'fa-close' }} fa-fw"></i>
                                             </button>
@@ -108,7 +105,9 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{ $comments->links() }}
+                        @if($comments->lastPage() > 1)
+                            {{ $comments->links() }}
+                        @endif
                     @endif
                 </div>
             </div>

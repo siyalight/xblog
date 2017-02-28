@@ -34,6 +34,7 @@ Route::get('/pages', ['uses' => 'AdminController@pages', 'as' => 'admin.pages'])
 Route::get('/categories', ['uses' => 'AdminController@categories', 'as' => 'admin.categories']);
 Route::get('/images', ['uses' => 'ImageController@images', 'as' => 'admin.images']);
 Route::get('/files', ['uses' => 'FileController@files', 'as' => 'admin.files']);
+Route::get('/ips', ['uses' => 'AdminController@ips', 'as' => 'admin.ips']);
 
 /**
  * comment
@@ -62,4 +63,13 @@ Route::resource('post', 'PostController', ['except' => ['show', 'index']]);
 Route::resource('category', 'CategoryController', ['except' => ['index', 'show', 'create']]);
 Route::resource('page', 'PageController', ['except' => ['show', 'index']]);
 
+/**
+ * IPS
+ */
 Route::delete('/ip/{ip}', ['uses' => 'IpController@block', 'as' => 'ip.block']);
+
+/**
+ * failed jobs
+ */
+
+Route::delete('/failed-jobs', ['uses' => 'AdminController@flushFailedJobs', 'as' => 'admin.failed-jobs.flush']);

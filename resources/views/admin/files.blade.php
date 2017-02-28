@@ -105,9 +105,8 @@
                                                 data-method="delete">
                                             <i class="fa fa-cloud-download fa-fw"></i>
                                         </a>
-                                        <button class="btn btn-danger"
-                                                data-method="delete"
-                                                data-modal-target="{{ $file->key }}"
+                                        <button class="btn btn-danger swal-dialog-target"
+                                                data-dialog-msg="确定删除{{ $file->key }}？"
                                                 data-url="{{ route('delete.file').'?key='.$file->key."&type=".$file->type }}">
                                             <i class="fa fa-trash-o fa-fw"></i>
                                         </button>

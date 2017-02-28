@@ -8,8 +8,7 @@ class Ip extends Model
 {
     public $timestamps = false;
     protected $fillable = ['id'];
-    protected $primaryKey = 'id';
-
+    public $incrementing = false;
     public function comments()
     {
         return $this->hasMany(Comment::class);

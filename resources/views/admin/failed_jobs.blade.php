@@ -5,7 +5,18 @@
         <div class="col-md-12">
             <div class="widget widget-default">
                 <div class="widget-header">
-                    <h6><i class="fa fa-close fa-fw"></i>Failed Jobs</h6>
+                    <h6>
+                        <i class="fa fa-close fa-fw"></i>
+                        Failed Jobs
+                        @if(!$failed_jobs->isEmpty())
+                            <a class="swal-dialog-target"
+                               data-dialog-title="Failed Jobs"
+                               data-dialog-msg="Flush {{ count($failed_jobs) }} failed jobs ?"
+                               data-url="{{ route('admin.failed-jobs.flush') }}">
+                                Flush
+                            </a>
+                        @endif
+                    </h6>
                 </div>
                 <div class="widget-body">
                     @if($failed_jobs->isEmpty())
