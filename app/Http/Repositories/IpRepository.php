@@ -8,15 +8,28 @@
 namespace App\Http\Repositories;
 
 use App\Ip;
+use Illuminate\Http\Request;
 
 
 class IpRepository extends Repository
 {
     static $tag = 'ip';
 
-    public function createIfNotExisted($ip_address)
+    /**
+     * @param Request $request
+     * @return void
+     */
+    public function createIfNotExisted($request)
     {
-        return Ip::firstOrCreate(['id' => $ip_address]);
+        $ip = Ip::find($request->ip());
+        $user_id = auth()->id();
+        if ($ip == null) {
+            $ip = new Ip(['id' => $request->ip(), 'user_id' => $user_id]);
+            $ip->save();
+        } else if ($user_id && $user_id != $ip->user_id) {
+            $ip->user_id = $user_id;
+            $ip->save();
+        }
     }
 
     public function toggleBlock($ip_address)

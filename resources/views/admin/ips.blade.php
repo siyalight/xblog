@@ -16,6 +16,7 @@
                             <thead>
                             <tr>
                                 <th>IP</th>
+                                <th>Last User</th>
                                 <th>评论数</th>
                                 <th>操作</th>
                             </tr>
@@ -24,6 +25,16 @@
                             @foreach($ips as $ip)
                                 <tr>
                                     <td>{{ $ip->id }}</td>
+                                    @if($ip->user)
+                                        <td>
+                                            <a href="{{ route('user.show',$ip->user->name) }}">{{ $ip->user->name }}</a>
+                                            @if(isAdminById($ip->user_id))
+                                                <span class="role-label">Admin</span>
+                                            @endif
+                                        </td>
+                                    @else
+                                        <td>NONE</td>
+                                    @endif
                                     <td>{{ $ip->comments_count }}</td>
                                     <td>
                                         <button class="btn swal-dialog-target {{ $ip->blocked?' btn-danger':' btn-default' }}"

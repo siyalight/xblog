@@ -129,7 +129,7 @@ class AdminController extends Controller
 
     public function ips()
     {
-        $ips = Ip::withCount('comments')->paginate(20);
+        $ips = Ip::withCount('comments')->with(['user'])->orderBy('user_id', 'id')->paginate(20);
         return view('admin.ips', compact('ips'));
     }
 

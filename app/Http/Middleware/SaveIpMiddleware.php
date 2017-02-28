@@ -27,7 +27,7 @@ class SaveIpMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $this->ipRepository->createIfNotExisted($request->ip());
+        $this->ipRepository->createIfNotExisted($request);
         return $next($request);
     }
 }
