@@ -29,7 +29,7 @@ class IpRepository extends Repository
 
     public function isBlocked($ip_address)
     {
-        $ip = Ip::findOrFail($ip_address);
+        $ip = Ip::find($ip_address);
         return $ip != null && $ip->blocked;
     }
 
