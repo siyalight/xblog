@@ -5,7 +5,11 @@
         <div class="col-md-12">
             <div class="widget widget-default">
                 <div class="widget-header">
-                    <h6><i class="fa fa-internet-explorer fa-fw"></i>IP</h6>
+                    <h6>
+                        <i class="fa fa-internet-explorer fa-fw"></i>
+                        IP
+                        <a class="meta-item" href="{{ route('admin.ips',['blocked'=>1]) }}">Blocked</a>
+                    </h6>
                 </div>
                 <div class="widget-body">
                     @if($ips->isEmpty())

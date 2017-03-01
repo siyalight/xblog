@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\CategoryRepository;
 use App\Http\Repositories\CommentRepository;
@@ -97,9 +98,9 @@ class AdminController extends Controller
         return view('admin.posts', compact('posts'));
     }
 
-    public function comments()
+    public function comments(Request $request)
     {
-        $comments = $this->commentRepository->getAll();
+        $comments = Comment::withoutGlobalScopes()->where($request->all())->orderBy('created_at', 'desc')->paginate(20);
         return view('admin.comments', compact('comments'));
     }
 
@@ -115,9 +116,9 @@ class AdminController extends Controller
         return view('admin.categories', compact('categories'));
     }
 
-    public function users()
+    public function users(Request $request)
     {
-        $users = User::paginate(20);
+        $users = User::where($request->all())->paginate(20);
         return view('admin.users', compact('users'));
     }
 
@@ -127,9 +128,9 @@ class AdminController extends Controller
         return view('admin.pages', compact('pages'));
     }
 
-    public function ips()
+    public function ips(Request $request)
     {
-        $ips = Ip::withoutGlobalScopes()->withCount(
+        $ips = Ip::withoutGlobalScopes()->where($request->all())->withCount(
             ['comments' => function ($query) {
                 $query->withTrashed();
             }]
