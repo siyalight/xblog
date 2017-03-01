@@ -28,11 +28,15 @@ class IPController extends Controller
     public function destroy($ip)
     {
         $ip = Ip::findOrFail($ip);
-        if ($ip->comments()->count() > 0) {
-            return back()->withErrors("$ip has comments.");
+        if ($ip->blocked) {
+            return back()->withErrors("UnBlocked $ip->id firstly.");
+        }
+
+        if (($count = $ip->comments()->withTrashed()->count()) > 0) {
+            return back()->withErrors("$ip->id has $count comments.Please remove theme first.");
         }
         if ($ip->delete())
-            return back()->with('success', "Delete $ip successfully.");
-        return back()->withErrors("Blocked $ip failed.");
+            return back()->with('success', "Delete $ip->id successfully.");
+        return back()->withErrors("Blocked $ip->id failed.");
     }
 }

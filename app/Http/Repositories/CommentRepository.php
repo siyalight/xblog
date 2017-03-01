@@ -38,6 +38,14 @@ class CommentRepository extends Repository
         return app(Comment::class);
     }
 
+    public function count()
+    {
+        $count = $this->remember($this->tag() . '.count', function () {
+            return $this->model()->withTrashed()->count();
+        });
+        return $count;
+    }
+
     private function getCacheKey($commentable_type, $commentable_id)
     {
         return $commentable_type . '.' . $commentable_id . 'comments';
@@ -55,7 +63,7 @@ class CommentRepository extends Repository
     public function getAll($page = 20)
     {
         $comments = $this->remember('comment.page.' . $page . '' . request()->get('page', 1), function () use ($page) {
-            return Comment::withoutGlobalScopes()->orderBy('created_at', 'desc')->paginate($page);
+            return Comment::withoutGlobalScopes()->orderBy('created_at', 'desc')->with(['ip'])->paginate($page);
         });
         return $comments;
     }
