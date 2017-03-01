@@ -17,10 +17,16 @@ class IPController extends Controller
         $this->ipRepository = $ipRepository;
     }
 
-    public function block($ip)
+    public function toggleBlock($ip)
     {
-        if ($this->ipRepository->toggleBlock($ip)) {
-            return back()->with('success', "Action $ip successfully.");
+        $ipInstance = $this->ipRepository->getOne($ip);
+        $ipInstance->blocked = !$ipInstance->blocked;
+        if ($ipInstance->save()) {
+            $action = "Un Block";
+            if ($ipInstance->blocked) {
+                $action = "Block";
+            }
+            return back()->with('success', "$action $ip successfully.");
         }
         return back()->withErrors("Blocked $ip failed.");
     }
