@@ -85,19 +85,15 @@
                                                 <i class="fa fa-pencil fa-fw"></i>
                                             </a>
                                         @endif
-                                        @if($comment->ip == null)
+                                        <?php $ip = $comment->ip ?>
+                                        @if($ip == null)
                                             <button disabled
                                                     class="btn btn-default"
                                                     title="NO IP">
                                                 <i class="fa fa-close fa-fw"></i>
                                             </button>
                                         @else
-                                            <button class="btn swal-dialog-target {{ $comment->ip->blocked?' btn-danger':' btn-default' }}"
-                                                    data-dialog-msg="{{ $comment->ip->blocked?'取消阻塞':'阻塞' }} IP {{ $comment->ip->id }} ?{{ $comment->ip->blocked?'':' 阻塞后此IP将不能访问你的网站' }}"
-                                                    data-url="{{ route('ip.block',$comment->ip->id) }}"
-                                                    title="{{ $comment->ip->blocked?'Un Block':'Block' }}">
-                                                <i class="fa {{ $comment->ip->blocked?'fa-check':'fa-close' }} fa-fw"></i>
-                                            </button>
+                                            @include('admin.partials.ip_button',['ip'=>$ip])
                                         @endif
                                     </td>
                                 </tr>
