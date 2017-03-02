@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Http\Repositories\CommentRepository;
-use App\Http\Repositories\PostRepository;
 use App\Http\Requests;
 use Gate;
 use Illuminate\Http\Request;
+use XblogConfig;
 
 class CommentController extends Controller
 {
@@ -38,6 +38,9 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
+        if (XblogConfig::getValue('allow_comment', 'true') == 'false') {
+            abort(403);
+        }
         if (!$request->get('content')) {
             return response()->json(
                 ['status' => 500, 'msg' => 'Comment content must not be empty !']

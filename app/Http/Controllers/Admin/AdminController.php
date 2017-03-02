@@ -100,7 +100,7 @@ class AdminController extends Controller
 
     public function comments(Request $request)
     {
-        $comments = Comment::withoutGlobalScopes()->where($request->all())->orderBy('created_at', 'desc')->paginate(20);
+        $comments = Comment::withoutGlobalScopes()->where($request->except(['page']))->orderBy('created_at', 'desc')->paginate(20);
         return view('admin.comments', compact('comments'));
     }
 
@@ -118,7 +118,7 @@ class AdminController extends Controller
 
     public function users(Request $request)
     {
-        $users = User::where($request->all())->paginate(20);
+        $users = User::where($request->except(['page']))->paginate(20);
         return view('admin.users', compact('users'));
     }
 
@@ -130,7 +130,7 @@ class AdminController extends Controller
 
     public function ips(Request $request)
     {
-        $ips = Ip::withoutGlobalScopes()->where($request->all())->withCount(
+        $ips = Ip::withoutGlobalScopes()->where($request->except(['page']))->withCount(
             ['comments' => function ($query) {
                 $query->withTrashed();
             }]

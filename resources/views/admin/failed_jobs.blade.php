@@ -9,7 +9,7 @@
                         <i class="fa fa-close fa-fw"></i>
                         Failed Jobs
                         @if(!$failed_jobs->isEmpty())
-                            <a class="swal-dialog-target"
+                            <a class="meta-item swal-dialog-target"
                                data-dialog-title="Failed Jobs"
                                data-dialog-msg="Flush {{ count($failed_jobs) }} failed jobs ?"
                                data-url="{{ route('admin.failed-jobs.flush') }}">

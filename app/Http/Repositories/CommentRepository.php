@@ -76,6 +76,10 @@ class CommentRepository extends Repository
         $commentable_id = $request->get('commentable_id');
         $commentable = app($request->get('commentable_type'))->where('id', $commentable_id)->firstOrFail();
 
+        if (!$commentable->isShownComment()) {
+            abort(403);
+        }
+
         if (auth()->check()) {
             $user = auth()->user();
             $comment->user_id = $user->id;
