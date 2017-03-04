@@ -140,9 +140,9 @@
         var site = form.find('input[name=site]');
 
         if (window.localStorage) {
-            username.val(localStorage.getItem('comment_username'));
-            email.val(localStorage.getItem('comment_email'));
-            site.val(localStorage.getItem('comment_site'));
+            username.val(localStorage.getItem('comment_username') == undefined ? '' : localStorage.getItem('comment_username'));
+            email.val(localStorage.getItem('comment_email') == undefined ? '' : localStorage.getItem('comment_email'));
+            site.val(localStorage.getItem('comment_site') == undefined ? '' : localStorage.getItem('comment_site'));
         }
 
         form.on('submit', function () {
