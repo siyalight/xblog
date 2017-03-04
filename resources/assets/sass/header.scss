@@ -58,6 +58,19 @@ a:active, a:focus, a img {
   vertical-align: middle;
 }
 
+.site-navbar .open > .dropdown-menu {
+  background-color: $colorPrimary;
+  border-color: $colorPrimaryDark;
+}
+
+.site-navbar .open > .dropdown-menu > li > a {
+  color: white;
+}
+
+.site-navbar .open > .dropdown-menu > li > a:hover {
+  color: $colorAccent;
+}
+
 .navbar-toggle .icon-bar {
   display: block;
   width: 22px;
@@ -106,7 +119,7 @@ a:active, a:focus, a img {
   text-shadow: 5px 5px 5px $colorPrimaryDark;
 }
 
-.navbar-header .navbar-brand:hover{
+.navbar-header .navbar-brand:hover {
   color: $colorAccent;
 }
 
@@ -115,9 +128,10 @@ header .description {
   font-size: 1.4em;
   text-shadow: 5px 5px 5px $colorPrimaryDark;
 }
+
 /*dropdown-menu*/
 
-.main-header .dropdown-menu>li>a:hover{
+.main-header .dropdown-menu > li > a:hover {
   border-radius: 20px !important;
   background-color: $colorPrimaryDark !important;
 }

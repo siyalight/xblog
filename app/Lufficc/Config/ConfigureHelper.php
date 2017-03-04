@@ -10,7 +10,6 @@ namespace Lufficc\Config;
 
 
 use App\Configuration;
-use Illuminate\Http\Request;
 use Lufficc\Exception\UnConfigurableException;
 
 trait ConfigureHelper
@@ -34,29 +33,31 @@ trait ConfigureHelper
     public abstract function getConfigKeys();
 
     /**
-     * @param Request $request
+     * @param array $array
      * @return boolean
      * @throws UnConfigurableException
      */
-    public function saveConfig($request)
+    public function saveConfig($array)
     {
         if (!$this->configuration) {
-            $configuration = $this->innerSetConfigKeys(new Configuration(), $request);
+            $configuration = $this->innerSetConfigKeys(new Configuration(), $array);
             $this->configuration()->save($configuration);
         }
-        return $this->innerSetConfigKeys($this->configuration, $request)->save();
+        return $this->innerSetConfigKeys($this->configuration, $array)->save();
     }
 
     /**
      * @param Configuration $configuration
-     * @param $request
+     * @param $array
      * @return Configuration
      */
-    private function innerSetConfigKeys(Configuration $configuration, $request)
+    private function innerSetConfigKeys(Configuration $configuration, $array)
     {
         $config = $configuration->config;
-        foreach ($this->getConfigKeys() as $key) {
-            $config[$key] = $request->get($key);
+        foreach ($array as $key => $value) {
+            if (in_array($key, $this->getConfigKeys())) {
+                $config[$key] = $value;
+            }
         }
         $configuration->config = $config;
         return $configuration;

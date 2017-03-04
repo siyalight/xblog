@@ -49,6 +49,7 @@ Route::post('/post/{post}/restore', ['uses' => 'PostController@restore', 'as' =>
 Route::get('/post/{slug}/preview', ['uses' => 'PostController@preview', 'as' => 'post.preview']);
 Route::post('/post/{post}/publish', ['uses' => 'PostController@publish', 'as' => 'post.publish']);
 Route::get('/post/{post}/download', ['uses' => 'PostController@download', 'as' => 'post.download']);
+Route::post('/post/{post}/config', ['uses' => 'PostController@updateConfig', 'as' => 'post.config']);
 
 /**
  * tag

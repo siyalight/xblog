@@ -182,7 +182,7 @@ class PostRepository extends Repository
         );
         $post->tags()->sync($ids);
 
-        $post->saveConfig($request);
+        $post->saveConfig($request->all());
 
         return $post;
     }
@@ -212,7 +212,7 @@ class PostRepository extends Repository
             $request['published_at'] = Carbon::now();
         }
 
-        $post->saveConfig($request);
+        $post->saveConfig($request->all());
 
         return $post->update(
             array_merge(

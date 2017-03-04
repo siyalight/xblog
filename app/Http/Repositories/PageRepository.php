@@ -69,14 +69,14 @@ class PageRepository extends Repository
             ['html_content' => $this->parseDown->text($request->get('content'))]
         ));
 
-        $page->saveConfig($request);
+        $page->saveConfig($request->all());
         return $page;
     }
 
     public function update(Request $request, Page $page)
     {
         $this->clearCache();
-        $page->saveConfig($request);
+        $page->saveConfig($request->all());
         return $page->update(array_merge(
             $request->except('_token'),
             ['html_content' => $this->parseDown->text($request->get('content'))]

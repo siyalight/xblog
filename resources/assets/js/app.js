@@ -4,6 +4,11 @@
 (function ($) {
     var Xblog = {
         init: function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             this.bootUp();
         },
         bootUp: function () {
@@ -29,26 +34,81 @@
                 "</form>\n"
         }).click(function () {
             var deleteForm = $(this).find("form");
+            var method = ($(this).data('method') ? $(this).data('method') : 'delete');
+            var url = $(this).attr('data-url');
+            var data = $(this).data('request-data') ? $(this).data('request-data') : '';
             var title = $(this).data('dialog-title') ? $(this).data('dialog-title') : '删除';
             var message = $(this).data('dialog-msg');
             var type = $(this).data('dialog-type') ? $(this).data('dialog-type') : 'warning';
             var cancel_text = $(this).data('dialog-cancel-text') ? $(this).data('dialog-cancel-text') : '取消';
             var confirm_text = $(this).data('dialog-confirm-text') ? $(this).data('dialog-confirm-text') : '确定';
             var enable_html = $(this).data('dialog-enable-html') == '1';
-            swal({
-                    title: title,
-                    text: message,
-                    type: type,
-                    html: enable_html,
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    cancelButtonText: cancel_text,
-                    confirmButtonText: confirm_text,
-                    closeOnConfirm: true
-                },
-                function () {
-                    deleteForm.submit();
-                });
+            var enable_ajax = $(this).data('enable-ajax') == '1';
+            console.log(data);
+            if (enable_ajax) {
+                swal({
+                        title: title,
+                        text: message,
+                        type: type,
+                        html: enable_html,
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        cancelButtonText: cancel_text,
+                        confirmButtonText: confirm_text,
+                        showLoaderOnConfirm: true,
+                        closeOnConfirm: true
+                    },
+                    function () {
+                        $.ajax({
+                            url: url,
+                            type: method,
+                            data: data,
+                            success: function (res) {
+                                if (res.code == 200) {
+                                    swal({
+                                        title: 'Succeed',
+                                        text: res.msg,
+                                        type: "success",
+                                        timer: 1000,
+                                        confirmButtonText: "OK"
+                                    });
+                                } else {
+                                    swal({
+                                        title: 'Failed',
+                                        text: "操作失败",
+                                        type: "error",
+                                        timer: 1000,
+                                        confirmButtonText: "OK"
+                                    });
+                                }
+                            },
+                            error: function (res) {
+                                swal({
+                                    title: 'Failed',
+                                    text: "操作失败",
+                                    type: "error",
+                                    timer: 1000,
+                                    confirmButtonText: "OK"
+                                });
+                            }
+                        })
+                    });
+            } else {
+                swal({
+                        title: title,
+                        text: message,
+                        type: type,
+                        html: enable_html,
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        cancelButtonText: cancel_text,
+                        confirmButtonText: confirm_text,
+                        closeOnConfirm: true
+                    },
+                    function () {
+                        deleteForm.submit();
+                    });
+            }
         });
     }
 
@@ -110,9 +170,6 @@
             $.ajax({
                 method: 'post',
                 url: $(this).attr('action'),
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
                 data: {
                     commentable_id: form.find('input[name=commentable_id]').val(),
                     commentable_type: form.find('input[name=commentable_type]').val(),

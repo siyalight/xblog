@@ -20,9 +20,10 @@ class BlogExceptionHandler
      */
     public function handler(Request $request, Exception $exception)
     {
+        dd($exception);
         if ($request->expectsJson()) {
             return response()->json(
-                ['status' => $exception->getCode(), 'msg' => 'Sorry, something wen wrong.']
+                ['status' => $exception->getCode(), 'msg' => 'Sorry, something went wrong.']
             );
         }
         return false;
