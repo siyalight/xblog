@@ -4,11 +4,6 @@
 (function ($) {
     var Xblog = {
         init: function () {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
             this.bootUp();
         },
         bootUp: function () {
@@ -60,6 +55,9 @@
                     },
                     function () {
                         $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': XblogConfig.csrfToken
+                            },
                             url: url,
                             type: method,
                             data: data,
