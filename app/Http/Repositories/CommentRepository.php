@@ -76,7 +76,7 @@ class CommentRepository extends Repository
         $commentable_id = $request->get('commentable_id');
         $commentable = app($request->get('commentable_type'))->where('id', $commentable_id)->firstOrFail();
 
-        if (!$commentable->isShownComment()) {
+        if (!$commentable->isShownComment() || !$commentable->allowComment()) {
             abort(403);
         }
 

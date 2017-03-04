@@ -8,6 +8,7 @@ class Configuration extends Model
 {
     protected $fillable = ['config'];
     public $timestamps = false;
+
     public function configurable()
     {
         return $this->morphTo();

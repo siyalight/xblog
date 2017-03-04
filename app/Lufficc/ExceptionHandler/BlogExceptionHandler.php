@@ -20,7 +20,7 @@ class BlogExceptionHandler
      */
     public function handler(Request $request, Exception $exception)
     {
-        if ($request->ajax()) {
+        if ($request->expectsJson()) {
             return response()->json(
                 ['status' => $exception->getCode(), 'msg' => 'Sorry, something wen wrong.']
             );

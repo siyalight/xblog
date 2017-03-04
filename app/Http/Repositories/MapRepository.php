@@ -92,9 +92,15 @@ class MapRepository extends Repository
     public function getValue($key, $default = null)
     {
         $map = $this->get($key);
-        if ($map)
+        if ($map && !$map->value == null && !$map->value == '')
             return $map->value;
         return $default;
+    }
+
+    public function getBoolValue($key, $default = false)
+    {
+        $defaultValue = $default ? 'true' : 'false';
+        return $this->getValue($key, $defaultValue) == 'true';
     }
 
     public function delete($key)

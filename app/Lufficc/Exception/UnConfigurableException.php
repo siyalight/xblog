@@ -8,8 +8,9 @@
 
 namespace Lufficc\Exception;
 
+use Exception;
 
-class UnConfigurableException
+class UnConfigurableException extends Exception
 {
 
 }

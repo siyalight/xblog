@@ -69,39 +69,14 @@ class PageRepository extends Repository
             ['html_content' => $this->parseDown->text($request->get('content'))]
         ));
 
-        $configuration = new Configuration();
-        $configuration->config = [
-            'comment_type' => $request['comment_type'],
-            'comment_info' => $request['comment_info'],
-            'display' => $request['display'],
-            'sort_order' => $request['sort_order'],
-        ];
-        $page->configuration()->save($configuration);
+        $page->saveConfig($request);
         return $page;
     }
 
     public function update(Request $request, Page $page)
     {
         $this->clearCache();
-        $configuration = $page->configuration;
-        if (!$configuration) {
-            $configuration = new Configuration();
-            $configuration->config = [
-                'comment_type' => $request['comment_type'],
-                'comment_info' => $request['comment_info'],
-                'display' => $request['display'],
-                'sort_order' => $request['sort_order'],
-            ];
-            $page->configuration()->save($configuration);
-        } else {
-            $configuration->config = [
-                'comment_type' => $request['comment_type'],
-                'comment_info' => $request['comment_info'],
-                'display' => $request['display'],
-                'sort_order' => $request['sort_order'],
-            ];
-            $configuration->save();
-        }
+        $page->saveConfig($request);
         return $page->update(array_merge(
             $request->except('_token'),
             ['html_content' => $this->parseDown->text($request->get('content'))]

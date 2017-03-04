@@ -16,7 +16,7 @@ class CommentObserver
 {
     public function created(Comment $comment)
     {
-        if (!isAdmin($comment->user)) {
+        if (!isAdminById($comment->user_id)) {
             getAdminUser()->notify(new ReceivedComment($comment));
         }
     }
