@@ -54,9 +54,8 @@
                                     target="_blank">
                                 <i class="fa fa-eye fa-fw"></i>
                             </a>
-                            <button class="btn btn-danger"
-                                    data-method="delete"
-                                    data-modal-target="{{ $image->name }}"
+                            <button class="btn btn-danger swal-dialog-target"
+                                    data-dialog-msg="确定删除{{ $image->name }}？"
                                     data-url="{{ route('delete.file').'?key='.$image->key.'&type=image' }}"
                                     data-key="{{ $image->key }}">
                                 <i class="fa fa-trash-o fa-fw"></i>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\CategoryRepository;
 use App\Http\Repositories\CommentRepository;
@@ -12,7 +13,9 @@ use App\Http\Repositories\PostRepository;
 use App\Http\Repositories\TagRepository;
 use App\Http\Repositories\UserRepository;
 use App\Http\Requests;
+use App\Ip;
 use App\Page;
+use DB;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -68,8 +71,13 @@ class AdminController extends Controller
         $info['tag_count'] = $this->tagRepository->count();
         $info['page_count'] = $this->pageRepository->count();
         $info['image_count'] = $this->imageRepository->count();
-
-        return view('admin.index', compact('info'));
+        $info['ip_count'] = Ip::count();
+        $response = view('admin.index', compact('info'));
+        if (($failed_jobs_count = DB::table('failed_jobs')->count()) > 0) {
+            $failed_jobs_link = route('admin.failed-jobs');
+            $response->withErrors(['failed_jobs' => "You have $failed_jobs_count failed jobs.<a href='$failed_jobs_link'>View</a>"]);
+        }
+        return $response;
     }
 
     public function settings()
@@ -90,9 +98,9 @@ class AdminController extends Controller
         return view('admin.posts', compact('posts'));
     }
 
-    public function comments()
+    public function comments(Request $request)
     {
-        $comments = $this->commentRepository->getAll();
+        $comments = Comment::withoutGlobalScopes()->where($request->except(['page']))->orderBy('created_at', 'desc')->paginate(20);
         return view('admin.comments', compact('comments'));
     }
 
@@ -108,9 +116,9 @@ class AdminController extends Controller
         return view('admin.categories', compact('categories'));
     }
 
-    public function users()
+    public function users(Request $request)
     {
-        $users = User::paginate(20);
+        $users = User::where($request->except(['page']))->paginate(20);
         return view('admin.users', compact('users'));
     }
 
@@ -118,6 +126,31 @@ class AdminController extends Controller
     {
         $pages = Page::paginate(20);
         return view('admin.pages', compact('pages'));
+    }
+
+    public function ips(Request $request)
+    {
+        $ips = Ip::withoutGlobalScopes()->where($request->except(['page']))->withCount(
+            ['comments' => function ($query) {
+                $query->withTrashed();
+            }]
+        )->with(['user'])->orderBy('user_id', 'id')->paginate(20);
+        return view('admin.ips', compact('ips'));
+    }
+
+    public function failedJobs()
+    {
+        $failed_jobs = DB::table('failed_jobs')->get();
+        return view('admin.failed_jobs', compact('failed_jobs'));
+    }
+
+    public function flushFailedJobs()
+    {
+        $result = DB::table('failed_jobs')->delete();
+        if ($result) {
+            return back()->with('success', "Flush $result failed jobs");
+        }
+        return back()->withErrors("Flush failed jobs failed");
     }
 
 }

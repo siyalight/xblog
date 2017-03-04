@@ -78,17 +78,69 @@
                                                 </button>
                                             </form>
                                         @endif
-                                        <button class="btn btn-danger" data-toggle="modal"
+                                        <button class="btn btn-danger swal-dialog-target"
                                                 data-title="{{ $post->title }}"
-                                                data-toggle="tooltip" data-placement="top" title="删除"
+                                                data-dialog-msg="确定删除文章<label>{{ $post->title }}</label>？"
+                                                title="删除"
+                                                data-dialog-enable-html="1"
                                                 data-url="{{ route('post.destroy',$post->id) }}"
-                                                data-force="{{ $post->trashed() }}"
-                                                data-target="#delete-post-modal">
+                                                data-dialog-confirm-text="{{ $post->trashed()?'删除(这将永久刪除)':'删除' }}">
                                             <i class="fa fa-trash-o  fa-fw"></i>
                                         </button>
                                         <a class="btn btn-default" href="{{ route('post.download',$post->id) }}">
                                             <i class="fa fa-cloud-download fa-fw"></i>
                                         </a>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default dropdown-toggle"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                操作
+                                                <span class="caret"></span>
+                                            </button>
+                                            <?php $commentable = $post?>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    @if($commentable->allowComment())
+                                                        <a href="#" data-url="{{ route('post.config',$post->id) }}"
+                                                           data-method="post"
+                                                           data-enable-ajax="1"
+                                                           data-dialog-title="禁止评论"
+                                                           data-request-data="allow_resource_comment=false"
+                                                           class="swal-dialog-target">
+                                                            禁止评论
+                                                        </a>
+                                                    @else
+                                                        <a href="#" data-url="{{ route('post.config',$post->id) }}"
+                                                           data-method="post"
+                                                           data-enable-ajax="1"
+                                                           data-dialog-title="允许评论"
+                                                           data-request-data="allow_resource_comment=true"
+                                                           class="swal-dialog-target">
+                                                            允许评论
+                                                        </a>
+                                                    @endif
+                                                    @if($commentable->isShownComment())
+                                                        <a href="#" data-url="{{ route('post.config',$post->id) }}"
+                                                           data-method="post"
+                                                           data-enable-ajax="1"
+                                                           data-dialog-title="不显示评论"
+                                                           data-request-data="comment_info=force_disable"
+                                                           class="swal-dialog-target">
+                                                            不显示评论
+                                                        </a>
+                                                    @else
+                                                        <a href="#" data-url="{{ route('post.config',$post->id) }}"
+                                                           data-method="post"
+                                                           data-enable-ajax="1"
+                                                           data-dialog-title="显示评论"
+                                                           data-request-data="comment_info=force_enable"
+                                                           class="swal-dialog-target">
+                                                            显示评论
+                                                        </a>
+                                                    @endif
+                                                </li>
+                                            </ul>
+                                        </div>
+
                                     </div>
                                 </td>
                             </tr>
@@ -100,44 +152,5 @@
             </div>
         </div>
     </div>
-    {{-- modal --}}
-    <div class="modal fade" id="delete-post-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">删除</h4>
-                </div>
-                <div class="modal-body">
-                    确定删除<span id="span-title"></span>吗?
-                </div>
-                <div class="modal-footer">
-                    <form id="delete-form" method="post">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="redirect" value="/admin/posts">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button id="confirm-btn" type="submit" class="btn btn-primary">确定</button>
-                    </form>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 @endsection
 
-@section('script')
-    <script>
-        $('#delete-post-modal').on('show.bs.modal', function (e) {
-            var url = $(e.relatedTarget).data('url');
-            var title = $(e.relatedTarget).data('title');
-            var force = $(e.relatedTarget).data('force');
-            var confirm_btn_text = force == '1' ? '确定(这将永久刪除)' : '删除';
-            var confirm_btn_type = force == '1' ? 'btn btn-danger' : 'btn btn-primary';
-            $('#confirm-btn').text(confirm_btn_text);
-            $('#confirm-btn').attr('class', confirm_btn_type);
-            $('#span-title').text(title);
-            $('#delete-form').attr('action', url);
-        });
-    </script>
-@endsection

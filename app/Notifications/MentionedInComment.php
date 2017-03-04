@@ -44,7 +44,7 @@ class MentionedInComment extends BaseNotification
         return (new MailMessage)
             ->success()
             ->greeting('亲爱的' . $notifiable->name)
-            ->to($notifiable->email)
+            ->replyTo($notifiable->email)
             ->subject('有一条评论提到了您')
             ->line($this->comment->username . '在' . $data['type'] . ':' . $data['title'] . ' 的评论中提到了您:')
             ->line($this->raw_content)

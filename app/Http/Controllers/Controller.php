@@ -18,4 +18,19 @@ class Controller extends BaseController
             abort($code);
         }
     }
+
+    public function jsonMessage($msg = '', $code = 200)
+    {
+        return ['code' => $code, 'msg' => $msg];
+    }
+
+    public function succeedJsonMessage($msg = '')
+    {
+        return $this->jsonMessage($msg, 200);
+    }
+
+    public function failedJsonMessage($msg = '')
+    {
+        return $this->jsonMessage($msg, 500);
+    }
 }

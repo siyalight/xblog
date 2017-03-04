@@ -156,7 +156,6 @@ class PostController extends Controller
 
     public function destroy($id)
     {
-
         $post = Post::withoutGlobalScopes()->findOrFail($id);
         $redirect = route('admin.posts');
         if (request()->has('redirect'))
@@ -190,5 +189,13 @@ class PostController extends Controller
     public function clearAllCache()
     {
         $this->postRepository->clearAllCache();
+    }
+
+    public function updateConfig(Request $request, $id)
+    {
+        $post = Post::withoutGlobalScopes()->findOrFail($id);
+        if ($post->saveConfig($request->all()))
+            return $this->succeedJsonMessage('Update configure successfully');
+        return $this->failedJsonMessage('Update Configure failed');
     }
 }

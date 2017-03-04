@@ -11,38 +11,42 @@
                     <a class="btn pull-right" href="{{ route('page.create') }}">
                         <i class="fa fa-file"></i>
                     </a>
-                    <table class="table table-hover table-bordered table-responsive">
-                        <thead>
-                        <tr>
-                            <th>名称</th>
-                            <th>url</th>
-                            <th>操作</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($pages as $page)
+                    @if($pages->isEmpty())
+                        <div class="center-block">No pages.</div>
+                    @else
+                        <table class="table table-striped table-hover table-bordered table-responsive">
+                            <thead>
                             <tr>
-                                <td>{{ $page->display_name }}</td>
-                                <td>/{{ $page->name }}</td>
-                                <td>
-                                    <div>
-
-                                        <a href="{{ route('page.edit',$page->id) }}"
-                                           data-toggle="tooltip" data-placement="top" title="编辑"
-                                           class="btn btn-info">
-                                            <i class="fa fa-pencil fa-fw"></i>
-                                        </a>
-                                        <a href="/{{ $page->name }}"
-                                           data-toggle="tooltip" data-placement="top" title="查看"
-                                           class="btn btn-success">
-                                            <i class="fa fa-eye fa-fw"></i>
-                                        </a>
-                                    </div>
-                                </td>
+                                <th>名称</th>
+                                <th>url</th>
+                                <th>操作</th>
                             </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            @foreach($pages as $page)
+                                <tr>
+                                    <td>{{ $page->display_name }}</td>
+                                    <td>/{{ $page->name }}</td>
+                                    <td>
+                                        <div>
+
+                                            <a href="{{ route('page.edit',$page->id) }}"
+                                               data-toggle="tooltip" data-placement="top" title="编辑"
+                                               class="btn btn-info">
+                                                <i class="fa fa-pencil fa-fw"></i>
+                                            </a>
+                                            <a href="/{{ $page->name }}"
+                                               data-toggle="tooltip" data-placement="top" title="查看"
+                                               class="btn btn-success">
+                                                <i class="fa fa-eye fa-fw"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    @endif
                 </div>
             </div>
         </div>

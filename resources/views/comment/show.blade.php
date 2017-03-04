@@ -36,11 +36,10 @@
             </div>
             <div class="comment-operation">
                 @can('manager',$comment)
-                    <a class="comment-operation-item"
+                    <a class="comment-operation-item swal-dialog-target"
                        title="删除"
                        href="javascript:void (0)"
-                       data-method="delete"
-                       data-modal-target="这条评论"
+                       data-dialog-msg="删除这条评论？"
                        data-url="{{ route('comment.destroy',$comment->id) }}">
                         删除
                     </a>

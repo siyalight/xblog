@@ -35,6 +35,15 @@ trait CommentHelper
     }
 
     /**
+     * @return bool
+     */
+    public function allowComment()
+    {
+        $allow_resource_comment = $this->getConfig('allow_resource_comment', 'default');
+        return $allow_resource_comment == 'default' ? XblogConfig::getBoolValue('allow_comment', true) : $this->getBoolConfig('allow_resource_comment', true);
+    }
+
+    /**
      * @return string
      */
     public function getCommentType()

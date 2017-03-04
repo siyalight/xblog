@@ -182,13 +182,7 @@ class PostRepository extends Repository
         );
         $post->tags()->sync($ids);
 
-        $configuration = new Configuration();
-        $configuration->config = [
-            'comment_type' => $request['comment_type'],
-            'comment_info' => $request['comment_info'],
-        ];
-
-        $post->configuration()->save($configuration);
+        $post->saveConfig($request->all());
 
         return $post;
     }
@@ -217,21 +211,8 @@ class PostRepository extends Repository
         if ($status == 1) {
             $request['published_at'] = Carbon::now();
         }
-        $configuration = $post->configuration;
-        if (!$configuration) {
-            $configuration = new Configuration();
-            $configuration->config = [
-                'comment_type' => $request['comment_type'],
-                'comment_info' => $request['comment_info'],
-            ];
-            $post->configuration()->save($configuration);
-        } else {
-            $configuration->config = [
-                'comment_type' => $request['comment_type'],
-                'comment_info' => $request['comment_info'],
-            ];
-            $configuration->save();
-        }
+
+        $post->saveConfig($request->all());
 
         return $post->update(
             array_merge(

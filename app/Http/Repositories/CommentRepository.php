@@ -38,6 +38,14 @@ class CommentRepository extends Repository
         return app(Comment::class);
     }
 
+    public function count()
+    {
+        $count = $this->remember($this->tag() . '.count', function () {
+            return $this->model()->withTrashed()->count();
+        });
+        return $count;
+    }
+
     private function getCacheKey($commentable_type, $commentable_id)
     {
         return $commentable_type . '.' . $commentable_id . 'comments';
@@ -68,6 +76,10 @@ class CommentRepository extends Repository
         $commentable_id = $request->get('commentable_id');
         $commentable = app($request->get('commentable_type'))->where('id', $commentable_id)->firstOrFail();
 
+        if (!$commentable->isShownComment() || !$commentable->allowComment()) {
+            abort(403);
+        }
+
         if (auth()->check()) {
             $user = auth()->user();
             $comment->user_id = $user->id;
@@ -80,7 +92,7 @@ class CommentRepository extends Repository
         }
 
         $content = $request->get('content');
-
+        $comment->ip_id = $request->ip();
         $comment->content = $this->mention->parse($content);
         $comment->html_content = $this->markdownParser->parse($comment->content);
         $result = $commentable->comments()->save($comment);

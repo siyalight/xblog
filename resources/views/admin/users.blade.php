@@ -8,7 +8,7 @@
                     <h6><i class="fa fa-user fa-fw"></i>用户</h6>
                 </div>
                 <div class="widget-body">
-                    <table class="table table-hover table-bordered table-responsive">
+                    <table class="table table-striped table-hover table-bordered table-responsive">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -39,7 +39,9 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {{ $users->links() }}
+                    @if($users->lastPage() > 1)
+                        {{ $users->links() }}
+                    @endif
                 </div>
             </div>
         </div>

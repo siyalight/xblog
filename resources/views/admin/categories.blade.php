@@ -11,7 +11,7 @@
                     <a class="btn pull-right" role="button" data-toggle="modal" data-target="#add-category-modal">
                         <i class="fa fa-folder-o"></i>
                     </a>
-                    <table class="table table-hover table-bordered table-responsive" style="overflow: auto">
+                    <table class="table table-hover table-striped table-bordered table-responsive" style="overflow: auto">
                         <thead>
                         <tr>
                             <th>名称</th>
@@ -28,14 +28,14 @@
                                 <td>{{ $category->posts_count }}</td>
                                 <td>
                                     <div>
-                                        <a href="{{ route('category.edit',$category->id) }}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="编辑">
+                                        <a href="{{ route('category.edit',$category->id) }}" class="btn btn-info"
+                                           data-toggle="tooltip" data-placement="top" title="编辑">
                                             <i class="fa fa-pencil fa-fw"></i>
                                         </a>
-                                        <button class="btn btn-danger" data-toggle="modal"
+                                        <button class="btn btn-danger swal-dialog-target"
                                                 data-toggle="tooltip" data-placement="top" title="删除"
-                                                data-method="delete"
                                                 data-url="{{ route('category.destroy',$category->id) }}"
-                                                data-modal-target="{{ $category->name }}">
+                                                data-dialog-msg="删除{{ $category->name }}?">
                                             <i class="fa fa-trash-o fa-fw"></i>
                                         </button>
                                     </div>

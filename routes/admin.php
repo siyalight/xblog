@@ -26,6 +26,7 @@ Route::post('/upload/file', ['uses' => 'FileController@uploadFile', 'as' => 'upl
  * admin uri
  */
 Route::get('/posts', ['uses' => 'AdminController@posts', 'as' => 'admin.posts']);
+Route::get('/failed-jobs', ['uses' => 'AdminController@failedJobs', 'as' => 'admin.failed-jobs']);
 Route::get('/comments', ['uses' => 'AdminController@comments', 'as' => 'admin.comments']);
 Route::get('/tags', ['uses' => 'AdminController@tags', 'as' => 'admin.tags']);
 Route::get('/users', ['uses' => 'AdminController@users', 'as' => 'admin.users']);
@@ -33,6 +34,7 @@ Route::get('/pages', ['uses' => 'AdminController@pages', 'as' => 'admin.pages'])
 Route::get('/categories', ['uses' => 'AdminController@categories', 'as' => 'admin.categories']);
 Route::get('/images', ['uses' => 'ImageController@images', 'as' => 'admin.images']);
 Route::get('/files', ['uses' => 'FileController@files', 'as' => 'admin.files']);
+Route::get('/ips', ['uses' => 'AdminController@ips', 'as' => 'admin.ips']);
 
 /**
  * comment
@@ -47,6 +49,7 @@ Route::post('/post/{post}/restore', ['uses' => 'PostController@restore', 'as' =>
 Route::get('/post/{slug}/preview', ['uses' => 'PostController@preview', 'as' => 'post.preview']);
 Route::post('/post/{post}/publish', ['uses' => 'PostController@publish', 'as' => 'post.publish']);
 Route::get('/post/{post}/download', ['uses' => 'PostController@download', 'as' => 'post.download']);
+Route::post('/post/{post}/config', ['uses' => 'PostController@updateConfig', 'as' => 'post.config']);
 
 /**
  * tag
@@ -60,3 +63,15 @@ Route::post('/tag', ['uses' => 'TagController@store', 'as' => 'tag.store']);
 Route::resource('post', 'PostController', ['except' => ['show', 'index']]);
 Route::resource('category', 'CategoryController', ['except' => ['index', 'show', 'create']]);
 Route::resource('page', 'PageController', ['except' => ['show', 'index']]);
+
+/**
+ * IPS
+ */
+Route::delete('/ip/{ip}/toggle', ['uses' => 'IpController@toggleBlock', 'as' => 'ip.block']);
+Route::delete('/ip/{ip}', ['uses' => 'IpController@destroy', 'as' => 'ip.delete']);
+
+/**
+ * failed jobs
+ */
+
+Route::delete('/failed-jobs', ['uses' => 'AdminController@flushFailedJobs', 'as' => 'admin.failed-jobs.flush']);

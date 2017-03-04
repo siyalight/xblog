@@ -55,7 +55,7 @@
                                 <input type="radio"
                                        {{ (isset($comment_type) && $comment_type == 'none') ? ' checked ':'' }}
                                        name="comment_type"
-                                       value="none">关闭评论
+                                       value="none">关闭评(不显示)
                             </label>
                         </div>
                         <div class="radio">
@@ -80,6 +80,25 @@
                                        {{ isset($comment_type) && $comment_type == 'duoshuo' ? ' checked':'' }}
                                        name="comment_type"
                                        value="duoshuo">多说
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="radio">
+                            <label class="col-sm-offset-2">
+                                <input type="radio"
+                                       {{ (!isset($allow_comment) || $allow_comment == 'true') ? ' checked ':'' }}
+                                       name="allow_comment"
+                                       value="true">允许评论(仍会显示已有评论)
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label class="col-sm-offset-2">
+                                <input type="radio"
+                                       {{ (isset($allow_comment) && $allow_comment == 'false') ? ' checked ':'' }}
+                                       name="allow_comment"
+                                       value="false">禁止评论(仍会显示已有评论)
                             </label>
                         </div>
                     </div>

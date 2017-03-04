@@ -10,8 +10,6 @@ namespace Lufficc\ExceptionHandler;
 
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Session\TokenMismatchException;
-use Laravel\Socialite\Two\InvalidStateException;
 
 class BlogExceptionHandler
 {
@@ -22,9 +20,9 @@ class BlogExceptionHandler
      */
     public function handler(Request $request, Exception $exception)
     {
-        if ($request->ajax()) {
+        if ($request->expectsJson()) {
             return response()->json(
-                ['status' => $exception->getCode(), 'msg' => $exception->getMessage()]
+                ['status' => $exception->getCode(), 'msg' => 'Sorry, something went wrong.']
             );
         }
         return false;
