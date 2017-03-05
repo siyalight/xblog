@@ -39,9 +39,9 @@ trait ConfigureHelper
      */
     public function saveConfig($array)
     {
-        if (empty($this->configuration)) {
+        if (!$this->configuration) {
             $configuration = $this->innerSetConfigKeys(new Configuration(), $array);
-            $this->configuration()->save($configuration);
+            return $this->configuration()->save($configuration);
         }
         return $this->innerSetConfigKeys($this->configuration, $array)->save();
     }
