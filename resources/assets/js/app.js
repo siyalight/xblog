@@ -168,6 +168,9 @@
             $.ajax({
                 method: 'post',
                 url: $(this).attr('action'),
+                headers: {
+                    'X-CSRF-TOKEN': XblogConfig.csrfToken
+                },
                 data: {
                     commentable_id: form.find('input[name=commentable_id]').val(),
                     commentable_type: form.find('input[name=commentable_type]').val(),
