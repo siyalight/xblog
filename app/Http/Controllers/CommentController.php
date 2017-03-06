@@ -38,9 +38,6 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-        if (XblogConfig::getValue('allow_comment', 'true') == 'false') {
-            abort(403);
-        }
         if (!$request->get('content')) {
             return response()->json(
                 ['status' => 500, 'msg' => 'Comment content must not be empty !']
