@@ -9,6 +9,7 @@ namespace App\Http\Repositories;
 
 use App\Comment;
 use Illuminate\Http\Request;
+use Lufficc\Exception\CommentNotAllowedException;
 use Lufficc\MarkDownParser;
 use Lufficc\Mention;
 
@@ -77,7 +78,7 @@ class CommentRepository extends Repository
         $commentable = app($request->get('commentable_type'))->where('id', $commentable_id)->firstOrFail();
 
         if (!$commentable->isShownComment() || !$commentable->allowComment()) {
-            abort(403);
+            throw new CommentNotAllowedException;
         }
 
         if (auth()->check()) {
