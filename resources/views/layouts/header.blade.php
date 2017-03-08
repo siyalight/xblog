@@ -53,6 +53,16 @@
                                 @if(isAdmin(Auth::user()))
                                     <li><a href="{{ route('admin.index') }}">后台管理</a></li>
                                 @endif
+                                <li><a href="{{ route('user.notifications') }}">
+                                        <?php
+                                        $user = auth()->user();
+                                        $unreadNotificationsCount = $user->unreadNotifications->count();
+                                        ?>
+                                        @if($unreadNotificationsCount)
+                                            <span class="badge required">{{ $unreadNotificationsCount }}</span>
+                                        @endif
+                                        通知中心
+                                    </a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{ url('/logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

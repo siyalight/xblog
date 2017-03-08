@@ -35,8 +35,20 @@ class UserController extends Controller
 
     public function notifications()
     {
-        $notifications = auth()->user()->notifications;
+        $notifications = auth()->user()->unreadNotifications;
         return view('user.notifications',compact('notifications'));
+    }
+
+    public function readNotification($id)
+    {
+        if ($id == "all") {
+            auth()->user()->unreadNotifications->markAsRead();
+            return back()->with('success', '修改成功');
+        } else {
+            $notification = auth()->user()->unreadNotifications()->findOrFail($id);
+            $notification->markAsRead();
+            return back()->with('success', '修改成功');
+        }
     }
 
     public function update(Request $request)
