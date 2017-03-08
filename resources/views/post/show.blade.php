@@ -35,10 +35,9 @@
                                 </span>
                                 <span>
                                     &nbsp;|&nbsp;
-                                    <a role="button"
-                                       data-method="delete"
+                                    <a class="swal-dialog-target"
                                        data-url="{{ route('post.destroy',$post->id) }}"
-                                       data-modal-target="{{ $post->title }}">
+                                       data-dialog-msg="Delete {{ $post->title }} ?">
                                     <i class="fa fa-trash-o fa-fw"></i>
                                     </a>
                                 </span>
