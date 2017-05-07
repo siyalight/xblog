@@ -13,7 +13,8 @@
         "laravel/socialite": "^2.0",
         "mews/purifier": "^2.0",
         "league/html-to-markdown": "^4.3",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "zgldh/qiniu-laravel-storage": "^0.6.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

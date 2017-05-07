@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fbb1286179a97bd4dacc5ddcc4823bf6",
-    "content-hash": "b1e37fd124e2f6ae60f396a0a5b4d80d",
+    "hash": "f2794a5d20307af7ef011accafe6bcf7",
+    "content-hash": "1b15627c03ded9274205e03081323182",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2483,6 +2483,58 @@
                 "environment"
             ],
             "time": "2016-09-01 10:05:43"
+        },
+        {
+            "name": "zgldh/qiniu-laravel-storage",
+            "version": "v0.6.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zgldh/qiniu-laravel-storage.git",
+                "reference": "2b13f0ccba2c799324789e598ae123a75b4a45e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/zgldh/qiniu-laravel-storage/2b13f0ccba2c799324789e598ae123a75b4a45e7.zip",
+                "reference": "2b13f0ccba2c799324789e598ae123a75b4a45e7",
+                "shasum": ""
+            },
+            "require": {
+                "league/flysystem": "^1.0",
+                "php": ">=5.3.3",
+                "qiniu/php-sdk": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "zgldh\\QiniuStorage\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "zgldh",
+                    "email": "zgldh@hotmail.com",
+                    "role": "Original Developer"
+                },
+                {
+                    "name": "abcsun",
+                    "email": "chenglongsun_nj@163.com",
+                    "homepage": "http://github.com/abcsun",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Qiniu Resource (Cloud) Storage SDK for Laravel 5",
+            "keywords": [
+                "cloud",
+                "laravel",
+                "qiniu",
+                "sdk",
+                "storage"
+            ],
+            "time": "2017-04-25 15:13:23"
         }
     ],
     "packages-dev": [
