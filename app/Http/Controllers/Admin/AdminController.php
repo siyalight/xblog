@@ -62,7 +62,7 @@ class AdminController extends Controller
     }
 
     public function index()
-    {
+    {	
         $info = [];
         $info['post_count'] = $this->postRepository->count();
         $info['comment_count'] = $this->commentRepository->count();
