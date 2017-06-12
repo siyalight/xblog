@@ -62,3 +62,4 @@ Route::get('/{name}', ['uses' => 'PageController@show', 'as' => 'page.show']);
 
 //微信公众号
 Route::any('/wechat','WechatController@serve');
+Route::any('/wechat/token','WechatController@getToken');
