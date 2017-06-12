@@ -189,6 +189,7 @@ return [
         App\Providers\CacheServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
         //Barryvdh\Debugbar\ServiceProvider::class,
+        Overtrue\LaravelWechat\ServiceProvider::class,//微信公众号
     ],
 
     /*

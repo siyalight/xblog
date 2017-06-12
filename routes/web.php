@@ -59,3 +59,6 @@ Route::get('feed.xml', 'GeneratedController@feed');
  * must last
  */
 Route::get('/{name}', ['uses' => 'PageController@show', 'as' => 'page.show']);
+
+//微信公众号
+Route::any('/wechat','WechatController@serve');
