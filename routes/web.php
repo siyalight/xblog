@@ -47,6 +47,8 @@ Route::patch('/user/upload/info', ['uses' => 'UserController@update', 'as' => 'u
 Route::get('/commentable/{commentable_id}/comments', ['uses' => 'CommentController@show', 'as' => 'comment.show']);
 Route::resource('comment', 'CommentController', ['only' => ['store', 'destroy', 'edit', 'update']]);
 
+// wechat
+Route::any('/wechat','WechatController@serve');
 
 // SiteMap
 Route::get('sitemap', 'GeneratedController@index');
@@ -59,7 +61,3 @@ Route::get('feed.xml', 'GeneratedController@feed');
  * must last
  */
 Route::get('/{name}', ['uses' => 'PageController@show', 'as' => 'page.show']);
-
-//微信公众号
-Route::any('/wechat','WechatController@serve');
-Route::any('/wechat/token','WechatController@getToken');
