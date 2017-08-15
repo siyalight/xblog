@@ -1,25 +1,18 @@
-<p align="center">
-  <img src="https://github.com/lufficc/images/blob/master/Xblog/logo.png" alt="Xblog: responsive and powerful!" width="200">
-  <br>
-  <a href="https://packagist.org/packages/lufficc/xblog"><img src="https://poser.pugx.org/lufficc/xblog/v/stable.svg" alt="Latest Stable Version"></a>
-  <a href="https://packagist.org/packages/lufficc/xblog"><img src="https://poser.pugx.org/lufficc/xblog/downloads.svg" alt="Total Downloads"></a>
-  <a href="https://packagist.org/packages/lufficc/xblog"><img src="https://poser.pugx.org/lufficc/xblog/license.svg" alt="License"></a>
-
-</p>
-<p align="center">Powerful and responsive blog system powered by laravel 5.4. Click https://lufficc.com to view live demo.</p>
-<p align="center"><img src="https://github.com/lufficc/images/blob/master/Xblog/main1.png"  width="800"><p>
+<p align="center">siya's blog，net the http://siya89.com </p>
+<p align="center">thinks for Lufficc serve the opensource blog project </p>
 <br>
 
 # Xblog
 
-[中文README ](README_zh.md)|[ Project Home Page ](https://lufficc.github.io/Xblog/)|[ ScreenShots ](https://lufficc.github.io/Xblog/news/)
+[Chinese README ](README_zh.md)
 
-This blog is for my own use. I used to use hexo and github pages as my blog, but it's not flexible. Thus I write this
-blog. What I want to say is laravel is the best php framework I've ever seen.
+I find serval blog framework, it feel so comfortable.
+Laravel is the best php framework.
+if you find bugs,please issue.
 
-Later I will share some experience of writing this blog, welcome your watch.
-
-If you find bugs , glad you to issue.
+### server-env
+php 7.1
+laravel 5.4
 
 ## Features
 
@@ -32,15 +25,11 @@ If you find bugs , glad you to issue.
 1. Posts with category, tags,code highlight and different status. 
 1. Images and files management, admin settings.
 1. ..............More..............
- 
-## Requires
-
-1. "php": ">=5.6.4"
-
 
 ## Thanks
 
-[laravel-china](https://laravel-china.org/)
+[lufficc](https://github.com/lufficc/Xblog)
+[lufficc web](https://lufficc.com)
 
 ## License
 
