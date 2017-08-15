@@ -4,7 +4,7 @@
 
 # Xblog
 
-[English README](https://github.com/siyaEng/xblog)
+[English README](README.md)
 
 我找过很多个博客的模板，感觉这个模板用起来是最舒服的。
 Laravel是最好的php框架。
